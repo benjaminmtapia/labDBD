@@ -14,7 +14,8 @@ class SocioController extends Controller
      */
     public function index()
     {
-        //
+       $socios = socio::all();
+        return;
     }
 
     /**

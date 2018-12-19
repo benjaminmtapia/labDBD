@@ -25,7 +25,7 @@ class AirportController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -58,8 +58,7 @@ class AirportController extends Controller
      */
     public function edit(airport $airport)
     {
-        //
-    }
+        //return view('airport.createForm')->with('aiport',$airport);    }
 
     /**
      * Update the specified resource in storage.
@@ -69,8 +68,9 @@ class AirportController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, airport $airport)
-    {
-        //
+    {    
+          $airport->fill($request->all());
+            $airport->save(); 
     }
 
     /**

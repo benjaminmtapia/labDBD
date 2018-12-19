@@ -14,7 +14,8 @@ class OriginController extends Controller
      */
     public function index()
     {
-        //
+        $origen = origin::all();
+        return;
     }
 
     /**
@@ -80,6 +81,8 @@ class OriginController extends Controller
      */
     public function destroy(origin $origin)
     {
-        //
+        $origen = origin::find($id);
+        $origen->delete();
+        return 0;
     }
 }
