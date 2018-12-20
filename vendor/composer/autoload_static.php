@@ -352,6 +352,7 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         'App\\Http\\Controllers\\HotelReservationController' => __DIR__ . '/../..' . '/app/Http/Controllers/HotelReservationController.php',
         'App\\Http\\Controllers\\PackageController' => __DIR__ . '/../..' . '/app/Http/Controllers/PackageController.php',
         'App\\Http\\Controllers\\PackageReservationController' => __DIR__ . '/../..' . '/app/Http/Controllers/PackageReservationController.php',
+        'App\\Http\\Controllers\\PurchaseController' => __DIR__ . '/../..' . '/app/Http/Controllers/PurchaseController.php',
         'App\\Http\\Controllers\\RoomController' => __DIR__ . '/../..' . '/app/Http/Controllers/RoomController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -3721,6 +3722,11 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
+        'carSeeder' => __DIR__ . '/../..' . '/database/seeds/carSeeder.php',
+        'check_inSeeder' => __DIR__ . '/../..' . '/database/seeds/check_inSeeder.php',
+        'hotelSeeder' => __DIR__ . '/../..' . '/database/seeds/hotelSeeder.php',
+        'hotel_reservationSeeder' => __DIR__ . '/../..' . '/database/seeds/hotel_reservationSeeder.php',
+        'packageSeeder' => __DIR__ . '/../..' . '/database/seeds/packageSeeder.php',
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
         'phpDocumentor\\Reflection\\DocBlockFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',
         'phpDocumentor\\Reflection\\DocBlockFactoryInterface' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactoryInterface.php',
@@ -3789,6 +3795,8 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         'phpDocumentor\\Reflection\\Types\\String_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/String_.php',
         'phpDocumentor\\Reflection\\Types\\This' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/This.php',
         'phpDocumentor\\Reflection\\Types\\Void_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Void_.php',
+        'purchaseSeeder' => __DIR__ . '/../..' . '/database/seeds/purchaseSeeder.php',
+        'roomSeeder' => __DIR__ . '/../..' . '/database/seeds/roomSeeder.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

@@ -15,7 +15,9 @@ class PackageReservationController extends Controller
      */
     public function index()
     {
-        //
+        $package_reservations = package_reservation::all();
+        return; 
+
     }
 
     /**

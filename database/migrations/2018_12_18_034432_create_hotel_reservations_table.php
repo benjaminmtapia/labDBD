@@ -14,14 +14,15 @@ class CreateHotelReservationsTable extends Migration
     public function up()
     {
         Schema::create('hotel_reservations', function (Blueprint $table) {
-            $table->increments('num_reserva');
+            $table->increments('id');
+        //    $table->increments('num_reserva');
             $table->decimal('cantidad_personas');
-            $table->unsignedInteger('id_habitacion');
-            $table->unsignedInteger('id_paquete');
-            $table->unsignedInteger('id_reserva');
-            $table->foreign('id_habitacion')->references('id')->on('rooms');
-            $table->foreign('id_paquete')->references('id')->on('packages');
-            $table->foreign('id_reserva')->references('id')->on('reservations');
+        //    $table->unsignedInteger('id_habitacion');
+        //    $table->unsignedInteger('id_paquete');
+        //    $table->unsignedInteger('id_reserva');
+        //    $table->foreign('id_habitacion')->references('id')->on('rooms');
+        //    $table->foreign('id_paquete')->references('id')->on('packages');
+        //    $table->foreign('id_reserva')->references('id')->on('reservations');
             $table->timestamps();
         });
     }

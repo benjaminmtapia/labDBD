@@ -19,10 +19,10 @@ class CreateCarsTable extends Migration
             $table->string('marca');
             $table->string('modelo');
             $table->decimal('capacidad');
-            $table->unsignedInteger('id_paquete');
-            $table->unsignedInteger('id_reserva');
-            $table->foreign('id_paquete')->references('id')->on('packages');
-            $table->foreign('id_reserva')->references('id')->on('reservations');
+           // $table->unsignedInteger('id_paquete');
+           // $table->unsignedInteger('id_reserva');
+        //    $table->foreign('id_paquete')->references('id')->on('packages');
+        //    $table->foreign('id_reserva')->references('id')->on('reservations');
             $table->timestamps();
         });
     }

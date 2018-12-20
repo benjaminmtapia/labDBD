@@ -15,7 +15,9 @@ class HotelReservationController extends Controller
      */
     public function index()
     {
-        //
+        $hotel_reservations = hotel_reservation::all();
+        return; 
+
     }
 
     /**

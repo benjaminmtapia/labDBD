@@ -15,7 +15,9 @@ class CheckInController extends Controller
      */
     public function index()
     {
-        //
+        $check_ins = check_in::all();
+        return; 
+
     }
 
     /**

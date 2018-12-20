@@ -14,7 +14,9 @@ class CreateCheckInsTable extends Migration
     public function up()
     {
         Schema::create('check_ins', function (Blueprint $table) {
-            $table->increments('cod_reserva');
+            $table->increments('id');
+            
+//            $table->increments('cod_reserva');
 //            $table->foreign('apellido_paterno'); 
 //            $table->foreign('apellido_paterno')->references('')->on('');
             $table->integer('cuenta');

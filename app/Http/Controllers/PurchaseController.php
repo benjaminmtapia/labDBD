@@ -15,7 +15,9 @@ class PurchaseController extends Controller
      */
     public function index()
     {
-        //
+        $purchases = purchase::all();
+        return; 
+
     }
 
     /**

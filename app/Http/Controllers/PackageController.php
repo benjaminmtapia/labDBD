@@ -15,7 +15,9 @@ class PackageController extends Controller
      */
     public function index()
     {
-        //
+        $packages = package::all();
+        return; 
+
     }
 
     /**
