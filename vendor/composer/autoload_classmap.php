@@ -14,13 +14,24 @@ return array(
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
     'App\\Http\\Controllers\\Auth\\VerificationController' => $baseDir . '/app/Http/Controllers/Auth/VerificationController.php',
+    'App\\Http\\Controllers\\CarController' => $baseDir . '/app/Http/Controllers/CarController.php',
+    'App\\Http\\Controllers\\CheckInController' => $baseDir . '/app/Http/Controllers/CheckInController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+<<<<<<< HEAD
     'App\\Http\\Controllers\\DestinyController' => $baseDir . '/app/Http/Controllers/DestinyController.php',
     'App\\Http\\Controllers\\OriginController' => $baseDir . '/app/Http/Controllers/OriginController.php',
     'App\\Http\\Controllers\\PassengerController' => $baseDir . '/app/Http/Controllers/PassengerController.php',
     'App\\Http\\Controllers\\ReservationController' => $baseDir . '/app/Http/Controllers/ReservationController.php',
     'App\\Http\\Controllers\\SocioController' => $baseDir . '/app/Http/Controllers/SocioController.php',
     'App\\Http\\Controllers\\StopController' => $baseDir . '/app/Http/Controllers/StopController.php',
+=======
+    'App\\Http\\Controllers\\HotelController' => $baseDir . '/app/Http/Controllers/HotelController.php',
+    'App\\Http\\Controllers\\HotelReservationController' => $baseDir . '/app/Http/Controllers/HotelReservationController.php',
+    'App\\Http\\Controllers\\PackageController' => $baseDir . '/app/Http/Controllers/PackageController.php',
+    'App\\Http\\Controllers\\PackageReservationController' => $baseDir . '/app/Http/Controllers/PackageReservationController.php',
+    'App\\Http\\Controllers\\PurchaseController' => $baseDir . '/app/Http/Controllers/PurchaseController.php',
+    'App\\Http\\Controllers\\RoomController' => $baseDir . '/app/Http/Controllers/RoomController.php',
+>>>>>>> 0ebc3a923f0243ccc1f0732cde8bde5761589235
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\CheckForMaintenanceMode' => $baseDir . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -35,6 +46,7 @@ return array(
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\User' => $baseDir . '/app/User.php',
+<<<<<<< HEAD
     'App\\airport' => $baseDir . '/app/airport.php',
     'App\\client' => $baseDir . '/app/client.php',
     'App\\destiny' => $baseDir . '/app/destiny.php',
@@ -43,6 +55,16 @@ return array(
     'App\\reservation' => $baseDir . '/app/reservation.php',
     'App\\socio' => $baseDir . '/app/socio.php',
     'App\\stop' => $baseDir . '/app/stop.php',
+=======
+    'App\\car' => $baseDir . '/app/car.php',
+    'App\\check_in' => $baseDir . '/app/check_in.php',
+    'App\\hotel' => $baseDir . '/app/hotel.php',
+    'App\\hotel_reservation' => $baseDir . '/app/hotel_reservation.php',
+    'App\\package' => $baseDir . '/app/package.php',
+    'App\\package_reservation' => $baseDir . '/app/package_reservation.php',
+    'App\\purchase' => $baseDir . '/app/purchase.php',
+    'App\\room' => $baseDir . '/app/room.php',
+>>>>>>> 0ebc3a923f0243ccc1f0732cde8bde5761589235
     'BeyondCode\\DumpServer\\DumpServerCommand' => $vendorDir . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
     'BeyondCode\\DumpServer\\DumpServerServiceProvider' => $vendorDir . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',
     'BeyondCode\\DumpServer\\Dumper' => $vendorDir . '/beyondcode/laravel-dump-server/src/Dumper.php',
@@ -3389,10 +3411,18 @@ return array(
     'Whoops\\Util\\SystemFacade' => $vendorDir . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
     'Whoops\\Util\\TemplateHelper' => $vendorDir . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
     'XdgBaseDir\\Xdg' => $vendorDir . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
+<<<<<<< HEAD
     'airportSeeder' => $baseDir . '/database/seeds/airportSeeder.php',
     'destinySeeder' => $baseDir . '/database/seeds/destinySeeder.php',
     'originSeeder' => $baseDir . '/database/seeds/originSeeder.php',
     'passengerSeeder' => $baseDir . '/database/seeds/passengerSeeder.php',
+=======
+    'carSeeder' => $baseDir . '/database/seeds/carSeeder.php',
+    'check_inSeeder' => $baseDir . '/database/seeds/check_inSeeder.php',
+    'hotelSeeder' => $baseDir . '/database/seeds/hotelSeeder.php',
+    'hotel_reservationSeeder' => $baseDir . '/database/seeds/hotel_reservationSeeder.php',
+    'packageSeeder' => $baseDir . '/database/seeds/packageSeeder.php',
+>>>>>>> 0ebc3a923f0243ccc1f0732cde8bde5761589235
     'phpDocumentor\\Reflection\\DocBlock' => $vendorDir . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
     'phpDocumentor\\Reflection\\DocBlockFactory' => $vendorDir . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',
     'phpDocumentor\\Reflection\\DocBlockFactoryInterface' => $vendorDir . '/phpdocumentor/reflection-docblock/src/DocBlockFactoryInterface.php',
@@ -3461,8 +3491,13 @@ return array(
     'phpDocumentor\\Reflection\\Types\\String_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/String_.php',
     'phpDocumentor\\Reflection\\Types\\This' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/This.php',
     'phpDocumentor\\Reflection\\Types\\Void_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Void_.php',
+<<<<<<< HEAD
     'reservationSeeder' => $baseDir . '/database/seeds/reservationSeeder.php',
     'socioSeeder' => $baseDir . '/database/seeds/socioSeeder.php',
     'stopSeeder' => $baseDir . '/database/seeds/stopSeeder.php',
     'userSeeder' => $baseDir . '/database/seeds/userSeeder.php',
+=======
+    'purchaseSeeder' => $baseDir . '/database/seeds/purchaseSeeder.php',
+    'roomSeeder' => $baseDir . '/database/seeds/roomSeeder.php',
+>>>>>>> 0ebc3a923f0243ccc1f0732cde8bde5761589235
 );

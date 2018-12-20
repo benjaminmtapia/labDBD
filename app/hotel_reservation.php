@@ -1,0 +1,22 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class hotel_reservation extends Model
+{
+
+	protected $fillable = [
+        /*'num_reserva'*/ 'id', 'cantidad_personas'
+    ];
+
+    public function reservation(){
+    	return $this->belongsTo(reservation::class);
+    }
+
+    public function room(){
+    	return $this->hasOne(room::class);
+    }
+
+}

@@ -346,13 +346,24 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
+        'App\\Http\\Controllers\\CarController' => __DIR__ . '/../..' . '/app/Http/Controllers/CarController.php',
+        'App\\Http\\Controllers\\CheckInController' => __DIR__ . '/../..' . '/app/Http/Controllers/CheckInController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+<<<<<<< HEAD
         'App\\Http\\Controllers\\DestinyController' => __DIR__ . '/../..' . '/app/Http/Controllers/DestinyController.php',
         'App\\Http\\Controllers\\OriginController' => __DIR__ . '/../..' . '/app/Http/Controllers/OriginController.php',
         'App\\Http\\Controllers\\PassengerController' => __DIR__ . '/../..' . '/app/Http/Controllers/PassengerController.php',
         'App\\Http\\Controllers\\ReservationController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReservationController.php',
         'App\\Http\\Controllers\\SocioController' => __DIR__ . '/../..' . '/app/Http/Controllers/SocioController.php',
         'App\\Http\\Controllers\\StopController' => __DIR__ . '/../..' . '/app/Http/Controllers/StopController.php',
+=======
+        'App\\Http\\Controllers\\HotelController' => __DIR__ . '/../..' . '/app/Http/Controllers/HotelController.php',
+        'App\\Http\\Controllers\\HotelReservationController' => __DIR__ . '/../..' . '/app/Http/Controllers/HotelReservationController.php',
+        'App\\Http\\Controllers\\PackageController' => __DIR__ . '/../..' . '/app/Http/Controllers/PackageController.php',
+        'App\\Http\\Controllers\\PackageReservationController' => __DIR__ . '/../..' . '/app/Http/Controllers/PackageReservationController.php',
+        'App\\Http\\Controllers\\PurchaseController' => __DIR__ . '/../..' . '/app/Http/Controllers/PurchaseController.php',
+        'App\\Http\\Controllers\\RoomController' => __DIR__ . '/../..' . '/app/Http/Controllers/RoomController.php',
+>>>>>>> 0ebc3a923f0243ccc1f0732cde8bde5761589235
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -367,6 +378,7 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+<<<<<<< HEAD
         'App\\airport' => __DIR__ . '/../..' . '/app/airport.php',
         'App\\client' => __DIR__ . '/../..' . '/app/client.php',
         'App\\destiny' => __DIR__ . '/../..' . '/app/destiny.php',
@@ -375,6 +387,16 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         'App\\reservation' => __DIR__ . '/../..' . '/app/reservation.php',
         'App\\socio' => __DIR__ . '/../..' . '/app/socio.php',
         'App\\stop' => __DIR__ . '/../..' . '/app/stop.php',
+=======
+        'App\\car' => __DIR__ . '/../..' . '/app/car.php',
+        'App\\check_in' => __DIR__ . '/../..' . '/app/check_in.php',
+        'App\\hotel' => __DIR__ . '/../..' . '/app/hotel.php',
+        'App\\hotel_reservation' => __DIR__ . '/../..' . '/app/hotel_reservation.php',
+        'App\\package' => __DIR__ . '/../..' . '/app/package.php',
+        'App\\package_reservation' => __DIR__ . '/../..' . '/app/package_reservation.php',
+        'App\\purchase' => __DIR__ . '/../..' . '/app/purchase.php',
+        'App\\room' => __DIR__ . '/../..' . '/app/room.php',
+>>>>>>> 0ebc3a923f0243ccc1f0732cde8bde5761589235
         'BeyondCode\\DumpServer\\DumpServerCommand' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
         'BeyondCode\\DumpServer\\DumpServerServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',
         'BeyondCode\\DumpServer\\Dumper' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/Dumper.php',
@@ -3721,10 +3743,18 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
+<<<<<<< HEAD
         'airportSeeder' => __DIR__ . '/../..' . '/database/seeds/airportSeeder.php',
         'destinySeeder' => __DIR__ . '/../..' . '/database/seeds/destinySeeder.php',
         'originSeeder' => __DIR__ . '/../..' . '/database/seeds/originSeeder.php',
         'passengerSeeder' => __DIR__ . '/../..' . '/database/seeds/passengerSeeder.php',
+=======
+        'carSeeder' => __DIR__ . '/../..' . '/database/seeds/carSeeder.php',
+        'check_inSeeder' => __DIR__ . '/../..' . '/database/seeds/check_inSeeder.php',
+        'hotelSeeder' => __DIR__ . '/../..' . '/database/seeds/hotelSeeder.php',
+        'hotel_reservationSeeder' => __DIR__ . '/../..' . '/database/seeds/hotel_reservationSeeder.php',
+        'packageSeeder' => __DIR__ . '/../..' . '/database/seeds/packageSeeder.php',
+>>>>>>> 0ebc3a923f0243ccc1f0732cde8bde5761589235
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
         'phpDocumentor\\Reflection\\DocBlockFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',
         'phpDocumentor\\Reflection\\DocBlockFactoryInterface' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactoryInterface.php',
@@ -3793,10 +3823,15 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         'phpDocumentor\\Reflection\\Types\\String_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/String_.php',
         'phpDocumentor\\Reflection\\Types\\This' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/This.php',
         'phpDocumentor\\Reflection\\Types\\Void_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Void_.php',
+<<<<<<< HEAD
         'reservationSeeder' => __DIR__ . '/../..' . '/database/seeds/reservationSeeder.php',
         'socioSeeder' => __DIR__ . '/../..' . '/database/seeds/socioSeeder.php',
         'stopSeeder' => __DIR__ . '/../..' . '/database/seeds/stopSeeder.php',
         'userSeeder' => __DIR__ . '/../..' . '/database/seeds/userSeeder.php',
+=======
+        'purchaseSeeder' => __DIR__ . '/../..' . '/database/seeds/purchaseSeeder.php',
+        'roomSeeder' => __DIR__ . '/../..' . '/database/seeds/roomSeeder.php',
+>>>>>>> 0ebc3a923f0243ccc1f0732cde8bde5761589235
     );
 
     public static function getInitializer(ClassLoader $loader)
