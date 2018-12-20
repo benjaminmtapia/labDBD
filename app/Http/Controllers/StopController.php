@@ -47,7 +47,8 @@ class StopController extends Controller
      */
     public function show(stop $stop)
     {
-        //
+        $stop: stop::findOrFail($id);
+         return $stop;
     }
 
     /**
@@ -58,7 +59,7 @@ class StopController extends Controller
      */
     public function edit(stop $stop)
     {
-        //
+        return view('stop.createForm')->with('stop',$stop);
     }
 
     /**
@@ -70,7 +71,8 @@ class StopController extends Controller
      */
     public function update(Request $request, stop $stop)
     {
-        //
+        $stop->fill($request->all());
+        $stop->save();
     }
 
     /**

@@ -14,7 +14,7 @@ class DestinyController extends Controller
      */
     public function index()
     {
-        $destino = destiny::all();
+        $destino = Destiny::all();
         return;
     }
 
@@ -36,7 +36,9 @@ class DestinyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $destino = new Destiny;
+        $destino->name = $request->name;
+        return destino;
     }
 
     /**
@@ -47,7 +49,8 @@ class DestinyController extends Controller
      */
     public function show(Destiny $destiny)
     {
-        //
+    $destiny: Destiny::findOrFail($id);
+    return $destiny;
     }
 
     /**
@@ -58,7 +61,7 @@ class DestinyController extends Controller
      */
     public function edit(Destiny $destiny)
     {
-        //
+         return view('destiny.createForm')->with('destiny',$destiny);
     }
 
     /**
@@ -70,7 +73,8 @@ class DestinyController extends Controller
      */
     public function update(Request $request, Destiny $destiny)
     {
-        //
+        $destiny->fill($request->all());
+        $destiny->save();
     }
 
     /**
@@ -81,7 +85,7 @@ class DestinyController extends Controller
      */
     public function destroy(Destiny $destiny)
     {
-        $destino = destiny::find($id);
+        $destino = Destiny::find($id);
         $destino->delete();
         return 0;
     }

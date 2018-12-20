@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class socio extends Model
 {
+	protected $table = 'socios';
+	protected $fillable = ['email','millas'];
     //
 }

@@ -47,7 +47,8 @@ class SocioController extends Controller
      */
     public function show(socio $socio)
     {
-        //
+        $socio: socio::findOrFail($id);
+        return $socio;
     }
 
     /**
@@ -58,7 +59,7 @@ class SocioController extends Controller
      */
     public function edit(socio $socio)
     {
-        //
+        return view('socio.createForm')->with('socio',$socio);
     }
 
     /**
@@ -70,7 +71,8 @@ class SocioController extends Controller
      */
     public function update(Request $request, socio $socio)
     {
-        //
+        $socio->fill($request->all());
+        $socio->save();
     }
 
     /**

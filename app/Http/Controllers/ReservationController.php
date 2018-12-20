@@ -36,7 +36,8 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $reserva: reservation:: create($request->all());
+        return $reserva;
     }
 
     /**
@@ -47,7 +48,8 @@ class ReservationController extends Controller
      */
     public function show(reservation $reservation)
     {
-        //
+        $reservation: reservation::findOrFail($id);
+        return $reservation;
     }
 
     /**
@@ -58,7 +60,7 @@ class ReservationController extends Controller
      */
     public function edit(reservation $reservation)
     {
-        //
+        return view('reservation.createForm')->with('reservation',$reservation);
     }
 
     /**
@@ -70,7 +72,8 @@ class ReservationController extends Controller
      */
     public function update(Request $request, reservation $reservation)
     {
-        //
+        $reservation->fill($request->all());
+        $reservation->save();
     }
 
     /**

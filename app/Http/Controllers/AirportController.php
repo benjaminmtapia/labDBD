@@ -14,7 +14,7 @@ class AirportController extends Controller
      */
     public function index()
     {
-        $aeropuertos = airpot::all();
+        $aeropuertos = airport::all();
         return;
     }
 
@@ -36,7 +36,12 @@ class AirportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $aeropuerto = new airport;
+        $aeropuerto->name = $request->name;
+        $aeropuerto->ciudad = $request->ciudad;
+        $aeropuerto->id_origen = $request->id_origen;
+        $aeropuerto->id_destino = $request->id_destino;
+        return aeropuerto;
     }
 
     /**
@@ -47,7 +52,8 @@ class AirportController extends Controller
      */
     public function show(airport $airport)
     {
-        //
+    $airport= airport::findOrFail($id);
+    return $airport;
     }
 
     /**
@@ -58,7 +64,9 @@ class AirportController extends Controller
      */
     public function edit(airport $airport)
     {
-        //return view('airport.createForm')->with('aiport',$airport);    }
+        //return view('airport.createForm')->with('aiport',$airport);  
+        return view('airport.createForm')->with('airport',$airport);  
+    }
 
     /**
      * Update the specified resource in storage.

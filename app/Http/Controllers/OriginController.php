@@ -36,7 +36,9 @@ class OriginController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $origen = new origin;
+       $origen->ciudad = $request->ciudad;
+       return origen;
     }
 
     /**
@@ -47,7 +49,8 @@ class OriginController extends Controller
      */
     public function show(origin $origin)
     {
-        //
+        $origin: origin::findOrFail($id);
+    return $origin;
     }
 
     /**
@@ -58,7 +61,7 @@ class OriginController extends Controller
      */
     public function edit(origin $origin)
     {
-        //
+        return view('origin.createForm')->with('origin',$origin);
     }
 
     /**
@@ -70,7 +73,8 @@ class OriginController extends Controller
      */
     public function update(Request $request, origin $origin)
     {
-        //
+        $origin->fill($request->all());
+        $origin->save();
     }
 
     /**
