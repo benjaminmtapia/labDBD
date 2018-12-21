@@ -17,8 +17,6 @@ class CreateRoomsTable extends Migration
             $table->increments('id');
             $table->integer('numero');
             $table->integer('capacidad');
-           // $table->unsignedInteger('id_hotel');
-           // $table->foreign('id_hotel')->references('id')->on('hotels');
             $table->timestamps();
         });
     }

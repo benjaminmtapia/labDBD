@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHotelReservationsTable extends Migration
+class CreateReservationUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class CreateHotelReservationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('hotel_reservations', function (Blueprint $table) {
+        Schema::create('reservation_users', function (Blueprint $table) {
             $table->increments('id');
-            
-            $table->decimal('cantidad_personas');
-            $table->unsignedInteger('room_id');
-            $table->unsignedInteger('package_id');
             $table->unsignedInteger('reservation_id');
-            $table->foreign('room_id')->references('id')->on('rooms');
-            $table->foreign('package_id')->references('id')->on('packages');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('reservation_id')->references('id')->on('reservations');
             $table->timestamps();
         });
@@ -34,6 +30,6 @@ class CreateHotelReservationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hotel_reservations');
+        Schema::dropIfExists('reservation_users');
     }
 }

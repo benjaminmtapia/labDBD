@@ -18,8 +18,8 @@ class CreatePassengersTable extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->integer('num_asiento');
-            $table->integer('num_vuelo');
-            $table->foreign('num_vuelo')->reference('id')->to('flights');
+           // $table->integer('num_vuelo');
+         //   $table->foreign('num_vuelo')->reference('id')->to('flights');
             $table->timestamps();
         });
     }

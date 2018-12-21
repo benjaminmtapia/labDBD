@@ -14,8 +14,8 @@ class DestinyController extends Controller
      */
     public function index()
     {
-        $destino = Destiny::all();
-        return;
+        return Destiny::all();
+
     }
 
     /**
@@ -49,7 +49,6 @@ class DestinyController extends Controller
      */
     public function show(Destiny $destiny)
     {
-    $destiny: Destiny::findOrFail($id);
     return $destiny;
     }
 

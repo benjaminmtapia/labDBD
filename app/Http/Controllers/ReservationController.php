@@ -15,7 +15,7 @@ class ReservationController extends Controller
     public function index()
     {
          $reserva = reservation::all();
-        return;
+        return $reserva;
     }
 
     /**
@@ -36,7 +36,14 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        $reserva: reservation:: create($request->all());
+        $validator = Validator::make($request->all());
+        $reserva = new passenger();
+        $reserva->id = $request->get('id');
+        $reserva->monto = $request->get('monto');
+        $reserva->num_pasaporte = $request->get('num_pasaporte');
+        $reserva->num_reserva_hotel = $request->get('num_reserva_hotel');
+
+        $reserva->save();
         return $reserva;
     }
 
@@ -48,7 +55,6 @@ class ReservationController extends Controller
      */
     public function show(reservation $reservation)
     {
-        $reservation: reservation::findOrFail($id);
         return $reservation;
     }
 
@@ -72,8 +78,15 @@ class ReservationController extends Controller
      */
     public function update(Request $request, reservation $reservation)
     {
-        $reservation->fill($request->all());
-        $reservation->save();
+        $validator = Validator::make($request->all());
+        $reserva = new passenger();
+        $reserva->id = $request->get('id');
+        $reserva->monto = $request->get('monto');
+        $reserva->num_pasaporte = $request->get('num_pasaporte');
+        $reserva->num_reserva_hotel = $request->get('num_reserva_hotel');
+        
+        $reserva->save();
+        return $reserva;
     }
 
     /**

@@ -6,17 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class car extends Model
 {
-
+	protected $table = 'cars';
 	protected $fillable = [
         'patente', 'marca', 'modelo', 'capacidad'
     ];
 
     public function reservation(){
-    	return $this->belongsTo(reservation::class);
+    	return $this->belongsTo(Reservation::class);
     }
 
     public function package(){
-    	return $this->belongsTo(package::class);
+    	return $this->belongsTo(Package::class);
     }
 
 }

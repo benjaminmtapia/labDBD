@@ -14,8 +14,8 @@ class AirportController extends Controller
      */
     public function index()
     {
-        $aeropuertos = airport::all();
-        return;
+        //$aeropuertos = airport::all();
+        return airport::all();
     }
 
     /**
@@ -36,12 +36,14 @@ class AirportController extends Controller
      */
     public function store(Request $request)
     {
-        $aeropuerto = new airport;
-        $aeropuerto->name = $request->name;
-        $aeropuerto->ciudad = $request->ciudad;
-        $aeropuerto->id_origen = $request->id_origen;
-        $aeropuerto->id_destino = $request->id_destino;
-        return aeropuerto;
+        $validator = Validator::make($request->all());
+        $aeropuerto = new airport();
+        $aeropuerto->name = $request->get('name');
+        $aeropuerto->ciudad = $request->get('ciudad');
+        $aeropuerto->id_origen = $request->get('id_origen');
+        $aeropuerto->id_destino = $request->get('id_destino');
+        $aeropuerto->save();
+        return $aeropuerto;
     }
 
     /**
@@ -77,8 +79,13 @@ class AirportController extends Controller
      */
     public function update(Request $request, airport $airport)
     {    
-          $airport->fill($request->all());
-            $airport->save(); 
+        $validator = Validator::make($request->all());
+        $aeropuerto->name = $request->get('name');
+        $aeropuerto->ciudad = $request->get('ciudad');
+        $aeropuerto->id_origen = $request->get('id_origen');
+        $aeropuerto->id_destino = $request->get('id_destino');
+        $aeropuerto->save();
+        return $aeropuerto;
     }
 
     /**
@@ -91,6 +98,6 @@ class AirportController extends Controller
     {
         $aeropuerto = airport::find($id);
         $aeropuerto->delete();
-        return 0;
+        return;
     }
 }

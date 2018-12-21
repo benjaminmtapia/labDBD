@@ -16,7 +16,7 @@ class CarController extends Controller
     public function index()
     {
         $cars = car::all();
-        return; 
+        return $cars; 
 
     }
 
@@ -38,7 +38,14 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all());
+        $car = new car();
+        $car->patente = $request->get('patente');
+        $car->marca = $request->get('marca');
+        $car->modelo = $request->get('modelo');
+        $car->capacidad = $request->get('capacidad');
+        $car->save();
+        return $car;
     }
 
     /**

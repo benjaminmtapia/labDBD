@@ -16,7 +16,7 @@ class CheckInController extends Controller
     public function index()
     {
         $check_ins = check_in::all();
-        return; 
+        return $check_ins; 
 
     }
 
@@ -38,7 +38,12 @@ class CheckInController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all());
+        $check_in = new check_in();
+        $check_in->cuenta=$request->get('cuenta');
+        $check_in->num_vuelo=$request->get('num_vuelo');
+        $check_in->save();
+        return $check_in;
     }
 
     /**
@@ -49,7 +54,7 @@ class CheckInController extends Controller
      */
     public function show(check_in $check_in)
     {
-        //
+        return $check_in;
     }
 
     /**
@@ -72,7 +77,11 @@ class CheckInController extends Controller
      */
     public function update(Request $request, check_in $check_in)
     {
-        //
+        $validator = Validator::make($request->all());
+        $check_in->cuenta=$request->get('cuenta');
+        $check_in->num_vuelo=$request->get('num_vuelo');
+        $check_in->save();
+        return $check_in;
     }
 
     /**
@@ -83,6 +92,7 @@ class CheckInController extends Controller
      */
     public function destroy(check_in $check_in)
     {
-        //
+        $check_in->destroy();
+        return ;
     }
 }

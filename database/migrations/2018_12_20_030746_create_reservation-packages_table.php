@@ -14,10 +14,10 @@ class CreateReservationPackagesTable extends Migration
     public function up()
     {
         Schema::create('reservation-packages', function (Blueprint $table) {
-            $table->unsignedInteger('id_paquete');
-            $table->unsignedInteger('num_reserva');
-        //    $table->foreign('id_paquete')->references('id')->on('packages');
-        //    $table->foreign('num_reserva')->references('num_reserva')->on('reservations');
+            $table->unsignedInteger('package_id');
+            $table->unsignedInteger('reservation_id');
+            $table->foreign('package_id')->references('id')->on('packages');
+            //$table->foreign('reservation_id')->references('num_reserva')->on('reservations');
         });
     }
 

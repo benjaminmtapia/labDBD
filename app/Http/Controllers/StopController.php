@@ -14,8 +14,8 @@ class StopController extends Controller
      */
     public function index()
     {
-       $paradas = stop::all();
-        return;
+       return stop::all();
+        
     }
 
     /**
@@ -36,7 +36,11 @@ class StopController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all());
+        $stop = new stop();
+        $stop->nombre = $request->get('nombre');
+        $stop->save();
+        return $stop;
     }
 
     /**
@@ -47,7 +51,6 @@ class StopController extends Controller
      */
     public function show(stop $stop)
     {
-        $stop: stop::findOrFail($id);
          return $stop;
     }
 
@@ -59,7 +62,7 @@ class StopController extends Controller
      */
     public function edit(stop $stop)
     {
-        return view('stop.createForm')->with('stop',$stop);
+   
     }
 
     /**
@@ -71,8 +74,10 @@ class StopController extends Controller
      */
     public function update(Request $request, stop $stop)
     {
-        $stop->fill($request->all());
+        $validator = Validator::make($request->all());
+        $stop->nombre = $request->get('nombre');
         $stop->save();
+        return $stop;
     }
 
     /**

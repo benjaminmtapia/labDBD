@@ -12,11 +12,11 @@ class hotel_reservation extends Model
     ];
 
     public function reservation(){
-    	return $this->belongsTo(reservation::class);
+    	return $this->belongsTo(Reservation::class);
     }
 
     public function room(){
-    	return $this->hasOne(room::class);
+    	return $this->belongsTo(Room::class);
     }
 
 }

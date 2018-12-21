@@ -16,7 +16,7 @@ class PackageController extends Controller
     public function index()
     {
         $packages = package::all();
-        return; 
+        return $packages; 
 
     }
 
@@ -38,7 +38,12 @@ class PackageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all());
+        $package = new package();
+        $package->descuento = $request->get('descuento');
+        $package->fecha_vencimiento = $request->get('fecha_vencimiento');
+        $package->save();
+        return $package;
     }
 
     /**
@@ -49,7 +54,7 @@ class PackageController extends Controller
      */
     public function show(package $package)
     {
-        //
+        return $package;
     }
 
     /**
@@ -72,7 +77,11 @@ class PackageController extends Controller
      */
     public function update(Request $request, package $package)
     {
-        //
+        $validator = Validator::make($request->all());
+        $package->descuento = $request->get('descuento');
+        $package->fecha_vencimiento = $request->get('fecha_vencimiento');
+        $package->save();
+        return $package;
     }
 
     /**
@@ -83,6 +92,7 @@ class PackageController extends Controller
      */
     public function destroy(package $package)
     {
-        //
+        $package->delete();
+        return 0 ;
     }
 }

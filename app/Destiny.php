@@ -9,9 +9,9 @@ class destiny extends Model
 	protected $table = 'destinies';
 	protected $fillable = ['ciudad'];
      public function airport(){
-    //	return $this->hasMany(airport::class);
+    	return $this->belongsTo(Airport::class);
     }
-         public function reserva(){
-    //	return $this->hasMany(reservation::class);
+    public function reserva(){
+    	return $this->hasMany(Reservation::class);
     }
 }

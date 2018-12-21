@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\hotel;
+use App\Hotel;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class HotelController extends Controller
 {
@@ -15,9 +14,7 @@ class HotelController extends Controller
      */
     public function index()
     {
-        $hotels = hotel::all();
-        return; 
-
+        //
     }
 
     /**
@@ -44,10 +41,10 @@ class HotelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\hotel  $hotel
+     * @param  \App\Hotel  $hotel
      * @return \Illuminate\Http\Response
      */
-    public function show(hotel $hotel)
+    public function show(Hotel $hotel)
     {
         //
     }
@@ -55,10 +52,10 @@ class HotelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\hotel  $hotel
+     * @param  \App\Hotel  $hotel
      * @return \Illuminate\Http\Response
      */
-    public function edit(hotel $hotel)
+    public function edit(Hotel $hotel)
     {
         //
     }
@@ -67,10 +64,10 @@ class HotelController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\hotel  $hotel
+     * @param  \App\Hotel  $hotel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, hotel $hotel)
+    public function update(Request $request, Hotel $hotel)
     {
         //
     }
@@ -78,10 +75,10 @@ class HotelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\hotel  $hotel
+     * @param  \App\Hotel  $hotel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(hotel $hotel)
+    public function destroy(Hotel $hotel)
     {
         //
     }

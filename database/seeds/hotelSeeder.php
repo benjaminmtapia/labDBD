@@ -11,6 +11,6 @@ class hotelSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\hotel', 10)->create();
+        factory('App\origin', 10)->create();
     }
 }

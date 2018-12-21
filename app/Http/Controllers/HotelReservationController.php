@@ -15,8 +15,8 @@ class HotelReservationController extends Controller
      */
     public function index()
     {
-        $hotel_reservations = hotel_reservation::all();
-        return; 
+       return hotel_reservation::all();
+     
 
     }
 
@@ -49,7 +49,7 @@ class HotelReservationController extends Controller
      */
     public function show(hotel_reservation $hotel_reservation)
     {
-        //
+        return $hotel_reservation;
     }
 
     /**

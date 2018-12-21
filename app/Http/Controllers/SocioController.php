@@ -15,7 +15,7 @@ class SocioController extends Controller
     public function index()
     {
        $socios = socio::all();
-        return;
+        return $socios;
     }
 
     /**
@@ -36,7 +36,13 @@ class SocioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all());
+        $socio = new socio();
+        $socio->numero = $request->get('numero');
+        $socio->email = $request->get('email');
+        $socio->millas = $request->get('millas');
+        $socio->save();
+        return $socio;
     }
 
     /**
@@ -47,7 +53,6 @@ class SocioController extends Controller
      */
     public function show(socio $socio)
     {
-        $socio: socio::findOrFail($id);
         return $socio;
     }
 
@@ -71,8 +76,12 @@ class SocioController extends Controller
      */
     public function update(Request $request, socio $socio)
     {
-        $socio->fill($request->all());
+        $validator = Validator::make($request->all());
+        $socio->numero = $request->get('numero');
+        $socio->email = $request->get('email');
+        $socio->millas = $request->get('millas');
         $socio->save();
+        return $socio;
     }
 
     /**

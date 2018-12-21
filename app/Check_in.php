@@ -12,7 +12,7 @@ class check_in extends Model
     ];
     
     public function reservation(){
-    	return $this->hasOne(reservation::class);
+    	return $this->hasOne(Reservation::class);
     }
 
 }

@@ -12,11 +12,11 @@ class room extends Model
     ];
 
     public function hotel(){
-    	return $this->belongsTo(hotel::class);
+    	return $this->belongsTo(Hotel::class);
     }
 
     public function hotel_reservation(){
-    	return $this->belongsTo(hotel_reservation::class);
+    	return $this->belongsTo(Hotel_reservation::class);
     }
 
 }
