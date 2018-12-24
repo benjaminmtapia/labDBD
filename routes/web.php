@@ -14,3 +14,26 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::resource('/airports', 'AirportController');
+Route::resource('/cars', 'CarController');
+Route::resource('/check_ins', 'CheckInController');
+Route::resource('/hotels', 'HotelController');
+Route::resource('/packages', 'PackageController');
+Route::resource('/rooms', 'RoomController');
+Route::resource('/hotel_reservations', 'HotelReservationController');
+Route::resource('/purchases', 'PurchaseController');
+Route::resource('/users', 'UserController');
+Route::resource('/destinies', 'DestinyController');
+Route::resource('/origins','OriginController');
+Route::resource('/passengers','PassengerController');
+Route::resource('/reservations','ReservationController');
+Route::resource('/socios','SocioController');
+Route::resource('/stops','StopController');
+
+/*
+Route::get('/airports', 'AirportController@index');
+Route::post('/airports', 'AirportController@store');
+Route::get('/airports/{airport}', 'AirportController@show');

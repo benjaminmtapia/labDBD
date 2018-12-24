@@ -2,26 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\stop;
+use App\package;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class StopController extends Controller
+class PackageController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function rules(){
-        return[
-            'nombre'=>'required|string'
-        ];
-    }
     public function index()
     {
-       return stop::all();
-        
+        $packages = package::all();
+        return $packages; 
+
     }
 
     /**
@@ -42,64 +38,61 @@ class StopController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(),$this->rules());
-        if($validator->fails()){
-            return $validator->messages();
-        }
-        $stop = new stop();
-        $stop->nombre = $request->get('nombre');
-        $stop->save();
-        return $stop;
+        $validator = Validator::make($request->all());
+        $package = new package();
+        $package->descuento = $request->get('descuento');
+        $package->fecha_vencimiento = $request->get('fecha_vencimiento');
+        $package->save();
+        return $package;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\stop  $stop
+     * @param  \App\package  $package
      * @return \Illuminate\Http\Response
      */
-    public function show(stop $stop)
+    public function show(package $package)
     {
-         return $stop;
+        return $package;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\stop  $stop
+     * @param  \App\package  $package
      * @return \Illuminate\Http\Response
      */
-    public function edit(stop $stop)
+    public function edit(package $package)
     {
-   
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\stop  $stop
+     * @param  \App\package  $package
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, stop $stop)
+    public function update(Request $request, package $package)
     {
-        $validator = Validator::make($request->all(),$this->rules());
-        if($validator->fails()){
-            return $validator->messages();
-        }
-        $stop->nombre = $request->get('nombre');
-        $stop->save();
-        return $stop;
+        $validator = Validator::make($request->all());
+        $package->descuento = $request->get('descuento');
+        $package->fecha_vencimiento = $request->get('fecha_vencimiento');
+        $package->save();
+        return $package;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\stop  $stop
+     * @param  \App\package  $package
      * @return \Illuminate\Http\Response
      */
-    public function destroy(stop $stop)
+    public function destroy(package $package)
     {
-        //
+        $package->delete();
+        return 0 ;
     }
 }

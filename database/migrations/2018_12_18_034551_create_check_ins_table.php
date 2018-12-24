@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePassengersTable extends Migration
+class CreateCheckInsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreatePassengersTable extends Migration
      */
     public function up()
     {
-        Schema::create('passengers', function (Blueprint $table) {
+        Schema::create('check_ins', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
-            $table->string('apellido');
-            $table->integer('num_asiento');
-           // $table->integer('num_vuelo');
-         //   $table->foreign('num_vuelo')->reference('id')->to('flights');
+            
+//            $table->increments('cod_reserva');
+//            $table->foreign('apellido_paterno'); 
+//            $table->foreign('apellido_paterno')->references('')->on('');
+            $table->integer('cuenta');
+            $table->integer('num_vuelo'); 
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ class CreatePassengersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('passengers');
+        Schema::dropIfExists('check_ins');
     }
 }

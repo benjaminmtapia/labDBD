@@ -18,12 +18,12 @@ class CreateReservationsTable extends Migration
             $table->integer('monto');
             $table->integer('num_pasaporte');
             $table->integer('num_reserva_hotel');
-            /*
-            $table->integer('id_origen');
-            $table->integer('id_destino');
-            $table->foreign('id_destino')->references('id')->on('destinies');
-            $table->foreign('id_origen')->references('id')->on('origins');
-            */
+            
+            $table->integer('origin_id');
+            $table->integer('destiny_id');
+            $table->foreign('destiny_id')->references('id')->on('destinies');
+            $table->foreign('origin_id')->references('id')->on('origins');
+            
             $table->timestamps();
         });
     }

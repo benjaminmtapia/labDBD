@@ -2,26 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\stop;
+use App\room;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class StopController extends Controller
+class RoomController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function rules(){
-        return[
-            'nombre'=>'required|string'
-        ];
-    }
     public function index()
     {
-       return stop::all();
-        
+        $rooms = room::all();
+        return; 
+
     }
 
     /**
@@ -42,63 +38,50 @@ class StopController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(),$this->rules());
-        if($validator->fails()){
-            return $validator->messages();
-        }
-        $stop = new stop();
-        $stop->nombre = $request->get('nombre');
-        $stop->save();
-        return $stop;
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\stop  $stop
+     * @param  \App\room  $room
      * @return \Illuminate\Http\Response
      */
-    public function show(stop $stop)
+    public function show(room $room)
     {
-         return $stop;
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\stop  $stop
+     * @param  \App\room  $room
      * @return \Illuminate\Http\Response
      */
-    public function edit(stop $stop)
+    public function edit(room $room)
     {
-   
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\stop  $stop
+     * @param  \App\room  $room
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, stop $stop)
+    public function update(Request $request, room $room)
     {
-        $validator = Validator::make($request->all(),$this->rules());
-        if($validator->fails()){
-            return $validator->messages();
-        }
-        $stop->nombre = $request->get('nombre');
-        $stop->save();
-        return $stop;
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\stop  $stop
+     * @param  \App\room  $room
      * @return \Illuminate\Http\Response
      */
-    public function destroy(stop $stop)
+    public function destroy(room $room)
     {
         //
     }

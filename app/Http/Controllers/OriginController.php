@@ -12,10 +12,14 @@ class OriginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function rules(){
+        return[
+            'nombre'=>'required|string'
+        ];
+    }
     public function index()
     {
-        $origen = origin::all();
-        return;
+        return origin::all();
     }
 
     /**
@@ -36,7 +40,13 @@ class OriginController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $origin = new \App\Origin;
+       $origin->ciudad = $request->get('ciudad');
+       return origin;
     }
 
     /**
@@ -47,7 +57,8 @@ class OriginController extends Controller
      */
     public function show(origin $origin)
     {
-        //
+        $origin: origin::findOrFail($id);
+    return $origin;
     }
 
     /**
@@ -58,7 +69,7 @@ class OriginController extends Controller
      */
     public function edit(origin $origin)
     {
-        //
+        return view('origin.createForm')->with('origin',$origin);
     }
 
     /**
@@ -70,7 +81,14 @@ class OriginController extends Controller
      */
     public function update(Request $request, origin $origin)
     {
-        //
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $origin = new \App\Origin;
+       $origin->ciudad = $request->get('ciudad');
+       $origin->save();
+       return origin;
     }
 
     /**
@@ -81,8 +99,7 @@ class OriginController extends Controller
      */
     public function destroy(origin $origin)
     {
-        $origen = origin::find($id);
         $origen->delete();
-        return 0;
+        return response()->json(['success']);
     }
 }

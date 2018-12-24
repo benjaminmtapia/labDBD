@@ -2,26 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\stop;
+use App\check_in;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class StopController extends Controller
+class CheckInController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function rules(){
-        return[
-            'nombre'=>'required|string'
-        ];
-    }
     public function index()
     {
-       return stop::all();
-        
+        $check_ins = check_in::all();
+        return $check_ins; 
+
     }
 
     /**
@@ -42,64 +38,61 @@ class StopController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(),$this->rules());
-        if($validator->fails()){
-            return $validator->messages();
-        }
-        $stop = new stop();
-        $stop->nombre = $request->get('nombre');
-        $stop->save();
-        return $stop;
+        $validator = Validator::make($request->all());
+        $check_in = new check_in();
+        $check_in->cuenta=$request->get('cuenta');
+        $check_in->num_vuelo=$request->get('num_vuelo');
+        $check_in->save();
+        return $check_in;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\stop  $stop
+     * @param  \App\check_in  $check_in
      * @return \Illuminate\Http\Response
      */
-    public function show(stop $stop)
+    public function show(check_in $check_in)
     {
-         return $stop;
+        return $check_in;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\stop  $stop
+     * @param  \App\check_in  $check_in
      * @return \Illuminate\Http\Response
      */
-    public function edit(stop $stop)
+    public function edit(check_in $check_in)
     {
-   
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\stop  $stop
+     * @param  \App\check_in  $check_in
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, stop $stop)
+    public function update(Request $request, check_in $check_in)
     {
-        $validator = Validator::make($request->all(),$this->rules());
-        if($validator->fails()){
-            return $validator->messages();
-        }
-        $stop->nombre = $request->get('nombre');
-        $stop->save();
-        return $stop;
+        $validator = Validator::make($request->all());
+        $check_in->cuenta=$request->get('cuenta');
+        $check_in->num_vuelo=$request->get('num_vuelo');
+        $check_in->save();
+        return $check_in;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\stop  $stop
+     * @param  \App\check_in  $check_in
      * @return \Illuminate\Http\Response
      */
-    public function destroy(stop $stop)
+    public function destroy(check_in $check_in)
     {
-        //
+        $check_in->destroy();
+        return ;
     }
 }

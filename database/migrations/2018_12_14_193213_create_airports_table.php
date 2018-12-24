@@ -17,10 +17,10 @@ class CreateAirportsTable extends Migration
             $table->increments('id');
             $table->string('ciudad',60);
             $table->string('nombre',60);
-            $table->integer('id_origen');
-            $table->integer('id_destino');
-          //   $table->foreign('id_origen')->references('id')->on('origins');
-            //  $table->foreign('id_destino')->references('id')->on('destinies');
+            $table->unsignedInteger('origin_id');
+            $table->unsignedInteger('destiny_id');
+            $table->foreign('origin_id')->references('id')->on('origins');
+            $table->foreign('destiny_id')->references('id')->on('destinies');
             $table->timestamps();
         });
     }

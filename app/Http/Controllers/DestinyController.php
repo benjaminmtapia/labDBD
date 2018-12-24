@@ -12,10 +12,13 @@ class DestinyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function rules(){
+        'ciudad'=>'required|string'
+    }
     public function index()
     {
-        $destino = destiny::all();
-        return;
+        return Destiny::all();
+
     }
 
     /**
@@ -36,7 +39,14 @@ class DestinyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $destiny = new \App\Destiny;
+        $destiny->name = $request->get('name');
+        $destiny->save();
+        return destiny;
     }
 
     /**
@@ -47,7 +57,7 @@ class DestinyController extends Controller
      */
     public function show(Destiny $destiny)
     {
-        //
+    return $destiny;
     }
 
     /**
@@ -58,7 +68,7 @@ class DestinyController extends Controller
      */
     public function edit(Destiny $destiny)
     {
-        //
+         return view('destiny.createForm')->with('destiny',$destiny);
     }
 
     /**
@@ -70,7 +80,13 @@ class DestinyController extends Controller
      */
     public function update(Request $request, Destiny $destiny)
     {
-        //
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $destiny->name = $request->get('name');
+        $destiny->save();
+        return destiny;
     }
 
     /**
@@ -81,8 +97,7 @@ class DestinyController extends Controller
      */
     public function destroy(Destiny $destiny)
     {
-        $destino = destiny::find($id);
-        $destino->delete();
-        return 0;
+        $destiny->delete();
+        return response()->json(['success']);
     }
 }

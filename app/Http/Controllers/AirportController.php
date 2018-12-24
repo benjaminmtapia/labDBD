@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\airport;
 use Illuminate\Http\Request;
+use Validator;
 
 class AirportController extends Controller
 {
@@ -12,10 +13,17 @@ class AirportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function rules(){
+        return[
+            'ciudad' => 'required|string',
+            'nombre' => 'required|string'
+        ];
+    }
     public function index()
     {
-        $aeropuertos = airpot::all();
-        return;
+        //$aeropuertos = airport::all();
+        return airport::all();
     }
 
     /**
@@ -36,7 +44,19 @@ class AirportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),$this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $airport = new \App\airport;
+        $airport->nombre = $request->get('nombre');
+        $airport->ciudad = $request->get('ciudad');
+        
+        $airport->origin_id = $request->get('origin_id');
+        $airport->destiny_id = $request->get('destiny_id');
+        
+        $airport->save();
+        return $airport;
     }
 
     /**
@@ -47,7 +67,7 @@ class AirportController extends Controller
      */
     public function show(airport $airport)
     {
-        //
+    return $airport;
     }
 
     /**
@@ -58,7 +78,9 @@ class AirportController extends Controller
      */
     public function edit(airport $airport)
     {
-        //return view('airport.createForm')->with('aiport',$airport);    }
+        //return view('airport.createForm')->with('aiport',$airport);  
+
+    }
 
     /**
      * Update the specified resource in storage.
@@ -69,8 +91,16 @@ class AirportController extends Controller
      */
     public function update(Request $request, airport $airport)
     {    
-          $airport->fill($request->all());
-            $airport->save(); 
+        $validator = Validator::make($request->all(),$this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $airport->nombre = $request->get('nombre');
+        $airport->ciudad = $request->get('ciudad');
+        $airport->id_origen = $request->get('id_origen');
+        $airport->id_destino = $request->get('id_destino');
+        $airport->save();
+        return $airport;
     }
 
     /**
@@ -81,8 +111,7 @@ class AirportController extends Controller
      */
     public function destroy(airport $airport)
     {
-        $aeropuerto = airport::find($id);
-        $aeropuerto->delete();
-        return 0;
+        $airport->delete();
+        return response()->json(['success']);
     }
 }
