@@ -12,11 +12,17 @@ class SocioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function rules(){
+        return[
+            'numero'=>'required|integer',
+            'email'=>'required|string',
+            'millas'=>'required|integer'
+        ];
+    }
     public function index()
     {
-       $socios = socio::all();
-        return $socios;
-    }
+       return socio::all();
+       }
 
     /**
      * Show the form for creating a new resource.
@@ -36,8 +42,11 @@ class SocioController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all());
-        $socio = new socio();
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $socio = new \App\socio;
         $socio->numero = $request->get('numero');
         $socio->email = $request->get('email');
         $socio->millas = $request->get('millas');
@@ -76,7 +85,10 @@ class SocioController extends Controller
      */
     public function update(Request $request, socio $socio)
     {
-        $validator = Validator::make($request->all());
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
         $socio->numero = $request->get('numero');
         $socio->email = $request->get('email');
         $socio->millas = $request->get('millas');
@@ -92,6 +104,7 @@ class SocioController extends Controller
      */
     public function destroy(socio $socio)
     {
-        //
+        $socio->delete();
+        return response()->json(['success']);
     }
 }

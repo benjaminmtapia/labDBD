@@ -12,6 +12,9 @@ class DestinyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function rules(){
+        'ciudad'=>'required|string'
+    }
     public function index()
     {
         return Destiny::all();
@@ -36,9 +39,14 @@ class DestinyController extends Controller
      */
     public function store(Request $request)
     {
-        $destino = new Destiny;
-        $destino->name = $request->name;
-        return destino;
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $destiny = new \App\Destiny;
+        $destiny->name = $request->get('name');
+        $destiny->save();
+        return destiny;
     }
 
     /**
@@ -72,8 +80,13 @@ class DestinyController extends Controller
      */
     public function update(Request $request, Destiny $destiny)
     {
-        $destiny->fill($request->all());
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $destiny->name = $request->get('name');
         $destiny->save();
+        return destiny;
     }
 
     /**
@@ -84,8 +97,7 @@ class DestinyController extends Controller
      */
     public function destroy(Destiny $destiny)
     {
-        $destino = Destiny::find($id);
-        $destino->delete();
-        return 0;
+        $destiny->delete();
+        return response()->json(['success']);
     }
 }

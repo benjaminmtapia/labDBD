@@ -12,6 +12,12 @@ class StopController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function rules(){
+        return[
+            'nombre'=>'required|string'
+        ];
+    }
     public function index()
     {
        return stop::all();
@@ -36,7 +42,10 @@ class StopController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all());
+        $validator = Validator::make($request->all(),$this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
         $stop = new stop();
         $stop->nombre = $request->get('nombre');
         $stop->save();
@@ -74,7 +83,10 @@ class StopController extends Controller
      */
     public function update(Request $request, stop $stop)
     {
-        $validator = Validator::make($request->all());
+        $validator = Validator::make($request->all(),$this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
         $stop->nombre = $request->get('nombre');
         $stop->save();
         return $stop;
