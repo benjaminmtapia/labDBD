@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\reservation;
 use Illuminate\Http\Request;
-
+use Validator;
 class ReservationController extends Controller
 {
     /**
@@ -21,8 +21,8 @@ class ReservationController extends Controller
     }
     public function index()
     {
-         $reserva = reservation::all();
-        return $reserva;
+         return reservation::all();
+       
     }
 
     /**
@@ -47,8 +47,7 @@ class ReservationController extends Controller
         if($validator->fails()){
             return $validator->messages();
         }
-        $reservation = new passenger();
-        $reservation->id = $request->get('id');
+        $reservation = new \App\Reservation;
         $reservation->monto = $request->get('monto');
         $reservation->num_pasaporte = $request->get('num_pasaporte');
         $reservation->num_reserva_hotel = $request->get('num_reserva_hotel');
@@ -92,7 +91,6 @@ class ReservationController extends Controller
         if($validator->fails()){
             return $validator->messages();
         }
-        $reservation = new \App\reservation;
         $reservation->monto = $request->get('monto');
         $reservation->num_pasaporte = $request->get('num_pasaporte');
         $reservation->num_reserva_hotel = $request->get('num_reserva_hotel');
@@ -109,7 +107,7 @@ class ReservationController extends Controller
      */
     public function destroy(reservation $reservation)
     {
-        $reserva->delete();
+        $reservation->delete();
         return response()->json(['success']);
     }
 }

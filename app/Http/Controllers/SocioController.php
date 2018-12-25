@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\socio;
 use Illuminate\Http\Request;
-
+use Validator;
 class SocioController extends Controller
 {
     /**

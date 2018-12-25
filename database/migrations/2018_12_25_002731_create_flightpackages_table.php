@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReservationPackagesTable extends Migration
+class CreateFlightpackagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateReservationPackagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('reservation-packages', function (Blueprint $table) {
+        Schema::create('flightpackages', function (Blueprint $table) {
+            $table->unsignedInteger('flight_id');
             $table->unsignedInteger('package_id');
-            $table->unsignedInteger('reservation_id');
+            $table->foreign('flight_id')->references('id')->on('flights');
             $table->foreign('package_id')->references('id')->on('packages');
-            $table->foreign('reservation_id')->references('id')->on('reservations');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +29,6 @@ class CreateReservationPackagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reservation-packages');
+        Schema::dropIfExists('flightpackages');
     }
 }

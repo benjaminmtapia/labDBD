@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\check_in;
+use App\flightpackage;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class CheckInController extends Controller
+class FlightpackageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,7 @@ class CheckInController extends Controller
      */
     public function index()
     {
-        return check_in::all();
-        
-
+        //
     }
 
     /**
@@ -38,36 +35,27 @@ class CheckInController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(),$this->rules());
-        if($validator->fails()){
-            return $validator->messages();
-        }
-        $check_in = new \App\check_in;
-        $check_in->num_vuelo = $request->get('num_vuelo');
-        $check_in->cuenta = $request->get('cuenta');
-        $check_in->save();
-        return $check_in;
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\check_in  $check_in
+     * @param  \App\flightpackage  $flightpackage
      * @return \Illuminate\Http\Response
      */
-    public function show(check_in $check_in)
+    public function show(flightpackage $flightpackage)
     {
-        return $check_in;
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\check_in  $check_in
+     * @param  \App\flightpackage  $flightpackage
      * @return \Illuminate\Http\Response
      */
-    public function edit(check_in $check_in)
+    public function edit(flightpackage $flightpackage)
     {
         //
     }
@@ -76,27 +64,22 @@ class CheckInController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\check_in  $check_in
+     * @param  \App\flightpackage  $flightpackage
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, check_in $check_in)
+    public function update(Request $request, flightpackage $flightpackage)
     {
-        $validator = Validator::make($request->all());
-        $check_in->cuenta=$request->get('cuenta');
-        $check_in->num_vuelo=$request->get('num_vuelo');
-        $check_in->save();
-        return $check_in;
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\check_in  $check_in
+     * @param  \App\flightpackage  $flightpackage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(check_in $check_in)
+    public function destroy(flightpackage $flightpackage)
     {
-        $check_in->destroy();
-        return ;
+        //
     }
 }

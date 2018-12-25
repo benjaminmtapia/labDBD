@@ -8,9 +8,9 @@ class airport extends Model
 {
 	protected $fillable = ['ciudad','nombre'];
  	public function origin(){
-    	return $this->belongsTo(Origin::class);
+    	return $this->belongsTo(origin::class);
     }
  	public function destiny(){
-    	return $this->belongsTo(Destiny::class);
+    	return $this->belongsTo(destiny::class);
     }
 }

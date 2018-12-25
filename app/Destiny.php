@@ -9,7 +9,7 @@ class destiny extends Model
 	protected $table = 'destinies';
 	protected $fillable = ['ciudad'];
      public function airport(){
-    	return $this->belongsTo(Airport::class);
+    	return $this->hasMany(Airport::class);
     }
     public function reserva(){
     	return $this->hasMany(Reservation::class);

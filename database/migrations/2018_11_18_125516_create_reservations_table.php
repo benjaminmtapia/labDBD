@@ -23,7 +23,7 @@ class CreateReservationsTable extends Migration
             $table->integer('destiny_id');
             $table->foreign('destiny_id')->references('id')->on('destinies');
             $table->foreign('origin_id')->references('id')->on('origins');
-            
+
             $table->timestamps();
         });
     }

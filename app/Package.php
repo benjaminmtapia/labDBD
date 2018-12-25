@@ -16,15 +16,18 @@ class package extends Model
     }
 
      public function hotel_reservation(){
-    	return $this->hasMany(hotel_reservation::class);
+    	return $this->belongsToMany(hotel_reservation::class);
     }
     
     public function reservation(){
-    	return $this->belongsTo(reservation::class);
+    	return $this->belongsToMany(reservation::class);
     }
 
     public function flight(){
-    	return $this->hasMany(flight::class);
+    	return $this->belongsToMany(flight::class);
     }           
+    public function administrator(){
+        return $this->belongsToMany(administrator::class);
+    }
 
 }

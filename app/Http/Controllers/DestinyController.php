@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Destiny;
 use Illuminate\Http\Request;
-
+use Validator;
 class DestinyController extends Controller
 {
     /**
@@ -13,7 +13,9 @@ class DestinyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function rules(){
+       return[
         'ciudad'=>'required|string'
+       ];
     }
     public function index()
     {
@@ -43,10 +45,10 @@ class DestinyController extends Controller
         if($validator->fails()){
             return $validator->messages();
         }
-        $destiny = new \App\Destiny;
-        $destiny->name = $request->get('name');
+        $destiny = new \App\destiny;
+        $destiny->ciudad = $request->get('ciudad');
         $destiny->save();
-        return destiny;
+        return $destiny;
     }
 
     /**
@@ -84,9 +86,9 @@ class DestinyController extends Controller
         if($validator->fails()){
             return $validator->messages();
         }
-        $destiny->name = $request->get('name');
+        $destiny->ciudad = $request->get('ciudad');
         $destiny->save();
-        return destiny;
+        return $destiny;
     }
 
     /**

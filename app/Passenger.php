@@ -8,9 +8,8 @@ class passenger extends Model
 {
 	protected $table = 'passengers';
 	protected $fillable = ['nombre','apellido','num_asiento','num_vuelo'];
-	/*
-     	public function origin(){
+	
+    public function flight(){
     	return $this->belongsTo(flight::class);
-    */
-    
+    }
 }

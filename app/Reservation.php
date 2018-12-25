@@ -14,4 +14,29 @@ class reservation extends Model
  	public function destiny(){
     	return $this->belongsTo(Destiny::class);
     }
+    public function hotel_reservation(){
+    	return $this->hasMany(hotel_reservation::class);
+    }
+    public function car(){
+    	return $this->hasMany(car::class);
+    }
+    public function package(){
+    	return $this->belongsToMany(package::class);
+    }
+    public function administrator(){
+    	return $this->belongsToMany(administrator::class);
+    }
+    public function purchase(){
+    	return $this->hasOne(purchase::class);
+    }
+    public function ticket(){
+    	return $this->hasMany(ticket::class);
+    }
+    public function flight(){
+    	return $this->belongsToMany(flight::class);
+
+    }
+    public function user(){
+    	return $this->belongsToMany(User::class);
+    }
 }

@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\hotel::class, function (Faker $faker) {
+$factory->define(App\Hotel::class, function (Faker $faker) {
     return [
     	'ciudad'=>$faker->city,
     	'nombre'=>$faker->name,

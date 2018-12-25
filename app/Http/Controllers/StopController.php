@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\stop;
 use Illuminate\Http\Request;
-
+use Validator;
 class StopController extends Controller
 {
     /**
@@ -46,7 +46,7 @@ class StopController extends Controller
         if($validator->fails()){
             return $validator->messages();
         }
-        $stop = new stop();
+        $stop = new \App\stop;
         $stop->nombre = $request->get('nombre');
         $stop->save();
         return $stop;
@@ -100,6 +100,7 @@ class StopController extends Controller
      */
     public function destroy(stop $stop)
     {
-        //
+        $stop->delete();
+        return response()->json(['success']);
     }
 }

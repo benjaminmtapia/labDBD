@@ -11,7 +11,7 @@ class purchase extends Model
         'num_compra', 'fecha', 'monto'
     ];
 
-/*    public function reservation(){
-    	return $this->belongsTo(reservation::class);*/
-
+    public function purchase(){
+    	return $this->belongsTo(purchase::class);
+    }
 }

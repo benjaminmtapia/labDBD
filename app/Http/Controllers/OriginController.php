@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\origin;
 use Illuminate\Http\Request;
+use Validator;
 
 class OriginController extends Controller
 {
@@ -14,7 +15,7 @@ class OriginController extends Controller
      */
     public function rules(){
         return[
-            'nombre'=>'required|string'
+            'ciudad'=>'required|string'
         ];
     }
     public function index()
@@ -46,7 +47,7 @@ class OriginController extends Controller
         }
         $origin = new \App\Origin;
        $origin->ciudad = $request->get('ciudad');
-       return origin;
+       return $origin;
     }
 
     /**
@@ -57,8 +58,7 @@ class OriginController extends Controller
      */
     public function show(origin $origin)
     {
-        $origin: origin::findOrFail($id);
-    return $origin;
+       
     }
 
     /**
@@ -88,7 +88,7 @@ class OriginController extends Controller
         $origin = new \App\Origin;
        $origin->ciudad = $request->get('ciudad');
        $origin->save();
-       return origin;
+       return $origin;
     }
 
     /**
@@ -99,7 +99,7 @@ class OriginController extends Controller
      */
     public function destroy(origin $origin)
     {
-        $origen->delete();
+        $origin->delete();
         return response()->json(['success']);
     }
 }

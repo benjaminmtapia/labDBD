@@ -32,8 +32,3 @@ Route::resource('/passengers','PassengerController');
 Route::resource('/reservations','ReservationController');
 Route::resource('/socios','SocioController');
 Route::resource('/stops','StopController');
-
-/*
-Route::get('/airports', 'AirportController@index');
-Route::post('/airports', 'AirportController@store');
-Route::get('/airports/{airport}', 'AirportController@show');

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCheckInsTable extends Migration
+class CreateStopflightsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateCheckInsTable extends Migration
      */
     public function up()
     {
-        Schema::create('check_ins', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('cuenta');
-            $table->integer('num_vuelo'); 
+        Schema::create('stopflights', function (Blueprint $table) {
+            $table->unsignedInteger('stop_id');
+            $table->unsignedInteger('flight_id');
+            $table->foreign('flight_id')->references('id')->on('flights');
+            $table->foreign('stop_id')->references('id')->on('stops');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateCheckInsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('check_ins');
+        Schema::dropIfExists('stopflights');
     }
 }
