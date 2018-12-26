@@ -16,8 +16,6 @@ class HotelReservationController extends Controller
     public function index()
     {
        return hotel_reservation::all();
-     
-
     }
 
     /**
@@ -38,7 +36,11 @@ class HotelReservationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all());
+        $hotel_reservation = new hotel_reservation();
+        $hotel_reservation->cantidad_personas = $request->get('cantidad_personas');
+        $hotel_reservation->save();
+        return $hotel_reservation;
     }
 
     /**
@@ -72,7 +74,10 @@ class HotelReservationController extends Controller
      */
     public function update(Request $request, hotel_reservation $hotel_reservation)
     {
-        //
+        $validator = Validator::make($request->all());
+        $hotel_reservation->cantidad_personas = $request->get('cantidad_personas');
+        $hotel_reservation->save();
+        return $hotel_reservation;
     }
 
     /**

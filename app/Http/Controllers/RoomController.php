@@ -38,7 +38,12 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = validator::make($request->all());
+        $room = new room(); 
+        $room->numero = $request->get('numero');
+        $room->capacidad = $request->get('capacidad');
+        $room->save();
+        return->$room; 
     }
 
     /**
@@ -72,7 +77,11 @@ class RoomController extends Controller
      */
     public function update(Request $request, room $room)
     {
-        //
+        $validator = validator::make($request->all());
+        $room->numero = $request->get('numero')
+        $room->capacidad = $request->get('capacidad');
+        $room->save();
+        return->$room; 
     }
 
     /**
@@ -83,6 +92,9 @@ class RoomController extends Controller
      */
     public function destroy(room $room)
     {
-        //
+        $room->delete();
+        return response()->json([
+            'success'
+        ]);
     }
 }

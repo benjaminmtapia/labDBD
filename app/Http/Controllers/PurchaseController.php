@@ -38,7 +38,10 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all()); 
+        $purchase = new purchase(); 
+        $purchase->fecha = $request->get('fecha'); 
+        return $purchase; 
     }
 
     /**
@@ -72,7 +75,10 @@ class PurchaseController extends Controller
      */
     public function update(Request $request, purchase $purchase)
     {
-        //
+        $validator = Validator::make($request->all());
+        $purchase->fecha = $request->get('fecha');
+        $purchase->save();
+        return $purchase; 
     }
 
     /**
@@ -83,6 +89,7 @@ class PurchaseController extends Controller
      */
     public function destroy(purchase $purchase)
     {
-        //
+        $purchase->delete();
+        return response()->json(['success']);
     }
 }

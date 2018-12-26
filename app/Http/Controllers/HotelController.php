@@ -14,7 +14,8 @@ class HotelController extends Controller
      */
     public function index()
     {
-        //
+        $hotels = hotel::all();
+        return $hotels; 
     }
 
     /**
@@ -35,7 +36,13 @@ class HotelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all());
+        $hotel = new hotel();
+        $hotel->ciudad = $request->get('ciudad');
+        $hotel->nombre = $request->get('nombre');
+        $hotel->clase = $request->get('clase');
+        $hotel->save();
+        return $hotel;
     }
 
     /**
@@ -69,7 +76,12 @@ class HotelController extends Controller
      */
     public function update(Request $request, hotel $hotel)
     {
-        //
+        $validator = Validator::make($request->all());
+        $hotel->ciudad = $request->get('ciudad');
+        $hotel->nombre = $request->get('nombre');
+        $hotel->clase = $request->get('clase');
+        $hotel->save();
+        return $hotel;
     }
 
     /**
@@ -80,6 +92,9 @@ class HotelController extends Controller
      */
     public function destroy(hotel $hotel)
     {
-        //
+        $hotel->delete();
+        return response()->json([
+            'success'
+        ]);
     }
 }

@@ -79,8 +79,15 @@ class CarController extends Controller
      */
     public function update(Request $request, car $car)
     {
-        //
+        $validator = Validator::make($request->all());
+        $car->patente = $request->get('patente');
+        $car->marca = $request->get('marca');
+        $car->modelo = $request->get('modelo');
+        $car->capacidad = $request->get('capacidad');
+        $car->save();
+        return $car;
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -90,6 +97,9 @@ class CarController extends Controller
      */
     public function destroy(car $car)
     {
-        //
+        $car->delete();
+        return response()->json([
+            'success'
+        ]);
     }
 }
