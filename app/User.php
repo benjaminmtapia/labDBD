@@ -27,5 +27,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function reservation(){
+        return $this->belongsToMany(reservation::class);
+    }
+    public function socio(){
+        return $this->belongsTo(socio::class);
+    }
 }
 

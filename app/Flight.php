@@ -14,7 +14,7 @@ class flight extends Model
 
     }
     public function stop(){
-    	return $this->hasMany(stop::class);
+    	return $this->belongsToMany(stop::class);
     }
     public function passenger(){
     	return $this->hasMany(passenger::class);

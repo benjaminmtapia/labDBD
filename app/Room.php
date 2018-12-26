@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class room extends Model
 {
-
+	protected $table ='rooms';
 	protected $fillable = [
         'numero', 'capacidad'
     ];
@@ -16,7 +16,7 @@ class room extends Model
     }
 
     public function hotel_reservation(){
-    	return $this->belongsTo(Hotel_reservation::class);
+    	return $this->hasMany(Hotel_reservation::class);
     }
 
 }

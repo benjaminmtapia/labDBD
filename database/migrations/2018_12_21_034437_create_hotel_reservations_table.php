@@ -21,8 +21,8 @@ class CreateHotelReservationsTable extends Migration
             $table->unsignedInteger('package_id');
             $table->unsignedInteger('reservation_id');
             $table->foreign('room_id')->references('id')->on('rooms');
-            $table->foreign('package_id')->references('id')->on('packages');
             $table->foreign('reservation_id')->references('id')->on('reservations');
+            $table->foreign('package_id')->references('id')->on('packages');
             $table->timestamps();
         });
     }

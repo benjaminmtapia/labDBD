@@ -27,7 +27,7 @@ class reservation extends Model
     	return $this->belongsToMany(administrator::class);
     }
     public function purchase(){
-    	return $this->hasOne(purchase::class);
+    	return $this->belongsTo(purchase::class);
     }
     public function ticket(){
     	return $this->hasMany(ticket::class);

@@ -14,9 +14,8 @@ class CreateHotelReservationPackagesTable extends Migration
     public function up()
     {
         Schema::create('hotel_reservation-packages', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('package_id');
-            $table->integer('hotel_reservations_id');
+            $table->unsignedInteger('package_id');
+            $table->unsignedInteger('hotel_reservations_id');
             $table->foreign('package_id')->references('id')->on('packages');
             $table->foreign('hotel_reservations_id')->references('id')->on('hotel_reservations');
         });

@@ -13,6 +13,6 @@ class stop extends Model
     	return $this->belongsTo(airport::class);
     }
     public function flight(){
-    	return $this->hasMany(flight::class);
+    	return $this->belongsToMany(flight::class);
     }
 }
