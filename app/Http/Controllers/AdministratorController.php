@@ -15,7 +15,7 @@ class AdministratorController extends Controller
      */
     public function index()
     {
-        //
+        return administrator::all();
     }
 
     /**
@@ -36,7 +36,12 @@ class AdministratorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all());
+        $administrador = new administrator();
+        $administrador->nombre = $request->get('nombre');
+        $administrador->apellido = $request->get('apellido');
+        $administrador->save();
+        return $administrador;
     }
 
     /**
@@ -47,7 +52,7 @@ class AdministratorController extends Controller
      */
     public function show(administrator $administrator)
     {
-        //
+        return $administrator;
     }
 
     /**
@@ -70,7 +75,12 @@ class AdministratorController extends Controller
      */
     public function update(Request $request, administrator $administrator)
     {
-        //
+        $validator = Validator::make($request->all());
+        $administrator->nombre = $request->get('nombre');
+        $administrator->apellido = $request->get('apellido');
+        $administrator->save();
+        return $administrator;
+
     }
 
     /**
@@ -81,6 +91,7 @@ class AdministratorController extends Controller
      */
     public function destroy(administrator $administrator)
     {
-        //
+        $administrator->delete();
+        return response()->json(['success']);
     }
 }
