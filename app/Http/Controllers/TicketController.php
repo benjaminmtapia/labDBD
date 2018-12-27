@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\ticket;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Validator;
 
 class TicketController extends Controller
 {
@@ -13,6 +14,16 @@ class TicketController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     public function rules(){
+         return[
+             'num_asiento' => 'required|integer',
+             'hora' => 'required|inetger',
+             'origen' => 'required|string',
+             'destino' => 'required|string',
+             'doc_identificacion' => 'required|string',
+             'tipo_pasajero' => 'required|string'
+         ];
+     }
     public function index()
     {
         return ticket::all();
@@ -36,14 +47,19 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all());
-        $pasaje = new ticket();
+        $validator = Validator::make($request->all(), $this->rules());
+        if ($validator->fails()) {
+          return $validator->messages();
+        }
+        $pasaje = new App\ticket;
         $pasaje->num_asiento = $request->get('num_asiento');
         $pasaje->hora = $request->get('hora');
         $pasaje->origen = $request->get('origen');
         $pasaje->destino = $request->get('destino');
         $pasaje->doc_identificacion = $request->get('doc_identificacion');
         $pasaje->tipo_pasajero = $request->get('tipo_pasajero');
+        $pasaje->flight_id = $request->get('flight_id');
+        $pasaje->reservation_id = $request->get('reservation_id');
         $pasaje->save();
         return $pasaje;
     }
@@ -79,13 +95,18 @@ class TicketController extends Controller
      */
     public function update(Request $request, ticket $ticket)
     {
-        $validator = Validator::make($request->all());
+        $validator = Validator::make($request->all(), $this->rules());
+        if ($validator->fails()) {
+          return $validator->messages();
+        }
         $ticket->num_asiento = $request->get('num_asiento');
         $ticket->hora = $request->get('hora');
         $ticket->origen = $request->get('origen');
         $ticket->destino = $request->get('destino');
         $ticket->doc_identificacion = $request->get('doc_identificacion');
         $ticket->tipo_pasajero = $request->get('tipo_pasajero');
+        $ticket->flight_id = $request->get('flight_id');
+        $ticket->reservation_id = $request->get('reservation_id');
         $ticket->save();
         return $ticket;
     }

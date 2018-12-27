@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\flight;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Validator;
 
 class FlightController extends Controller
 {
@@ -13,6 +14,13 @@ class FlightController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     public function rules(){
+         return[
+             'fecha_ida' => 'required|date',
+             'capacidad' => 'required|integer',
+             'num_pasajeros' => 'required|integer'
+         ];
+     }
     public function index()
     {
         return flight::all();
@@ -36,8 +44,11 @@ class FlightController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all());
-        $vuelo = new flight();
+        $validator = Validator::make($request->all(), $this->rules());
+        if ($validator->fails()) {
+          return $validator->messages();
+        }
+        $vuelo = new App\flight;
         $vuelo->fecha_ida = $request->get('fecha_ida');
         $vuelo->capacidad = $request->get('capacidad');
         $vuelo->num_pasajeros = $request->get('num_pasajeros');
@@ -76,7 +87,10 @@ class FlightController extends Controller
      */
     public function update(Request $request, flight $flight)
     {
-        $validator = Validator::make($request->all());
+        $validator = Validator::make($request->all(), $this->rules());
+        if ($validator->fails()) {
+          return $validator->messages();
+        }
         $flight->fecha_ida = $request->get('fecha_ida');
         $flight->capacidad = $request->get('capacidad');
         $flight->num_pasajeros = $request->get('num_pasajeros');
