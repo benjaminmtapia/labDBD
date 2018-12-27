@@ -96,6 +96,8 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         ),
         'F' => 
         array (
+            'Froiden\\SqlGenerator\\Tests\\' => 27,
+            'Froiden\\SqlGenerator\\' => 21,
             'Fideloper\\Proxy\\' => 16,
             'Faker\\' => 6,
         ),
@@ -263,6 +265,14 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
         ),
+        'Froiden\\SqlGenerator\\Tests\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/froiden/sql-generator/tests',
+        ),
+        'Froiden\\SqlGenerator\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/froiden/sql-generator/src',
+        ),
         'Fideloper\\Proxy\\' => 
         array (
             0 => __DIR__ . '/..' . '/fideloper/proxy/src',
@@ -350,6 +360,7 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\CarController' => __DIR__ . '/../..' . '/app/Http/Controllers/CarController.php',
         'App\\Http\\Controllers\\CheckInController' => __DIR__ . '/../..' . '/app/Http/Controllers/CheckInController.php',
+        'App\\Http\\Controllers\\ClientreservationController' => __DIR__ . '/../..' . '/app/Http/Controllers/ClientreservationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DestinyController' => __DIR__ . '/../..' . '/app/Http/Controllers/DestinyController.php',
         'App\\Http\\Controllers\\FlightController' => __DIR__ . '/../..' . '/app/Http/Controllers/FlightController.php',
@@ -386,15 +397,15 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         'App\\ReservationUser' => __DIR__ . '/../..' . '/app/ReservationUser.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\administrator' => __DIR__ . '/../..' . '/app/Administrator.php',
-        'App\\administratorpackage' => __DIR__ . '/../..' . '/app/administratorpackage.php',
+        'App\\administratorpackage' => __DIR__ . '/../..' . '/app/Administratorpackage.php',
         'App\\airport' => __DIR__ . '/../..' . '/app/Airport.php',
         'App\\car' => __DIR__ . '/../..' . '/app/Car.php',
         'App\\check_in' => __DIR__ . '/../..' . '/app/Check_in.php',
-        'App\\clientreservation' => __DIR__ . '/../..' . '/app/clientreservation.php',
+        'App\\clientreservation' => __DIR__ . '/../..' . '/app/Clientreservation.php',
         'App\\destiny' => __DIR__ . '/../..' . '/app/Destiny.php',
         'App\\flight' => __DIR__ . '/../..' . '/app/Flight.php',
-        'App\\flightpackage' => __DIR__ . '/../..' . '/app/flightpackage.php',
-        'App\\hotel' => __DIR__ . '/../..' . '/app/hotel.php',
+        'App\\flightpackage' => __DIR__ . '/../..' . '/app/Flightpackage.php',
+        'App\\hotel' => __DIR__ . '/../..' . '/app/Hotel.php',
         'App\\hotel_reservation' => __DIR__ . '/../..' . '/app/Hotel_reservation.php',
         'App\\origin' => __DIR__ . '/../..' . '/app/Origin.php',
         'App\\package' => __DIR__ . '/../..' . '/app/Package.php',
@@ -976,6 +987,10 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         'Faker\\ValidGenerator' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/ValidGenerator.php',
         'Fideloper\\Proxy\\TrustProxies' => __DIR__ . '/..' . '/fideloper/proxy/src/TrustProxies.php',
         'Fideloper\\Proxy\\TrustedProxyServiceProvider' => __DIR__ . '/..' . '/fideloper/proxy/src/TrustedProxyServiceProvider.php',
+        'Froiden\\SqlGenerator\\Console\\SqlCommand' => __DIR__ . '/..' . '/froiden/sql-generator/src/Console/SqlCommand.php',
+        'Froiden\\SqlGenerator\\SqlFormatter' => __DIR__ . '/..' . '/froiden/sql-generator/src/SqlFormatter.php',
+        'Froiden\\SqlGenerator\\SqlGeneratorServiceProvider' => __DIR__ . '/..' . '/froiden/sql-generator/src/SqlGeneratorServiceProvider.php',
+        'Froiden\\SqlGenerator\\Tests\\TestCase' => __DIR__ . '/..' . '/froiden/sql-generator/tests/TestCase.php',
         'Hamcrest\\Arrays\\IsArray' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArray.php',
         'Hamcrest\\Arrays\\IsArrayContaining' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContaining.php',
         'Hamcrest\\Arrays\\IsArrayContainingInAnyOrder' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContainingInAnyOrder.php',

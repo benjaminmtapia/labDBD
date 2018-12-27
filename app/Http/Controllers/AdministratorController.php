@@ -47,7 +47,7 @@ class AdministratorController extends Controller
         if ($validator->fails()) {
           return $validator->messages();
         }
-        $administrador = new App\administrator;
+        $administrador = new \App\administrator;
         $administrador->nombre = $request->get('nombre');
         $administrador->apellido = $request->get('apellido');
         $administrador->save();

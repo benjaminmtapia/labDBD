@@ -48,7 +48,7 @@ class FlightController extends Controller
         if ($validator->fails()) {
           return $validator->messages();
         }
-        $vuelo = new App\flight;
+        $vuelo = new \App\flight;
         $vuelo->fecha_ida = $request->get('fecha_ida');
         $vuelo->capacidad = $request->get('capacidad');
         $vuelo->num_pasajeros = $request->get('num_pasajeros');

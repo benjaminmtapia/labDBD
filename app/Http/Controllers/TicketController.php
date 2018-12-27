@@ -17,7 +17,6 @@ class TicketController extends Controller
      public function rules(){
          return[
              'num_asiento' => 'required|integer',
-             'hora' => 'required|inetger',
              'origen' => 'required|string',
              'destino' => 'required|string',
              'doc_identificacion' => 'required|string',
@@ -51,7 +50,7 @@ class TicketController extends Controller
         if ($validator->fails()) {
           return $validator->messages();
         }
-        $pasaje = new App\ticket;
+        $pasaje = new \App\ticket;
         $pasaje->num_asiento = $request->get('num_asiento');
         $pasaje->hora = $request->get('hora');
         $pasaje->origen = $request->get('origen');
