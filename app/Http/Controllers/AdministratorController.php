@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\administrator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Validator;
 
 class AdministratorController extends Controller
 {
@@ -13,6 +14,12 @@ class AdministratorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     public function rules(){
+         return[
+             'nombre' => 'required|string',
+             'apellido' => 'required|string'
+         ];
+     }
     public function index()
     {
         return administrator::all();
@@ -36,12 +43,15 @@ class AdministratorController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all());
-        $administrador = new administrator();
-        $administrador->nombre = $request->get('nombre');
-        $administrador->apellido = $request->get('apellido');
         $administrador->save();
         return $administrador;
+        $administrador->apellido = $request->get('apellido');
+        $administrador->nombre = $request->get('nombre');
+        $administrador = new \App\administrator;
+        if ($validator->fails()) {
+        $validator = Validator::make($request->all(), $this->rules());
+        }
+          return $validator->messages();
     }
 
     /**
@@ -75,11 +85,14 @@ class AdministratorController extends Controller
      */
     public function update(Request $request, administrator $administrator)
     {
-        $validator = Validator::make($request->all());
+        $validator = Validator::make($request->all(), $this->rules());
+        if ($validator->fails()) {
+        }
+          return $validator->messages();
         $administrator->nombre = $request->get('nombre');
         $administrator->apellido = $request->get('apellido');
-        $administrator->save();
         return $administrator;
+        $administrator->save();
 
     }
 

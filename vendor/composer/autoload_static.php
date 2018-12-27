@@ -96,6 +96,8 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         ),
         'F' => 
         array (
+            'Froiden\\SqlGenerator\\Tests\\' => 27,
+            'Froiden\\SqlGenerator\\' => 21,
             'Fideloper\\Proxy\\' => 16,
             'Faker\\Provider\\' => 15,
             'Faker\\' => 6,
@@ -263,6 +265,14 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         'Illuminate\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
+        ),
+        'Froiden\\SqlGenerator\\Tests\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/froiden/sql-generator/tests',
+        ),
+        'Froiden\\SqlGenerator\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/froiden/sql-generator/src',
         ),
         'Fideloper\\Proxy\\' => 
         array (
@@ -984,6 +994,10 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         'Faker\\ValidGenerator' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/ValidGenerator.php',
         'Fideloper\\Proxy\\TrustProxies' => __DIR__ . '/..' . '/fideloper/proxy/src/TrustProxies.php',
         'Fideloper\\Proxy\\TrustedProxyServiceProvider' => __DIR__ . '/..' . '/fideloper/proxy/src/TrustedProxyServiceProvider.php',
+        'Froiden\\SqlGenerator\\Console\\SqlCommand' => __DIR__ . '/..' . '/froiden/sql-generator/src/Console/SqlCommand.php',
+        'Froiden\\SqlGenerator\\SqlFormatter' => __DIR__ . '/..' . '/froiden/sql-generator/src/SqlFormatter.php',
+        'Froiden\\SqlGenerator\\SqlGeneratorServiceProvider' => __DIR__ . '/..' . '/froiden/sql-generator/src/SqlGeneratorServiceProvider.php',
+        'Froiden\\SqlGenerator\\Tests\\TestCase' => __DIR__ . '/..' . '/froiden/sql-generator/tests/TestCase.php',
         'Hamcrest\\Arrays\\IsArray' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArray.php',
         'Hamcrest\\Arrays\\IsArrayContaining' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContaining.php',
         'Hamcrest\\Arrays\\IsArrayContainingInAnyOrder' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContainingInAnyOrder.php',

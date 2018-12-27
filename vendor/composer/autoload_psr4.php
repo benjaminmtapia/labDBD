@@ -40,6 +40,8 @@ return array(
     'JakubOnderka\\PhpConsoleHighlighter\\' => array($vendorDir . '/jakub-onderka/php-console-highlighter/src'),
     'JakubOnderka\\PhpConsoleColor\\' => array($vendorDir . '/jakub-onderka/php-console-color/src'),
     'Illuminate\\' => array($vendorDir . '/laravel/framework/src/Illuminate'),
+    'Froiden\\SqlGenerator\\Tests\\' => array($vendorDir . '/froiden/sql-generator/tests'),
+    'Froiden\\SqlGenerator\\' => array($vendorDir . '/froiden/sql-generator/src'),
     'Fideloper\\Proxy\\' => array($vendorDir . '/fideloper/proxy/src'),
     'Faker\\Provider\\' => array($vendorDir . '/pelmered/fake-car/src'),
     'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
