@@ -5,9 +5,17 @@ namespace App\Http\Controllers;
 use App\hotel_reservation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Validator;
 
 class HotelReservationController extends Controller
 {
+
+    public function rules(){
+        return[
+            'cantidad_personas' => 'required|integer'
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -36,8 +44,11 @@ class HotelReservationController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all());
-        $hotel_reservation = new hotel_reservation();
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $hotel_reservation = new \App\hotel_reservation;
         $hotel_reservation->cantidad_personas = $request->get('cantidad_personas');
         $hotel_reservation->save();
         return $hotel_reservation;
@@ -49,9 +60,10 @@ class HotelReservationController extends Controller
      * @param  \App\hotel_reservation  $hotel_reservation
      * @return \Illuminate\Http\Response
      */
-    public function show(hotel_reservation $hotel_reservation)
+    public function show($id)
     {
-        return $hotel_reservation;
+        $hotel_reservation = HotelReservation::find($id);
+        return $hotel_reservation; 
     }
 
     /**
@@ -74,7 +86,10 @@ class HotelReservationController extends Controller
      */
     public function update(Request $request, hotel_reservation $hotel_reservation)
     {
-        $validator = Validator::make($request->all());
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
         $hotel_reservation->cantidad_personas = $request->get('cantidad_personas');
         $hotel_reservation->save();
         return $hotel_reservation;
@@ -88,6 +103,7 @@ class HotelReservationController extends Controller
      */
     public function destroy(hotel_reservation $hotel_reservation)
     {
-        //
+        $hotel_reservation->delete();//TE ODIO >:(
+        return Response()->json(['success']);
     }
 }

@@ -8,6 +8,13 @@ use App\Http\Controllers\Controller;
 
 class CheckInController extends Controller
 {
+    public function rules(){
+        return[
+            'cuenta' => 'required|integer',
+            'num_vuelo' => 'required|integer'
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +23,6 @@ class CheckInController extends Controller
     public function index()
     {
         return check_in::all();
-        
-
     }
 
     /**
@@ -47,7 +52,6 @@ class CheckInController extends Controller
         $check_in->cuenta = $request->get('cuenta');
         $check_in->save();
         return $check_in;
-
     }
 
     /**
@@ -56,9 +60,10 @@ class CheckInController extends Controller
      * @param  \App\check_in  $check_in
      * @return \Illuminate\Http\Response
      */
-    public function show(check_in $check_in)
+    public function show($id)
     {
-        return $check_in;
+        $check_in = CheckIn::find($check_in);
+        return $check_in; 
     }
 
     /**
@@ -81,9 +86,12 @@ class CheckInController extends Controller
      */
     public function update(Request $request, check_in $check_in)
     {
-        $validator = Validator::make($request->all());
-        $check_in->cuenta=$request->get('cuenta');
-        $check_in->num_vuelo=$request->get('num_vuelo');
+        $validator = Validator::make($request->all(),$this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $check_in->num_vuelo = $request->get('num_vuelo');
+        $check_in->cuenta = $request->get('cuenta');
         $check_in->save();
         return $check_in;
     }
@@ -96,7 +104,7 @@ class CheckInController extends Controller
      */
     public function destroy(check_in $check_in)
     {
-        $check_in->destroy();
+        $check_in->delete();
         return ;
     }
 }
