@@ -50,6 +50,9 @@ class HotelReservationController extends Controller
         }
         $hotel_reservation = new \App\hotel_reservation;
         $hotel_reservation->cantidad_personas = $request->get('cantidad_personas');
+        $hotel_reservation->package_id = $request->get('package_id');
+        $hotel_reservation->reservation_id = $request->get('reservation_id');
+        $hotel_reservation->room_id = $request->get('room_id');
         $hotel_reservation->save();
         return $hotel_reservation;
     }
@@ -91,6 +94,10 @@ class HotelReservationController extends Controller
             return $validator->messages();
         }
         $hotel_reservation->cantidad_personas = $request->get('cantidad_personas');
+        $hotel_reservation->room_id = $request->get('room_id');
+        $hotel_reservation->package_id = $request->get('package_id');
+        $hotel_reservation->reservation_id = $request->get('reservation_id');
+
         $hotel_reservation->save();
         return $hotel_reservation;
     }

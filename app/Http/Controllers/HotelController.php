@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\hotel;
+use App\Hotel;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -11,9 +11,9 @@ class HotelController extends Controller
 
     public function rules(){
         return[
-            'ciudad' => 'requiered|string',
-            'nombre' => 'requiered|string',
-            'clase' => 'requiered|integer'
+            'ciudad' => 'required|string',
+            'nombre' => 'required|string',
+            'clase' => 'required|integer'
         ];
     }
 
@@ -49,7 +49,7 @@ class HotelController extends Controller
         if($validator->fails()){
             return $validator->messages();
         }   
-        $hotel = new \App\hotel;
+        $hotel = new \App\Hotel;
         $hotel->ciudad = $request->get('ciudad');
         $hotel->nombre = $request->get('nombre');
         $hotel->clase = $request->get('clase');

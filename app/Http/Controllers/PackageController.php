@@ -10,12 +10,12 @@ use Validator;
 class PackageController extends Controller
 {
 
-/*    public function rules(){
+    public function rules(){
         return[
             'descuento' => 'required|integer',
             'fecha_vencimiento' => ''
         ];
-    }   */
+    }   
 
     /**
      * Display a listing of the resource.
@@ -45,10 +45,10 @@ class PackageController extends Controller
      */
     public function store(Request $request)
     {
-/*        $validator = Validator::make($request->all(), $this->rules());
+       $validator = Validator::make($request->all(), $this->rules());
         if($validator->fails()){
             return $validator->messages();
-        }   */
+        }   
         $package = new \App\package;
         $package->descuento = $request->get('descuento');
         $package->fecha_vencimiento = $request->get('fecha_vencimiento');
@@ -107,6 +107,6 @@ class PackageController extends Controller
     public function destroy(package $package)
     {
         $package->delete();
-        return 0 ;
+        return response()->json(['success']);
     }
 }

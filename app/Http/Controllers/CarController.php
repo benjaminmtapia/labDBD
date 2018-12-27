@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\car;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Validator;
 class CarController extends Controller
 {
 
@@ -55,6 +55,8 @@ class CarController extends Controller
         $car->marca = $request->get('marca');
         $car->modelo = $request->get('modelo');
         $car->capacidad = $request->get('capacidad');
+        $car->reservation_id = $request->get('reservation_id');
+        $car->package_id = $request->get('package_id');
         $car->save();
         return $car;
     }
@@ -99,6 +101,8 @@ class CarController extends Controller
         $car->marca = $request->get('marca');
         $car->modelo = $request->get('modelo');
         $car->capacidad = $request->get('capacidad');
+        $car->reservation_id = $request->get('reservation_id');
+        $car->package_id = $request->get('package_id');
         $car->save();
         return $car;
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\check_in;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Validator;
 
 class CheckInController extends Controller
 {
@@ -105,6 +106,6 @@ class CheckInController extends Controller
     public function destroy(check_in $check_in)
     {
         $check_in->delete();
-        return ;
+        return response()->json(['success']);
     }
 }

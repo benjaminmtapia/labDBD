@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use App\room;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Validator;
 class RoomController extends Controller
 {
 
     public function rules(){
         return[
-            'numero' => 'requiered|integer',
-            'capacidad' => 'requiered|integer'
+            'numero' => 'required|integer',
+            'capacidad' => 'required|integer'
         ];
     }
 
@@ -51,6 +51,7 @@ class RoomController extends Controller
         $room = new \App\room;
         $room->numero = $request->get('numero');
         $room->capacidad = $request->get('capacidad');
+        $room->hotel_id = $request->get('hotel_id');
         $room->save();
         return $room; 
     }
@@ -93,6 +94,8 @@ class RoomController extends Controller
         }
         $room->numero = $request->get('numero');
         $room->capacidad = $request->get('capacidad');
+        $room->hotel_id = $request->get('hotel_id');
+
         $room->save();
         return $room; 
     }
