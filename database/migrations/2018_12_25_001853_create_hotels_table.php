@@ -18,6 +18,7 @@ class CreateHotelsTable extends Migration
             $table->string('ciudad');
             $table->string('nombre');
             $table->integer('clase');
+            $table->boolean('disponible');
             $table->timestamps();
         });
     }

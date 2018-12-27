@@ -5,15 +5,16 @@ namespace App\Http\Controllers;
 use App\purchase;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Validator;
 
 class PurchaseController extends Controller
 {
 
-/*    public function rules(){
+    public function rules(){
         return[
             'fecha' => 'required|date'
         ];
-    }   */
+    }   
 
     /**
      * Display a listing of the resource.
@@ -43,10 +44,10 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
-/*        $validator = Validator::make($request->all(), $this->rules());
+        $validator = Validator::make($request->all(), $this->rules());
         if($validator->fails()){
             return $validator->messages();
-        }   */
+        }   
         $purchase = new \App\purchase; 
         $purchase->fecha = $request->get('fecha'); 
         return $purchase; 

@@ -8,7 +8,7 @@ class car extends Model
 {
 	protected $table = 'cars';
 	protected $fillable = [
-        'patente', 'marca', 'modelo', 'capacidad'
+        'patente', 'marca', 'modelo', 'capacidad', 'disponible'
     ];
 
     public function reservation(){

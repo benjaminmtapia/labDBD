@@ -8,7 +8,7 @@ class room extends Model
 {
 
 	protected $fillable = [
-        'numero', 'capacidad'
+        'numero', 'capacidad', 'disponible'
     ];
 
     public function hotel(){

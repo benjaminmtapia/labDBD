@@ -11,9 +11,9 @@ class HotelController extends Controller
 
     public function rules(){
         return[
-            'ciudad' => 'requiered|string',
-            'nombre' => 'requiered|string',
-            'clase' => 'requiered|integer'
+            'ciudad' => 'required|string',
+            'nombre' => 'required|string',
+            'clase' => 'required|integer'
         ];
     }
 

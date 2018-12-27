@@ -14,7 +14,8 @@ class CarController extends Controller
             'patente' => 'required|string',
             'marca' => 'required|string',
             'modelo' => 'required|string',
-            'capacidad' => 'required|string'
+            'capacidad' => 'required|string',
+            'disponible' => 'required|boolean'
         ];
     }
 
@@ -55,6 +56,7 @@ class CarController extends Controller
         $car->marca = $request->get('marca');
         $car->modelo = $request->get('modelo');
         $car->capacidad = $request->get('capacidad');
+        $car->disponible = $request->get('disponible');
         $car->save();
         return $car;
     }
@@ -99,6 +101,7 @@ class CarController extends Controller
         $car->marca = $request->get('marca');
         $car->modelo = $request->get('modelo');
         $car->capacidad = $request->get('capacidad');
+        $car->disponible = $request->get('disponible');
         $car->save();
         return $car;
     }

@@ -18,7 +18,8 @@ class CreateCarsTable extends Migration
             $table->string('patente');
             $table->string('marca');
             $table->string('modelo');
-            $table->decimal('capacidad');
+            $table->integer('capacidad');
+            $table->boolean('disponible');
             $table->unsignedInteger('package_id');
             $table->unsignedInteger('reservation_id');
             $table->foreign('package_id')->references('id')->on('packages');

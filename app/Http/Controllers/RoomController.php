@@ -11,8 +11,9 @@ class RoomController extends Controller
 
     public function rules(){
         return[
-            'numero' => 'requiered|integer',
-            'capacidad' => 'requiered|integer'
+            'numero' => 'required|integer',
+            'capacidad' => 'required|integer',
+            'disponible' => 'required|boolean',
         ];
     }
 
