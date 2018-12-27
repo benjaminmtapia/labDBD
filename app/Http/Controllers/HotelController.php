@@ -4,9 +4,19 @@ namespace App\Http\Controllers;
 
 use App\hotel;
 use Illuminate\Http\Request;
+use Validator;
 
 class HotelController extends Controller
 {
+
+    public function rules(){
+        return[
+            'ciudad' => 'requiered|string',
+            'nombre' => 'requiered|string',
+            'clase' => 'requiered|integer'
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +24,7 @@ class HotelController extends Controller
      */
     public function index()
     {
-        //
+        return hotel::all();
     }
 
     /**
@@ -35,7 +45,16 @@ class HotelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }   
+        $hotel = new \App\hotel;
+        $hotel->ciudad = $request->get('ciudad');
+        $hotel->nombre = $request->get('nombre');
+        $hotel->clase = $request->get('clase');
+        $hotel->save();
+        return $hotel;
     }
 
     /**
@@ -44,9 +63,10 @@ class HotelController extends Controller
      * @param  \App\hotel  $hotel
      * @return \Illuminate\Http\Response
      */
-    public function show(hotel $hotel)
+    public function show($id)
     {
-        //
+        $hotel = Hotel::find($id);
+        return $hotel; 
     }
 
     /**
@@ -69,7 +89,15 @@ class HotelController extends Controller
      */
     public function update(Request $request, hotel $hotel)
     {
-        //
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }   
+        $hotel->ciudad = $request->get('ciudad');
+        $hotel->nombre = $request->get('nombre');
+        $hotel->clase = $request->get('clase');
+        $hotel->save();
+        return $hotel;
     }
 
     /**
@@ -80,6 +108,9 @@ class HotelController extends Controller
      */
     public function destroy(hotel $hotel)
     {
-        //
+        $hotel->delete();
+        return response()->json([
+            'success'
+        ]);
     }
 }

@@ -51,7 +51,6 @@ class AirportController extends Controller
         $airport = new \App\airport;
         $airport->nombre = $request->get('nombre');
         $airport->ciudad = $request->get('ciudad');
-        
         $airport->origin_id = $request->get('origin_id');
         $airport->destiny_id = $request->get('destiny_id');
         

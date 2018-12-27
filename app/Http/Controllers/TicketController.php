@@ -15,7 +15,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        //
+        return ticket::all();
     }
 
     /**
@@ -36,7 +36,16 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all());
+        $pasaje = new ticket();
+        $pasaje->num_asiento = $request->get('num_asiento');
+        $pasaje->hora = $request->get('hora');
+        $pasaje->origen = $request->get('origen');
+        $pasaje->destino = $request->get('destino');
+        $pasaje->doc_identificacion = $request->get('doc_identificacion');
+        $pasaje->tipo_pasajero = $request->get('tipo_pasajero');
+        $pasaje->save();
+        return $pasaje;
     }
 
     /**
@@ -47,7 +56,7 @@ class TicketController extends Controller
      */
     public function show(ticket $ticket)
     {
-        //
+        return $ticket;
     }
 
     /**
@@ -70,7 +79,15 @@ class TicketController extends Controller
      */
     public function update(Request $request, ticket $ticket)
     {
-        //
+        $validator = Validator::make($request->all());
+        $ticket->num_asiento = $request->get('num_asiento');
+        $ticket->hora = $request->get('hora');
+        $ticket->origen = $request->get('origen');
+        $ticket->destino = $request->get('destino');
+        $ticket->doc_identificacion = $request->get('doc_identificacion');
+        $ticket->tipo_pasajero = $request->get('tipo_pasajero');
+        $ticket->save();
+        return $ticket;
     }
 
     /**
@@ -81,6 +98,7 @@ class TicketController extends Controller
      */
     public function destroy(ticket $ticket)
     {
-        //
+        $ticket->delete();
+        return response()->json(['success']);
     }
 }

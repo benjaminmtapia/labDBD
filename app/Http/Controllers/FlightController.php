@@ -15,7 +15,7 @@ class FlightController extends Controller
      */
     public function index()
     {
-        //
+        return flight::all();
     }
 
     /**
@@ -36,7 +36,13 @@ class FlightController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all());
+        $vuelo = new flight();
+        $vuelo->fecha_ida = $request->get('fecha_ida');
+        $vuelo->capacidad = $request->get('capacidad');
+        $vuelo->num_pasajeros = $request->get('num_pasajeros');
+        $vuelo->save();
+        return $vuelo;
     }
 
     /**
@@ -47,7 +53,7 @@ class FlightController extends Controller
      */
     public function show(flight $flight)
     {
-        //
+        return $flight;
     }
 
     /**
@@ -70,7 +76,12 @@ class FlightController extends Controller
      */
     public function update(Request $request, flight $flight)
     {
-        //
+        $validator = Validator::make($request->all());
+        $flight->fecha_ida = $request->get('fecha_ida');
+        $flight->capacidad = $request->get('capacidad');
+        $flight->num_pasajeros = $request->get('num_pasajeros');
+        $flight->save();
+        return $flight;
     }
 
     /**
@@ -81,6 +92,7 @@ class FlightController extends Controller
      */
     public function destroy(flight $flight)
     {
-        //
+        $flight->delete();
+        return response()->json(['success']);
     }
 }

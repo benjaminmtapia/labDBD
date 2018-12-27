@@ -8,6 +8,14 @@ use App\Http\Controllers\Controller;
 
 class RoomController extends Controller
 {
+
+    public function rules(){
+        return[
+            'numero' => 'requiered|integer',
+            'capacidad' => 'requiered|integer'
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,9 +23,7 @@ class RoomController extends Controller
      */
     public function index()
     {
-        $rooms = room::all();
-        return; 
-
+        return room::all();
     }
 
     /**
@@ -38,7 +44,15 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),$this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $room = new \App\room;
+        $room->numero = $request->get('numero');
+        $room->capacidad = $request->get('capacidad');
+        $room->save();
+        return $room; 
     }
 
     /**
@@ -47,9 +61,10 @@ class RoomController extends Controller
      * @param  \App\room  $room
      * @return \Illuminate\Http\Response
      */
-    public function show(room $room)
+    public function show($id)
     {
-        //
+        $room = Room::find($id);
+        return $room; 
     }
 
     /**
@@ -72,7 +87,14 @@ class RoomController extends Controller
      */
     public function update(Request $request, room $room)
     {
-        //
+        $validator = Validator::make($request->all(),$this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $room->numero = $request->get('numero');
+        $room->capacidad = $request->get('capacidad');
+        $room->save();
+        return $room; 
     }
 
     /**
@@ -83,6 +105,9 @@ class RoomController extends Controller
      */
     public function destroy(room $room)
     {
-        //
+        $room->delete();
+        return response()->json([
+            'success'
+        ]);
     }
 }

@@ -5,9 +5,18 @@ namespace App\Http\Controllers;
 use App\package;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Validator;
 
 class PackageController extends Controller
 {
+
+/*    public function rules(){
+        return[
+            'descuento' => 'required|integer',
+            'fecha_vencimiento' => ''
+        ];
+    }   */
+
     /**
      * Display a listing of the resource.
      *
@@ -15,9 +24,7 @@ class PackageController extends Controller
      */
     public function index()
     {
-        $packages = package::all();
-        return $packages; 
-
+        return package::all();
     }
 
     /**
@@ -38,8 +45,11 @@ class PackageController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all());
-        $package = new package();
+/*        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }   */
+        $package = new \App\package;
         $package->descuento = $request->get('descuento');
         $package->fecha_vencimiento = $request->get('fecha_vencimiento');
         $package->save();
@@ -52,9 +62,10 @@ class PackageController extends Controller
      * @param  \App\package  $package
      * @return \Illuminate\Http\Response
      */
-    public function show(package $package)
+    public function show($id)
     {
-        return $package;
+        $package = Package::find($id);
+        return $package; 
     }
 
     /**
@@ -77,7 +88,10 @@ class PackageController extends Controller
      */
     public function update(Request $request, package $package)
     {
-        $validator = Validator::make($request->all());
+/*        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }   */
         $package->descuento = $request->get('descuento');
         $package->fecha_vencimiento = $request->get('fecha_vencimiento');
         $package->save();

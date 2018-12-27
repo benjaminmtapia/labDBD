@@ -8,6 +8,16 @@ use App\Http\Controllers\Controller;
 
 class CarController extends Controller
 {
+
+    public function rules(){
+        return[
+            'patente' => 'required|string',
+            'marca' => 'required|string',
+            'modelo' => 'required|string',
+            'capacidad' => 'required|string'
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,9 +25,7 @@ class CarController extends Controller
      */
     public function index()
     {
-        $cars = car::all();
-        return $cars; 
-
+        return car::all();
     }
 
     /**
@@ -38,8 +46,11 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all());
-        $car = new car();
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $car = new \App\car;
         $car->patente = $request->get('patente');
         $car->marca = $request->get('marca');
         $car->modelo = $request->get('modelo');
@@ -54,9 +65,10 @@ class CarController extends Controller
      * @param  \App\car  $car
      * @return \Illuminate\Http\Response
      */
-    public function show(car $car)
+    public function show($id)
     {
-        //
+        $car = Car::find($id);
+        return $car; 
     }
 
     /**
@@ -65,7 +77,7 @@ class CarController extends Controller
      * @param  \App\car  $car
      * @return \Illuminate\Http\Response
      */
-    public function edit(car $car)
+    public function edit($id)
     {
         //
     }
@@ -79,8 +91,18 @@ class CarController extends Controller
      */
     public function update(Request $request, car $car)
     {
-        //
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $car->patente = $request->get('patente');
+        $car->marca = $request->get('marca');
+        $car->modelo = $request->get('modelo');
+        $car->capacidad = $request->get('capacidad');
+        $car->save();
+        return $car;
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -90,6 +112,9 @@ class CarController extends Controller
      */
     public function destroy(car $car)
     {
-        //
+        $car->delete();
+        return response()->json([
+            'success'
+        ]);
     }
 }

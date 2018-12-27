@@ -8,6 +8,13 @@ use App\Http\Controllers\Controller;
 
 class PurchaseController extends Controller
 {
+
+/*    public function rules(){
+        return[
+            'fecha' => 'required|date'
+        ];
+    }   */
+
     /**
      * Display a listing of the resource.
      *
@@ -15,9 +22,7 @@ class PurchaseController extends Controller
      */
     public function index()
     {
-        $purchases = purchase::all();
-        return; 
-
+        return purchase::all();
     }
 
     /**
@@ -38,7 +43,13 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+/*        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }   */
+        $purchase = new \App\purchase; 
+        $purchase->fecha = $request->get('fecha'); 
+        return $purchase; 
     }
 
     /**
@@ -47,9 +58,10 @@ class PurchaseController extends Controller
      * @param  \App\purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function show(purchase $purchase)
+    public function show($id)
     {
-        //
+        $purchase = Purchase::find($id);
+        return $purchase; 
     }
 
     /**
@@ -72,7 +84,13 @@ class PurchaseController extends Controller
      */
     public function update(Request $request, purchase $purchase)
     {
-        //
+/*        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }   */
+        $purchase->fecha = $request->get('fecha');
+        $purchase->save();
+        return $purchase; 
     }
 
     /**
@@ -83,6 +101,7 @@ class PurchaseController extends Controller
      */
     public function destroy(purchase $purchase)
     {
-        //
+        $purchase->delete();
+        return response()->json(['success']);
     }
 }
