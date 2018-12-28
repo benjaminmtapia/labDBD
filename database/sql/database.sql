@@ -382,3 +382,8 @@ alter table
   "clientreservations" 
 add 
   constraint "clientreservations_reservation_id_foreign" foreign key ("reservation_id") references "reservations" ("id");
+INSERT INTO origins VALUES (7,'ciudad de santiago');
+INSERT INTO destinies VALUES (1, 'ciudad de nueva york');
+INSERT INTO airports VALUES (5, 'santiago', 'comodo arturo benitez', 7,1);
+INSERT INTO hotels VALUES (12,'santiago','sheraton',5);
+INSERT INTO rooms VALUES (1,10,11,4);
