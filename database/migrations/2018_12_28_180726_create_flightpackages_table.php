@@ -14,6 +14,7 @@ class CreateFlightpackagesTable extends Migration
     public function up()
     {
         Schema::create('flightpackages', function (Blueprint $table) {
+            $table->increments('id');
             $table->unsignedInteger('flight_id');
             $table->unsignedInteger('package_id');
             $table->foreign('flight_id')->references('id')->on('flights');
