@@ -94,8 +94,8 @@ class FlightController extends Controller
         $flight->fecha_ida = $request->get('fecha_ida');
         $flight->capacidad = $request->get('capacidad');
         $flight->num_pasajeros = $request->get('num_pasajeros');
-        return $flight;
         $flight->save();
+        return $flight;
     }
 
     /**

@@ -48,8 +48,8 @@ class TicketController extends Controller
     {
         $validator = Validator::make($request->all(), $this->rules());
         if ($validator->fails()) {
+            return $validator->messages();
         }
-          return $validator->messages();
         $pasaje = new \App\ticket;
         $pasaje->num_asiento = $request->get('num_asiento');
         $pasaje->hora = $request->get('hora');
@@ -94,8 +94,8 @@ class TicketController extends Controller
      */
     public function update(Request $request, ticket $ticket)
     {
-        if ($validator->fails()) {
         $validator = Validator::make($request->all(), $this->rules());
+        if ($validator->fails()) {
           return $validator->messages();
         }
         $ticket->num_asiento = $request->get('num_asiento');
@@ -105,8 +105,8 @@ class TicketController extends Controller
         $ticket->doc_identificacion = $request->get('doc_identificacion');
         $ticket->tipo_pasajero = $request->get('tipo_pasajero');
         $ticket->flight_id = $request->get('flight_id');
-        $ticket->save();
         $ticket->reservation_id = $request->get('reservation_id');
+        $ticket->save();
         return $ticket;
     }
 

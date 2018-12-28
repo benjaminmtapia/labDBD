@@ -43,15 +43,16 @@ class AdministratorController extends Controller
      */
     public function store(Request $request)
     {
-        $administrador->save();
-        return $administrador;
+        $validator = Validator::make($request->all(), $this->rules());
+        if ($validator->fails()) {
+        return $validator->messages();
+        }
+        $administrador = new \App\administrator;
         $administrador->apellido = $request->get('apellido');
         $administrador->nombre = $request->get('nombre');
-        $administrador = new \App\administrator;
-        if ($validator->fails()) {
-        $validator = Validator::make($request->all(), $this->rules());
-        }
-          return $validator->messages();
+        
+        $administrador->save();
+        return $administrador;
     }
 
     /**
@@ -85,14 +86,15 @@ class AdministratorController extends Controller
      */
     public function update(Request $request, administrator $administrator)
     {
-        $validator = Validator::make($request->all(), $this->rules());
+$validator = Validator::make($request->all(), $this->rules());
         if ($validator->fails()) {
+        return $validator->messages();
         }
-          return $validator->messages();
-        $administrator->nombre = $request->get('nombre');
-        $administrator->apellido = $request->get('apellido');
-        return $administrator;
-        $administrator->save();
+        $administrador->apellido = $request->get('apellido');
+        $administrador->nombre = $request->get('nombre');
+        
+        $administrador->save();
+        return $administrador;
 
     }
 
