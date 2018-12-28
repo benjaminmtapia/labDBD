@@ -11,7 +11,7 @@ $factory->define(App\ticket::class, function (Faker $faker) {
         'origen' => $faker->city,
         'destino' => $faker->city,
         'doc_identificacion' => str_random(40),
-        'tipo_pasajero' => $faker->firstName,
+        'tipo_pasajero' => $faker->randomElement($array = array ('discapacidad fisica','tercera edad','discapacidad sensorial', 'discapacidad cognitiva', 'movilidad reducida')),
         'flight_id' => $vuelo->random()->id,
         'reservation_id'=>$reserva->random()->id
     ];
