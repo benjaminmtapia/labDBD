@@ -14,6 +14,7 @@ class CreateStopflightsTable extends Migration
     public function up()
     {
         Schema::create('stopflights', function (Blueprint $table) {
+            $table->increments('id');
             $table->unsignedInteger('stop_id');
             $table->unsignedInteger('flight_id');
             $table->foreign('flight_id')->references('id')->on('flights');

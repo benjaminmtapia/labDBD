@@ -24,7 +24,7 @@ class reservation extends Model
     	return $this->belongsToMany(package::class);
     }
     public function administrator(){
-    	return $this->belongsToMany(administrator::class);
+    	return $this->hasMany(reservation_administrator::class);
     }
     public function purchase(){
     	return $this->belongsTo(purchase::class);
@@ -37,6 +37,6 @@ class reservation extends Model
 
     }
     public function user(){
-    	return $this->belongsToMany(User::class);
+    	return $this->hasMany(ReservationUser::class);
     }
 }

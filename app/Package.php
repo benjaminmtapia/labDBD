@@ -27,7 +27,7 @@ class package extends Model
     	return $this->belongsToMany(flight::class);
     }           
     public function administrator(){
-        return $this->belongsToMany(administrator::class);
+        return $this->belongsTo(administratorpackage::class);
     }
 
 }

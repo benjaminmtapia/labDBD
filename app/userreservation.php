@@ -4,12 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ReservationUser extends Model
+class userreservation extends Model
 {
-    public function reservation(){
-    	return $this->belongsTo(Reservation::class);
-    }
     public function user(){
     	return $this->belongsTo(User::class);
+
+    }
+    public function reservation(){
+    	return $this->belongsTo(Reservation::class);
     }
 }

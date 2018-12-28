@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class flightpackage extends Model
 {
     public function package(){
-    	return $this->hasMany(package::class);
+    	return $this->belongsTo(package::class);
     }
     public function flight(){
-    	return $this->hasMany(flight::class);
+    	return $this->belongsTo(flight::class);
     	
     }
 }

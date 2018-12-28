@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdministratorpackagesTable extends Migration
+class CreateAdministratorPackagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateAdministratorpackagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('administratorpackages', function (Blueprint $table) {
+        Schema::create('administrator_packages', function (Blueprint $table) {
+            $table->increments('id');
             $table->unsignedInteger('administrator_id');
             $table->unsignedInteger('package_id');
-            $table->foreign('package_id')->references('id')->on('packages');
             $table->foreign('administrator_id')->references('id')->on('administrators');
+            $table->foreign('package_id')->references('id')->on('packages');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateAdministratorpackagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('administratorpackages');
+        Schema::dropIfExists('administrator_packages');
     }
 }

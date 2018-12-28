@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class administrator extends Model
 {
     public function reservation(){
-    	return $this->belongsToMany(Reservation::class);
+    	return $this->hasMany(administratorreservation::class);
 
     }
     public function package(){
-    	return $this->belongsToMany(Package::class);
+    	return $this->hasMany(administratorpackage::class);
 
     }
 }

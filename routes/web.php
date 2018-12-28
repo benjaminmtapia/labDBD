@@ -35,3 +35,6 @@ Route::resource('/passengers','PassengerController');
 Route::resource('/reservations','ReservationController');
 Route::resource('/socios','SocioController');
 Route::resource('/stops','StopController');
+
+Route::resource('/stops','StopController');
+Route::resource('/stops','StopController');
