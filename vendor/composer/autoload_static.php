@@ -421,7 +421,6 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         'App\\hotelreservation_package' => __DIR__ . '/../..' . '/app/hotelreservation_package.php',
         'App\\origin' => __DIR__ . '/../..' . '/app/Origin.php',
         'App\\package' => __DIR__ . '/../..' . '/app/Package.php',
-        'App\\package_reservation' => __DIR__ . '/../..' . '/app/Package_reservation.php',
         'App\\passenger' => __DIR__ . '/../..' . '/app/Passenger.php',
         'App\\purchase' => __DIR__ . '/../..' . '/app/Purchase.php',
         'App\\reservation' => __DIR__ . '/../..' . '/app/Reservation.php',

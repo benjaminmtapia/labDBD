@@ -74,7 +74,6 @@ return array(
     'App\\hotelreservation_package' => $baseDir . '/app/hotelreservation_package.php',
     'App\\origin' => $baseDir . '/app/Origin.php',
     'App\\package' => $baseDir . '/app/Package.php',
-    'App\\package_reservation' => $baseDir . '/app/Package_reservation.php',
     'App\\passenger' => $baseDir . '/app/Passenger.php',
     'App\\purchase' => $baseDir . '/app/Purchase.php',
     'App\\reservation' => $baseDir . '/app/Reservation.php',
