@@ -14,7 +14,7 @@ class ReservationflightController extends Controller
      */
     public function index()
     {
-        //
+        return reservationflight::all();
     }
 
     /**
@@ -35,7 +35,11 @@ class ReservationflightController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $reservationflight = new \App\reservationflight;
+        $reservationflight->flight_id = $request->get('flight_id');
+        $reservationflight->reservation_id = $request->get('reservation_id');
+        $reservationflight->save();
+        return $reservationflight;
     }
 
     /**
@@ -69,7 +73,10 @@ class ReservationflightController extends Controller
      */
     public function update(Request $request, reservationflight $reservationflight)
     {
-        //
+        $reservationflight->flight_id = $request->get('flight_id');
+        $reservationflight->reservation_id = $request->get('reservation_id');
+        $reservationflight->save();
+        return $reservationflight;
     }
 
     /**
@@ -80,6 +87,7 @@ class ReservationflightController extends Controller
      */
     public function destroy(reservationflight $reservationflight)
     {
-        //
+        $reservationflight->delete();
+        return response()->json(['success']);
     }
 }

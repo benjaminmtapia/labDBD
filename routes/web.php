@@ -16,7 +16,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
 Route::resource('/airports', 'AirportController');
 Route::resource('/administrators', 'AdministratorController');
 Route::resource('/flights', 'FlightController');
@@ -35,6 +34,13 @@ Route::resource('/passengers','PassengerController');
 Route::resource('/reservations','ReservationController');
 Route::resource('/socios','SocioController');
 Route::resource('/stops','StopController');
-
-Route::resource('/stops','StopController');
-Route::resource('/stops','StopController');
+Route::resource('/administratorpackages','AdministratorPackageController');
+Route::resource('/flightpackages','Flightpackagecontroller');
+Route::resource('/hotelreservationpackages','HotelreservationPackageController');
+Route::resource('/packagehotelreservations','StopController');
+Route::resource('/packagereservations','PackageReservationController');
+Route::resource('/reservationadministrators','ReservationAdministratorController');
+Route::resource('/reservationflights','ReservationflightController');
+Route::resource('/reservationpackages','ReservationpackageController');
+Route::resource('/stopflights','StopflightController');
+Route::resource('/reservationusers','ReservationUserController');

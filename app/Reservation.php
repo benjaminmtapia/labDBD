@@ -33,7 +33,7 @@ class reservation extends Model
     	return $this->hasMany(ticket::class);
     }
     public function flight(){
-    	return $this->belongsToMany(flight::class);
+    	return $this->hasMany(reservationflight::class);
 
     }
     public function user(){

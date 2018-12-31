@@ -96,8 +96,8 @@ class AirportController extends Controller
         }
         $airport->nombre = $request->get('nombre');
         $airport->ciudad = $request->get('ciudad');
-        $airport->id_origen = $request->get('id_origen');
-        $airport->id_destino = $request->get('id_destino');
+        $airport->origin_id = $request->get('origin_id');
+        $airport->destiny_id = $request->get('destiny_id');
         $airport->save();
         return $airport;
     }

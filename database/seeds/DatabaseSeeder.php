@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
         $this->call(reservationflightSeeder::class);
         $this->call(reservationuserSeeder::class);
         $this->call(reservationpackageSeeder::class);
-        $this->call(flightpackageSeeder::class);
         $this->call(hotelreservationpackageSeeder::class);
+        $this->call(flightpackageSeeder::class);
     }
 }
