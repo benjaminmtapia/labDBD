@@ -1,5 +1,4 @@
 DROP TABLE users CASCADE;
-DROP TABLE passwords CASCADE;
 DROP TABLE destinies CASCADE;
 DROP TABLE origins CASCADE;
 DROP TABLE reservations CASCADE;
@@ -21,18 +20,10 @@ DROP TABLE hotel_reservations CASCADE;
 DROP TABLE stopflights CASCADE;
 DROP TABLE reservationflights CASCADE;
 DROP TABLE clientreservations CASCADE;
-DROP TABLE reservation_administrators CASCADE
-DROP TABLE userreservations CASCADE;
+DROP TABLE reservation_administrators CASCADE;
 DROP TABLE reservationpackages CASCADE;
 DROP TABLE flightpackages CASCADE;
 DROP TABLE hotelreservation_packages CASCADE;
-DROP TABLE "hotel_reservation-packages" CASCADE;
-DROP TABLE hotelreservation_packages CASCADE;
-DROP TABLE "reservation-package" CASCADE;
 DROP TABLE password_resets CASCADE;
-DROP TABLE "reservation-packages" CASCADE;
-DROP TABLE "reservationadministrators" CASCADE;
-DROP TABLE "administratorpackages"CASCADE;
-DROP TABLE "reservation_administrators"CASCADE;
-DROP TABLE "userreservations"CASCADE;
-DROP TABLE "administrator_packages"CASCADE;
+DROP TABLE userreservations CASCADE;
+DROP TABLE administrator_packages CASCADE;
