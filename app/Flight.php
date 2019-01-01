@@ -9,6 +9,7 @@ class flight extends Model
     public function reservation(){
     	return $this->belongsToMany(Reservation::class);
     }
+    
     public function ticket(){
     	return $this->hasMany(ticket::class);
 
@@ -16,8 +17,8 @@ class flight extends Model
     public function stop(){
     	return $this->hasMany(stopflight::class);
     }
-    public function passenger(){
-    	return $this->hasMany(passenger::class);
+    public function seat(){
+    	return $this->hasMany(seat::class);
     }
     public function package(){
     	return $this->hasMany(flightpackage::class);
