@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class AdministratorPackageController extends Controller
 {
+
+    public function rules(){
+        return[
+            'administrator_id' => 'required|integer',
+            'package_id' => 'required|integer'
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,7 @@ class AdministratorPackageController extends Controller
      */
     public function index()
     {
-        //
+        return administrator_package::all();
     }
 
     /**
@@ -35,7 +43,15 @@ class AdministratorPackageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $administrator_package = new \App\administrator_package;
+        $administrator_package->administrator_id = $request->get('administrator_id');
+        $administrator_package->package_id = $request->get('package_id');
+        $administrator_package->save();
+        return $administrator_package;
     }
 
     /**
@@ -69,7 +85,14 @@ class AdministratorPackageController extends Controller
      */
     public function update(Request $request, administrator_package $administrator_package)
     {
-        //
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $administrator_package->administrator_id = $request->get('administrator_id');
+        $administrator_package->package_id = $request->get('package_id');
+        $administrator_package->save();
+        return $administrator_package;
     }
 
     /**
@@ -80,6 +103,7 @@ class AdministratorPackageController extends Controller
      */
     public function destroy(administrator_package $administrator_package)
     {
-        //
+        $administrator_package->delete();//TE ODIO >:(
+        return Response()->json(['success']);
     }
 }

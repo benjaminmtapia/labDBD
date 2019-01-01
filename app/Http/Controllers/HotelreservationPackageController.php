@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class HotelreservationPackageController extends Controller
 {
+
+    public function rules(){
+        return[
+            'hotel_reservation_id' => 'required|integer',
+            'package_id' => 'required|integer'
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,7 @@ class HotelreservationPackageController extends Controller
      */
     public function index()
     {
-        //
+        return hotelreservation_package::all();
     }
 
     /**
@@ -35,7 +43,15 @@ class HotelreservationPackageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $hotelreservation_package = new \App\hotelreservation_package;
+        $hotelreservation_package->hotel_reservation_id = $request->get('hotel_reservation_id');
+        $hotelreservation_package->package_id = $request->get('package_id');
+        $hotelreservation_package->save();
+        return $hotelreservation_package;
     }
 
     /**
@@ -69,8 +85,16 @@ class HotelreservationPackageController extends Controller
      */
     public function update(Request $request, hotelreservation_package $hotelreservation_package)
     {
-        //
+        $validator = Validator::make($request->all(), $this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }
+        $hotelreservation_package->hotel_reservation_id = $request->get('hotel_reservation_id');
+        $hotelreservation_package->package_id = $request->get('package_id');
+        $hotelreservation_package->save();
+        return $hotelreservation_package;
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -80,6 +104,7 @@ class HotelreservationPackageController extends Controller
      */
     public function destroy(hotelreservation_package $hotelreservation_package)
     {
-        //
+        $hotelreservation_package->delete();//TE ODIO >:(
+        return Response()->json(['success']);
     }
 }
