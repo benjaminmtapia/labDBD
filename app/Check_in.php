@@ -8,11 +8,11 @@ class check_in extends Model
 {
 
 	protected $fillable = [
-       /* 'cod_reserva', */'cuenta', 'numero_vuelo'
+       'cuenta', 'numero_vuelo'
     ];
     
     public function reservation(){
-    	return $this->hasOne(Reservation::class);
+    	return $this->belongsTo(Reservation::class);
     }
 
 }

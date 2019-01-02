@@ -8,7 +8,7 @@ class hotel_reservation extends Model
 {
 
 	protected $fillable = [
-        /*'num_reserva'*/ 'id', 'cantidad_personas'
+        'cantidad_personas'
     ];
 
     public function reservation(){
