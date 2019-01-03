@@ -14,7 +14,7 @@ class FlightpackageController extends Controller
      */
     public function index()
     {
-        //
+        return flightpackage::all();
     }
 
     /**
@@ -35,7 +35,11 @@ class FlightpackageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $flightpackage = new \App\flightpackage;
+      $flightpackage->flight_id = $request->get('flight_id');
+      $flightpackage->package_id = $request->get('package_id');
+      $flightpackage->save();
+      return $flightpackage;
     }
 
     /**
@@ -69,7 +73,10 @@ class FlightpackageController extends Controller
      */
     public function update(Request $request, flightpackage $flightpackage)
     {
-        //
+      $flightpackage->flight_id = $request->get('flight_id');
+      $flightpackage->package_id = $request->get('package_id');
+      $flightpackage->save();
+      return $flightpackage;
     }
 
     /**
@@ -80,6 +87,7 @@ class FlightpackageController extends Controller
      */
     public function destroy(flightpackage $flightpackage)
     {
-        //
+      $flightpackage->delete();
+      return response()->json(['success']);
     }
 }

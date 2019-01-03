@@ -14,7 +14,7 @@ class StopflightController extends Controller
      */
     public function index()
     {
-        //
+        return stopflight::all();
     }
 
     /**
@@ -35,7 +35,11 @@ class StopflightController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $stopflight = new \App\stopflight;
+      $stopflight->flight_id = $request->get('flight_id');
+      $stopflight->stop_id = $request->get('stop_id');
+      $stopflight->save();
+      return $stopflight;
     }
 
     /**
@@ -69,7 +73,10 @@ class StopflightController extends Controller
      */
     public function update(Request $request, stopflight $stopflight)
     {
-        //
+      $stopflight->flight_id = $request->get('flight_id');
+      $stopflight->stop_id = $request->get('stop_id');
+      $stopflight->save();
+      return $stopflight;
     }
 
     /**
@@ -80,6 +87,7 @@ class StopflightController extends Controller
      */
     public function destroy(stopflight $stopflight)
     {
-        //
+      $stopflight->delete();
+      return response()->json(['success']);
     }
 }
