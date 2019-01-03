@@ -35,7 +35,7 @@ Route::resource('/reservations','ReservationController');
 Route::resource('/socios','SocioController');
 Route::resource('/stops','StopController');
 Route::resource('/administratorpackages','AdministratorPackageController');
-Route::resource('/flightpackages','Flightpackagecontroller');
+Route::resource('/flightpackages','FlightpackageController');
 Route::resource('/hotelreservationpackages','HotelreservationPackageController');
 Route::resource('/packagehotelreservations','StopController');
 Route::resource('/packagereservations','PackageReservationController');
