@@ -13,21 +13,23 @@ class TriggerRooms extends Migration
      */
         public function up()
         {
-        DB::unprepared('
+        DB::statement('
             CREATE OR REPLACE FUNCTION habilitarDisponibilidad()
             RETURNS trigger AS
             $$
                 DECLARE
-                limite INTEGER := 10;                
-                n INTEGER := 0;                
+                limite INTEGER := 10;
+                n INTEGER := 0;          
                 disponible BOOLEAN := true;
+                rdm INTEGER := 1;
                 valor INTEGER := NEW.id;
                 BEGIN
                 LOOP
                     EXIT WHEN n = limite; 
                     n := n + 1; 
+                    rdm:= ((rdm * 1.5 * n * valor)%4) + 1; 
                     INSERT INTO rooms(hotel_id, numero, capacidad, created_at, updated_at) 
-                    VALUES (NEW.id, n, 12, NEW.created_at, NEW.updated_at);
+                    VALUES (valor, n, rdm, NEW.created_at, NEW.updated_at);
                 END LOOP;
                 RETURN NEW;
             END
@@ -47,6 +49,6 @@ class TriggerRooms extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('trigger_rooms');
     }
 }
