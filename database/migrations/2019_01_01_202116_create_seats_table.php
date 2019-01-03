@@ -15,12 +15,11 @@ class CreateSeatsTable extends Migration
     {
         Schema::create('seats', function (Blueprint $table) {
             $table->increments('id');
-            $table->char('letra');
+            $table->char('letra',1);
             $table->integer('numero');
+            $table->boolean('disponibilidad');
             $table->unsignedInteger('flight_id');
-            $table->unsignedInteger('passenger_id');
             $table->foreign('flight_id')->references('id')->on('flights');
-            $table->foreign('passenger_id')->references('id')->on('passengers');
             $table->timestamps();            
         });
     }

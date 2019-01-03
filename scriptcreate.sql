@@ -88,7 +88,8 @@ PassengerTrigger:
  create table "hotelreservation_packages" ("id" serial primary key not null, "hotel_reservation_id" integer not null, "package_id" integer not null, "created_at" timestamp(0) without time zone null, "updated_at" timestamp(0) without time zone null);
  alter table "hotelreservation_packages" add constraint "hotelreservation_packages_hotel_reservation_id_foreign" foreign key ("hotel_reservation_id") references "hotel_reservations" ("id");
  alter table "hotelreservation_packages" add constraint "hotelreservation_packages_package_id_foreign" foreign key ("package_id") references "packages" ("id");
-
+create table "seats" ("id" serial primary key not null, "letra" char(1) not null, "numero" integer not null, "disponibilidad" boolean not null, "flight_id" integer not null, "created_at" timestamp(0) without time zone null, "updated_at" timestamp(0) without time zone null);
+alter table "seats" add constraint "seats_flight_id_foreign" foreign key ("flight_id") references "flights" ("id");
 
 
 

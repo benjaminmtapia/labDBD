@@ -50,7 +50,7 @@ class ReservationflightController extends Controller
      */
     public function show(reservationflight $reservationflight)
     {
-        //
+        return $reservationflight;
     }
 
     /**

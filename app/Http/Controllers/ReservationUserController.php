@@ -49,7 +49,7 @@ class ReservationUserController extends Controller
      */
     public function show(ReservationUser $ReservationUser)
     {
-        //
+        return $ReservationUser;
     }
 
     /**

@@ -27,3 +27,4 @@ DROP TABLE hotelreservation_packages CASCADE;
 DROP TABLE password_resets CASCADE;
 DROP TABLE userreservations CASCADE;
 DROP TABLE administrator_packages CASCADE;
+DROP TABLE seats CASCADE;

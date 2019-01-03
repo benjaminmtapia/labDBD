@@ -8,7 +8,7 @@ $factory->define(App\Seat::class, function (Faker $faker) {
     return [
         'letra'=>$faker->randomLetter(),
         'numero'=>$faker->numberBetween(1,10),
-        'flight_id'=>$flight->random()->id,
-        'passenger_id'=>$passenger->random()->id
+        'disponibilidad'=>$faker->boolean,
+        'flight_id'=>$flight->random()->id
     ];
 });
