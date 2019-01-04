@@ -23,7 +23,7 @@ class ReservationUserController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -47,9 +47,10 @@ class ReservationUserController extends Controller
      * @param  \App\ReservationUser  $ReservationUser
      * @return \Illuminate\Http\Response
      */
-    public function show(ReservationUser $ReservationUser)
+    public function show($id)
     {
-        return $ReservationUser;
+        $ReservationUser = ReservationUser::find($id);
+        return $ReservationUser; 
     }
 
     /**

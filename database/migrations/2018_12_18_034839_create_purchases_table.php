@@ -17,6 +17,7 @@ class CreatePurchasesTable extends Migration
             $table->increments('id');
             $table->timestamp('fecha');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

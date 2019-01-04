@@ -22,6 +22,7 @@ class CreateAirportsTable extends Migration
             $table->foreign('origin_id')->references('id')->on('origins');
             $table->foreign('destiny_id')->references('id')->on('destinies');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

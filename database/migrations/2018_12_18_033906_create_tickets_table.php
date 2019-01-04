@@ -27,6 +27,7 @@ class CreateTicketsTable extends Migration
             $table->unsignedInteger('reservation_id');
             $table->foreign('reservation_id')->references('id')->on('reservations');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

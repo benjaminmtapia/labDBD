@@ -19,6 +19,7 @@ class CreateCheckInsTable extends Migration
             $table->integer('cuenta');
             $table->integer('num_vuelo'); 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

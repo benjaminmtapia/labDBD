@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\flight;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Validator;
 
 class FlightController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -62,8 +64,9 @@ class FlightController extends Controller
      * @param  \App\flight  $flight
      * @return \Illuminate\Http\Response
      */
-    public function show(flight $flight)
+    public function show($id)
     {
+        $flight = flight::find($id);
         return $flight;
     }
 

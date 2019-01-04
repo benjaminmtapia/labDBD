@@ -25,6 +25,7 @@ class CreateReservationsTable extends Migration
             $table->foreign('origin_id')->references('id')->on('origins');
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
