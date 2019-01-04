@@ -1,21 +1,19 @@
-
-            CREATE OR REPLACE FUNCTION agregarAsientos()
-            RETURNS trigger AS
-            $$
+CREATE OR REPLACE FUNCTION public.agregarasientos()
+ RETURNS trigger
+ LANGUAGE plpgsql
+AS $function$
                 DECLARE
                 i INTEGER := 10;
                 j INTEGER := 0;
+                letter CHAR:= 'a';
+                valor INTEGER := NEW.id;
                 BEGIN           
                 LOOP 
                     EXIT WHEN j = i;
                     j := j + 1;
                     INSERT INTO seats( flight_id,letra,numero,disponibilidad,created_at,updated_at) VALUES 
-                    (NEW.id,'a',j,true, NEW.created_at,NEW.updated_at);
+                    (valor,letter,j,true, NEW.created_at,NEW.updated_at);
                 END LOOP ;
                 RETURN NEW;
             END
-            $$ LANGUAGE plpgsql;
-
-        CREATE TRIGGER crearAsiento AFTER INSERT ON flights FOR EACH ROW
-        EXECUTE PROCEDURE agregarAsientos();
-        
+            $function$

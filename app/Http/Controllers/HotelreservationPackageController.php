@@ -60,7 +60,7 @@ class HotelreservationPackageController extends Controller
      * @param  \App\hotelreservation_package  $hotelreservation_package
      * @return \Illuminate\Http\Response
      */
-    public function show(hotelreservation_package $hotelreservation_package)
+    public function show($id)
     {
         //
     }

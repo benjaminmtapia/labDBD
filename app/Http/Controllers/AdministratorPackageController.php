@@ -60,9 +60,10 @@ class AdministratorPackageController extends Controller
      * @param  \App\administrator_package  $administrator_package
      * @return \Illuminate\Http\Response
      */
-    public function show(administrator_package $administrator_package)
+    public function show( $id)
     {
-        //
+        $administrator_package = administrator_package::find(id);
+        return $administrator_package
     }
 
     /**
