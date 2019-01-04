@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\flightpackage;
 use Illuminate\Http\Request;
-
+use Validator;
 class FlightpackageController extends Controller
 {
     /**
@@ -12,9 +12,16 @@ class FlightpackageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     public function rules(){
+         return[
+            'package_id' => 'required|integer',
+            'flight_id' => 'required|integer'
+         ];
+     }
+
     public function index()
     {
-        //
+        return flightpackage::all();
     }
 
     /**
@@ -35,7 +42,15 @@ class FlightpackageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), $this->rules());
+        if ($validator->fails()) {
+          return $validator->messages();
+        }
+      $flightpackage = new \App\flightpackage;
+      $flightpackage->flight_id = $request->get('flight_id');
+      $flightpackage->package_id = $request->get('package_id');
+      $flightpackage->save();
+      return $flightpackage;
     }
 
     /**
@@ -69,7 +84,14 @@ class FlightpackageController extends Controller
      */
     public function update(Request $request, flightpackage $flightpackage)
     {
-        //
+        $validator = Validator::make($request->all(), $this->rules());
+        if ($validator->fails()) {
+          return $validator->messages();
+        }
+      $flightpackage->flight_id = $request->get('flight_id');
+      $flightpackage->package_id = $request->get('package_id');
+      $flightpackage->save();
+      return $flightpackage;
     }
 
     /**
@@ -80,6 +102,7 @@ class FlightpackageController extends Controller
      */
     public function destroy(flightpackage $flightpackage)
     {
-        //
+      $flightpackage->delete();
+      return response()->json(['success']);
     }
 }
