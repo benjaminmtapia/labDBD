@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\flight;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Validator;
 
 class FlightController extends Controller
 {
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
     /**
      * Display a listing of the resource.
      *

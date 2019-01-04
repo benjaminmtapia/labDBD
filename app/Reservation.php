@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class reservation extends Model
 {
+    use SoftDeletes;
 	protected $table = 'reservations';
     
  	public function origin(){

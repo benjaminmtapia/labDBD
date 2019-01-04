@@ -95,8 +95,7 @@ class PassengerController extends Controller
      */
     public function destroy(passenger $passenger)
     {
-        $pasajero = passenger::find($id);
-        $pasajero->delete();
-        return 0;
+        $passenger->delete();
+        return response()->json(['success']);
     }
 }

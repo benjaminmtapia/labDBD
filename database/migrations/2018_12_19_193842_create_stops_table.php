@@ -17,6 +17,7 @@ class CreateStopsTable extends Migration
             $table->increments('id');
             $table->string('nombre',60);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

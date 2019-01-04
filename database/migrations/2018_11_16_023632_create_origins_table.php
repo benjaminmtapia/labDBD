@@ -17,6 +17,7 @@ class CreateOriginsTable extends Migration
             $table->increments('id');
             $table->string('ciudad',60);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

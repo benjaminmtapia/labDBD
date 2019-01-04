@@ -19,6 +19,7 @@ class CreateSociosTable extends Migration
             $table->string('email');
             $table->integer('millas');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

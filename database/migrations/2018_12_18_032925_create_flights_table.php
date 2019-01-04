@@ -19,6 +19,7 @@ class CreateFlightsTable extends Migration
             $table->smallInteger('capacidad');
             $table->smallInteger('num_pasajeros');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
