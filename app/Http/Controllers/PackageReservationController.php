@@ -15,8 +15,8 @@ class PackageReservationController extends Controller
      */
     public function index()
     {
-        $package_reservations = package_reservation::all();
-        return; 
+        return $package_reservations = package_reservation::all();
+        
 
     }
 
@@ -38,7 +38,14 @@ class PackageReservationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+              
+        $packagereservation = new App\package_reservation;
+        $packagereservation->nombre = $request->get('nombre');
+        $packagereservation->apellido = $request->get('apellido');
+        $packagereservation->num_asiento = $request->get('num_asiento');
+        $packagereservation->num_vuelo = $request->get('num_vuelo');
+        $packagereservation->save();
+        return $packagereservation;
     }
 
     /**
@@ -72,7 +79,12 @@ class PackageReservationController extends Controller
      */
     public function update(Request $request, package_reservation $package_reservation)
     {
-        //
+        $package_reservation->nombre = $request->get('nombre');
+        $package_reservation->apellido = $request->get('apellido');
+        $package_reservation->num_asiento = $request->get('num_asiento');
+        $package_reservation->num_vuelo = $request->get('num_vuelo');
+        $package_reservation->save();
+        return $package_reservation;
     }
 
     /**
@@ -83,6 +95,7 @@ class PackageReservationController extends Controller
      */
     public function destroy(package_reservation $package_reservation)
     {
-        //
+        $package_reservation->delete();
+        return response()->json(['success']);
     }
 }

@@ -14,8 +14,8 @@ class PassengerController extends Controller
      */
     public function index()
     {
-         $pasajero = passenger::all();
-        return $pasajero;
+        return $pasajero = passenger::all();
+       
     }
 
     /**
@@ -36,12 +36,10 @@ class PassengerController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all());
         $pasajero = new passenger();
         $pasajero->nombre = $request->get('nombre');
         $pasajero->apellido = $request->get('apellido');
-        $pasajero->num_asiento = $request->get('num_asiento');
-        $pasajero->num_vuelo = $request->get('num_vuelo');
+        $pasajero->flight_id = $request->get('flight_id');
         $pasajero->save();
         return $pasajero;
     }
@@ -77,12 +75,10 @@ class PassengerController extends Controller
      */
     public function update(Request $request, passenger $passenger)
     {
-        $validator = Validator::make($request->all());
         $pasajero = new passenger();
         $pasajero->nombre = $request->get('nombre');
         $pasajero->apellido = $request->get('apellido');
-        $pasajero->num_asiento = $request->get('num_asiento');
-        $pasajero->num_vuelo = $request->get('num_vuelo');
+        $pasajero->flight_id = $request->get('flight_id');
         $pasajero->save();
         return $pasajero;
     }

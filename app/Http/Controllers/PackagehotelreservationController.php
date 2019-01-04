@@ -14,7 +14,7 @@ class PackagehotelreservationController extends Controller
      */
     public function index()
     {
-        //
+        return $packagehotelreservation::all();
     }
 
     /**
@@ -35,7 +35,12 @@ class PackagehotelreservationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+ 
+        $packagehotelreservation = new \App\packagehotelreservation;
+        $packagehotelreservation->descuento = $request->get('descuento');
+        $packagehotelreservation->fecha_vencimiento = $request->get('fecha_vencimiento');
+        $packagehotelreservation->save();
+        return $packagehotelreservation;
     }
 
     /**
@@ -69,7 +74,11 @@ class PackagehotelreservationController extends Controller
      */
     public function update(Request $request, packagehotelreservation $packagehotelreservation)
     {
-        //
+        $package = new \App\package;
+        $package->descuento = $request->get('descuento');
+        $package->fecha_vencimiento = $request->get('fecha_vencimiento');
+        $package->save();
+        return $package;
     }
 
     /**
@@ -80,6 +89,7 @@ class PackagehotelreservationController extends Controller
      */
     public function destroy(packagehotelreservation $packagehotelreservation)
     {
-        //
+        $packagehotelreservation->delete();
+        return  response()->json(['success']);
     }
 }
