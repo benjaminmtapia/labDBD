@@ -15,7 +15,6 @@ class CreateHotelReservationsTable extends Migration
     {
         Schema::create('hotel_reservations', function (Blueprint $table) {
             $table->increments('id');
-            
             $table->decimal('cantidad_personas');
             $table->unsignedInteger('room_id');
             $table->unsignedInteger('package_id');
@@ -24,6 +23,7 @@ class CreateHotelReservationsTable extends Migration
             $table->foreign('reservation_id')->references('id')->on('reservations');
             $table->foreign('package_id')->references('id')->on('packages');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

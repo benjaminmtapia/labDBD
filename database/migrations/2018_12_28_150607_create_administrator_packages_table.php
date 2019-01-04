@@ -20,6 +20,7 @@ class CreateAdministratorPackagesTable extends Migration
             $table->foreign('administrator_id')->references('id')->on('administrators');
             $table->foreign('package_id')->references('id')->on('packages');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

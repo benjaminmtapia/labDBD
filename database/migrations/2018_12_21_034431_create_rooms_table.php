@@ -20,6 +20,7 @@ class CreateRoomsTable extends Migration
             $table->integer('capacidad');
             $table->foreign('hotel_id')->references('id')->on('hotels');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

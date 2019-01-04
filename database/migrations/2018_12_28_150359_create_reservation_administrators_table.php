@@ -20,6 +20,7 @@ class CreateReservationAdministratorsTable extends Migration
             $table->foreign('reservation_id')->references('id')->on('reservations');
             $table->foreign('administrator_id')->references('id')->on('administrators');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

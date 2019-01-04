@@ -24,6 +24,7 @@ class CreateCarsTable extends Migration
             $table->foreign('package_id')->references('id')->on('packages');
             $table->foreign('reservation_id')->references('id')->on('reservations');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -20,6 +20,7 @@ class CreateHotelreservationPackagesTable extends Migration
             $table->foreign('hotel_reservation_id')->references('id')->on('hotel_reservations');
             $table->foreign('package_id')->references('id')->on('packages');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

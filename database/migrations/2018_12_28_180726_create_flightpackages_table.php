@@ -20,6 +20,7 @@ class CreateFlightpackagesTable extends Migration
             $table->foreign('flight_id')->references('id')->on('flights');
             $table->foreign('package_id')->references('id')->on('packages');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

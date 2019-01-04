@@ -18,6 +18,7 @@ class CreatePackagesTable extends Migration
             $table->integer('descuento');
             $table->timestamp('fecha_vencimiento');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

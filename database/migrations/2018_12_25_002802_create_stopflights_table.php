@@ -20,6 +20,7 @@ class CreateStopflightsTable extends Migration
             $table->foreign('flight_id')->references('id')->on('flights');
             $table->foreign('stop_id')->references('id')->on('stops');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

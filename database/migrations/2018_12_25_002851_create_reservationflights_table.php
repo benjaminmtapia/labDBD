@@ -20,6 +20,7 @@ class CreateReservationflightsTable extends Migration
             $table->foreign('reservation_id')->references('id')->on('reservations');
             $table->foreign('flight_id')->references('id')->on('flights');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

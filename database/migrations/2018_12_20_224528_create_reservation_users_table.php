@@ -20,6 +20,7 @@ class CreateReservationUsersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('reservation_id')->references('id')->on('reservations');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

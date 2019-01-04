@@ -19,6 +19,7 @@ class CreateHotelsTable extends Migration
             $table->string('nombre');
             $table->integer('clase');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

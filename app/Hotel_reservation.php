@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class hotel_reservation extends Model
 {
+    use SoftDeletes;
 
 	protected $fillable = [
         'cantidad_personas'

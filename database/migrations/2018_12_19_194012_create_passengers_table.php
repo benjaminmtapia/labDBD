@@ -20,6 +20,7 @@ class CreatePassengersTable extends Migration
             $table->unsignedInteger('flight_id');
             $table->foreign('flight_id')->references('id')->on('flights');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
