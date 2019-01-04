@@ -14,9 +14,8 @@ class ReservationpackageController extends Controller
      */
     public function index()
     {
-        //
+        return reservationpackage::all();
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -35,7 +34,11 @@ class ReservationpackageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $reservationpackage = new \App\reservationpackage;
+        $reservationpackage->reservation_id = $request->get('reservation_id');
+        $reservationpackage->package_id = $request->get('package_id');
+        $reservationpackage->save();
+        return $reservationpackage;
     }
 
     /**
@@ -44,9 +47,10 @@ class ReservationpackageController extends Controller
      * @param  \App\reservationpackage  $reservationpackage
      * @return \Illuminate\Http\Response
      */
-    public function show(reservationpackage $reservationpackage)
+    public function show($id)
     {
-        //
+        $reservationpackage = reservationpackage::find($id);
+        return $reservationpackage; 
     }
 
     /**
@@ -69,7 +73,10 @@ class ReservationpackageController extends Controller
      */
     public function update(Request $request, reservationpackage $reservationpackage)
     {
-        //
+        $reservationpackage->reservation_id = $request->get('reservation_id');
+        $reservationpackage->package_id = $request->get('package_id');
+        $reservationpackage->save();
+        return $reservationpackage;
     }
 
     /**
@@ -80,6 +87,7 @@ class ReservationpackageController extends Controller
      */
     public function destroy(reservationpackage $reservationpackage)
     {
-        //
+        $reservationpackage->delete();
+        return response()->json(['success']);
     }
 }

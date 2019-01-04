@@ -14,7 +14,7 @@ class ReservationAdministratorController extends Controller
      */
     public function index()
     {
-        //
+        return reservation_administrator::all();
     }
 
     /**
@@ -35,7 +35,11 @@ class ReservationAdministratorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $reservation_administrator = new \App\reservation_administrator;
+        $reservation_administrator->reservation_id = $request->get('reservation_id');
+        $reservation_administrator->administrator_id = $request->get('administrator_id');
+        $reservation_administrator->save();
+        return $reservation_administrator;
     }
 
     /**
@@ -44,9 +48,10 @@ class ReservationAdministratorController extends Controller
      * @param  \App\reservation_administrator  $reservation_administrator
      * @return \Illuminate\Http\Response
      */
-    public function show(reservation_administrator $reservation_administrator)
+    public function show($id)
     {
-        //
+        $reservation_administrator = reservation_administrator::find($id);
+        return $reservation_administrator; 
     }
 
     /**
@@ -69,7 +74,10 @@ class ReservationAdministratorController extends Controller
      */
     public function update(Request $request, reservation_administrator $reservation_administrator)
     {
-        //
+        $reservation_administrator->reservation_id = $request->get('reservation_id');
+        $reservation_administrator->administrator_id = $request->get('administrator_id');
+        $reservation_administrator->save();
+        return $reservation_administrator;
     }
 
     /**
@@ -80,6 +88,7 @@ class ReservationAdministratorController extends Controller
      */
     public function destroy(reservation_administrator $reservation_administrator)
     {
-        //
+        $reservation_administrator->delete();
+        return response()->json(['success']);
     }
 }

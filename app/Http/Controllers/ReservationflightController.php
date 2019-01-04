@@ -48,9 +48,10 @@ class ReservationflightController extends Controller
      * @param  \App\reservationflight  $reservationflight
      * @return \Illuminate\Http\Response
      */
-    public function show(reservationflight $reservationflight)
+    public function show($id)
     {
-        return $reservationflight;
+        $reservationflight = reservationpackage::find($id);
+        return $reservationflight; 
     }
 
     /**

@@ -73,7 +73,6 @@ class ReservationUserController extends Controller
      */
     public function update(Request $request, ReservationUser $ReservationUser)
     {
-        $ReservationUser = new \App\ReservationUser;
         $ReservationUser->user_id = $request->get('user_id');
         $ReservationUser->reservation_id = $request->get('reservation_id');
         $ReservationUser->save();
@@ -89,6 +88,6 @@ class ReservationUserController extends Controller
     public function destroy(ReservationUser $ReservationUser)
     {
         $ReservationUser->delete();
-        return response()->json(['sucess']);
+        return response()->json(['success']);
     }
 }

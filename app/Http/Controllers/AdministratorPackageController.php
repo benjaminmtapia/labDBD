@@ -63,7 +63,7 @@ class AdministratorPackageController extends Controller
     public function show( $id)
     {
         $administrator_package = administrator_package::find(id);
-        return $administrator_package
+        return $administrator_package;
     }
 
     /**
