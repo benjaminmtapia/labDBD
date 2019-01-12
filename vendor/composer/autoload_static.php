@@ -451,6 +451,7 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         'App\\Http\\Controllers\\DestinyController' => __DIR__ . '/../..' . '/app/Http/Controllers/DestinyController.php',
         'App\\Http\\Controllers\\FlightController' => __DIR__ . '/../..' . '/app/Http/Controllers/FlightController.php',
         'App\\Http\\Controllers\\FlightpackageController' => __DIR__ . '/../..' . '/app/Http/Controllers/FlightpackageController.php',
+        'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\HotelController' => __DIR__ . '/../..' . '/app/Http/Controllers/HotelController.php',
         'App\\Http\\Controllers\\HotelReservationController' => __DIR__ . '/../..' . '/app/Http/Controllers/HotelReservationController.php',
         'App\\Http\\Controllers\\HotelreservationPackageController' => __DIR__ . '/../..' . '/app/Http/Controllers/HotelreservationPackageController.php',

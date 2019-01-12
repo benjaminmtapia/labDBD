@@ -86,7 +86,7 @@ class AdministratorController extends Controller
      */
     public function update(Request $request, administrator $administrator)
     {
-$validator = Validator::make($request->all(), $this->rules());
+        $validator = Validator::make($request->all(), $this->rules());
         if ($validator->fails()) {
         return $validator->messages();
         }

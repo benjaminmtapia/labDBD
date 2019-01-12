@@ -44,3 +44,15 @@ Route::resource('/reservationflights','ReservationflightController');
 Route::resource('/stopflights','StopflightController');
 Route::resource('/reservation_users','ReservationUserController');
 Route::resource('/seats', 'SeatController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => ['auth','admin']],function(){
+	Route::get('/admin',function(){
+		return view('admin');
+	});
+});

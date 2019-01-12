@@ -16,7 +16,8 @@ class UserController extends Controller
     public function index()
     {
         //$aeropuertos = airport::all();
-        return User::all();
+        $user = User::all();
+        //return view('')
     }
 
     /**
@@ -59,7 +60,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-    return $user;
+     
     }
 
     /**

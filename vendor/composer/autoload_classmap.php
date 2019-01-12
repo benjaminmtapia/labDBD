@@ -22,6 +22,7 @@ return array(
     'App\\Http\\Controllers\\DestinyController' => $baseDir . '/app/Http/Controllers/DestinyController.php',
     'App\\Http\\Controllers\\FlightController' => $baseDir . '/app/Http/Controllers/FlightController.php',
     'App\\Http\\Controllers\\FlightpackageController' => $baseDir . '/app/Http/Controllers/FlightpackageController.php',
+    'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\HotelController' => $baseDir . '/app/Http/Controllers/HotelController.php',
     'App\\Http\\Controllers\\HotelReservationController' => $baseDir . '/app/Http/Controllers/HotelReservationController.php',
     'App\\Http\\Controllers\\HotelreservationPackageController' => $baseDir . '/app/Http/Controllers/HotelreservationPackageController.php',
