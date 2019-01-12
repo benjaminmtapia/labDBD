@@ -22,8 +22,8 @@ class AirportController extends Controller
     }
     public function index()
     {
-        //$aeropuertos = airport::all();
-        return airport::all();
+        $vuelos = airport::all();
+        return view('vuelos', compact('vuelos'));
     }
 
     /**
@@ -33,7 +33,7 @@ class AirportController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -53,7 +53,7 @@ class AirportController extends Controller
         $airport->ciudad = $request->get('ciudad');
         $airport->origin_id = $request->get('origin_id');
         $airport->destiny_id = $request->get('destiny_id');
-        
+
         $airport->save();
         return $airport;
     }
@@ -77,7 +77,7 @@ class AirportController extends Controller
      */
     public function edit(airport $airport)
     {
-        //return view('airport.createForm')->with('aiport',$airport);  
+        //return view('airport.createForm')->with('aiport',$airport);
 
     }
 
@@ -89,7 +89,7 @@ class AirportController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, airport $airport)
-    {    
+    {
         $validator = Validator::make($request->all(),$this->rules());
         if($validator->fails()){
             return $validator->messages();
