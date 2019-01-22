@@ -30,9 +30,9 @@ class DatabaseSeeder extends Seeder
         $this->call(ticketSeeder::class);
         //$this->call(administratorSeeder::class);
         $this->call(roomSeeder::class);
-        $this->call(administratorpackageSeeder::class);
+       // $this->call(administratorpackageSeeder::class);
         $this->call(stopflightSeeder::class);
-        $this->call(reservation_administratorSeeder::class);
+        //$this->call(reservation_administratorSeeder::class);
         $this->call(reservationflightSeeder::class);
         $this->call(reservationuserSeeder::class);
         $this->call(reservationpackageSeeder::class);

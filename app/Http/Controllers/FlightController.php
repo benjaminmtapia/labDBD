@@ -26,7 +26,7 @@ class FlightController extends Controller
     public function index()
     {
         $flight =  flight::all();
-        return view('flights',compact('flight'));
+        return view('flights.principal',compact('flight'));
     }
 
     /**
@@ -112,5 +112,15 @@ class FlightController extends Controller
     {
         $flight->delete();
         return response()->json(['success']);
+    }
+
+    public function reservaVuelo(Request $request){
+        $id_origen = $request->origin_id;
+        $id_destino = $request->destiny_id;
+        $origen = flight::where('origin_id',$id_origen)->first();
+        $destino = flight::where('destiny_id',$id_destino)->first();
+
+        //$reserva = reservation::where('')
+        return ;
     }
 }

@@ -9,7 +9,5 @@ $factory->define(App\reservation::class, function (Faker $faker) {
         'monto'=>$faker->numberBetween(1000,10000),
         'num_pasaporte'=>$faker->numberBetween(1,100),
         'num_reserva_hotel'=>$faker->numberBetween(0,5),
-        'origin_id'=>$origen->random()->id,
-        'destiny_id'=>$destino->random()->id
     ];
 });

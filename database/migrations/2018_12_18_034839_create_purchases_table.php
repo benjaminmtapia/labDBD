@@ -16,6 +16,9 @@ class CreatePurchasesTable extends Migration
         Schema::create('purchases', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamp('fecha');
+            $table->integer('precio');
+            $table->string('mediodepago');
+        
             $table->timestamps();
             $table->softDeletes();
         });

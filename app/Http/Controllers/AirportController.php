@@ -23,7 +23,7 @@ class AirportController extends Controller
     public function index()
     {
         $vuelos = airport::all();
-        return view('vuelos', compact('vuelos'));
+        return $vuelos;
     }
 
     /**

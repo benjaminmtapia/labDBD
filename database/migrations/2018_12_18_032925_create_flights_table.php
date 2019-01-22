@@ -18,6 +18,12 @@ class CreateFlightsTable extends Migration
             $table->date('fecha_ida');
             $table->smallInteger('capacidad');
             $table->smallInteger('num_pasajeros');
+            $table->integer('precio');
+            
+            $table->integer('origin_id');
+            $table->integer('destiny_id');
+            $table->foreign('destiny_id')->references('id')->on('destinies');
+            $table->foreign('origin_id')->references('id')->on('origins');
             $table->timestamps();
             $table->softDeletes();
         });
