@@ -45,12 +45,11 @@ class AdministratorController extends Controller
     {
         $validator = Validator::make($request->all(), $this->rules());
         if ($validator->fails()) {
-        return $validator->messages();
+          return $validator->messages();
         }
-        $administrador = new \App\administrator;
-        $administrador->apellido = $request->get('apellido');
+        $administrador = new App\administrator;
         $administrador->nombre = $request->get('nombre');
-        
+        $administrador->apellido = $request->get('apellido');
         $administrador->save();
         return $administrador;
     }
@@ -88,13 +87,12 @@ class AdministratorController extends Controller
     {
         $validator = Validator::make($request->all(), $this->rules());
         if ($validator->fails()) {
-        return $validator->messages();
+          return $validator->messages();
         }
-        $administrador->apellido = $request->get('apellido');
-        $administrador->nombre = $request->get('nombre');
-        
-        $administrador->save();
-        return $administrador;
+        $administrator->nombre = $request->get('nombre');
+        $administrator->apellido = $request->get('apellido');
+        $administrator->save();
+        return $administrator;
 
     }
 

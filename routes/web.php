@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
 Route::resource('/airports', 'AirportController');
 Route::resource('/administrators', 'AdministratorController');
 Route::resource('/flights', 'FlightController');

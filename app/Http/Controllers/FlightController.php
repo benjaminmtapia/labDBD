@@ -47,16 +47,7 @@ class FlightController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), $this->rules());
-        if ($validator->fails()) {
-          return $validator->messages();
-        }
-        $vuelo = new \App\flight;
-        $vuelo->fecha_ida = $request->get('fecha_ida');
-        $vuelo->num_pasajeros = $request->get('num_pasajeros');
-        $vuelo->capacidad = $request->get('capacidad');
-        $vuelo->save();
-        return $vuelo;
+        //
     }
 
     /**
@@ -67,8 +58,7 @@ class FlightController extends Controller
      */
     public function show($id)
     {
-        $flight = flight::find($id);
-        return $flight;
+        //
     }
 
     /**
@@ -91,15 +81,7 @@ class FlightController extends Controller
      */
     public function update(Request $request, flight $flight)
     {
-        $validator = Validator::make($request->all(), $this->rules());
-        if ($validator->fails()) {
-        }
-          return $validator->messages();
-        $flight->fecha_ida = $request->get('fecha_ida');
-        $flight->capacidad = $request->get('capacidad');
-        $flight->num_pasajeros = $request->get('num_pasajeros');
-        $flight->save();
-        return $flight;
+        //
     }
 
     /**
