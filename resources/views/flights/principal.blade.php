@@ -69,20 +69,20 @@
         <div class="row">
         	<div class="col-lg-3 sidebar order-md-last ftco-animate">
         		<div class="sidebar-wrap ftco-animate">
-        			<h3 class="heading mb-4">Find City</h3>
-        			<form action="#">
+        			<h3 class="heading mb-4">Buscar Vuelo</h3>
+        			<form action="/vuelos/busqueda" method="post">
         				<div class="fields">
 		              <div class="form-group">
-		                <input type="text" class="form-control" placeholder="Destination, City">
+		                <input type="text" name="lugar_origen" class="form-control" placeholder="Origen">
 		              </div>
 		              <div class="form-group">
 		                <div class="select-wrap one-third">
 	                    
-	                   <input type="text" class="form-control" placeholder="Origen, City">
+	                   <input type="text" name="lugar_destino" class="form-control" placeholder="Destino">
 	                  </div>
 		              </div>
 		              <div class="form-group">
-		                <input type="text" id="checkin_date" class="form-control checkin_date" placeholder="Date from">
+		                <input type="text" name="fecha" id="checkin_date" class="form-control checkin_date" placeholder="Fecha">
 		              </div>
 
 		              <div class="form-group">

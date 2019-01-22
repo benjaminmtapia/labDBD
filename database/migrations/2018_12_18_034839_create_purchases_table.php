@@ -18,7 +18,8 @@ class CreatePurchasesTable extends Migration
             $table->timestamp('fecha');
             $table->integer('precio');
             $table->string('mediodepago');
-        
+            $table->unsignedInteger('reservation_id');
+            $table->foreign('reservation_id')->references('id')->on('reservations');
             $table->timestamps();
             $table->softDeletes();
         });

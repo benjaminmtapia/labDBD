@@ -47,7 +47,16 @@ class FlightController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), $this->rules());
+        if ($validator->fails()) {
+          return $validator->messages();
+        }
+        $vuelo = new \App\flight;
+        $vuelo->fecha_ida = $request->get('fecha_ida');
+        $vuelo->num_pasajeros = $request->get('num_pasajeros');
+        $vuelo->capacidad = $request->get('capacidad');
+        $vuelo->save();
+        return $vuelo;
     }
 
     /**
@@ -104,5 +113,15 @@ class FlightController extends Controller
 
         //$reserva = reservation::where('')
         return ;
+    }
+    public function buscar(Request $request){
+        $lugar_origen = $request->lugar_origen;
+        $lugar_destino = $request->lugar_destino;
+        $fecha = $request->fecha;
+        $origen = \App\Origin::where('ciudad',$lugar_origen)->first();
+        $destino = \App\Destiny::where('ciudad',$lugar_destino)->first();
+        $date = \App\Flight::where('fecha_ida',$fecha)->first();
+
+        return view('flights.busqueda',compact('origen'));
     }
 }

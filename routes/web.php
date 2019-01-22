@@ -45,6 +45,7 @@ Route::resource('/reservationflights','ReservationflightController');
 Route::resource('/stopflights','StopflightController');
 Route::resource('/reservation_users','ReservationUserController');
 Route::resource('/seats', 'SeatController');
+Route::post('/vuelos/busqueda','FlightController@buscar');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
