@@ -1,7 +1,9 @@
+
+@extends('layouts.app')
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>DIINF++</title>
+    <title>Diinf++</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -29,21 +31,21 @@
   </head>
   <body>
     
-	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="/">DIINF++</a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">DIINF++</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+	          <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
 	          <li class="nav-item"><a href="/flights" class="nav-link">Vuelos</a></li>
-	          <li class="nav-item"><a href="places.html" class="nav-link">Places</a></li>
+	          <li class="nav-item active"><a href="places.html" class="nav-link">Places</a></li>
 	          <li class="nav-item"><a href="/hotels" class="nav-link">Hotels</a></li>
-	          <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
-	          <li class="nav-item"><a href="/register" class="nav-link">Register</a></li>
+	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -53,44 +55,105 @@
     <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
       <div class="overlay"></div>
       <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
-          <div class="col-md-9 ftco-animate mb-5 pb-5 text-center text-md-left" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Discover <br>A new Place</h1>
-            <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great places to stay, eat, shop, or visit from local experts</p>
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Places</span></p>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Destinations</h1>
           </div>
         </div>
       </div>
     </div>
+		
+		<section class="ftco-section">
+      <div class="container">
+        <div class="row">
+        	<div class="col-lg-3 sidebar order-md-last ftco-animate">
+        		<div class="sidebar-wrap ftco-animate">
+        			<h3 class="heading mb-4">Find City</h3>
+        			<form action="#">
+        				<div class="fields">
+		              <div class="form-group">
+		                <input type="text" class="form-control" placeholder="Destination, City">
+		              </div>
+		              <div class="form-group">
+		                <div class="select-wrap one-third">
+	                    
+	                   <input type="text" class="form-control" placeholder="Origen, City">
+	                  </div>
+		              </div>
+		              <div class="form-group">
+		                <input type="text" id="checkin_date" class="form-control checkin_date" placeholder="Date from">
+		              </div>
 
+		              <div class="form-group">
+		                <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
+		              </div>
+		            </div>
+	            </form>
+        		</div>
+        	
+          </div><!-- END-->
+          
+          <div class="col-lg-9">
 
+          	<div class="row">
+          			@foreach($hotels as $hotels)
 
-    <section class="ftco-section bg-light">
-    	<div class="container">
-    		<div class="row">
-    			<div class="col-md-4">
-    				<div class="intro ftco-animate">
-    					<h3><span>01</span> Travel</h3>
-    					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-    				</div>
-    			</div>
-    			<div class="col-md-4">
-    				<div class="intro ftco-animate">
-    					<h3><span>02</span> Experience</h3>
-    					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-    				</div>
-    			</div>
-    			<div class="col-md-4">
-    				<div class="intro ftco-animate">
-    					<h3><span>03</span> Relax</h3>
-    					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-    				</div>
-    			</div>
-    		</div>
-    	</div>
-    </section> 
-
-
-
+          		<div class="col-sm col-md-6 col-lg-4 ftco-animate">
+		    				<div class="destination">
+		    					<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-3.jpg);">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-link"></span>
+		    						</div>
+		    					</a>
+		    					<div class="text p-3">
+		    						<div class="d-flex">
+		    							<div class="one">
+				    						<h3><a href="#">{{$hotels->id}}</a></h3>
+				    						<p>from {{$hotels->id}}</p>
+				    						<p class="rate">
+				    							<i class="icon-star"></i>
+				    							<i class="icon-star"></i>
+				    							<i class="icon-star"></i>
+				    							<i class="icon-star"></i>
+				    							<i class="icon-star-o"></i>
+				    							<span>8 Rating</span>
+				    						</p>
+			    						</div>
+			    						<div class="two">
+			    							<span class="price">$200</span>
+		    							</div>
+		    						</div>
+		    						
+		    						<p class="days"><span>2 days 3 nights</span></p>
+		    						<hr>
+		    						<p class="bottom-area d-flex">
+		    							<span><i class="icon-map-o"></i> San Franciso, CA</span> 
+		    							<span class="ml-auto"><a href="#">Discover</a></span>
+		    						</p>
+		    					</div>
+		    				</div>
+		    			</div>
+		    	@endforeach
+          	<div class="row mt-5">
+		          <div class="col text-center">
+		            <div class="block-27">
+		              <ul>
+		                <li><a href="#">&lt;</a></li>
+		                <li class="active"><span>1</span></li>
+		                <li><a href="#">2</a></li>
+		                <li><a href="#">3</a></li>
+		                <li><a href="#">4</a></li>
+		                <li><a href="#">5</a></li>
+		                <li><a href="#">&gt;</a></li>
+		              </ul>
+		            </div>
+		          </div>
+		        </div>
+          </div> <!-- .col-md-8 -->
+        </div>
+      </div>
+    </section> <!-- .section -->
 
 		<section class="ftco-section-parallax">
       <div class="parallax-img d-flex align-items-center">
@@ -120,7 +183,7 @@
         <div class="row mb-5">
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">DIINF++</h2>
+              <h2 class="ftco-heading-2">Adventure</h2>
               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
                 <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
