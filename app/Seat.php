@@ -16,6 +16,10 @@ class Seat extends Model
     	return $this->belongsTo(flight::class);
     }
 
+	public function reservation(){
+    	return $this->belongsTo(reservation::class);
+    }
+
 	public function passenger(){
     	return $this->belongsTo(passenger::class);
     }

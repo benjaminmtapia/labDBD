@@ -18,7 +18,6 @@ class CreateReservationsTable extends Migration
             $table->integer('monto');
             $table->integer('num_pasaporte');
             $table->integer('num_reserva_hotel');
-
             $table->timestamps();
             $table->softDeletes();
         });
