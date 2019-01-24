@@ -16,6 +16,7 @@ class CreateHotelReservationsTable extends Migration
         Schema::create('hotel_reservations', function (Blueprint $table) {
             $table->increments('id');
             $table->decimal('cantidad_personas');
+            $table->integer('precio');
             $table->unsignedInteger('room_id');
             $table->unsignedInteger('package_id');
             $table->unsignedInteger('reservation_id');
