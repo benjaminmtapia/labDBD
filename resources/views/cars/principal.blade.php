@@ -97,7 +97,7 @@
           <div class="col-lg-9">
 
           	<div class="row">
-          			@foreach($flight as $flight)
+          			@foreach($cars as $car)
 
           		<div class="col-sm col-md-6 col-lg-4 ftco-animate">
 		    				<div class="destination">
@@ -109,8 +109,7 @@
 		    					<div class="text p-3">
 		    						<div class="d-flex">
 		    							<div class="one">
-				    						<h3><a href="#">{{$flight->destiny->ciudad}}</a></h3>
-				    						<p>from {{$flight->origin->ciudad}}</p>
+				    						<h3>{{$car->id}}</h3>
 				    						<p class="rate">
 				    							<i class="icon-star"></i>
 				    							<i class="icon-star"></i>
@@ -128,8 +127,16 @@
 		    						<p class="days"><span>2 days 3 nights</span></p>
 		    						<hr>
 		    						<p class="bottom-area d-flex">
-		    							<span><i class="icon-map-o"></i> San Franciso, CA</span> 
-		    							<span class="ml-auto"><a href="#">Discover</a></span>
+
+                      <form method="post" action="{{action('CarController@reservarAuto',$car)}}">
+                        <input type="hidden" name="auto" value="Reservar">
+                        <button type="submit" class="btn btn-danger">Reservar</button>
+                      </form>
+                        
+
+                      </form>
+
+                
 		    						</p>
 		    					</div>
 		    				</div>

@@ -17,6 +17,7 @@ class UserController extends Controller
     {
         //$aeropuertos = airport::all();
         $user = User::all();
+        return $user;
         //return view('')
     }
 

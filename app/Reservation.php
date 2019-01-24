@@ -35,7 +35,7 @@ class reservation extends Model
     	return $this->hasMany(ticket::class);
     }
     public function seat(){
-    	return $this->hasMany(seat::class);
+    	return $this->hasMany(Seat::class);
 
     }
     public function user(){

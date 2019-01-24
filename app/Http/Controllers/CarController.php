@@ -6,6 +6,9 @@ use App\car;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
+use \App\ReservationUser;
+use \App\reservation;
+use Illuminate\Support\Facades\Auth;
 class CarController extends Controller
 {
 
@@ -25,7 +28,8 @@ class CarController extends Controller
      */
     public function index()
     {
-        return car::all();
+        $cars = car::all();
+        return view('cars.principal',compact('cars'));
     }
 
     /**
@@ -120,5 +124,24 @@ class CarController extends Controller
         return response()->json([
             'success'
         ]);
+    }
+
+    public function reservarAuto(Request $request){
+        //obtengo el id del auto y del usuario
+        $id_auto = $request->id;
+         $user = Auth::id();
+         //creo reserva y reservausuario
+         $reserva = new \App\reservation;
+         $reservation_user = new \App\ReservationUser;
+         $reservation_user->user_id = $user;
+         $reservation_user->reservation_id = $reserva->id;
+
+         //link a la reserva
+
+
+
+         $request->reservation_id = $reserva->id;
+
+        return $reserva;
     }
 }

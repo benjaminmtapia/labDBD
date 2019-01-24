@@ -10,6 +10,7 @@ $factory->define(App\car::class, function (Faker $faker) {
     	'patente'=>$faker->name,
     	'marca'=>$faker->name,
     	'modelo'=>$faker->name,
+        'monto'=>$faker->numberBetween($min = 150, $max =4000),
     	'capacidad'=>$faker->numberBetween($min = 3, $max = 5),
     	'package_id'=>$paquete->random()->id,
     	'reservation_id'=>$reserva->random()->id

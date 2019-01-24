@@ -105,5 +105,12 @@ class SeatController extends Controller
         $seat->delete();//TE ODIO >:(
         return Response()->json(['success']);
     }
+    public function reservarAsiento(Request $request){
+        $id_reserva = $request->id_reserva;
+        $asiento = Seat::where('reservation_id',$id_reserva);
+        $id_usuario = Auth::user()->id;
+        $reserva = ReservationUser::where('user_id',$id_usuario);
+        return view('flights.principal');
+    }
 }
 

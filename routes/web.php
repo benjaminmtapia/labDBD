@@ -45,7 +45,10 @@ Route::resource('/reservationflights','ReservationflightController');
 Route::resource('/stopflights','StopflightController');
 Route::resource('/reservation_users','ReservationUserController');
 Route::resource('/seats', 'SeatController');
+
 Route::post('/vuelos/busqueda','FlightController@buscar');
+Route::post('/cars/reservaAuto','CarController@reservarAuto');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

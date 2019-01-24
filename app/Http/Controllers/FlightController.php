@@ -124,4 +124,7 @@ class FlightController extends Controller
 
         return view('flights.busqueda',compact('origen'));
     }
+    public function reservarVuelo(Request $request){
+        
+    }
 }
