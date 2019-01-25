@@ -23,7 +23,7 @@ class reservation extends Model
     	return $this->hasMany(car::class);
     }
     public function package(){
-    	return $this->hasMany(reservationpackage::class);
+    	return $this->hasMany(package::class);
     }
     public function administrator(){
     	return $this->hasMany(reservation_administrator::class);
@@ -39,7 +39,7 @@ class reservation extends Model
 
     }
     public function user(){
-    	return $this->hasMany(ReservationUser::class);
+    	return $this->belongsTo(User::class);
     }
 
 }

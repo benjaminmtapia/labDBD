@@ -17,6 +17,8 @@ class CreatePackagesTable extends Migration
             $table->increments('id');
             $table->integer('descuento');
             $table->timestamp('fecha_vencimiento');
+            $table->unsignedInteger('reservation_id');
+            $table->foreign('reservation_id')->references('id')->on('reservations');
             $table->timestamps();
             $table->softDeletes();
         });

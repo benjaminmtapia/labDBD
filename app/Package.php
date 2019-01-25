@@ -22,7 +22,7 @@ class package extends Model
     }
     
     public function reservation(){
-    	return $this->hasMany(package_reservation::class);
+    	return $this->belongsTo(reservation::class);
     }
 
     public function flight(){

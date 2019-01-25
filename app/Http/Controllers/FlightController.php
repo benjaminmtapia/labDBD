@@ -121,8 +121,19 @@ class FlightController extends Controller
         $origen = \App\Origin::where('ciudad',$lugar_origen)->first();
         $destino = \App\Destiny::where('ciudad',$lugar_destino)->first();
         $date = \App\Flight::where('fecha_ida',$fecha)->first();
-
+        if(empty($origen) || empty($destino)){
+            return view('flights.null');
+        }
         return view('flights.busqueda',compact('origen'));
+    }
+    public function buscarporfecha(Request $request){
+        $vuelo = $request;
+        $fecha = $request->fecha;
+        $date = \App\Flight::where('fecha_ida',$fecha)->first();
+        if(empty($fecha)){
+            return view('flights.null');
+        }
+        return view('flights.busquedaporfecha',compact('date'));
     }
     public function reservarVuelo(Request $request){
         

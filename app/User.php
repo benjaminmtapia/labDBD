@@ -31,7 +31,7 @@ class User extends Authenticatable
     ];
 
     public function reservation(){
-        return $this->hasMany(ReservationUser::class);
+        return $this->hasMany(reservation::class);
     }
     public function socio(){
         return $this->belongsTo(socio::class);

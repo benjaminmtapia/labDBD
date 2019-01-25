@@ -886,6 +886,49 @@
         ]
     },
     {
+        "name": "iamraccoon/car-faker",
+        "version": "v1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/iamraccoon/car-faker.git",
+            "reference": "00ce8a71c77ff4b8e5c253077b29a6b353b8ed0b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/iamraccoon/car-faker/zipball/00ce8a71c77ff4b8e5c253077b29a6b353b8ed0b",
+            "reference": "00ce8a71c77ff4b8e5c253077b29a6b353b8ed0b",
+            "shasum": ""
+        },
+        "require": {
+            "fzaninotto/faker": "*"
+        },
+        "time": "2017-10-09T18:33:04+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "carfaker\\": "src/carfaker/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "I am raccoon"
+            }
+        ],
+        "description": "Car-Faker is a PHP library that generates fake-car data for you.",
+        "keywords": [
+            "car-faker",
+            "data",
+            "faker",
+            "fixtures"
+        ]
+    },
+    {
         "name": "jakub-onderka/php-console-color",
         "version": "v0.2",
         "version_normalized": "0.2.0.0",

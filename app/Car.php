@@ -15,11 +15,11 @@ class car extends Model
     ];
 
     public function reservation(){
-    	return $this->belongsTo(Reservation::class);
+    	return $this->belongsTo(reservation::class);
     }
 
     public function package(){
-    	return $this->belongsTo(Package::class);
+    	return $this->belongsTo(package::class);
     }
 
 }

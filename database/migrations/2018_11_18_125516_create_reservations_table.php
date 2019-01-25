@@ -16,10 +16,10 @@ class CreateReservationsTable extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('monto');
-            $table->integer('num_pasaporte');
-            $table->integer('num_reserva_hotel');
+            $table->integer('num_pasaporte')->nullable();
+            $table->date('fecha_reserva')->nullable();
             $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->boolean('disponibilidad');
             $table->timestamps();
             $table->softDeletes();
         });

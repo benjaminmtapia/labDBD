@@ -37,6 +37,10 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
+        'c' => 
+        array (
+            'carfaker\\' => 9,
+        ),
         'Z' => 
         array (
             'Zend\\Diactoros\\' => 15,
@@ -166,6 +170,10 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+        ),
+        'carfaker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/iamraccoon/car-faker/src/carfaker',
         ),
         'Zend\\Diactoros\\' => 
         array (
@@ -474,6 +482,7 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         'App\\Http\\Controllers\\TicketController' => __DIR__ . '/../..' . '/app/Http/Controllers/TicketController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
+        'App\\Http\\Middleware\\Admin' => __DIR__ . '/../..' . '/app/Http/Middleware/Admin.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -4175,6 +4184,9 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         'administratorpackageSeeder' => __DIR__ . '/../..' . '/database/seeds/administratorpackageSeeder.php',
         'airportSeeder' => __DIR__ . '/../..' . '/database/seeds/airportSeeder.php',
         'carSeeder' => __DIR__ . '/../..' . '/database/seeds/carSeeder.php',
+        'carfaker\\provider\\Base' => __DIR__ . '/..' . '/iamraccoon/car-faker/src/carfaker/provider/Base.php',
+        'carfaker\\provider\\Car' => __DIR__ . '/..' . '/iamraccoon/car-faker/src/carfaker/provider/Car.php',
+        'carfaker\\traits\\RepositoryTrait' => __DIR__ . '/..' . '/iamraccoon/car-faker/src/carfaker/traits/RepositoryTrait.php',
         'check_inSeeder' => __DIR__ . '/../..' . '/database/seeds/check_inSeeder.php',
         'destinySeeder' => __DIR__ . '/../..' . '/database/seeds/destinySeeder.php',
         'flightSeeder' => __DIR__ . '/../..' . '/database/seeds/flightSeeder.php',

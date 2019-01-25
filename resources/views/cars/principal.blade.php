@@ -120,7 +120,7 @@
 				    						</p>
 			    						</div>
 			    						<div class="two">
-			    							<span class="price">$200</span>
+			    							<span class="price">${{$car->monto}}</span>
 		    							</div>
 		    						</div>
 		    						

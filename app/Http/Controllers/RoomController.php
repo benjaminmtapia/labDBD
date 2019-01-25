@@ -23,7 +23,8 @@ class RoomController extends Controller
      */
     public function index()
     {
-        return room::all();
+        $rooms = room::all();
+        return view('rooms.principal',compact('rooms'));
     }
 
     /**
@@ -113,4 +114,5 @@ class RoomController extends Controller
             'success'
         ]);
     }
+    
 }

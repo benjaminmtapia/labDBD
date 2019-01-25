@@ -8,7 +8,8 @@ use App\Http\Controllers\Controller;
 use Validator;
 use \App\ReservationUser;
 use \App\reservation;
-use Illuminate\Support\Facades\Auth;
+use Auth;
+use \App\User;
 class CarController extends Controller
 {
 
@@ -129,19 +130,33 @@ class CarController extends Controller
     public function reservarAuto(Request $request){
         //obtengo el id del auto y del usuario
         $id_auto = $request->id;
-         $user = Auth::id();
-         //creo reserva y reservausuario
-         $reserva = new \App\reservation;
-         $reservation_user = new \App\ReservationUser;
-         $reservation_user->user_id = $user;
-         $reservation_user->reservation_id = $reserva->id;
+         $user = Auth::user();
+         //dd($user->name);
+         $reserva_aux = $user->reservation->last();
+         if ($reserva_aux==null) {
+             $reserva = new \App\reservation;
+             $reserva->monto = $reserva->monto + $request->monto;
+         //    $reservation->fecha_reserva = new DateTime('now');
+             $reserva->user_id = $user->id;
+             $reserva->disponibilidad= true;
+             $reserva->save();
+         }
+         else{
+            $booleano = \App\reservation::all()->last()->disponibilidad;
+            if($booleano==false){
+                 $reserva = new \App\reservation;
+             $reserva->monto = $reserva->monto + $request->monto;
+           //  $reservation->fecha_reserva = new DateTime('now');
+             $reserva->user_id = $user->id;
+             $reserva->disponibilidad= true;
+             $reserva->save();
 
-         //link a la reserva
+            }
+            else{
+                $reserva = \App\reservation::all()->last();
+            }
+         }
 
-
-
-         $request->reservation_id = $reserva->id;
-
-        return $reserva;
+        return view('cart',compact('reserva'));
     }
 }

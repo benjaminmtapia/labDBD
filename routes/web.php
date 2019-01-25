@@ -47,7 +47,9 @@ Route::resource('/reservation_users','ReservationUserController');
 Route::resource('/seats', 'SeatController');
 
 Route::post('/vuelos/busqueda','FlightController@buscar');
-Route::post('/cars/reservaAuto','CarController@reservarAuto');
+Route::post('/vuelos/reserva','FlightController@reservarVuelo');
+Route::post('/cart','CarController@reservarAuto');
+Route::post('/vuelos/busquedaporfecha','FlightController@buscarporfecha');
 
 Auth::routes();
 

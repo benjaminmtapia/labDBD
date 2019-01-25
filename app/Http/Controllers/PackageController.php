@@ -6,7 +6,7 @@ use App\package;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
-
+use App\car;
 class PackageController extends Controller
 {
 
@@ -24,7 +24,11 @@ class PackageController extends Controller
      */
     public function index()
     {
-        return package::all();
+        $paquetes= package::all();
+
+        //$autos = car::where('package_id',$paquetes->id);
+        return view('packages.principal',compact('paquetes'));
+
     }
 
     /**
