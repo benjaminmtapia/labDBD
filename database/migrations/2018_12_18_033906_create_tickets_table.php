@@ -21,6 +21,7 @@ class CreateTicketsTable extends Migration
             $table->string('destino', 80);
             $table->string('doc_identificacion', 40);
             $table->string('tipo_pasajero', 50);
+            $table->integer('precio');
             $table->unsignedInteger('flight_id');
 
             $table->foreign('flight_id')->references('id')->on('flights');

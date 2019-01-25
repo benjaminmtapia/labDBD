@@ -113,4 +113,8 @@ class PackageController extends Controller
         $package->delete();
         return response()->json(['success']);
     }
+
+    public function reservarPaquete($request){
+        return $request;
+    }
 }

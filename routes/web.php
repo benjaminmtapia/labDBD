@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
 Route::resource('/airports', 'AirportController');
 Route::resource('/administrators', 'AdministratorController');
 Route::resource('/flights', 'FlightController');
@@ -50,6 +51,9 @@ Route::post('/vuelos/busqueda','FlightController@buscar');
 Route::post('/vuelos/reserva','FlightController@reservarVuelo');
 Route::post('/cart','CarController@reservarAuto');
 Route::post('/vuelos/busquedaporfecha','FlightController@buscarporfecha');
+
+Route::post('/vuelos/reserva','FlightController@reservarVuelo');
+Route::post('/paquetes/reserva','PackageController@reservarPaquete');
 
 Auth::routes();
 

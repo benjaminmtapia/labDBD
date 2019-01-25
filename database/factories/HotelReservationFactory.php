@@ -9,6 +9,7 @@ $factory->define(App\hotel_reservation::class, function (Faker $faker) {
     return [
     	'cantidad_personas'=>$faker->numberBetween($min=1, $max=5),
     	'cantidad_personas'=>$faker->numberBetween(1,5),
+			'precio'=>$faker->numberBetween(500000, 1000000),
     	'room_id'=>$habitacion->random()->id,
     	'package_id'=>$paquete->random()->id,
     	'reservation_id'=>$reserva->random()->id

@@ -38,18 +38,18 @@
           <span class="oi oi-menu"></span> Menu
         </button>
 
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="/flights" class="nav-link">Vuelos</a></li>
-	          <li class="nav-item active"><a href="places.html" class="nav-link">Places</a></li>
-	          <li class="nav-item"><a href="/hotels" class="nav-link">Hotels</a></li>
-	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/flights" class="nav-link">Vuelos</a></li>
+            <li class="nav-item active"><a href="/rooms" class="nav-link">Habitaciones</a></li>
+            
+            <li class="nav-item"><a href="/packages" class="nav-link">Paquetes</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <!-- END nav -->
     
     <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
@@ -112,12 +112,9 @@
 				    						<h3><a href="#">{{$hotels->id}}</a></h3>
 				    						<p>from {{$hotels->id}}</p>
 				    						<p class="rate">
+                          @for($i=0; $i<$hotels->clase; $i++)
 				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star-o"></i>
-				    							<span>8 Rating</span>
+                          @endfor
 				    						</p>
 			    						</div>
 			    						<div class="two">

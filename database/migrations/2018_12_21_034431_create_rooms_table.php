@@ -18,6 +18,8 @@ class CreateRoomsTable extends Migration
             $table->integer('numero');
             $table->unsignedInteger('hotel_id');
             $table->integer('capacidad');
+            $table->unsignedInteger('package_id');
+            $table->foreign('package_id')->references('id')->on('packages');
             $table->foreign('hotel_id')->references('id')->on('hotels');
             $table->timestamps();
             $table->softDeletes();

@@ -25,8 +25,8 @@ class FlightController extends Controller
      }
     public function index()
     {
-        $flight =  flight::all();
-        return view('flights.principal',compact('flight'));
+        $flights =  flight::all();
+        return view('flights.principal',compact('flights'));
     }
 
     /**
@@ -124,7 +124,7 @@ class FlightController extends Controller
         if(empty($origen) || empty($destino)){
             return view('flights.null');
         }
-        return view('flights.busqueda',compact('origen'));
+        return view('flights.busqueda',compact('origen','destino','fecha','request'));
     }
     public function buscarporfecha(Request $request){
         $vuelo = $request;
@@ -133,9 +133,46 @@ class FlightController extends Controller
         if(empty($fecha)){
             return view('flights.null');
         }
-        return view('flights.busquedaporfecha',compact('date'));
+        return view('flights.busquedaporfecha',compact('date','origen','destino'));
     }
     public function reservarVuelo(Request $request){
-        
+
+        return $request;
+    
     }
+
+/*
+    public function reservarAuto(Request $request){
+        //obtengo el id del auto y del usuario
+        $id_auto = $request->id;
+         $user = Auth::user();
+         //dd($user->name);
+         $reserva_aux = $user->reservation->last();
+         if ($reserva_aux==null) {
+             $reserva = new \App\reservation;
+             $reserva->monto = $reserva->monto + $request->monto;
+         //    $reservation->fecha_reserva = new DateTime('now');
+             $reserva->user_id = $user->id;
+             $reserva->disponibilidad= true;
+             $reserva->save();
+         }
+         else{
+            $booleano = \App\reservation::all()->last()->disponibilidad;
+            if($booleano==false){
+                 $reserva = new \App\reservation;
+             $reserva->monto = $reserva->monto + $request->monto;
+           //  $reservation->fecha_reserva = new DateTime('now');
+             $reserva->user_id = $user->id;
+             $reserva->disponibilidad= true;
+             $reserva->save();
+
+            }
+            else{
+                $reserva = \App\reservation::all()->last();
+            }
+         }
+
+        return view('cart',compact('reserva'));
+    }
+    */
 }
