@@ -29,8 +29,8 @@ class FlightController extends Controller
      }
     public function index()
     {
-        $flight =  flight::all();
-        return view('flights.principal',compact('flight'));
+        $flights =  flight::all();
+        return view('flights.principal',compact('flights'));
     }
 
     /**
@@ -131,8 +131,7 @@ class FlightController extends Controller
         return view('flights.busquedaporfecha',compact('date'));
     }
     public function reservarVuelo(Request $request){
-        
-        return view('cart',compact('request'));
+        return $request;
     
     }
 

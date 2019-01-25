@@ -128,7 +128,7 @@
 		    						<hr>
 		    						<p class="bottom-area d-flex">
 
-                      <form method="post" action="{{action('CarController@reservarAuto',$car)}}">
+                      <form method="post" action="{{action('CarController@reservarVuelo',$car)}}">
                         <input type="hidden" name="auto" value="Reservar">
                         <button type="submit" class="btn btn-danger">Reservar</button>
                       </form>
