@@ -112,9 +112,12 @@
 				    						<h3><a href="#">{{$hotels->id}}</a></h3>
 				    						<p>from {{$hotels->id}}</p>
 				    						<p class="rate">
-                          @for($i=0; $i<$hotels->clase; $i++)
 				    							<i class="icon-star"></i>
-                          @endfor
+				    							<i class="icon-star"></i>
+				    							<i class="icon-star"></i>
+				    							<i class="icon-star"></i>
+				    							<i class="icon-star-o"></i>
+				    							<span>8 Rating</span>
 				    						</p>
 			    						</div>
 			    						<div class="two">

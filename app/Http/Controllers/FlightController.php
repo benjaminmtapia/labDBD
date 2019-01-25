@@ -7,10 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Validator;
-use Auth;
-use \App\User;
-
-use \App\Seat;
 
 class FlightController extends Controller
 {
@@ -109,6 +105,15 @@ class FlightController extends Controller
         return response()->json(['success']);
     }
 
+    public function reservaVuelo(Request $request){
+        $id_origen = $request->origin_id;
+        $id_destino = $request->destiny_id;
+        $origen = flight::where('origin_id',$id_origen)->first();
+        $destino = flight::where('destiny_id',$id_destino)->first();
+
+        //$reserva = reservation::where('')
+        return ;
+    }
     public function buscar(Request $request){
         $lugar_origen = $request->lugar_origen;
         $lugar_destino = $request->lugar_destino;
@@ -132,42 +137,5 @@ class FlightController extends Controller
     }
     public function reservarVuelo(Request $request){
         
-        return view('cart',compact('request'));
-    
     }
-
-/*
-    public function reservarAuto(Request $request){
-        //obtengo el id del auto y del usuario
-        $id_auto = $request->id;
-         $user = Auth::user();
-         //dd($user->name);
-         $reserva_aux = $user->reservation->last();
-         if ($reserva_aux==null) {
-             $reserva = new \App\reservation;
-             $reserva->monto = $reserva->monto + $request->monto;
-         //    $reservation->fecha_reserva = new DateTime('now');
-             $reserva->user_id = $user->id;
-             $reserva->disponibilidad= true;
-             $reserva->save();
-         }
-         else{
-            $booleano = \App\reservation::all()->last()->disponibilidad;
-            if($booleano==false){
-                 $reserva = new \App\reservation;
-             $reserva->monto = $reserva->monto + $request->monto;
-           //  $reservation->fecha_reserva = new DateTime('now');
-             $reserva->user_id = $user->id;
-             $reserva->disponibilidad= true;
-             $reserva->save();
-
-            }
-            else{
-                $reserva = \App\reservation::all()->last();
-            }
-         }
-
-        return view('cart',compact('reserva'));
-    }
-    */
 }

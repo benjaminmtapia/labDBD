@@ -10,7 +10,6 @@ $factory->define(App\Seat::class, function (Faker $faker) {
         'letra'=>$faker->randomLetter(),
         'numero'=>$faker->numberBetween(1,10),
         'disponibilidad'=>$faker->boolean,
-        'reservation_id'=>$reservation->random()->id,
-        'flight_id'=>$flight->random()->id
+        'reservation_id'=>$reservation->random()->id
     ];
 });

@@ -138,8 +138,8 @@
 		    						<p class="days"><span>2 days 3 nights</span></p>
 		    						<hr>
 		    						<p class="bottom-area d-flex">
-		    							 <form method="post" route="/vuelo/reserva">
-                        <input type="hidden" name="vuelo" value="Reservar">
+		    							<form method="post" action="{{action('FlightController@reservarVuelo',$flight)}}">
+                        <input type="hidden" name="auto" value="Reservar">
                         <button type="submit" class="btn btn-danger">Reservar</button>
                       </form>
 		    						</p>
