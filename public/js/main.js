@@ -51,7 +51,7 @@
 
 	// loader
 	var loader = function() {
-		setTimeout(function() { 
+		setTimeout(function() {
 			if($('#ftco-loader').length > 0) {
 				$('#ftco-loader').removeClass('show');
 			}
@@ -145,19 +145,19 @@
 
 			if (st > 150) {
 				if ( !navbar.hasClass('scrolled') ) {
-					navbar.addClass('scrolled');	
+					navbar.addClass('scrolled');
 				}
-			} 
+			}
 			if (st < 150) {
 				if ( navbar.hasClass('scrolled') ) {
 					navbar.removeClass('scrolled sleep');
 				}
-			} 
+			}
 			if ( st > 350 ) {
 				if ( !navbar.hasClass('awake') ) {
-					navbar.addClass('awake');	
+					navbar.addClass('awake');
 				}
-				
+
 				if(sd.length > 0) {
 					sd.addClass('sleep');
 				}
@@ -196,9 +196,9 @@
 		}
 	};
 
-	
+
 	var counter = function() {
-		
+
 		$('#section-counter').waypoint( function( direction ) {
 
 			if( direction === 'down' && !$(this.element).hasClass('ftco-animated') ) {
@@ -215,7 +215,7 @@
 					  }, 7000
 					);
 				});
-				
+
 			}
 
 		} , { offset: '95%' } );
@@ -228,7 +228,7 @@
 		$('.ftco-animate').waypoint( function( direction ) {
 
 			if( direction === 'down' && !$(this.element).hasClass('ftco-animated') ) {
-				
+
 				i++;
 
 				$(this.element).addClass('item-animate');
@@ -250,9 +250,9 @@
 							el.removeClass('item-animate');
 						},  k * 50, 'easeInOutExpo' );
 					});
-					
+
 				}, 100);
-				
+
 			}
 
 		} , { offset: '95%' } );
@@ -322,8 +322,52 @@
 	  'autoclose': true
 	});
 
+  var input = $('.validate-input .input100');
 
+  $('.validate-form').on('submit',function(){
+      var check = true;
+
+      for(var i=0; i<input.length; i++) {
+          if(validate(input[i]) == false){
+              showValidate(input[i]);
+              check=false;
+          }
+      }
+
+      return check;
+  });
+
+
+  $('.validate-form .input100').each(function(){
+      $(this).focus(function(){
+         hideValidate(this);
+      });
+  });
+
+  function validate (input) {
+      if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
+          if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
+              return false;
+          }
+      }
+      else {
+          if($(input).val().trim() == ''){
+              return false;
+          }
+      }
+  }
+
+  function showValidate(input) {
+      var thisAlert = $(input).parent();
+
+      $(thisAlert).addClass('alert-validate');
+  }
+
+  function hideValidate(input) {
+      var thisAlert = $(input).parent();
+
+      $(thisAlert).removeClass('alert-validate');
+  }
 
 
 })(jQuery);
-
