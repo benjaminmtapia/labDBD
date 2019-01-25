@@ -110,8 +110,7 @@
                     <div class="d-flex">
                       <div class="one">
                         <h3>Paquete n°: {{$p->id}}</h3>
-                        <p>Habitacion para {{$p->room->first()->capacidad}} personas</p>
-                        <p>{{$p->car->first()}}</p>
+                      
                         <p class="rate">
                           <i class="icon-star"></i>
                           <i class="icon-star"></i>
