@@ -19,9 +19,13 @@ class CreateSeatsTable extends Migration
             $table->integer('numero');
             $table->boolean('disponibilidad');
             $table->unsignedInteger('reservation_id');
+<<<<<<< .merge_file_Eez3ik
+            $table->foreign('reservation_id')->references('id')->on('reservations');            
+=======
             $table->foreign('reservation_id')->references('id')->on('reservations'); 
             $table->unsignedInteger('flight_id');
             $table->foreign('flight_id')->references('id')->on('flights');            
+>>>>>>> .merge_file_nX7m9j
             $table->timestamps();
             $table->softDeletes();        
         });

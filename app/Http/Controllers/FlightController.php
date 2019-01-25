@@ -7,10 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Validator;
-use Auth;
-use \App\User;
-
-use \App\Seat;
 
 class FlightController extends Controller
 {
@@ -109,6 +105,15 @@ class FlightController extends Controller
         return response()->json(['success']);
     }
 
+    public function reservaVuelo(Request $request){
+        $id_origen = $request->origin_id;
+        $id_destino = $request->destiny_id;
+        $origen = flight::where('origin_id',$id_origen)->first();
+        $destino = flight::where('destiny_id',$id_destino)->first();
+
+        //$reserva = reservation::where('')
+        return ;
+    }
     public function buscar(Request $request){
         $lugar_origen = $request->lugar_origen;
         $lugar_destino = $request->lugar_destino;
@@ -119,7 +124,7 @@ class FlightController extends Controller
         if(empty($origen) || empty($destino)){
             return view('flights.null');
         }
-        return view('flights.busqueda',compact('origen'));
+        return view('flights.busqueda',compact('origen','destino','fecha','request'));
     }
     public function buscarporfecha(Request $request){
         $vuelo = $request;
@@ -128,7 +133,7 @@ class FlightController extends Controller
         if(empty($fecha)){
             return view('flights.null');
         }
-        return view('flights.busquedaporfecha',compact('date'));
+        return view('flights.busquedaporfecha',compact('date','origen','destino'));
     }
     public function reservarVuelo(Request $request){
         return $request;

@@ -1,5 +1,3 @@
-
-@extends('layouts.app')
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -67,10 +65,10 @@
     <section class="ftco-section">
       <div class="container">
         <div class="row">
-          <div class="col-lg-3 sidebar order-md-last ftco-animate">
-            <div class="sidebar-wrap ftco-animate">
-              <h3 class="heading mb-4">Buscar por Trayecto</h3>
-              <form action="/vuelos/busqueda" method="post">
+        	<div class="col-lg-3 sidebar order-md-last ftco-animate">
+        		<div class="sidebar-wrap ftco-animate">
+        			<h3 class="heading mb-4">Buscar por Trayecto</h3>
+        			<form action="/vuelos/busqueda" method="post">
                 <div class="fields">
                   <div class="form-group">
                     <input type="text" name="lugar_origen" class="form-control" placeholder="Origen">
@@ -87,10 +85,11 @@
                   </div>
                 </div>
               </form>
-              <form action="/vuelos/busquedaporfecha" method="post">
-                <h3 class="heading mb-4">Buscar por Fecha</h3>
+            </div>
+            <div class="sidebar-wrap ftco-animate">
+              <h3 class="heading mb-4">Buscar por fecha</h3>
+              <form action="/vuelos/busqueda" method="post">
                 <div class="fields">
-                  
                   <div class="form-group">
                     <input type="text" name="fecha" id="checkin_date" class="form-control checkin_date" placeholder="Fecha">
                   </div>

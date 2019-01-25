@@ -135,6 +135,7 @@ class CarController extends Controller
          $reserva_aux = $user->reservation->last();
          if ($reserva_aux==null) {
              $reserva = new \App\reservation;
+            // $reserva->monto = 0;
              $reserva->monto = $reserva->monto + $request->monto;
          //    $reservation->fecha_reserva = new DateTime('now');
              $reserva->user_id = $user->id;
@@ -145,6 +146,7 @@ class CarController extends Controller
             $booleano = \App\reservation::all()->last()->disponibilidad;
             if($booleano==false){
                  $reserva = new \App\reservation;
+              //   $reserva->monto = 0;
              $reserva->monto = $reserva->monto + $request->monto;
            //  $reservation->fecha_reserva = new DateTime('now');
              $reserva->user_id = $user->id;
@@ -157,6 +159,6 @@ class CarController extends Controller
             }
          }
 
-        return view('cart',compact('reserva'));
+        return view('cart',compact('reserva','request'));
     }
 }
