@@ -23,7 +23,7 @@ class flight extends Model
     	return $this->hasMany(Seat::class);
     }
     public function package(){
-    	return $this->hasMany(flightpackage::class);
+    	return $this->belongsTo(package::class);
     }
     public function origin(){
         return $this->belongsTo(Origin::class);

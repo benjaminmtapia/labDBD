@@ -110,7 +110,8 @@
                     <div class="d-flex">
                       <div class="one">
                         <h3>Paquete n°: {{$p->id}}</h3>
-                        <p>{{$p->hotel_reservation->first()->id}}</p>
+                        <p>Habitacion para {{$p->room->first()->capacidad}} personas</p>
+                        <p>{{$p->car->first()}}</p>
                         <p class="rate">
                           <i class="icon-star"></i>
                           <i class="icon-star"></i>
@@ -128,8 +129,11 @@
                     <p class="days"><span>2 days 3 nights</span></p>
                     <hr>
                     <p class="bottom-area d-flex">
-                      <span><i class="icon-map-o"></i> San Franciso, CA</span> 
-                      <span class="ml-auto"><a href="#">Discover</a></span>
+                      
+                      <form method="post" action="/paquetes/reserva">
+                        <input type="hidden"  value="{{$p}}" name="vuelo">
+                        <button type="submit" class="btn btn-danger">Reservar</button>
+                      </form>
                     </p>
                   </div>
                 </div>

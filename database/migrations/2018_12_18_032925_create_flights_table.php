@@ -21,9 +21,11 @@ class CreateFlightsTable extends Migration
             $table->integer('precio');
             
             $table->integer('origin_id');
+            $table->foreign('origin_id')->references('id')->on('origins');
             $table->integer('destiny_id');
             $table->foreign('destiny_id')->references('id')->on('destinies');
-            $table->foreign('origin_id')->references('id')->on('origins');
+             $table->integer('package_id')->nullable('false');
+            $table->foreign('package_id')->references('id')->on('packages');
             $table->timestamps();
             $table->softDeletes();
         });

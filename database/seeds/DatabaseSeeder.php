@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(userSeeder::class);
        
-        $this->call(hotelSeeder::class);
+        
         $this->call(destinySeeder::class);
         $this->call(originSeeder::class);
          $this->call(reservationSeeder::class);
@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
        
          $this->call(purchaseSeeder::class);
         $this->call(carSeeder::class);
+        $this->call(hotelSeeder::class);
         $this->call(roomSeeder::class);
 
         $this->call(hotel_reservationSeeder::class);
