@@ -25,14 +25,8 @@ class package extends Model
     	return $this->belongsTo(reservation::class);
     }
 
-    public function flight(){
-    	return $this->hasOne(flight::class);
-    }           
-    public function administrator(){
-        return $this->belongsTo(administratorpackage::class);
-    }
-    public function reservationpackage(){
-        return $this->hasMany(reservationpackage::class);
-    }
+    public function seat(){
+    	return $this->hasMany(Seat::class);
+    }  
 
 }

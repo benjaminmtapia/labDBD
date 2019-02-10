@@ -21,6 +21,12 @@ class Seat extends Model
     }
 
 	public function passenger(){
-    	return $this->belongsTo(passenger::class);
+    	return $this->hasOne(passenger::class);
+    }
+    public function ticket(){
+    	return $this->hasOne(ticket::class);
+    }
+    public function package(){
+    	return $this->belongsTo(package::class);
     }
 }

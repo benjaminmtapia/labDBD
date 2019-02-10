@@ -17,7 +17,6 @@ class CreateFlightsTable extends Migration
             $table->increments('id');
             $table->date('fecha_ida');
             $table->date('fecha_vuelta')->nullable();
-            $table->smallInteger('capacidad');
             $table->integer('precio');
             $table->unsignedInteger('origin_id');
             $table->unsignedInteger('destiny_id');
