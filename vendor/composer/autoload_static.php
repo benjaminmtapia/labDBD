@@ -37,10 +37,6 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
-        'c' => 
-        array (
-            'carfaker\\' => 9,
-        ),
         'Z' => 
         array (
             'Zend\\Diactoros\\' => 15,
@@ -170,10 +166,6 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-        ),
-        'carfaker\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/iamraccoon/car-faker/src/carfaker',
         ),
         'Zend\\Diactoros\\' => 
         array (
@@ -443,10 +435,14 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
     );
 
     public static $classMap = array (
+        'App\\Airplane' => __DIR__ . '/../..' . '/app/Airplane.php',
+        'App\\Carrito' => __DIR__ . '/../..' . '/app/Carrito.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Flight_Stop' => __DIR__ . '/../..' . '/app/Flight_Stop.php',
         'App\\Http\\Controllers\\AdministratorController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdministratorController.php',
         'App\\Http\\Controllers\\AdministratorPackageController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdministratorPackageController.php',
+        'App\\Http\\Controllers\\AirplaneController' => __DIR__ . '/../..' . '/app/Http/Controllers/AirplaneController.php',
         'App\\Http\\Controllers\\AirportController' => __DIR__ . '/../..' . '/app/Http/Controllers/AirportController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -454,6 +450,7 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\CarController' => __DIR__ . '/../..' . '/app/Http/Controllers/CarController.php',
+        'App\\Http\\Controllers\\CarritoController' => __DIR__ . '/../..' . '/app/Http/Controllers/CarritoController.php',
         'App\\Http\\Controllers\\CheckInController' => __DIR__ . '/../..' . '/app/Http/Controllers/CheckInController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DestinyController' => __DIR__ . '/../..' . '/app/Http/Controllers/DestinyController.php',
@@ -2599,7 +2596,6 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         'PHPUnit\\Runner\\AfterSuccessfulTestHook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/AfterSuccessfulTestHook.php',
         'PHPUnit\\Runner\\AfterTestErrorHook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/AfterTestErrorHook.php',
         'PHPUnit\\Runner\\AfterTestFailureHook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/AfterTestFailureHook.php',
-        'PHPUnit\\Runner\\AfterTestHook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/AfterTestHook.php',
         'PHPUnit\\Runner\\AfterTestWarningHook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/AfterTestWarningHook.php',
         'PHPUnit\\Runner\\BaseTestRunner' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/BaseTestRunner.php',
         'PHPUnit\\Runner\\BeforeFirstTestHook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/BeforeFirstTestHook.php',
@@ -4180,20 +4176,12 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         'Zend\\Diactoros\\Stream' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/Stream.php',
         'Zend\\Diactoros\\UploadedFile' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/UploadedFile.php',
         'Zend\\Diactoros\\Uri' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/Uri.php',
-        'administratorSeeder' => __DIR__ . '/../..' . '/database/seeds/administratorSeeder.php',
-        'administratorpackageSeeder' => __DIR__ . '/../..' . '/database/seeds/administratorpackageSeeder.php',
         'airportSeeder' => __DIR__ . '/../..' . '/database/seeds/airportSeeder.php',
         'carSeeder' => __DIR__ . '/../..' . '/database/seeds/carSeeder.php',
-        'carfaker\\provider\\Base' => __DIR__ . '/..' . '/iamraccoon/car-faker/src/carfaker/provider/Base.php',
-        'carfaker\\provider\\Car' => __DIR__ . '/..' . '/iamraccoon/car-faker/src/carfaker/provider/Car.php',
-        'carfaker\\traits\\RepositoryTrait' => __DIR__ . '/..' . '/iamraccoon/car-faker/src/carfaker/traits/RepositoryTrait.php',
         'check_inSeeder' => __DIR__ . '/../..' . '/database/seeds/check_inSeeder.php',
         'destinySeeder' => __DIR__ . '/../..' . '/database/seeds/destinySeeder.php',
         'flightSeeder' => __DIR__ . '/../..' . '/database/seeds/flightSeeder.php',
-        'flightpackageSeeder' => __DIR__ . '/../..' . '/database/seeds/flightpackageSeeder.php',
         'hotelSeeder' => __DIR__ . '/../..' . '/database/seeds/hotelSeeder.php',
-        'hotel_reservationSeeder' => __DIR__ . '/../..' . '/database/seeds/hotel_reservationSeeder.php',
-        'hotelreservationpackageSeeder' => __DIR__ . '/../..' . '/database/seeds/hotelreservationpackageSeeder.php',
         'originSeeder' => __DIR__ . '/../..' . '/database/seeds/originSeeder.php',
         'packageSeeder' => __DIR__ . '/../..' . '/database/seeds/packageSeeder.php',
         'passengerSeeder' => __DIR__ . '/../..' . '/database/seeds/passengerSeeder.php',
@@ -4267,15 +4255,10 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         'phpDocumentor\\Reflection\\Types\\Void_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Void_.php',
         'purchaseSeeder' => __DIR__ . '/../..' . '/database/seeds/purchaseSeeder.php',
         'reservationSeeder' => __DIR__ . '/../..' . '/database/seeds/reservationSeeder.php',
-        'reservation_administratorSeeder' => __DIR__ . '/../..' . '/database/seeds/reservation_administratorSeeder.php',
-        'reservationflightSeeder' => __DIR__ . '/../..' . '/database/seeds/reservationflightSeeder.php',
-        'reservationpackageSeeder' => __DIR__ . '/../..' . '/database/seeds/reservationpackageSeeder.php',
-        'reservationuserSeeder' => __DIR__ . '/../..' . '/database/seeds/reservationuserSeeder.php',
         'roomSeeder' => __DIR__ . '/../..' . '/database/seeds/roomSeeder.php',
         'seatSeeder' => __DIR__ . '/../..' . '/database/seeds/seatSeeder.php',
         'socioSeeder' => __DIR__ . '/../..' . '/database/seeds/socioSeeder.php',
         'stopSeeder' => __DIR__ . '/../..' . '/database/seeds/stopSeeder.php',
-        'stopflightSeeder' => __DIR__ . '/../..' . '/database/seeds/stopflightSeeder.php',
         'ticketSeeder' => __DIR__ . '/../..' . '/database/seeds/ticketSeeder.php',
         'userSeeder' => __DIR__ . '/../..' . '/database/seeds/userSeeder.php',
     );
