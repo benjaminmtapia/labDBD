@@ -12,8 +12,8 @@ class ticket extends Model
 	return $this->belongsTo(reservation::class);
 
 	}
-	public function flight(){
-		return $this->belongsTo(flight::class);
+	public function seat(){
+		return $this->belongsTo(Seat::class);
 	}
 	
 }

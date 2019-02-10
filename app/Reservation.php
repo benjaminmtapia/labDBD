@@ -9,27 +9,12 @@ class reservation extends Model
 {
     use SoftDeletes;
 	protected $table = 'reservations';
-    
- 	public function origin(){
-    	return $this->belongsTo(Origin::class);
-    }
- 	public function destiny(){
-    	return $this->belongsTo(Destiny::class);
-    }
-    public function hotel_reservation(){
-    	return $this->hasMany(hotel_reservation::class);
-    }
+  
     public function car(){
     	return $this->hasMany(car::class);
     }
     public function package(){
     	return $this->hasMany(package::class);
-    }
-    public function administrator(){
-    	return $this->hasMany(reservation_administrator::class);
-    }
-    public function purchase(){
-    	return $this->belongsTo(purchase::class);
     }
     public function ticket(){
     	return $this->hasMany(ticket::class);
