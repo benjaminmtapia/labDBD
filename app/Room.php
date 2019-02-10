@@ -11,15 +11,19 @@ class room extends Model
 
 	protected $table ='rooms';
 	protected $fillable = [
-        'numero', 'capacidad'
+        'numero', 'capacidad', 'disponible'
     ];
 
-    public function hotel(){
-    	return $this->belongsTo(Hotel::class);
+    public function reservation(){
+    	return $this->belongsTo(reservation::class);
     }
 
-    public function hotel_reservation(){
-    	return $this->hasMany(Hotel_reservation::class);
+    public function package(){
+    	return $this->belongsTo(package::class);
+    }
+
+    public function hotel(){
+        return $this->belongsTo(Hotel::class);
     }
 
 }

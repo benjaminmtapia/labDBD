@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class ticket extends Model
 {
 	use SoftDeletes;
-	public function reservation(){
-	return $this->belongsTo(reservation::class);
 
-	}
+	protected $table = 'tickets';
+	protected $fillable = ['precio'];
+
 	public function seat(){
 		return $this->belongsTo(Seat::class);
 	}

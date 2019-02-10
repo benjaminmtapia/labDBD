@@ -10,10 +10,12 @@ class destiny extends Model
 	use SoftDeletes;
 	protected $table = 'destinies';
 	protected $fillable = ['ciudad'];
-     public function airport(){
+
+    public function airport(){
     	return $this->hasMany(Airport::class);
     }
-    public function reserva(){
+    
+    public function flight(){
     	return $this->hasMany(Reservation::class);
     }
 }
