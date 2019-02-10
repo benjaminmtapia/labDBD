@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class passenger extends Model
 {
-	use SoftDeletes; 
-	
+	use SoftDeletes;
+
 	protected $table = 'passengers';
 	protected $fillable = ['nombre','apellido',];
-	
+
     public function seat(){
-    	return $this->belongsTo(seat::class);
+    	return $this->belongsTo(Seat::class);
     }
 }

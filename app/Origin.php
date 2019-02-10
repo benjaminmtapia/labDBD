@@ -12,7 +12,7 @@ class origin extends Model
      public function airport(){
     	return $this->hasMany(Airport::class);
     }
-         public function reservation(){
-    	return $this->hasMany(Reservation::class);
+         public function flight(){
+    	return $this->hasMany(Flight::class);
     }
 }

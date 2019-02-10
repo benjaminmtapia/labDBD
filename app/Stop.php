@@ -10,11 +10,11 @@ class stop extends Model
 	use SoftDeletes;
 	protected $table = 'stops';
 	protected $fillable = ['nombre'];
-	
+
     public function airport(){
-    	return $this->belongsTo(airport::class);
+    	return $this->hasMany(Airport::class);
     }
     public function flight(){
-    	return $this->hasMany(stopflight::class);
+    	return $this->belongsTo(Flight::class);
     }
 }
