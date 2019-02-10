@@ -16,6 +16,8 @@ class CreateStopsTable extends Migration
         Schema::create('stops', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre',60);
+            $table->unsignedInteger('flight_id');
+            $table->foreign('flight_id')->references('id')->on('flights');
             $table->timestamps();
             $table->softDeletes();
         });
