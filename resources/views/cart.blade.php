@@ -30,6 +30,6 @@
 
 <div class="container" style ="margin-top:20px;">
   <h1>Reserva n°{{$reserva->id}}</h1>
-  monto = ${{$reserva->monto}}
-  {{$request->modelo}}
+  monto = ${{$reserva->precio}}
+ 
 </div>

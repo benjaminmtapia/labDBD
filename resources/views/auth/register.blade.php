@@ -50,16 +50,7 @@
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
-					<div class="wrap-input100 validate-input">
-						<input id="numero_pasaporte" type="text" class="form-control{{ $errors->has('numero_pasaporte') ? ' is-invalid' : '' }}" name="numero_pasaporte" value="{{ old('numero_pasaporte') }}" required autofocus placeholder="Numero Pasaporte">
-            @if ($errors->has('numero_pasaporte'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('numero_pasaporte') }}</strong>
-                </span>
-            @endif
-						<span class="focus-input100-1"></span>
-						<span class="focus-input100-2"></span>
-					</div>
+					
 
           <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						<input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus placeholder="Email">
