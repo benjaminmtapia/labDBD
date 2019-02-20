@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Validator;
-
+use Auth;
+use Carbon\Carbon;
 class FlightController extends Controller
 {
     
@@ -67,7 +68,7 @@ class FlightController extends Controller
      */
     public function show($id)
     {
-        //
+        return flight::find($id);
     }
 
     /**
@@ -135,9 +136,41 @@ class FlightController extends Controller
         }
         return view('flights.busquedaporfecha',compact('date','origen','destino'));
     }
-    public function reservarVuelo(Request $request){
-        return $request;
-    
+public function reservarVuelo(Request $request){
+        //obtengo el id del auto y del usuario
+        $id_vuelo = $request->id;
+         $user = Auth::user();
+         //dd($user->name);
+         $reserva_aux = $user->reservation->last();
+         if ($reserva_aux==null) {
+             $reserva = new \App\reservation;
+            // $reserva->precio = 0;
+             $reserva->precio = $reserva->precio + $request->precio;
+         //    $reservation->fecha_reserva = new DateTime('now');
+             $reserva->user_id = $user->id;
+             $reserva->fecha_reserva = Carbon::now();
+            // $reserva->disponibilidad= true;
+             $reserva->save();
+         }
+         else{
+            $booleano = \App\reservation::all()->last()->disponibilidad;
+            if($booleano==false){
+                 $reserva = new \App\reservation;
+              //   $reserva->precio = 0;
+             $reserva->precio = $reserva->precio + $request->precio;
+           //  $reservation->fecha_reserva = new DateTime('now');
+             $reserva->user_id = $user->id;
+              $reserva->fecha_reserva = Carbon::now();
+             //$reserva->disponibilidad= true;
+             $reserva->save();
+
+            }
+            else{
+                $reserva = \App\reservation::all()->last();
+            }
+         }
+
+        return view('cart',compact('reserva','request'));
     }
 
 /*

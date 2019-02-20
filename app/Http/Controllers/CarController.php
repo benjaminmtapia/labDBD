@@ -10,6 +10,7 @@ use \App\ReservationUser;
 use \App\reservation;
 use Auth;
 use \App\User;
+use Carbon\Carbon;
 class CarController extends Controller
 {
 
@@ -136,21 +137,22 @@ class CarController extends Controller
          if ($reserva_aux==null) {
              $reserva = new \App\reservation;
             // $reserva->monto = 0;
-             $reserva->monto = $reserva->monto + $request->monto;
+             $reserva->precio = $reserva->precio + $request->precio;
          //    $reservation->fecha_reserva = new DateTime('now');
              $reserva->user_id = $user->id;
-             $reserva->disponibilidad= true;
+              $reserva->fecha_reserva = Carbon::now();
+             
              $reserva->save();
          }
          else{
             $booleano = \App\reservation::all()->last()->disponibilidad;
             if($booleano==false){
                  $reserva = new \App\reservation;
-              //   $reserva->monto = 0;
-             $reserva->monto = $reserva->monto + $request->monto;
+              //   $reserva->precio = 0;
+             $reserva->precio = $reserva->precio + $request->precio;
            //  $reservation->fecha_reserva = new DateTime('now');
              $reserva->user_id = $user->id;
-             $reserva->disponibilidad= true;
+              $reserva->fecha_reserva = Carbon::now();
              $reserva->save();
 
             }
