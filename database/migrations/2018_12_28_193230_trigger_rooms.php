@@ -28,8 +28,8 @@ class TriggerRooms extends Migration
                     EXIT WHEN n = limite; 
                     n := n + 1; 
                     rdm:= ((rdm * 1.5 * n * valor)%4) + 1; 
-                    INSERT INTO rooms(hotel_id,package_id, numero, capacidad, created_at, updated_at) 
-                    VALUES (valor,valor, n, rdm, NEW.created_at, NEW.updated_at);
+                    INSERT INTO rooms(hotel_id, numero, capacidad, disponible, created_at, updated_at) 
+                    VALUES (valor, n, rdm, disponible, NEW.created_at, NEW.updated_at);
                 END LOOP;
                 RETURN NEW;
             END

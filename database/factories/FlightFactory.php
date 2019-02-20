@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\flight::class, function (Faker $faker) {
+$factory->define(App\Flight::class, function (Faker $faker) {
    $origen = DB::table('origins')->select('id')->get();
 	$destino = DB::table('destinies')->select('id')->get();
     $package = DB::table('packages')->select('id')->get();

@@ -11,6 +11,6 @@ class flightSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\flight', 20)->create();
+        factory('App\Flight', 20)->create();
     }
 }

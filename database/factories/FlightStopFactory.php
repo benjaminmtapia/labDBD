@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Flight-Stop::class, function (Faker $faker) {
+$factory->define(App\Flight_Stop::class, function (Faker $faker) {
 	$vuelo = DB::table('flights')->select('id')->get();
 	$parada = DB::table('stops')->select('id')->get();	
     return [
