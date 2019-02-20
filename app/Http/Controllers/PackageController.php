@@ -12,8 +12,7 @@ class PackageController extends Controller
 
     public function rules(){
         return[
-            'descuento' => 'required|integer',
-            'fecha_vencimiento' => ''
+            'precio' => 'required|integer',
         ];
     }   
 
@@ -54,8 +53,7 @@ class PackageController extends Controller
             return $validator->messages();
         }   
         $package = new \App\package;
-        $package->descuento = $request->get('descuento');
-        $package->fecha_vencimiento = $request->get('fecha_vencimiento');
+        $package->precio = $request->get('precio');
         $package->save();
         return $package;
     }
@@ -96,8 +94,7 @@ class PackageController extends Controller
         if($validator->fails()){
             return $validator->messages();
         }   */
-        $package->descuento = $request->get('descuento');
-        $package->fecha_vencimiento = $request->get('fecha_vencimiento');
+        $package->precio = $request->get('precio');
         $package->save();
         return $package;
     }

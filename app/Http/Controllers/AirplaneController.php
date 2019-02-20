@@ -13,9 +13,17 @@ class AirplaneController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function rules(){
+        return[
+            'capacidad' => 'required|integer',
+        ];
+    }
+
+
     public function index()
     {
-        //
+        return airplane::all();
     }
 
     /**
@@ -36,7 +44,14 @@ class AirplaneController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), $this->rules());
+        if ($validator->fails()) {
+          return $validator->messages();
+        }
+        $airplane = new App\airplane;
+        $airplane->capacidad = $request->get('capacidad');
+        $airplane->save();
+        return $airplane;
     }
 
     /**
@@ -47,7 +62,7 @@ class AirplaneController extends Controller
      */
     public function show(Airplane $airplane)
     {
-        //
+        return $airplane;
     }
 
     /**
@@ -70,7 +85,13 @@ class AirplaneController extends Controller
      */
     public function update(Request $request, Airplane $airplane)
     {
-        //
+        $validator = Validator::make($request->all(), $this->rules());
+        if ($validator->fails()) {
+          return $validator->messages();
+        }
+        $airplane->capacidad = $request->get('capacidad');
+        $airplane->save();
+        return $airplane;
     }
 
     /**

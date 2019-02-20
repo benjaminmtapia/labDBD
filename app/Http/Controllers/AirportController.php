@@ -16,14 +16,14 @@ class AirportController extends Controller
 
     public function rules(){
         return[
-            'ciudad' => 'required|string',
             'nombre' => 'required|string'
         ];
     }
+
     public function index()
     {
-        $vuelos = airport::all();
-        return $vuelos;
+        $airports = airport::all();
+        return $airports;
     }
 
     /**
@@ -50,10 +50,8 @@ class AirportController extends Controller
         }
         $airport = new \App\airport;
         $airport->nombre = $request->get('nombre');
-        $airport->ciudad = $request->get('ciudad');
         $airport->origin_id = $request->get('origin_id');
         $airport->destiny_id = $request->get('destiny_id');
-
         $airport->save();
         return $airport;
     }
@@ -64,10 +62,12 @@ class AirportController extends Controller
      * @param  \App\airport  $airport
      * @return \Illuminate\Http\Response
      */
-    public function show(airport $airport)
+    public function show($id)
     {
-    return $airport;
+        $airport = Airport::find($id);
+        return $airport;
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -95,7 +95,6 @@ class AirportController extends Controller
             return $validator->messages();
         }
         $airport->nombre = $request->get('nombre');
-        $airport->ciudad = $request->get('ciudad');
         $airport->origin_id = $request->get('origin_id');
         $airport->destiny_id = $request->get('destiny_id');
         $airport->save();

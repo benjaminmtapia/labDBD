@@ -15,10 +15,8 @@ class UserController extends Controller
     }
     public function index()
     {
-        //$aeropuertos = airport::all();
         $user = User::all();
         return $user;
-        //return view('')
     }
 
     /**
