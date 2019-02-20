@@ -159,7 +159,7 @@ class CarController extends Controller
                 $reserva = \App\reservation::all()->last();
             }
          }
-         return $request->monto;
+        
         return view('cart',compact('reserva','request'));
     }
 }

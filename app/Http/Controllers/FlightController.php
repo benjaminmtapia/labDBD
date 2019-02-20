@@ -27,6 +27,7 @@ class FlightController extends Controller
     public function index()
     {
         $flights =  flight::all();
+    
         return view('flights.principal',compact('flights'));
     }
 
@@ -147,14 +148,13 @@ class FlightController extends Controller
         return view('flights.busquedaporfecha',compact('date','origen','destino'));
     }
 public function reservarVuelo(Request $request){
-        //obtengo el id del auto y del usuario
-        $id_vuelo = ($request->all());
+         $vuelo = \App\Flight::find($request->id_vuelo);
+
          $user = Auth::user();
          $reserva_aux = $user->reservation->last();
          if ($reserva_aux==null) {
              $reserva = new \App\reservation;
-             $reserva->precio += $request->precio;
-
+             $reserva->precio = $reserva->precio+ $vuelo->precio;
              $reserva->user_id = $user->id;
              $reserva->fecha_reserva = Carbon::now();
              $reserva->disponibilidad= true;
@@ -164,7 +164,7 @@ public function reservarVuelo(Request $request){
             $booleano = \App\reservation::all()->last()->disponibilidad;
             if($booleano==false){
                  $reserva = new \App\reservation;
-             $reserva->precio += $request->precio;
+             $reserva->precio = $reserva->precio+ $vuelo->precio;
              $reserva->user_id = $user->id;
               $reserva->fecha_reserva = Carbon::now();
              $reserva->disponibilidad= true;
@@ -175,8 +175,7 @@ public function reservarVuelo(Request $request){
                 $reserva = \App\reservation::all()->last();
             }
          }
-         return $request;
-         return view('cart',compact('reserva','request'));
+         return view('cart',compact('reserva'));
     }
 
 }

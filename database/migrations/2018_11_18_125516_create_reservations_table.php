@@ -15,7 +15,7 @@ class CreateReservationsTable extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('precio')->default(0);
+            $table->integer('precio');
             $table->integer('num_pasaporte')->nullable();
             $table->date('fecha_reserva');
             $table->boolean('disponibilidad')->default('true');
