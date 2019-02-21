@@ -12,7 +12,8 @@ class RoomController extends Controller
     public function rules(){
         return[
             'numero' => 'required|integer',
-            'capacidad' => 'required|integer'
+            'capacidad' => 'required|integer',
+            'hotel_id' => 'required|integer'
         ];
     }
 
@@ -65,7 +66,7 @@ class RoomController extends Controller
      */
     public function show($id)
     {
-        $room = Room::find($id);
+        $room = room::find($id);
         return $room; 
     }
 

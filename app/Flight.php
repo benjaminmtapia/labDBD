@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class flight extends Model
 {
     use SoftDeletes;
+    protected $table = 'flights';
+    protected $id;
+    protected $fecha_ida;
+    protected $num_pasajeros;
+    protected $precio;
+    protected $capacidad;
     public function stop(){
     	return $this->hasMany(stopflight::class);
     }

@@ -27,6 +27,7 @@ class FlightController extends Controller
     public function index()
     {
         $flights =  flight::all();
+    
         return view('flights.principal',compact('flights'));
     }
 
@@ -56,6 +57,7 @@ class FlightController extends Controller
         $vuelo->fecha_ida = $request->get('fecha_ida');
         $vuelo->num_pasajeros = $request->get('num_pasajeros');
         $vuelo->capacidad = $request->get('capacidad');
+        $vuelo->precio = $request->get('precio');
         $vuelo->save();
         return $vuelo;
     }
@@ -91,7 +93,16 @@ class FlightController extends Controller
      */
     public function update(Request $request, flight $flight)
     {
-        //
+        $validator = Validator::make($request->all(), $this->rules());
+        if ($validator->fails()) {
+          return $validator->messages();
+        }
+        $vuelo->fecha_ida = $request->get('fecha_ida');
+        $vuelo->num_pasajeros = $request->get('num_pasajeros');
+        $vuelo->capacidad = $request->get('capacidad');
+        $vuelo->precio = $request->get('precio');
+        $vuelo->save();
+        return $vuelo;
     }
 
     /**
@@ -119,13 +130,18 @@ class FlightController extends Controller
         $lugar_origen = $request->lugar_origen;
         $lugar_destino = $request->lugar_destino;
         $fecha = $request->fecha;
-        $origen = \App\Origin::where('ciudad',$lugar_origen)->first();
-        $destino = \App\Destiny::where('ciudad',$lugar_destino)->first();
-        $date = \App\Flight::where('fecha_ida',$fecha)->first();
-        if(empty($origen) || empty($destino)){
+        $origen = \App\Origin::where('ciudad',$lugar_origen);
+        $destino = \App\Destiny::where('ciudad',$lugar_destino);
+        $vuelo = \App\Flight::where('fecha_ida',$fecha)->first();
+
+        $asientos = $vuelo->seat->count();
+        $seats = $vuelo->seat;
+        if($request->num_pasajeros <= $asientos ){
+            return view('flights.busquedaporfecha',compact('seats'));
+        }
+        else{
             return view('flights.null');
         }
-        return view('flights.busqueda',compact('origen','destino','fecha','request'));
     }
     public function buscarporfecha(Request $request){
         $vuelo = $request;
@@ -137,74 +153,38 @@ class FlightController extends Controller
         return view('flights.busquedaporfecha',compact('date','origen','destino'));
     }
 public function reservarVuelo(Request $request){
-        //obtengo el id del auto y del usuario
-        $id_vuelo = $request->id;
+         $vuelo = \App\Flight::find($request->id_vuelo);
+
          $user = Auth::user();
-         //dd($user->name);
          $reserva_aux = $user->reservation->last();
          if ($reserva_aux==null) {
              $reserva = new \App\reservation;
-            // $reserva->precio = 0;
-             $reserva->precio = $reserva->precio + $request->precio;
-         //    $reservation->fecha_reserva = new DateTime('now');
+             $reserva->precio = $reserva->precio+ $vuelo->precio;
              $reserva->user_id = $user->id;
              $reserva->fecha_reserva = Carbon::now();
-            // $reserva->disponibilidad= true;
+             $reserva->disponibilidad= true;
              $reserva->save();
          }
          else{
             $booleano = \App\reservation::all()->last()->disponibilidad;
             if($booleano==false){
                  $reserva = new \App\reservation;
-              //   $reserva->precio = 0;
-             $reserva->precio = $reserva->precio + $request->precio;
-           //  $reservation->fecha_reserva = new DateTime('now');
+             $reserva->precio = $reserva->precio+ $vuelo->precio;
              $reserva->user_id = $user->id;
               $reserva->fecha_reserva = Carbon::now();
-             //$reserva->disponibilidad= true;
-             $reserva->save();
-
-            }
-            else{
-                $reserva = \App\reservation::all()->last();
-            }
-         }
-
-        return view('cart',compact('reserva','request'));
-    }
-
-/*
-    public function reservarAuto(Request $request){
-        //obtengo el id del auto y del usuario
-        $id_auto = $request->id;
-         $user = Auth::user();
-         //dd($user->name);
-         $reserva_aux = $user->reservation->last();
-         if ($reserva_aux==null) {
-             $reserva = new \App\reservation;
-             $reserva->monto = $reserva->monto + $request->monto;
-         //    $reservation->fecha_reserva = new DateTime('now');
-             $reserva->user_id = $user->id;
-             $reserva->disponibilidad= true;
-             $reserva->save();
-         }
-         else{
-            $booleano = \App\reservation::all()->last()->disponibilidad;
-            if($booleano==false){
-                 $reserva = new \App\reservation;
-             $reserva->monto = $reserva->monto + $request->monto;
-           //  $reservation->fecha_reserva = new DateTime('now');
-             $reserva->user_id = $user->id;
              $reserva->disponibilidad= true;
              $reserva->save();
 
             }
             else{
                 $reserva = \App\reservation::all()->last();
+                 $reserva->precio = $reserva->precio+ $request->precio_vuelo;
+                 $reserva->save();
+                 
             }
-         }
 
-        return view('cart',compact('reserva'));
+         }
+         return view('cart',compact('reserva'));
     }
-    */
+
 }

@@ -16,8 +16,8 @@ class AdministratorController extends Controller
      */
      public function rules(){
          return[
-             'nombre' => 'required|string',
-             'apellido' => 'required|string'
+             'nick' => 'required|string',
+             'nombre' => 'required|string'
          ];
      }
     public function index()
@@ -48,8 +48,8 @@ class AdministratorController extends Controller
           return $validator->messages();
         }
         $administrador = new App\administrator;
+        $administrador->nick = $request->get('nick');
         $administrador->nombre = $request->get('nombre');
-        $administrador->apellido = $request->get('apellido');
         $administrador->save();
         return $administrador;
     }
@@ -60,9 +60,10 @@ class AdministratorController extends Controller
      * @param  \App\administrator  $administrator
      * @return \Illuminate\Http\Response
      */
-    public function show(administrator $administrator)
+    public function show($id)
     {
-        return $administrator;
+        $administrator = administrator::find($id);
+        return $administrator; 
     }
 
     /**
@@ -89,8 +90,8 @@ class AdministratorController extends Controller
         if ($validator->fails()) {
           return $validator->messages();
         }
+        $administrator->nick = $request->get('nick');
         $administrator->nombre = $request->get('nombre');
-        $administrator->apellido = $request->get('apellido');
         $administrator->save();
         return $administrator;
 

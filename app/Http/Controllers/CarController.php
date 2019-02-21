@@ -60,6 +60,7 @@ class CarController extends Controller
         $car->patente = $request->get('patente');
         $car->marca = $request->get('marca');
         $car->modelo = $request->get('modelo');
+        $car->monto = $request->get('monto');
         $car->capacidad = $request->get('capacidad');
         $car->reservation_id = $request->get('reservation_id');
         $car->package_id = $request->get('package_id');
@@ -106,6 +107,7 @@ class CarController extends Controller
         $car->patente = $request->get('patente');
         $car->marca = $request->get('marca');
         $car->modelo = $request->get('modelo');
+        $car->monto = $request->get('monto');
         $car->capacidad = $request->get('capacidad');
         $car->reservation_id = $request->get('reservation_id');
         $car->package_id = $request->get('package_id');
@@ -136,9 +138,8 @@ class CarController extends Controller
          $reserva_aux = $user->reservation->last();
          if ($reserva_aux==null) {
              $reserva = new \App\reservation;
-            // $reserva->monto = 0;
-             $reserva->precio = $reserva->precio + $request->precio;
-         //    $reservation->fecha_reserva = new DateTime('now');
+             $reserva->precio = $reserva->precio + $request->monto;
+
              $reserva->user_id = $user->id;
               $reserva->fecha_reserva = Carbon::now();
              
@@ -148,9 +149,7 @@ class CarController extends Controller
             $booleano = \App\reservation::all()->last()->disponibilidad;
             if($booleano==false){
                  $reserva = new \App\reservation;
-              //   $reserva->precio = 0;
-             $reserva->precio = $reserva->precio + $request->precio;
-           //  $reservation->fecha_reserva = new DateTime('now');
+             $reserva->precio = $reserva->precio + $request->monto;
              $reserva->user_id = $user->id;
               $reserva->fecha_reserva = Carbon::now();
              $reserva->save();
@@ -160,7 +159,7 @@ class CarController extends Controller
                 $reserva = \App\reservation::all()->last();
             }
          }
-
+        
         return view('cart',compact('reserva','request'));
     }
 }

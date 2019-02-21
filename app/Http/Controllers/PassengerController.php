@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class PassengerController extends Controller
 {
+
+    public function rules(){
+        return[
+            'nombre'=>'required|string',
+            'apellido'=>'required|string'
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +22,8 @@ class PassengerController extends Controller
      */
     public function index()
     {
-        return $pasajero = passenger::all();
-       
+        $passengers = passenger::all();
+        return $passengers;
     }
 
     /**
@@ -36,10 +44,13 @@ class PassengerController extends Controller
      */
     public function store(Request $request)
     {
-        $pasajero = new passenger();
+       $validator = Validator::make($request->all(),$this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }        
+        $pasajero = new \App\passenger;
         $pasajero->nombre = $request->get('nombre');
         $pasajero->apellido = $request->get('apellido');
-        $pasajero->flight_id = $request->get('flight_id');
         $pasajero->save();
         return $pasajero;
     }
@@ -50,10 +61,12 @@ class PassengerController extends Controller
      * @param  \App\passenger  $passenger
      * @return \Illuminate\Http\Response
      */
-    public function show(passenger $passenger)
+    public function show($id)
     {
+        $passenger = Passenger::find($id);
         return $passenger;
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -75,10 +88,12 @@ class PassengerController extends Controller
      */
     public function update(Request $request, passenger $passenger)
     {
-        $pasajero = new passenger();
+        $validator = Validator::make($request->all(),$this->rules());
+        if($validator->fails()){
+            return $validator->messages();
+        }        
         $pasajero->nombre = $request->get('nombre');
         $pasajero->apellido = $request->get('apellido');
-        $pasajero->flight_id = $request->get('flight_id');
         $pasajero->save();
         return $pasajero;
     }

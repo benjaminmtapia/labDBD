@@ -11,8 +11,7 @@ class CheckInController extends Controller
 {
     public function rules(){
         return[
-            'cuenta' => 'required|integer',
-            'num_vuelo' => 'required|integer'
+            'apellidoP' => 'required|string'
         ];
     }
 
@@ -49,8 +48,7 @@ class CheckInController extends Controller
             return $validator->messages();
         }
         $check_in = new \App\check_in;
-        $check_in->num_vuelo = $request->get('num_vuelo');
-        $check_in->cuenta = $request->get('cuenta');
+        $check_in->apellidoP = $request->get('apellidoP');
         $check_in->save();
         return $check_in;
     }
@@ -63,7 +61,7 @@ class CheckInController extends Controller
      */
     public function show($id)
     {
-        $check_in = CheckIn::find($check_in);
+        $check_in = CheckIn::find($id);
         return $check_in; 
     }
 
@@ -91,8 +89,7 @@ class CheckInController extends Controller
         if($validator->fails()){
             return $validator->messages();
         }
-        $check_in->num_vuelo = $request->get('num_vuelo');
-        $check_in->cuenta = $request->get('cuenta');
+        $check_in->apellidoP = $request->get('apellidoP');
         $check_in->save();
         return $check_in;
     }

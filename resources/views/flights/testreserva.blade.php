@@ -23,13 +23,32 @@
       <li class="nav-item">
         <a class="nav-link disabled" href="/cars" tabindex="-1" aria-disabled="true">Autos</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="/login" tabindex="-1" aria-disabled="true">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="/register" tabindex="-1" aria-disabled="true">Register</a>
+      </li>
     </ul>
   
   </div>
 </nav>
+<div class="container">
+@foreach($flights as $f)
+<div class ="well">
+  <form action="{{action('FlightController@reservarVuelo',$f)}}" method="POST">
 
-<div class="container" style ="margin-top:20px;">
-  <h1>Reserva n°{{$reserva->id}}</h1>
-  monto = ${{$reserva->precio}}
- 
+{{$f->id}}
+capacidad: {{$f->seat->count()}}
+<input type="hidden" name="id_vuelo" value="{{$f->id}}">
+<input type="hidden" name="precio_vuelo" value="{{$f->precio}}">
+<input type="hidden" name="fecha_ida" value="{{$f->precio}}">
+<input type="hidden" name="fecha_vuelta" value="{{$f->precio}}">
+<input type="hidden" name="precio_vuelo" value="{{$f->precio}}">
+
+
+<input type="submit"  value="reservar">
+</form>
+</div>
+@endforeach
 </div>
