@@ -39,11 +39,11 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="/flights" class="nav-link">Vuelos</a></li>
-            <li class="nav-item active"><a href="/rooms" class="nav-link">Habitaciones</a></li>
-            
+            <li class="nav-item active"><a href="/flights" class="nav-link">Vuelos</a></li>
+            <li class="nav-item"><a href="/rooms" class="nav-link">Habitaciones</a></li>
+            <li class="nav-item"><a href="/cars" class="nav-link">Autos</a></li>
             <li class="nav-item"><a href="/packages" class="nav-link">Paquetes</a></li>
-            <li class="nav-item"><a href="/cars" class="nav-link">Cars</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
           </ul>
         </div>
       </div>
@@ -55,7 +55,6 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Places</span></p>
             <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Destinations</h1>
           </div>
         </div>
@@ -93,10 +92,7 @@
 
               <div class="col-sm col-md-6 col-lg-4 ftco-animate">
                 <div class="destination">
-                  <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(https://png.pngtree.com/element_origin_min_pic/17/04/15/a4c636759ab1905b2a87309800ba4ab2.jpg);">
-                    <div class="icon d-flex justify-content-center align-items-center">
-                      <span class="icon-link"></span>
-                    </div>
+                  <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(https://www.imore.com/sites/imore.com/files/styles/xlarge/public/field/image/2017/02/airplane-flight-sunset.jpg?itok=8iUtkHU-);">
                   </a>
                   <div class="text p-3">
                     <div class="d-flex">
@@ -104,14 +100,14 @@
                         <h3><a href="#">{{$flight->destiny->ciudad}}</a></h3>
                         <p>from {{$flight->origin->ciudad}}</p>
                       
-                        <p class="rate">
-                          <i class="icon-star"></i>
+                      <!--   <p class="rate">
+                         <i class="icon-star"></i>
                           <i class="icon-star"></i>
                           <i class="icon-star"></i>
                           <i class="icon-star"></i>
                           <i class="icon-star-o"></i>
                           <span>8 Rating</span>
-                        </p>
+                        </p> -->
                         
                         Capacidad: {{count($flight->seat)}}
                       </div>

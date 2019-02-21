@@ -22,7 +22,7 @@ class SeatController extends Controller
      */
     public function index()
     {
-        return seat::all();
+        return Seat::all();
     }
 
     /**
@@ -47,7 +47,7 @@ class SeatController extends Controller
         if($validator->fails()){
             return $validator->messages();
         }   
-        $seat = new \App\seat; 
+        $seat = new \App\Seat; 
         $seat->letra = $request->get('letra'); 
         $seat->numero = $request->get('numero'); 
         return $seat; 
@@ -105,6 +105,7 @@ class SeatController extends Controller
         $seat->delete();//TE ODIO >:(
         return Response()->json(['success']);
     }
+    
     public function reservarAsiento(Request $request){
         $id_reserva = $request->id_reserva;
         $asiento = Seat::where('reservation_id',$id_reserva);

@@ -41,8 +41,8 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
             <li class="nav-item"><a href="/flights" class="nav-link">Vuelos</a></li>
-            <li class="nav-item active"><a href="/rooms" class="nav-link">Habitaciones</a></li>
-            
+            <li class="nav-item"><a href="/rooms" class="nav-link">Habitaciones</a></li>
+            <li class="nav-item active"><a href="/cars" class="nav-link">Autos</a></li>
             <li class="nav-item"><a href="/packages" class="nav-link">Paquetes</a></li>
             <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
           </ul>
@@ -56,7 +56,6 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Places</span></p>
             <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Autos</h1>
           </div>
         </div>
@@ -100,9 +99,8 @@
 
               <div class="col-sm col-md-6 col-lg-4 ftco-animate">
                 <div class="destination">
-                  <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(https://st.depositphotos.com/3230365/4688/v/950/depositphotos_46885215-stock-illustration-yellow-car-funny-cartoon-style.jpg);">
+                  <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(https://www.rentacarlasrosas.com/tenerife/wp-content/uploads/2018/06/Alquilar-un-coche-por-Internet.jpg);">
                     <div class="icon d-flex justify-content-center align-items-center">
-                      <span class="icon-link"></span>
                     </div>
                   </a>
                   <div class="text p-3">

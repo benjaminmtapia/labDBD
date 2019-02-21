@@ -18,7 +18,7 @@ class CreateCarsTable extends Migration
             $table->string('patente');
             $table->string('marca');
             $table->string('modelo');
-            $table->decimal('capacidad');
+            $table->integer('capacidad');
             $table->integer('monto');
             $table->boolean('disponibilidad');
             $table->unsignedInteger('package_id')->nullable();

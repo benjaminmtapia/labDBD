@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\passenger;
+use App\Secure;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class PassengerController extends Controller
+class SecureController extends Controller
 {
 
     public function rules(){
         return[
-            'nombre'=>'required|string',
-            'apellido'=>'required|string',
-            'edad'=>'required|integer'
+            'tipo'=>'required|string',
+            'passenger_id'=>'required|integer'
         ];
     }
 
@@ -23,8 +23,7 @@ class PassengerController extends Controller
      */
     public function index()
     {
-        $passengers = passenger::all();
-        return $passengers;
+        return Secure::all();
     }
 
     /**
@@ -45,38 +44,35 @@ class PassengerController extends Controller
      */
     public function store(Request $request)
     {
-       $validator = Validator::make($request->all(),$this->rules());
+       $validator = Validator::make($request->all(), $this->rules());
         if($validator->fails()){
             return $validator->messages();
-        }        
-        $pasajero = new \App\passenger;
-        $pasajero->nombre = $request->get('nombre');
-        $pasajero->apellido = $request->get('apellido');
-        $pasajero->edad = $request->get('pasajero');
-        $pasajero->save();
-        return $pasajero;
+        }   
+        $secure = new \App\Secure; 
+        $secure->tipo = $request->get('tipo'); 
+        $secure->passenger_id = $request->get('passenger_id'); 
+        return $secure; 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\passenger  $passenger
+     * @param  \App\Secure  $secure
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $passenger = Passenger::find($id);
-        return $passenger;
+        $secure = Secure::find($id);
+        return $secure; 
     }
-
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\passenger  $passenger
+     * @param  \App\Secure  $secure
      * @return \Illuminate\Http\Response
      */
-    public function edit(passenger $passenger)
+    public function edit(Secure $secure)
     {
         //
     }
@@ -85,31 +81,29 @@ class PassengerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\passenger  $passenger
+     * @param  \App\Secure  $secure
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, passenger $passenger)
+    public function update(Request $request, Secure $secure)
     {
-        $validator = Validator::make($request->all(),$this->rules());
+       $validator = Validator::make($request->all(), $this->rules());
         if($validator->fails()){
             return $validator->messages();
-        }        
-        $pasajero->nombre = $request->get('nombre');
-        $pasajero->apellido = $request->get('apellido');
-        $pasajero->edad = $request->get('pasajero');
-        $pasajero->save();
-        return $pasajero;
+        }   
+        $secure->tipo = $request->get('tipo'); 
+        $secure->passenger_id = $request->get('passenger_id'); 
+        return $secure; 
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\passenger  $passenger
+     * @param  \App\Secure  $secure
      * @return \Illuminate\Http\Response
      */
-    public function destroy(passenger $passenger)
+    public function destroy(Secure $secure)
     {
-        $passenger->delete();
-        return response()->json(['success']);
+        $secure->delete();//TE ODIO >:(
+        return Response()->json(['success']);
     }
 }
