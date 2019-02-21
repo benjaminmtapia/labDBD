@@ -16,7 +16,7 @@ class CreateFlightsTable extends Migration
         Schema::create('flights', function (Blueprint $table) {
             $table->increments('id');
             $table->date('fecha_ida');
-            $table->date('fecha_vuelta')->nullable();
+            $table->date('fecha_vuelta');
             $table->integer('precio');
             $table->unsignedInteger('origin_id');
             $table->unsignedInteger('destiny_id');

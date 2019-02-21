@@ -130,13 +130,18 @@ class FlightController extends Controller
         $lugar_origen = $request->lugar_origen;
         $lugar_destino = $request->lugar_destino;
         $fecha = $request->fecha;
-        $origen = \App\Origin::where('ciudad',$lugar_origen)->first();
-        $destino = \App\Destiny::where('ciudad',$lugar_destino)->first();
-        $date = \App\Flight::where('fecha_ida',$fecha)->first();
-        if(empty($origen) || empty($destino)){
+        $origen = \App\Origin::where('ciudad',$lugar_origen);
+        $destino = \App\Destiny::where('ciudad',$lugar_destino);
+        $vuelo = \App\Flight::where('fecha_ida',$fecha)->first();
+
+        $asientos = $vuelo->seat->count();
+        $seats = $vuelo->seat;
+        if($request->num_pasajeros <= $asientos ){
+            return view('flights.busquedaporfecha',compact('seats'));
+        }
+        else{
             return view('flights.null');
         }
-        return view('flights.busqueda',compact('origen','destino','fecha','request'));
     }
     public function buscarporfecha(Request $request){
         $vuelo = $request;
@@ -173,7 +178,11 @@ public function reservarVuelo(Request $request){
             }
             else{
                 $reserva = \App\reservation::all()->last();
+                 $reserva->precio = $reserva->precio+ $request->precio_vuelo;
+                 $reserva->save();
+                 
             }
+
          }
          return view('cart',compact('reserva'));
     }
