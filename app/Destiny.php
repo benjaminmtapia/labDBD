@@ -18,4 +18,7 @@ class destiny extends Model
     public function flight(){
     	return $this->hasMany(Reservation::class);
     }
+    public function hotel(){
+    	return $this->hasMany(hotel::class);
+    }
 }

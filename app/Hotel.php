@@ -17,4 +17,7 @@ class hotel extends Model
     public function room(){
     	return $this->hasMany(room::class);
     }
+    public function destiny(){
+    	return $this->belongsTo(destiny::class);
+    }
 }

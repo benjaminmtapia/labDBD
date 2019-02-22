@@ -25,7 +25,7 @@ class HotelController extends Controller
     public function index()
     {
         $hotels =  hotel::all();
-        return view('hotels.hotelprincipal',compact('hotels'));
+        return view('hotels.principal',compact('hotels'));
     }
 
     /**
@@ -113,5 +113,11 @@ class HotelController extends Controller
         return response()->json([
             'success'
         ]);
+    }
+
+    public function verHoteles(Request $request){
+        $destino = \App\Destiny::find($request->id_destino);
+        $hoteles = $destino->hotel;
+       return view ('hotels.buscar',compact('hoteles'));
     }
 }

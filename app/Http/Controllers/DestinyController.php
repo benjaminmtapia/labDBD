@@ -19,7 +19,8 @@ class DestinyController extends Controller
     }
     public function index()
     {
-        return Destiny::all();
+        $destino =  Destiny::all();
+        return view('hotels.principal',compact('destino'));
 
     }
 

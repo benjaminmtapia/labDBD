@@ -67,23 +67,21 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-3 sidebar order-md-last ftco-animate">
+            
             <div class="sidebar-wrap ftco-animate">
-              <h3 class="heading mb-4">Buscar Vuelo</h3>
-              <form action="/vuelos/busqueda" method="post">
+              <h3 class="heading mb-4">Buscar Alojo</h3>
+              <form action="/hoteles/busqueda2" method="post">
                 <div class="fields">
                   <div class="form-group">
-                    <input type="text" name="lugar_origen" class="form-control" placeholder="Origen">
-                  </div>
-                  <div class="form-group">
-                    <div class="select-wrap one-third">
-                      
-                     <input type="text" name="lugar_destino" class="form-control" placeholder="Destino">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <input type="text" name="fecha" id="checkin_date" class="form-control checkin_date" placeholder="Fecha">
-                  </div>
+                    <input type="text" name="lugar_destino" class="form-control" placeholder="Ingrese Destino"> 
+                    <br>
 
+                    <input type="text" name="fecha_ida" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de Ida"><br>
+                    <input type="text" name="fecha_vuelta" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de Vuelta">
+
+                  </div>
+                  <input type="number" name="num_personas" value="2" class ="form-control" placeholder="Cantidad de Personas" style="text-align: left;">
+                  <br>
                   <div class="form-group">
                     <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
                   </div>
@@ -108,28 +106,21 @@
                   <div class="text p-3">
                     <div class="d-flex">
                       <div class="one">
-                        <h3>Ciudad: {{$r->hotel->ciudad}}</h3>
-                        <p>Capacidad: {{$r->capacidad}} Persona(s)</p>
-                        <p class="rate">
-                          clase: {{$r->hotel->clase}}
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star-o"></i>
-                          <span>8 Rating</span>
-                        </p>
+                        <h3>Ciudad: {{$r->hotel->destiny->ciudad}}</h3>
+                       
                       </div>
                       <div class="two">
                         <span class="price">$200</span>
                       </div>
                     </div>
                     
-                    <p class="days"><span>2 days 3 nights</span></p>
+                  
                     <hr>
                     <p class="bottom-area d-flex">
-                      <span><i class="icon-map-o"></i> San Franciso, CA</span> 
-                      <span class="ml-auto"><a href="#">Discover</a></span>
+                      <form method="post" action="/hoteles/busqueda">
+                        <input type="hidden"  value="{{$r}}" name="habitacion">
+                      </form>
+                      <span class="ml-auto"><a href="/hoteles/busqueda">Ver más</a></span>
                     </p>
                   </div>
                 </div>
