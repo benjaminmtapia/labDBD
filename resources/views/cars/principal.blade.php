@@ -67,20 +67,20 @@
         <div class="row">
           <div class="col-lg-3 sidebar order-md-last ftco-animate">
             <div class="sidebar-wrap ftco-animate">
-              <h3 class="heading mb-4">Buscar Vuelo</h3>
+              <h3 class="heading mb-4">Buscar Auto</h3>
               <form action="/vuelos/busqueda" method="post">
                 <div class="fields">
                   <div class="form-group">
-                    <input type="text" name="lugar_origen" class="form-control" placeholder="Origen">
+                    <input type="text" name="marca" class="form-control" placeholder="Marca">
                   </div>
                   <div class="form-group">
                     <div class="select-wrap one-third">
                       
-                     <input type="text" name="lugar_destino" class="form-control" placeholder="Destino">
+                     <input type="text" name="modelo" class="form-control" placeholder="Modelo">
                     </div>
                   </div>
                   <div class="form-group">
-                    <input type="text" name="fecha" id="checkin_date" class="form-control checkin_date" placeholder="Fecha">
+                    <input type="text" name="capacidad" id="checkin_date" class="form-control checkin_date" placeholder="Capacidad">
                   </div>
 
                   <div class="form-group">
@@ -100,8 +100,6 @@
               <div class="col-sm col-md-6 col-lg-4 ftco-animate">
                 <div class="destination">
                   <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(https://www.rentacarlasrosas.com/tenerife/wp-content/uploads/2018/06/Alquilar-un-coche-por-Internet.jpg);">
-                    <div class="icon d-flex justify-content-center align-items-center">
-                    </div>
                   </a>
                   <div class="text p-3">
                     <div class="d-flex">

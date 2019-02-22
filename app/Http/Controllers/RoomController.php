@@ -13,6 +13,8 @@ class RoomController extends Controller
         return[
             'numero' => 'required|integer',
             'capacidad' => 'required|integer',
+            'fecha_ida' => 'required|date',
+            'fecha_vuelta' => 'required|date',
             'hotel_id' => 'required|integer'
         ];
     }
@@ -53,6 +55,8 @@ class RoomController extends Controller
         $room = new \App\room;
         $room->numero = $request->get('numero');
         $room->capacidad = $request->get('capacidad');
+        $room->fecha_ida = $request->get('fecha_ida');
+        $room->fecha_vuelta = $request->get('fecha_vuelta');
         $room->hotel_id = $request->get('hotel_id');
         $room->save();
         return $room; 
@@ -96,8 +100,9 @@ class RoomController extends Controller
         }
         $room->numero = $request->get('numero');
         $room->capacidad = $request->get('capacidad');
+        $room->fecha_ida = $request->get('fecha_ida');
+        $room->fecha_vuelta = $request->get('fecha_vuelta');
         $room->hotel_id = $request->get('hotel_id');
-
         $room->save();
         return $room; 
     }

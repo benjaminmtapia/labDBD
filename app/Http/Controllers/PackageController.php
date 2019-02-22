@@ -13,6 +13,7 @@ class PackageController extends Controller
     public function rules(){
         return[
             'precio' => 'required|integer',
+            'reservation_id' => 'required|integer',
         ];
     }   
 
@@ -54,6 +55,7 @@ class PackageController extends Controller
         }   
         $package = new \App\package;
         $package->precio = $request->get('precio');
+        $package->reservation_id = $request->get('reservation_id');        
         $package->save();
         return $package;
     }
@@ -95,6 +97,7 @@ class PackageController extends Controller
             return $validator->messages();
         }   */
         $package->precio = $request->get('precio');
+        $package->reservation_id = $request->get('reservation_id');        
         $package->save();
         return $package;
     }

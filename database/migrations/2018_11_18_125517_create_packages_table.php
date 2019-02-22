@@ -15,8 +15,8 @@ class CreatePackagesTable extends Migration
     {
         Schema::create('packages', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('descuento');
-            $table->timestamp('fecha_vencimiento');
+            $table->integer('precio');
+            $table->boolean('disponible');
             $table->unsignedInteger('reservation_id');
             $table->foreign('reservation_id')->references('id')->on('reservations');
             $table->timestamps();

@@ -100,10 +100,7 @@
 
               <div class="col-sm col-md-6 col-lg-4 ftco-animate">
                 <div class="destination">
-                  <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-3.jpg);">
-                    <div class="icon d-flex justify-content-center align-items-center">
-                      <span class="icon-link"></span>
-                    </div>
+                  <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(http://www.bestwesternplusmeridian.com/Content/images/Queen-Room.jpg);">
                   </a>
                   <div class="text p-3">
                     <div class="d-flex">

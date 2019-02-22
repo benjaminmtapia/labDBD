@@ -1,6 +1,54 @@
-
 @extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>DIINF++</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
 
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">DIINF++</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/flights" class="nav-link">Vuelos</a></li>
+            <li class="nav-item"><a href="/rooms" class="nav-link">Habitaciones</a></li>
+            <li class="nav-item"><a href="/cars" class="nav-link">Autos</a></li>
+            <li class="nav-item active"><a href="/packages" class="nav-link">Paquetes</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <!-- END nav -->
     
     <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
@@ -8,8 +56,7 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Places</span></p>
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Destinations</h1>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Paquetes</h1>
           </div>
         </div>
       </div>
@@ -52,27 +99,24 @@
 
               <div class="col-sm col-md-6 col-lg-4 ftco-animate">
                 <div class="destination">
-                  <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-3.jpg);">
-                    <div class="icon d-flex justify-content-center align-items-center">
-                      <span class="icon-link"></span>
-                    </div>
+                  <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(https://akimg0.ask.fm/wallpapers2/080/990/485/760/original/file.jpg);">
                   </a>
                   <div class="text p-3">
                     <div class="d-flex">
                       <div class="one">
                         <h3>Paquete n°: {{$p->id}}</h3>
                       
-                        <p class="rate">
+                      <!--  <p class="rate">
                           <i class="icon-star"></i>
                           <i class="icon-star"></i>
                           <i class="icon-star"></i>
                           <i class="icon-star"></i>
                           <i class="icon-star-o"></i>
                           <span>8 Rating</span>
-                        </p>
+                        </p> -->
                       </div>
                       <div class="two">
-                        <span class="price">$200</span>
+                        <span class="price">${{$p->precio}}</span>
                       </div>
                     </div>
                     

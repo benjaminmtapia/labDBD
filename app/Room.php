@@ -11,7 +11,7 @@ class room extends Model
 
 	protected $table ='rooms';
 	protected $fillable = [
-        'numero', 'capacidad', 'disponible'
+        'numero', 'capacidad', 'disponible', 'fecha_ida', 'fecha_vuelta'
     ];
 
     public function reservation(){

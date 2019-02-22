@@ -19,6 +19,7 @@ class FlightController extends Controller
      */
      public function rules(){
          return[
+             'precio' => 'required|integer',
              'fecha_ida' => 'required|date',
              'capacidad' => 'required|integer',
              'num_pasajeros' => 'required|integer'

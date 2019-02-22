@@ -2,12 +2,11 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\package::class, function (Faker $faker) {
+$factory->define(App\package::class, function (Faker $faker) { 
 	$reservation = DB::table('reservations')->select('id')->get();
     return [
-    	'descuento'=>$faker->numberBetween($min=10, $max=50),
-    	'fecha_vencimiento'=>$faker->dateTime($max = 'now', $timezone = null),
+    	'precio'=>$faker->numberBetween(600, 800),
+    	'disponible'=>$faker->boolean(50),
     	'reservation_id'=>$reservation->random()->id
-
     ];
 });

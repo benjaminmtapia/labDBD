@@ -14,7 +14,7 @@ class ReservationController extends Controller
      */
     public function rules(){
         return[
-            'monto'=>'required|integer',
+            'precio'=>'required|integer',
             'num_pasaporte'=>'required|integer',
             'num_reserva_hotel'=>'required|integer',
         ];
@@ -48,7 +48,7 @@ class ReservationController extends Controller
             return $validator->messages();
         }
         $reservation = new \App\Reservation;
-        $reservation->monto = $request->get('monto');
+        $reservation->precio = $request->get('precio');
         $reservation->num_pasaporte = $request->get('num_pasaporte');
         $reservation->num_reserva_hotel = $request->get('num_reserva_hotel');
 
@@ -92,7 +92,7 @@ class ReservationController extends Controller
         if($validator->fails()){
             return $validator->messages();
         }
-        $reservation->monto = $request->get('monto');
+        $reservation->precio = $request->get('precio');
         $reservation->num_pasaporte = $request->get('num_pasaporte');
         $reservation->num_reserva_hotel = $request->get('num_reserva_hotel');
         

@@ -19,7 +19,8 @@ class CarController extends Controller
             'patente' => 'required|string',
             'marca' => 'required|string',
             'modelo' => 'required|string',
-            'capacidad' => 'required|string'
+            'capacidad' => 'required|integer',
+            'monto' => 'required|integer'
         ];
     }
 
@@ -60,8 +61,8 @@ class CarController extends Controller
         $car->patente = $request->get('patente');
         $car->marca = $request->get('marca');
         $car->modelo = $request->get('modelo');
-        $car->monto = $request->get('monto');
         $car->capacidad = $request->get('capacidad');
+        $car->monto = $request->get('monto');
         $car->reservation_id = $request->get('reservation_id');
         $car->package_id = $request->get('package_id');
         $car->save();
@@ -107,8 +108,8 @@ class CarController extends Controller
         $car->patente = $request->get('patente');
         $car->marca = $request->get('marca');
         $car->modelo = $request->get('modelo');
-        $car->monto = $request->get('monto');
         $car->capacidad = $request->get('capacidad');
+        $car->monto = $request->get('monto');
         $car->reservation_id = $request->get('reservation_id');
         $car->package_id = $request->get('package_id');
         $car->save();

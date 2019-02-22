@@ -10,8 +10,12 @@ class package extends Model
     use SoftDeletes;
     
 	protected $fillable = [
-        'descuento', 'fecha_vencimiento'
+        'precio', 'reservation_id'
     ];
+
+    public function flight(){
+        return $this->hasMany(flight::class);
+    }
 
     public function car(){
     	return $this->hasMany(car::class);
