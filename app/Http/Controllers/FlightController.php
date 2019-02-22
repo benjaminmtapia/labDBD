@@ -135,7 +135,7 @@ class FlightController extends Controller
         $destino = \App\Destiny::where('ciudad',$lugar_destino);
         $vuelo = \App\Flight::where('fecha_ida',$fecha)->get();
         $num_pasajeros = $request->num_pasajeros;
-        return view('flights.busquedaporfecha')->with(compact('vuelo','num_pasajeros'));
+        return view('flights.busqueda')->with(compact('vuelo','num_pasajeros'));
         
     }
     public function buscarporfecha(Request $request){
@@ -149,7 +149,7 @@ class FlightController extends Controller
     }
 public function reservarVuelo(Request $request){
          $vuelo = \App\Flight::find($request->id_vuelo);
-
+         
          $user = Auth::user();
          $reserva_aux = $user->reservation->last();
          if ($reserva_aux==null) {

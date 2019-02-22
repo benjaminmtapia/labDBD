@@ -19,6 +19,8 @@ class CreateHotelsTable extends Migration
             $table->string('nombre');
             $table->integer('clase');
             $table->boolean('disponible');
+            $table->integer('destiny_id');
+            $table->foreign('destiny_id')->references('id')->on('destinies');
             $table->timestamps();
             $table->softDeletes();
         });

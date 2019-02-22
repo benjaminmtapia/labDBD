@@ -67,10 +67,11 @@
           <div class="col-lg-3 sidebar order-md-last ftco-animate">
             
             <div class="sidebar-wrap ftco-animate">
-              <h3 class="heading mb-4">Buscar por fecha</h3>
+              <h3 class="heading mb-4">Buscar Alojo</h3>
               <form action="/vuelos/busqueda" method="post">
                 <div class="fields">
                   <div class="form-group">
+                    
                     <input type="text" name="fecha" id="checkin_date" class="form-control checkin_date" placeholder="Fecha">
 
                   </div>
@@ -114,13 +115,16 @@
 
                       <div class="two">
                         <span class="price">${{$flight->precio}}</span>
-                        <
+                        
                       </div>
                     </div>
                     
                     <hr>
                     <form method="post" action="vuelos/reserva">
                     <p class="bottom-area d-flex">
+                      <input type="hidden"  value="{{$flight}}" name="vuelo">
+                      <input type="hidden"  value="{{$flight->id}}" name="id_vuelo">
+
                       <button type="submit" class="btn btn-danger">Reservar</button>
                     </p>
                 </form>

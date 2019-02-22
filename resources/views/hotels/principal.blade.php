@@ -1,4 +1,4 @@
-
+  
 @extends('layouts.app')
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +42,7 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
             <li class="nav-item"><a href="/flights" class="nav-link">Vuelos</a></li>
-            <li class="nav-item"><a href="/rooms" class="nav-link">Habitaciones</a></li>
+            <li class="nav-item active"><a href="/rooms" class="nav-link">Habitaciones</a></li>
             <li class="nav-item"><a href="/cars" class="nav-link">Autos</a></li>
             <li class="nav-item"><a href="/packages" class="nav-link">Paquetes</a></li>
             <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
@@ -62,95 +62,95 @@
         </div>
       </div>
     </div>
-		
-		<section class="ftco-section">
+    
+    <section class="ftco-section">
       <div class="container">
         <div class="row">
-        	<div class="col-lg-3 sidebar order-md-last ftco-animate">
-        		<div class="sidebar-wrap ftco-animate">
-        			<h3 class="heading mb-4">Find City</h3>
-        			<form action="#">
-        				<div class="fields">
-		              <div class="form-group">
-		                <input type="text" class="form-control" placeholder="Destination, City">
-		              </div>
-		              <div class="form-group">
-		                <div class="select-wrap one-third">
-	                    
-	                   <input type="text" class="form-control" placeholder="Origen, City">
-	                  </div>
-		              </div>
-		              <div class="form-group">
-		                <input type="text" id="checkin_date" class="form-control checkin_date" placeholder="Date from">
-		              </div>
+          <div class="col-lg-3 sidebar order-md-last ftco-animate">
+            
+            <div class="sidebar-wrap ftco-animate">
+              <h3 class="heading mb-4">Buscar Alojo</h3>
+              <form action="/hoteles/ciudad" method="post">
+                <div class="fields">
+                  <div class="form-group">
+                    <input type="text" name="lugar_destino" class="form-control" placeholder="Ingrese Destino"> 
+                    <br>
 
-		              <div class="form-group">
-		                <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
-		              </div>
-		            </div>
-	            </form>
-        		</div>
-        	
+                    <input type="text" name="fecha_ida" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de Ida"><br>
+                    <input type="text" name="fecha_vuelta" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de Vuelta">
+
+                  </div>
+                  <input type="number" name="num_personas" value="2" class ="form-control" placeholder="Cantidad de Personas" style="text-align: left;">
+                  <br>
+                  <div class="form-group">
+                    <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
+                  </div>
+                </div>
+              </form>
+            </div>
+          
           </div><!-- END-->
           
           <div class="col-lg-9">
 
-          	<div class="row">
-          			@foreach($hotels as $hotels)
+            <div class="row">
+                @foreach($destino as $destiny)
 
-          		<div class="col-sm col-md-6 col-lg-4 ftco-animate">
-		    				<div class="destination">
-		    					<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-3.jpg);">
-		    						<div class="icon d-flex justify-content-center align-items-center">
-		    						</div>
-		    					</a>
-		    					<div class="text p-3">
-		    						<div class="d-flex">
-		    							<div class="one">
-				    						<h3><a href="#">{{$hotels->id}}</a></h3>
-				    						<p>from {{$hotels->id}}</p>
-				    						<p class="rate">
-                          @for($i=0; $i<$hotels->clase; $i++)
-				    							<i class="icon-star"></i>
-                          @endfor
-				    						</p>
-			    						</div>
-			    						<div class="two">
-			    							<span class="price">$200</span>
-		    							</div>
-		    						</div>
-		    						
-		    						<p class="days"><span>2 days 3 nights</span></p>
-		    						<hr>
-		    						<p class="bottom-area d-flex">
-		    							<span><i class="icon-map-o"></i> San Franciso, CA</span> 
-		    							<span class="ml-auto"><a href="#">Discover</a></span>
-		    						</p>
-		    					</div>
-		    				</div>
-		    			</div>
-		    	@endforeach
-          	<div class="row mt-5">
-		          <div class="col text-center">
-		            <div class="block-27">
-		              <ul>
-		                <li><a href="#">&lt;</a></li>
-		                <li class="active"><span>1</span></li>
-		                <li><a href="#">2</a></li>
-		                <li><a href="#">3</a></li>
-		                <li><a href="#">4</a></li>
-		                <li><a href="#">5</a></li>
-		                <li><a href="#">&gt;</a></li>
-		              </ul>
-		            </div>
-		          </div>
-		        </div>
+              <div class="col-sm col-md-6 col-lg-4 ftco-animate">
+                <div class="destination">
+                  <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-3.jpg);">
+                    <div class="icon d-flex justify-content-center align-items-center">
+                      <span class="icon-link"></span>
+                    </div>
+                  </a>
+                  <div class="text p-3">
+                    <div class="d-flex">
+                      <div class="one">
+                        <h6>Ciudad: {{$destiny->ciudad}}</h3>
+                       
+                      </div>
+                      <div class="two">
+                        <span class="price">$200</span>
+                      </div>
+                    </div>
+                    
+                  
+                    <hr>
+                   <form method="post" action="/hoteles/ciudad">
+                    <input type="hidden"  value="{{$destiny}}" name="destino">
+                    <input type="hidden"  value="{{$destiny->id}}" name="id_destino">
+                    <p class="bottom-area d-flex">
+                     
+                      <button type="submit" class="btn btn-danger">Reservar</button>
+                    </p>
+                </form>
+                      <span class="ml-auto"><a href="/hoteles/ciudad">Ver más</a></span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+          @endforeach
+            <div class="row mt-5">
+              <div class="col text-center">
+                <div class="block-27">
+                  <ul>
+                    <li><a href="#">&lt;</a></li>
+                    <li class="active"><span>1</span></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">&gt;</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div> <!-- .col-md-8 -->
         </div>
       </div>
     </section> <!-- .section -->
 
-		<section class="ftco-section-parallax">
+    <section class="ftco-section-parallax">
       <div class="parallax-img d-flex align-items-center">
         <div class="container">
           <div class="row d-flex justify-content-center">
@@ -216,14 +216,14 @@
           </div>
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
-            	<h2 class="ftco-heading-2">Have a Questions?</h2>
-            	<div class="block-23 mb-3">
-	              <ul>
-	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
-	              </ul>
-	            </div>
+              <h2 class="ftco-heading-2">Have a Questions?</h2>
+              <div class="block-23 mb-3">
+                <ul>
+                  <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+                  <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+                  <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>

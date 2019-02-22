@@ -27,22 +27,13 @@ Route::resource('/check_ins', 'CheckInController');
 Route::resource('/hotels', 'HotelController');
 Route::resource('/packages', 'PackageController');
 Route::resource('/rooms', 'RoomController');
-Route::resource('/hotel_reservations', 'HotelReservationController');
 Route::resource('/purchases', 'PurchaseController');
 Route::resource('/users', 'UserController');
 Route::resource('/destinies', 'DestinyController');
 Route::resource('/origins','OriginController');
 Route::resource('/passengers','PassengerController');
 Route::resource('/reservations','ReservationController');
-Route::resource('/socios','SocioController');
 Route::resource('/stops','StopController');
-Route::resource('/administratorpackages','AdministratorPackageController');
-Route::resource('/flightpackages','FlightpackageController');
-Route::resource('/hotelreservationpackages','HotelreservationPackageController');
-Route::resource('/packagehotelreservations','StopController');
-Route::resource('/reservationpackages','ReservationpackageController');
-Route::resource('/reservation_administrators','ReservationAdministratorController');
-Route::resource('/reservationflights','ReservationflightController');
 Route::resource('/stopflights','StopflightController');
 Route::resource('/reservation_users','ReservationUserController');
 Route::resource('/seats', 'SeatController');
@@ -55,11 +46,10 @@ Route::post('/vuelos/busquedaporfecha','FlightController@buscarporfecha');
 Route::get('/vuelos/reserva','FlightController@reservarVuelo');
 Route::post('/paquetes/reserva','PackageController@reservarPaquete');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/hoteles/ciudad','HotelController@verHoteles');
 
 Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['auth','admin']],function(){
