@@ -1,4 +1,4 @@
-  
+
 @extends('layouts.app')
 <!DOCTYPE html>
 <html lang="en">
@@ -6,31 +6,31 @@
     <title>Diinf++</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link href="{{ asset('css/open-iconic-bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/animate.css') }}" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" href="css/aos.css">
+    <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/owl.theme.default.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/magnific-popup.css') }}" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link href="{{ asset('css/aos.css') }}" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link href="{{ asset('css/ionicons.min.css') }}" rel="stylesheet" type="text/css">
 
-    
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="{{ asset('css/bootstrap-datepicker.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/jquery.timepicker.css') }}" rel="stylesheet" type="text/css">
+
+
+    <link href="{{ asset('css/flaticon.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/icomoon.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css">
   </head>
   <body>
-    
+
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
       <div class="container">
         <a class="navbar-brand" href="index.html">DIINF++</a>
@@ -51,7 +51,7 @@
       </div>
     </nav>
     <!-- END nav -->
-    
+
     <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
       <div class="overlay"></div>
       <div class="container">
@@ -62,18 +62,18 @@
         </div>
       </div>
     </div>
-    
+
     <section class="ftco-section">
       <div class="container">
         <div class="row">
           <div class="col-lg-3 sidebar order-md-last ftco-animate">
-            
+
             <div class="sidebar-wrap ftco-animate">
               <h3 class="heading mb-4">Buscar Alojo</h3>
               <form action="/hoteles/ciudad" method="post">
                 <div class="fields">
                   <div class="form-group">
-                    <input type="text" name="lugar_destino" class="form-control" placeholder="Ingrese Destino"> 
+                    <input type="text" name="lugar_destino" class="form-control" placeholder="Ingrese Destino">
                     <br>
 
                     <input type="text" name="fecha_ida" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de Ida"><br>
@@ -88,9 +88,9 @@
                 </div>
               </form>
             </div>
-          
+
           </div><!-- END-->
-          
+
           <div class="col-lg-9">
 
             <div class="row">
@@ -107,19 +107,19 @@
                     <div class="d-flex">
                       <div class="one">
                         <h6>Ciudad: {{$hotel->nombre}}</h3>
-                       
+
                       </div>
                       <div class="two">
                         <span class="price">$200</span>
                       </div>
                     </div>
-                    
-                  
+
+
                     <hr>
                    <form method="post" action="/hoteles/ciudad">
-                  
+
                     <p class="bottom-area d-flex">
-                     
+
                       <button type="submit" class="btn btn-danger">Reservar</button>
                     </p>
                 </form>
@@ -236,30 +236,30 @@
         </div>
       </div>
     </footer>
-    
-  
+
+
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/jquery.timepicker.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.stellar.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/owl.carousel.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/aos.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.animateNumber.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.timepicker.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/scrollax.min.js') }}"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
-    
+  <script type="text/javascript" src="{{ asset('js/google-map.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+
   </body>
 </html>
