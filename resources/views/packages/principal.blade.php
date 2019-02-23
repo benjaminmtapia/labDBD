@@ -120,7 +120,25 @@
                       </div>
                     </div>
                     
-                    <p class="days"><span>2 days 3 nights</span></p>
+                    <p class="vuelo"><span>
+                    @if(optional($p->flight()->first())->origin_id != '')
+                      Vuelo desde {{optional($p->flight()->first())->origin_id}} 
+                      a {{optional($p->flight()->first())->destiny_id}} 
+                    @endif                      
+                    </span></p>
+
+
+                    <p class="auto"><span>
+                      @if(optional($p->car()->first())->marca != '')
+                        Auto: {{optional($p->car()->first())->marca}}, 
+                        {{optional($p->car()->first())->modelo}}
+                      @endif
+                    </span></p>
+
+
+                    <p class="habitacion"><span>Habitación para {{optional($p->room()->first())->capacidad}} 
+                      personas en el hotel {{optional($p->room()->first())->hotel_id}}
+                      </span></p>
                     <hr>
                     <p class="bottom-area d-flex">
                       
