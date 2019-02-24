@@ -23,7 +23,9 @@ class SecureController extends Controller
      */
     public function index()
     {
-        return Secure::all();
+        $secures = Secure::all();
+        
+        return view('secures.principal', compact('secures'));
     }
 
     /**
@@ -47,11 +49,11 @@ class SecureController extends Controller
        $validator = Validator::make($request->all(), $this->rules());
         if($validator->fails()){
             return $validator->messages();
-        }   
-        $secure = new \App\Secure; 
-        $secure->tipo = $request->get('tipo'); 
-        $secure->passenger_id = $request->get('passenger_id'); 
-        return $secure; 
+        }
+        $secure = new \App\Secure;
+        $secure->tipo = $request->get('tipo');
+        $secure->passenger_id = $request->get('passenger_id');
+        return $secure;
     }
 
     /**
@@ -63,7 +65,7 @@ class SecureController extends Controller
     public function show($id)
     {
         $secure = Secure::find($id);
-        return $secure; 
+        return $secure;
     }
 
     /**
@@ -89,10 +91,10 @@ class SecureController extends Controller
        $validator = Validator::make($request->all(), $this->rules());
         if($validator->fails()){
             return $validator->messages();
-        }   
-        $secure->tipo = $request->get('tipo'); 
-        $secure->passenger_id = $request->get('passenger_id'); 
-        return $secure; 
+        }
+        $secure->tipo = $request->get('tipo');
+        $secure->passenger_id = $request->get('passenger_id');
+        return $secure;
     }
 
     /**
