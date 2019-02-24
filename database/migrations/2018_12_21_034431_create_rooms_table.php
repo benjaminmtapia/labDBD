@@ -21,7 +21,9 @@ class CreateRoomsTable extends Migration
             $table->date('fecha_ida');
             $table->date('fecha_vuelta');
             $table->unsignedInteger('hotel_id');
+            $table->unsignedInteger('package_id')->nullable();
             $table->foreign('hotel_id')->references('id')->on('hotels');
+            $table->foreign('package_id')->references('id')->on('packages');
             $table->timestamps();
             $table->softDeletes();
         });

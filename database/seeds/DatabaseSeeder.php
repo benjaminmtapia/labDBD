@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(destinySeeder::class);
         $this->call(originSeeder::class);
         $this->call(reservationSeeder::class);
+        $this->call(packageSeeder::class);
         $this->call(flightSeeder::class);
         $this->call(airportSeeder::class);
         $this->call(stopSeeder::class);
@@ -27,6 +28,5 @@ class DatabaseSeeder extends Seeder
         $this->call(roomSeeder::class);
         $this->call(seatSeeder::class);
         $this->call(ticketSeeder::class);
-        $this->call(packageSeeder::class);   
     }
 }
