@@ -41,11 +41,12 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="/flights" class="nav-link">Vuelos</a></li>
-            <li class="nav-item active"><a href="/rooms" class="nav-link">Habitaciones</a></li>
+            <li class="nav-item active"><a href="/flights" class="nav-link">Vuelos</a></li>
+            <li class="nav-item"><a href="/destinies" class="nav-link">Habitaciones</a></li>
             <li class="nav-item"><a href="/cars" class="nav-link">Autos</a></li>
             <li class="nav-item"><a href="/packages" class="nav-link">Paquetes</a></li>
-            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="/login" class="nav-link">Ingresar</a></li>
+            <li class="nav-item"><a href="/register" class="nav-link">Registrarse</a></li>
           </ul>
         </div>
       </div>
