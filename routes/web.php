@@ -37,6 +37,7 @@ Route::resource('/stops','StopController');
 Route::resource('/stopflights','StopflightController');
 Route::resource('/reservation_users','ReservationUserController');
 Route::resource('/seats', 'SeatController');
+Route::resource('/secures', 'SecureController');
 
 Route::post('/vuelos/busqueda','FlightController@buscar');
 Route::post('/vuelos/reserva','FlightController@reservarVuelo');

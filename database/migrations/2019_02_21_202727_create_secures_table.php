@@ -17,8 +17,9 @@ class CreateSecuresTable extends Migration
             $table->increments('id');
             $table->string('tipo');
             $table->unsignedInteger('passenger_id');
-            $table->foreign('passenger_id')->references('id')->on('passengers'); 
+            $table->foreign('passenger_id')->references('id')->on('passengers');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
