@@ -48,6 +48,7 @@ Route::get('/vuelos/reserva','FlightController@reservarVuelo');
 Route::post('/paquetes/reserva','PackageController@reservarPaquete');
 
 Route::post('/hoteles/ciudad','HotelController@verHoteles');
+Route::post('/hoteles/habitaciones','HotelController@verHabitaciones');
 
 Auth::routes();
 

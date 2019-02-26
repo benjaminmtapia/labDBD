@@ -31,7 +31,7 @@
   </head>
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <nav class="navbar navbar-expand-lg ">
       <div class="container">
         <a class="navbar-brand" href="index.html">DIINF++</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,44 +52,12 @@
     </nav>
     <!-- END nav -->
 
-    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Destinations</h1>
-          </div>
-        </div>
-      </div>
-    </div>
+    
 
     <section class="ftco-section">
       <div class="container">
         <div class="row">
-          <div class="col-lg-3 sidebar order-md-last ftco-animate">
-
-            <div class="sidebar-wrap ftco-animate">
-              <h3 class="heading mb-4">Buscar Alojo</h3>
-              <form action="/hoteles/ciudad" method="post">
-                <div class="fields">
-                  <div class="form-group">
-                    <input type="text" name="lugar_destino" class="form-control" placeholder="Ingrese Destino">
-                    <br>
-
-                    <input type="text" name="fecha_ida" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de Ida"><br>
-                    <input type="text" name="fecha_vuelta" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de Vuelta">
-
-                  </div>
-                  <input type="number" name="num_personas" value="2" class ="form-control" placeholder="Cantidad de Personas" style="text-align: left;">
-                  <br>
-                  <div class="form-group">
-                    <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
-                  </div>
-                </div>
-              </form>
-            </div>
-
-          </div><!-- END-->
+        
 
           <div class="col-lg-9">
 
@@ -116,7 +84,8 @@
 
 
                     <hr>
-                   <form method="post" action="/hoteles/ciudad">
+                   <form method="post" action="/hoteles/habitaciones">
+                    <input type="hidden" name="id_hotel" value="{{$hotel->id}}">
 
                     <p class="bottom-area d-flex">
 

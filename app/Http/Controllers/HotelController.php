@@ -120,4 +120,9 @@ class HotelController extends Controller
         $hoteles = $destino->hotel;
        return view ('hotels.buscar',compact('hoteles'));
     }
+    public function verHabitaciones(Request $request){
+        $hotel = \App\hotel::find($request->id_hotel);
+        $habitaciones= $hotel->room;
+        return view('hotels.habitacion',compact('hotel','habitaciones'));
+    }
 }

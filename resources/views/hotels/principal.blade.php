@@ -29,7 +29,7 @@
   </head>
   <body>
     
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <nav class="navbar navbar-expand-lg ">
       <div class="container">
         <a class="navbar-brand" href="index.html">DIINF++</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,16 +51,6 @@
     </nav>
     <!-- END nav -->
     
-    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Destinations</h1>
-          </div>
-        </div>
-      </div>
-    </div>
     
     <section class="ftco-section">
       <div class="container">
@@ -242,24 +232,24 @@
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
-
-  <script type="text/javascript" src="js/jquery.min.js"></script>
-  <script type="text/javascript" src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script  type="text/javascript" src="js/popper.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-  <script type="text/javascript" src="js/jquery.waypoints.min.js"></script>
-  <script type="text/javascript" src="js/jquery.stellar.min.js"></script>
-  <script type="text/javascript" src="js/owl.carousel.min.js"></script>
-  <script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
-  <script type="text/javascript" src="js/aos.js"></script>
-  <script type="text/javascript" src="js/jquery.animateNumber.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
-  <script type="text/javascript" src="js/jquery.timepicker.min.js"></script>
-  <script type="text/javascript" src="public/js/scrollax.min.js"></script>
-  <script  type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script type="text/javascript" src="js/google-map.js"></script>
-  <script  type="text/javascript" src="js/main.js"></script>
+ <script src="{{URL::asset('js/jquery.min.js')}}"></script>
+  <script src="{{URL::asset('js/jquery-migrate-3.0.1.min.js')}}"></script>
+  <script src="{{URL::asset('js/popper.min.js')}}"></script>
+  <script src="{{URL::asset('js/bootstrap.min.js')}}"></script>
+  <script src="{{URL::asset('js/jquery.easing.1.3.js')}}"></script>
+  <script src="{{URL::asset('js/jquery.waypoints.min.js')}}"></script>
+  <script src="{{URL::asset('js/jquery.stellar.min.js')}}"></script>
+  <script src="{{URL::asset('js/owl.carousel.min.js')}}"></script>
+  <script src="{{URL::asset('js/jquery.magnific-popup.min.js')}}"></script>
+  <script src="{{URL::asset('js/aos.js')}}"></script>
+  <script src="{{URL::asset('js/jquery.animateNumber.min.js')}}"></script>
+  <script src="{{URL::asset('js/bootstrap-datepicker.js')}}"></script>
+  <script src="{{URL::asset('js/jquery.timepicker.min.js')}}"></script>
+  <script src="{{URL::asset('js/scrollax.min.js')}}"></script>
+  <script src="{{URL::asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false')}}"></script>
+  <script src="{{URL::asset('js/google-map.js')}}"></script>
+  <script src="{{URL::asset('js/main.js')}}"></script>
+    
     
   </body>
 </html>
