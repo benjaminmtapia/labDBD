@@ -37,6 +37,10 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
+        'c' => 
+        array (
+            'carfaker\\' => 9,
+        ),
         'Z' => 
         array (
             'Zend\\Diactoros\\' => 15,
@@ -126,6 +130,7 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
             'GuzzleHttp\\Psr7\\' => 16,
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
+            'Gloudemans\\Shoppingcart\\' => 24,
         ),
         'F' => 
         array (
@@ -166,6 +171,10 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+        ),
+        'carfaker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/iamraccoon/car-faker/src/carfaker',
         ),
         'Zend\\Diactoros\\' => 
         array (
@@ -347,6 +356,10 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         'GuzzleHttp\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
+        ),
+        'Gloudemans\\Shoppingcart\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hardevine/shoppingcart/src',
         ),
         'Froiden\\SqlGenerator\\Tests\\' => 
         array (
@@ -1084,6 +1097,16 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         'Froiden\\SqlGenerator\\SqlFormatter' => __DIR__ . '/..' . '/froiden/sql-generator/src/SqlFormatter.php',
         'Froiden\\SqlGenerator\\SqlGeneratorServiceProvider' => __DIR__ . '/..' . '/froiden/sql-generator/src/SqlGeneratorServiceProvider.php',
         'Froiden\\SqlGenerator\\Tests\\TestCase' => __DIR__ . '/..' . '/froiden/sql-generator/tests/TestCase.php',
+        'Gloudemans\\Shoppingcart\\CanBeBought' => __DIR__ . '/..' . '/hardevine/shoppingcart/src/CanBeBought.php',
+        'Gloudemans\\Shoppingcart\\Cart' => __DIR__ . '/..' . '/hardevine/shoppingcart/src/Cart.php',
+        'Gloudemans\\Shoppingcart\\CartItem' => __DIR__ . '/..' . '/hardevine/shoppingcart/src/CartItem.php',
+        'Gloudemans\\Shoppingcart\\CartItemOptions' => __DIR__ . '/..' . '/hardevine/shoppingcart/src/CartItemOptions.php',
+        'Gloudemans\\Shoppingcart\\Contracts\\Buyable' => __DIR__ . '/..' . '/hardevine/shoppingcart/src/Contracts/Buyable.php',
+        'Gloudemans\\Shoppingcart\\Exceptions\\CartAlreadyStoredException' => __DIR__ . '/..' . '/hardevine/shoppingcart/src/Exceptions/CartAlreadyStoredException.php',
+        'Gloudemans\\Shoppingcart\\Exceptions\\InvalidRowIDException' => __DIR__ . '/..' . '/hardevine/shoppingcart/src/Exceptions/InvalidRowIDException.php',
+        'Gloudemans\\Shoppingcart\\Exceptions\\UnknownModelException' => __DIR__ . '/..' . '/hardevine/shoppingcart/src/Exceptions/UnknownModelException.php',
+        'Gloudemans\\Shoppingcart\\Facades\\Cart' => __DIR__ . '/..' . '/hardevine/shoppingcart/src/Facades/Cart.php',
+        'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider' => __DIR__ . '/..' . '/hardevine/shoppingcart/src/ShoppingcartServiceProvider.php',
         'GuzzleHttp\\Client' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Client.php',
         'GuzzleHttp\\ClientInterface' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/ClientInterface.php',
         'GuzzleHttp\\Cookie\\CookieJar' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Cookie/CookieJar.php',
@@ -4170,6 +4193,9 @@ class ComposerStaticInit9c1147432050d19b3b201115eba16889
         'Zend\\Diactoros\\Uri' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/Uri.php',
         'airportSeeder' => __DIR__ . '/../..' . '/database/seeds/airportSeeder.php',
         'carSeeder' => __DIR__ . '/../..' . '/database/seeds/carSeeder.php',
+        'carfaker\\provider\\Base' => __DIR__ . '/..' . '/iamraccoon/car-faker/src/carfaker/provider/Base.php',
+        'carfaker\\provider\\Car' => __DIR__ . '/..' . '/iamraccoon/car-faker/src/carfaker/provider/Car.php',
+        'carfaker\\traits\\RepositoryTrait' => __DIR__ . '/..' . '/iamraccoon/car-faker/src/carfaker/traits/RepositoryTrait.php',
         'check_inSeeder' => __DIR__ . '/../..' . '/database/seeds/check_inSeeder.php',
         'destinySeeder' => __DIR__ . '/../..' . '/database/seeds/destinySeeder.php',
         'flightSeeder' => __DIR__ . '/../..' . '/database/seeds/flightSeeder.php',

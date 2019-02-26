@@ -2,31 +2,31 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Diinf++</title>
+    <title>DIINF++</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link href="{{ asset('css/open-iconic-bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/animate.css') }}" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" href="css/aos.css">
+    <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/owl.theme.default.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/magnific-popup.css') }}" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link href="{{ asset('css/aos.css') }}" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link href="{{ asset('css/ionicons.min.css') }}" rel="stylesheet" type="text/css">
 
-    
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="{{ asset('css/bootstrap-datepicker.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/jquery.timepicker.css') }}" rel="stylesheet" type="text/css">
+
+
+    <link href="{{ asset('css/flaticon.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/icomoon.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css">
   </head>
   <body>
     
@@ -40,12 +40,11 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-            <li class="nav-item active"><a href="/flights" class="nav-link">Vuelos</a></li>
-            <li class="nav-item"><a href="/destinies" class="nav-link">Habitaciones</a></li>
+            <li class="nav-item"><a href="/flights" class="nav-link">Vuelos</a></li>
+            <li class="nav-item"><a href="/rooms" class="nav-link">Habitaciones</a></li>
             <li class="nav-item"><a href="/cars" class="nav-link">Autos</a></li>
             <li class="nav-item"><a href="/packages" class="nav-link">Paquetes</a></li>
-            <li class="nav-item"><a href="/login" class="nav-link">Ingresar</a></li>
-            <li class="nav-item"><a href="/register" class="nav-link">Registrarse</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
           </ul>
         </div>
       </div>
@@ -57,81 +56,62 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Autos</h1>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Carrito de Compras</h1>
           </div>
         </div>
       </div>
     </div>
-    
+
+    <div class="container" style ="margin-top:20px;">
+
+  <!--      <table class="table">
+          <tr>
+            <th class="cell">N° Reserva</th>
+            <th class="cell">Item</th>
+            <th class="cell">Precio</th>
+            <th class="cell">Pagar</th>
+            <th class="cell">Eliminar</th>
+          </tr>
+
+          @foreach($reservations as $r)
+          <tr>
+            <th class="cell">{{$r->id}}</th>
+            <th class="cell">{{optional($r->seat()->first())->id}}</th>
+            <th class="cell">{{optional($r->seat()->first())->id}}</th>
+            <th class="cell">Poner botón PAGAR</th>
+            <th class="cell">Poner botón ELIMINAR</th>           
+          </tr>
+          @endforeach 
+        </table> -->
+
+    <table class="table">
+          <tr>
+            <th class="cell">N° Reserva</th>
+            <th class="cell">Origen</th>
+            <th class="cell">Destino</th>
+            <th class="cell">Incluye</th>
+            <th class="cell">Total</th>
+          </tr>
+
+          @foreach($reservations as $r)
+          <tr>
+            <th class="cell">{{$r->id}}</th>
+            <th class="cell">{{optional($r->seat()->first())->id}}</th>
+            <th class="cell">{{optional($r->seat()->first())->id}}</th>
+            <th class="cell">{{optional($r->room()->first())->id}}</th>
+            <th class="cell">${{$r->precio}}</th>           
+          </tr>
+          @endforeach 
+        </table> 
+        
     <section class="ftco-section">
       <div class="container">
         <div class="row">
-          <div class="col-lg-3 sidebar order-md-last ftco-animate">
-            <div class="sidebar-wrap ftco-animate">
-              <h3 class="heading mb-4">Buscar Auto</h3>
-              <form action="/vuelos/busqueda" method="post">
-                <div class="fields">
-                  <div class="form-group">
-                    <input type="text" name="marca" class="form-control" placeholder="Marca">
-                  </div>
-                  <div class="form-group">
-                    <div class="select-wrap one-third">
-                      
-                     <input type="text" name="modelo" class="form-control" placeholder="Modelo">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <input type="text" name="capacidad" id="checkin_date" class="form-control checkin_date" placeholder="Capacidad">
-                  </div>
-
-                  <div class="form-group">
-                    <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
-                  </div>
-                </div>
-              </form>
-            </div>
-          
-          </div><!-- END-->
           
           <div class="col-lg-9">
 
             <div class="row">
-                @foreach($cars as $car)
 
-              <div class="col-sm col-md-6 col-lg-4 ftco-animate">
-                <div class="destination">
-                  <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(https://www.rentacarlasrosas.com/tenerife/wp-content/uploads/2018/06/Alquilar-un-coche-por-Internet.jpg);">
-                  </a>
-                  <div class="text p-3">
-                    <div class="d-flex">
-                      <div class="one">
-                        <h3>{{$car->marca}}</h3>
-                       {{$car->modelo}}
-                        </p>
-                      </div>
-                      <div class="two">
-                        <span class="price">${{$car->precio}}</span>
-                      </div>
-                    </div>
-                    
-                   
-                    <hr>
-                    <p class="bottom-area d-flex">
-
-                      <form method="post" action="{{action('CarController@reservarAuto',$car)}}">
-                        <input type="hidden" name="precio" value="$car->precio">
-                        <button type="submit" class="btn btn-danger">Reservar</button>
-                      </form>
-                        
-
-                      </form>
-
-                
-                    </p>
-                  </div>
-                </div>
-              </div>
-          @endforeach
             <div class="row mt-5">
               <div class="col text-center">
                 <div class="block-27">
@@ -246,23 +226,23 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/jquery.timepicker.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.stellar.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/owl.carousel.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/aos.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.animateNumber.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.timepicker.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/scrollax.min.js') }}"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
-    
+  <script type="text/javascript" src="{{ asset('js/google-map.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+
   </body>
 </html>

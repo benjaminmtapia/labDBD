@@ -19,7 +19,7 @@ class CreateCarsTable extends Migration
             $table->string('marca');
             $table->string('modelo');
             $table->integer('capacidad');
-            $table->integer('monto');
+            $table->integer('precio');
             $table->boolean('disponibilidad');
             $table->unsignedInteger('package_id')->nullable();
             $table->unsignedInteger('reservation_id');
