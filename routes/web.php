@@ -50,6 +50,8 @@ Route::post('/paquetes/reserva','PackageController@reservarPaquete');
 Route::post('/hoteles/ciudad','HotelController@verHoteles');
 Route::post('/hoteles/habitaciones','HotelController@verHabitaciones');
 
+Route::resource('/carrito', 'CarritoController'); 
+
 Auth::routes();
 
 

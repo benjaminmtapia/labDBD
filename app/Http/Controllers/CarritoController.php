@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Carrito;
+use App\reservation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -45,9 +46,9 @@ class CarritoController extends Controller
      * @param  \App\Carrito  $carrito
      * @return \Illuminate\Http\Response
      */
-    public function show(Carrito $carrito)
-    {
-        //
+    public function show($id){
+        $reservations = reservation::all()->where('user_id', $id);
+        return view('carrito',compact('reservations'));
     }
 
     /**
@@ -83,4 +84,5 @@ class CarritoController extends Controller
     {
         //
     }
+
 }

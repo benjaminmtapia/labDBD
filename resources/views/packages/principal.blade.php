@@ -136,8 +136,11 @@
                     </span></p>
 
 
-                    <p class="habitacion"><span>Habitación para {{optional($p->room()->first())->capacidad}} 
-                      personas en el hotel {{optional($p->room()->first())->hotel_id}}
+                    <p class="habitacion"><span>
+                      @if(optional($p->room()->first())->capacidad != '')
+                        Habitación para {{optional($p->room()->first())->capacidad}} 
+                        personas en el hotel {{optional($p->room()->first())->hotel_id}}
+                      @endif
                       </span></p>
                     <hr>
                     <p class="bottom-area d-flex">

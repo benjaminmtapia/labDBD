@@ -20,7 +20,7 @@ class CarController extends Controller
             'marca' => 'required|string',
             'modelo' => 'required|string',
             'capacidad' => 'required|integer',
-            'monto' => 'required|integer'
+            'precio' => 'required|integer'
         ];
     }
 
@@ -62,7 +62,7 @@ class CarController extends Controller
         $car->marca = $request->get('marca');
         $car->modelo = $request->get('modelo');
         $car->capacidad = $request->get('capacidad');
-        $car->monto = $request->get('monto');
+        $car->precio = $request->get('precio');
         $car->reservation_id = $request->get('reservation_id');
         $car->package_id = $request->get('package_id');
         $car->save();
@@ -109,7 +109,7 @@ class CarController extends Controller
         $car->marca = $request->get('marca');
         $car->modelo = $request->get('modelo');
         $car->capacidad = $request->get('capacidad');
-        $car->monto = $request->get('monto');
+        $car->precio = $request->get('precio');
         $car->reservation_id = $request->get('reservation_id');
         $car->package_id = $request->get('package_id');
         $car->save();
@@ -139,7 +139,7 @@ class CarController extends Controller
          $reserva_aux = $user->reservation->last();
          if ($reserva_aux==null) {
              $reserva = new \App\reservation;
-             $reserva->precio = $reserva->precio + $request->monto;
+             $reserva->precio = $reserva->precio + $request->precio;
 
              $reserva->user_id = $user->id;
               $reserva->fecha_reserva = Carbon::now();
@@ -150,7 +150,7 @@ class CarController extends Controller
             $booleano = \App\reservation::all()->last()->disponibilidad;
             if($booleano==false){
                  $reserva = new \App\reservation;
-             $reserva->precio = $reserva->precio + $request->monto;
+             $reserva->precio = $reserva->precio + $request->precio;
              $reserva->user_id = $user->id;
               $reserva->fecha_reserva = Carbon::now();
              $reserva->save();

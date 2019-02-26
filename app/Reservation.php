@@ -13,18 +13,25 @@ class reservation extends Model
     public function car(){
     	return $this->hasMany(car::class);
     }
+
     public function package(){
     	return $this->hasMany(package::class);
     }
+
     public function ticket(){
     	return $this->hasMany(ticket::class);
     }
+
     public function seat(){
     	return $this->hasMany(Seat::class);
-
     }
+
     public function user(){
     	return $this->belongsTo(User::class);
     }
+
+    public function room(){
+        return $this->hasMany(room::class);
+    }    
 
 }
