@@ -49,6 +49,7 @@ Route::post('/paquetes/reserva','PackageController@reservarPaquete');
 
 Route::post('/hoteles/ciudad','HotelController@verHoteles');
 Route::post('/hoteles/habitaciones','HotelController@verHabitaciones');
+Route::post('/hoteles/reservar','RoomController@reservarHabitacion');
 
 Route::resource('/carrito', 'CarritoController'); 
 

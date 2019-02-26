@@ -70,9 +70,10 @@
           	<div class="row">
           	
           		<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-          			<h4 class="mb-4">Our Rooms</h4>
+          			<h4 class="mb-4">Habitaciones Disponibles</h4>
           			<div class="row">
           				@foreach($habitaciones as $room)
+                  @if($room->disponible==TRUE)
           				<div class="col-md-4">
 				    				<div class="destination">
 				    					<a href="hotel-single.html" class="img img-2" style="background-image: url(images/room-4.jpg);"></a>
@@ -91,18 +92,21 @@
 						    						</p>
 					    						</div>
 					    						<div class="two">
-					    							<span class="price per-price">$40<br><small>/night</small></span>
+					    							<span class="price per-price">${{$room->precio}}<br><small>/night</small></span>
 				    							</div>
 				    						</div>
 				    						<hr>
-				    						<p class="bottom-area d-flex">
-				    							<span><i class="icon-map-o"></i> Miami, Fl</span> 
-				    							<span class="ml-auto"><a href="#">Book Now</a></span>
-				    						</p>
+                    <form method="post" action="/hoteles/reservar">
+                    <input type="hidden"  value="{{$room->id}}" name="id_habitacion">
+                    <p class="bottom-area d-flex">
+                     
+                      <button type="submit" class="btn btn-danger">Reservar</button>
+                    </p>
+                </form>
 				    					</div>
 				    				</div>
 				    			</div>
-				    			
+				    			@endif
 				    	@endforeach		
           			</div>
           		</div>

@@ -113,7 +113,7 @@
                       <button type="submit" class="btn btn-danger">Reservar</button>
                     </p>
                 </form>
-                      <span class="ml-auto"><a href="/hoteles/ciudad">Ver más</a></span>
+                     
                     </p>
                   </div>
                 </div>

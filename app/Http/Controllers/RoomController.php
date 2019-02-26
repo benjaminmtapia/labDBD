@@ -6,6 +6,10 @@ use App\room;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
+
+use Auth;
+use Carbon\Carbon;
+
 class RoomController extends Controller
 {
 
@@ -121,4 +125,41 @@ class RoomController extends Controller
         ]);
     }
     
+    public function reservarHabitacion(Request $request){
+        $habitacion = \App\room::find($request->id_habitacion);
+        $user = Auth::user();
+        $reserva_aux= $user->reservation->last();
+        if($reserva_aux == null){
+            $reserva = new \App\reservation;
+            $reserva->precio = $reserva->precio + $habitacion->precio;
+            $reserva->user_id = $user->id;
+            $reserva->fecha_reserva = Carbon::now();
+            $reserva->disponibilidad = true;
+            $reserva->save();
+
+        }
+        else{
+            $booleano = \App\reservation::all()->last()->disponibilidad;
+            if($booleano == false){
+                $reserva = new \App\reservation;
+                $reserva->precio = $reserva->precio + $habitacion->precio;
+                $reserva->user_id = $user->id;
+                $reserva->fecha_reserva= Carbon::now();
+                $reserva->disponibilidad = true;
+                $reserva->save();
+            }
+            else{
+                $reserva = \App\reservation::all()->last();
+                 $reserva->precio = $reserva->precio+ $habitacion->precio;
+                 $reserva->save();
+
+            }
+
+        }
+        return view('cart',compact('reserva'));
+
+    }
+
+   
+
 }
