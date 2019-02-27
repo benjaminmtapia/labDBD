@@ -125,4 +125,14 @@ class HotelController extends Controller
         $habitaciones= $hotel->room;
         return view('hotels.habitacion',compact('hotel','habitaciones'));
     }
+
+    public function buscarHotel(Request $request){
+        
+        $fecha_ida = $request->fecha_ida;
+        $fecha_vuelta = $request->fecha_vuelta;
+        $personas = $request->num_personas;
+        $habitaciones = \App\room::whereDate('fecha_ida','<=',$fecha_vuelta);
+        return $habitaciones;
+        
+    }
 }

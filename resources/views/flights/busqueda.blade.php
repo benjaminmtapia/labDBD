@@ -88,7 +88,7 @@
           <div class="col-lg-9">
 
             <div class="row">
-                @foreach($vuelo as $flight)
+                @foreach($vuelos as $flight)
 
               <div class="col-sm col-md-6 col-lg-4 ftco-animate">
                 <div class="destination">
@@ -114,7 +114,7 @@
 
                       <div class="two">
                         <span class="price">${{$flight->precio}}</span>
-                        <
+                        
                       </div>
                     </div>
 
