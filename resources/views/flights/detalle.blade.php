@@ -56,52 +56,84 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Carrito de Compras</h1>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Detalle de vuelo</h1>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="container" style ="margin-top:20px;">
+    
 
 
-    <h1 class="font-weight-bold text-center">Carrito de Compras</h1>
-    <h2 class="text-center">N° Reserva: {{$reservation->id}}</h2>
-    <table class="table">
-          <tr>
-            <th class="cell">Ítem</th>
-            <th class="cell">Descripción</th>
-            <th class="cell">Precio</th>
-          </tr>
- 
-          @foreach($cars as $c)
-          <tr>
-            <th class="cell">Auto</th>
-            <th class="cell">{{$c->marca}}, {{$c->modelo}}</th>
-            <th class="cell">{{$c->precio}}</th>         
-          </tr>
-          @endforeach
-
-          @foreach($rooms as $r)
-          <tr>
-            <th class="cell">Habitación</th>
-            <th class="cell">Capacidad {{$r->capacidad}} personas</th>
-            <th class="cell">{{$r->precio}}</th>         
-          </tr>
-          @endforeach
-
-
-
-        </table> 
-        
     <section class="ftco-section">
       <div class="container">
         <div class="row">
+          <div class="col-lg-3 sidebar order-md-last ftco-animate">
+            <div class="sidebar-wrap ftco-animate">
+              <h3 class="heading mb-4">Buscador</h3>
+              <form action="/vuelos/busqueda" method="post">
+                <div class="fields">
+                  <div class="form-group">
+                    <input type="text" name="marca" class="form-control" placeholder="Marca">
+                  </div>
+                  <div class="form-group">
+                    <div class="select-wrap one-third">
+                      
+                     <input type="text" name="modelo" class="form-control" placeholder="Modelo">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="capacidad" id="checkin_date" class="form-control checkin_date" placeholder="Capacidad">
+                  </div>
+
+                  <div class="form-group">
+                    <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
+                  </div>
+                </div>
+              </form>
+            </div>
+          
+          </div><!-- END-->
           
           <div class="col-lg-9">
 
             <div class="row">
+                @foreach($flights as $flight)
 
+              <div class="col-sm col-md-6 col-lg-4 ftco-animate">
+                <div class="destination">
+                  <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(https://www.rentacarlasrosas.com/tenerife/wp-content/uploads/2018/06/Alquilar-un-coche-por-Internet.jpg);">
+                  </a>
+                  <div class="text p-3">
+                    <div class="d-flex">
+                      <div class="one">
+                        <h3>Origen: {{$flight->origin_id}}</h3>
+                        <h3>Destino: {{$flight->destiny_id}}</h3>
+                        <h3>Fecha de ida: {{$flight->fecha_ida}}</h3>
+                        <h3>Fecha de vuelta: {{$flight->fecha_vuelta}}</h3>
+                      </div>
+                      <div class="two">
+                        <span class="price">${{$flight->precio}}</span>
+                      </div>
+                    </div>
+                    
+                   
+                    <hr>
+                    <p class="bottom-area d-flex">
+
+                      <form method="post" action="{{action('FlightController@reservarVuelo',$flight)}}">
+                        <input type="hidden" name="precio" value="$flight->precio">
+                        <button type="submit" class="btn btn-danger">Reservar</button>
+                      </form>
+                        
+
+
+                
+                    </p>
+                  </div>
+                </div>
+              </div>
+          @endforeach
             <div class="row mt-5">
               <div class="col text-center">
                 <div class="block-27">
@@ -121,6 +153,16 @@
         </div>
       </div>
     </section> <!-- .section -->
+
+
+
+
+
+
+
+
+        
+
 
     <section class="ftco-section-parallax">
       <div class="parallax-img d-flex align-items-center">

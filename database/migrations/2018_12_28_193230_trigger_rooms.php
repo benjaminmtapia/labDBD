@@ -22,6 +22,7 @@ class TriggerRooms extends Migration
                 n INTEGER := 0; 
                 disponible BOOLEAN := true;
                 rdm INTEGER := 1;
+                price INTEGER := 0;
                 valor INTEGER := NEW.id;
                 this DATE := current_date; 
                 next DATE := current_date;
@@ -32,8 +33,9 @@ class TriggerRooms extends Migration
                     rdm:= ((rdm * 1.5 * n * valor)%4) + 1;
                     this:= this + 3;
                     next:= next + 7;
-                    INSERT INTO rooms(hotel_id, numero, capacidad, disponible,precio, created_at, updated_at, fecha_ida, fecha_vuelta, package_id, reservation_id) 
-                    VALUES (valor, n, rdm, disponible,n*5, NEW.created_at, NEW.updated_at, this, next, valor, rdm);
+                    price:= rdm * 175;
+                    INSERT INTO rooms(hotel_id, numero, capacidad, disponible, precio, created_at, updated_at, fecha_ida, fecha_vuelta, package_id, reservation_id) 
+                    VALUES (valor, n, rdm, disponible, price, NEW.created_at, NEW.updated_at, this, next, valor, rdm);
                 END LOOP;
                 RETURN NEW;
             END

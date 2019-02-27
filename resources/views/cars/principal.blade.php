@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Diinf++</title>
+    <title>DIINF++</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -40,9 +40,9 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-            <li class="nav-item active"><a href="/flights" class="nav-link">Vuelos</a></li>
+            <li class="nav-item"><a href="/flights" class="nav-link">Vuelos</a></li>
             <li class="nav-item"><a href="/destinies" class="nav-link">Habitaciones</a></li>
-            <li class="nav-item"><a href="/cars" class="nav-link">Autos</a></li>
+            <li class="nav-item active"><a href="/cars" class="nav-link">Autos</a></li>
             <li class="nav-item"><a href="/packages" class="nav-link">Paquetes</a></li>
             <li class="nav-item"><a href="/login" class="nav-link">Ingresar</a></li>
             <li class="nav-item"><a href="/register" class="nav-link">Registrarse</a></li>
@@ -69,7 +69,7 @@
           <div class="col-lg-3 sidebar order-md-last ftco-animate">
             <div class="sidebar-wrap ftco-animate">
               <h3 class="heading mb-4">Buscar Auto</h3>
-              <form action="/vuelos/busqueda" method="post">
+              <form action="/autos/busqueda" method="post">
                 <div class="fields">
                   <div class="form-group">
                     <input type="text" name="marca" class="form-control" placeholder="Marca">
@@ -116,15 +116,14 @@
                     
                    
                     <hr>
+                    <form method="post" action="autos/reserva">
                     <p class="bottom-area d-flex">
+                      <input type="hidden"  value="{{$car}}" name="auto">
+                      <input type="hidden"  value="{{$car->id}}" name="id_auto">
 
-                      <form method="post" action="{{action('CarController@reservarAuto',$car)}}">
-                        <input type="hidden" name="precio" value="$car->precio">
-                        <button type="submit" class="btn btn-danger">Reservar</button>
-                      </form>
-                        
-
-                      </form>
+                      <button type="submit" class="btn btn-danger">Reservar</button>
+                    </p>
+                    </form>
 
                 
                     </p>

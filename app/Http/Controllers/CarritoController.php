@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Carrito;
 use App\reservation;
+use App\car;
+use App\flight;
+use App\room;
+use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -47,8 +51,13 @@ class CarritoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id){
-        $reservations = reservation::all()->where('user_id', $id);
-        return view('carrito',compact('reservations'));
+        $user = Auth::user();
+        $reservation = $user->reservation->last();
+        $id_res = $reservation->id; 
+    //    $flights = flight::all()->where('reservation_id', $id_res);
+        $cars = car::all()->where('reservation_id', $id_res);
+        $rooms = room::all()->where('reservation_id', $id_res);
+        return view('carrito',compact('reservation', 'cars', 'rooms'));
     }
 
     /**
