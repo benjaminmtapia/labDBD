@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Adventure - Free Bootstrap 4 Template by Colorlib</title>
+    <title>DIINF++</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -76,18 +76,15 @@
                   @if($room->disponible==TRUE)
           				<div class="col-md-4">
 				    				<div class="destination">
-				    					<a href="hotel-single.html" class="img img-2" style="background-image: url(images/room-4.jpg);"></a>
+				    					<a href="hotel-single.html" class="img img-2" style="background-image: url({{URL::asset('images/room-4.jpg')}});"></a>
 				    					<div class="text p-3">
 				    						<div class="d-flex">
 				    							<div class="one">
-						    						<h6><a href="hotel-single.html">{{$room->capacidad}} personas</a></h6>
+						    						<h3><a href="hotel-single.html">Habitacion: {{$room->numero}}</a></h3>
 						    						<p class="rate">
+                              @for($i=0; $i<$room->hotel->clase;$i= $i+1)
 						    							<i class="icon-star"></i>
-						    							<i class="icon-star"></i>
-						    							<i class="icon-star"></i>
-						    							<i class="icon-star"></i>
-						    							<i class="icon-star-o"></i>
-						    							<span>8 Rating</span>
+                              @endfor
 						    							{{$room->precio}}
 						    						</p>
 					    						</div>
