@@ -59,7 +59,7 @@
             
             <div class="sidebar-wrap ftco-animate">
               <h3 class="heading mb-4">Buscar Alojo</h3>
-              <form action="/hoteles/ciudad" method="post">
+              <form action="/hoteles/buscar" method="post">
                 <div class="fields">
                   <div class="form-group">
                     <input type="text" name="lugar_destino" class="form-control" placeholder="Ingrese Destino"> 

@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('home');
 });
 
 Auth::routes();
@@ -44,12 +44,12 @@ Route::post('/vuelos/reserva','FlightController@reservarVuelo');
 Route::post('/cart','CarController@reservarAuto');
 Route::post('/vuelos/busquedaporfecha','FlightController@buscarporfecha');
 
-Route::get('/vuelos/reserva','FlightController@reservarVuelo');
 Route::post('/paquetes/reserva','PackageController@reservarPaquete');
 
 Route::post('/hoteles/ciudad','HotelController@verHoteles');
 Route::post('/hoteles/habitaciones','HotelController@verHabitaciones');
 Route::post('/hoteles/reservar','RoomController@reservarHabitacion');
+Route::post('/hoteles/buscar','HotelController@buscarHotel');
 
 Route::resource('/carrito', 'CarritoController'); 
 

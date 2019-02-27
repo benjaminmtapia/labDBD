@@ -130,12 +130,30 @@ class FlightController extends Controller
     public function buscar(Request $request){
         $lugar_origen = $request->lugar_origen;
         $lugar_destino = $request->lugar_destino;
-        $fecha = $request->fecha;
+        $fecha_ida = $request->fecha_ida;
         $origen = \App\Origin::where('ciudad',$lugar_origen);
         $destino = \App\Destiny::where('ciudad',$lugar_destino);
-        $vuelo = \App\Flight::where('fecha_ida',$fecha)->get();
+        $vuelo = \App\Flight::where('fecha_ida',$fecha_ida)->get();
         $num_pasajeros = $request->num_pasajeros;
-        return view('flights.busqueda')->with(compact('vuelo','num_pasajeros'));
+        $vuelos=[];
+        if($request->fecha_vuelta==null){
+        foreach ($vuelo as $v) {
+             $num_asientos = $v->seat->count();
+            if($num_asientos>=$num_pasajeros){
+                $vuelos[]= $v;
+                }
+            }
+        }
+        else{
+            $vuelo = \App\Flight::where('fecha_ida',$fecha_ida)->where('fecha_vuelta',$request->fecha_vuelta)->get();
+            foreach ($vuelo as $v) {
+             $num_asientos = $v->seat->count();
+            if($num_asientos>=$num_pasajeros){
+                $vuelos[]= $v;
+                }
+            }
+        }
+        return view('flights.busqueda')->with(compact('vuelos','num_pasajeros'));
         
     }
     public function buscarporfecha(Request $request){

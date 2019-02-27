@@ -68,12 +68,14 @@
           <div class="col-lg-3 sidebar order-md-last ftco-animate">
             
             <div class="sidebar-wrap ftco-animate">
-              <h3 class="heading mb-4">Buscar Alojo</h3>
+              <h3 class="heading mb-4">Buscar Vuelo</h3>
               <form action="/vuelos/busqueda" method="post">
                 <div class="fields">
                   <div class="form-group">
                     
-                    <input type="text" name="fecha" id="checkin_date" class="form-control checkin_date" placeholder="Fecha">
+                    <input type="text" name="fecha_ida" id="checkin_date" class="form-control checkin_date" placeholder="Fecha Ida">
+                    <br>
+                    <input type="text" name="fecha_vuelta" id="checkin_date" class="form-control checkin_date" placeholder="Fecha Vuelta">
 
                   </div>
                   <input type="number" name="num_pasajeros" class ="form-control" placeholder="Cantidad de Pasajeros" style="text-align: left;">
@@ -84,7 +86,7 @@
                 </div>
               </form>
             </div>
-          
+
           </div><!-- END-->
           
           <div class="col-lg-9">
