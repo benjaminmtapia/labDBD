@@ -114,16 +114,16 @@
                       </div>
 
                       <div class="two">
-                        <span class="price">$200</span>
+                        <span class="price">${{$secure->precio}}</span>
 
                       </div>
                     </div>
 
                     <hr>
-                    <form method="post" action="vuelos/reserva">
+                    <form method="post" action="seguros/reserva">
                     <p class="bottom-area d-flex">
-                      <input type="hidden"  value="{{$secure}}" name="vuelo">
-                      <input type="hidden"  value="{{$secure->id}}" name="id_vuelo">
+                      <input type="hidden"  value="{{$secure}}" name="seguro">
+                      <input type="hidden"  value="{{$secure->id}}" name="id_seguro">
 
                       <button type="submit" class="btn btn-danger">Reservar</button>
                     </p>

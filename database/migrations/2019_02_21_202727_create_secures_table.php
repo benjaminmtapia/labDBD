@@ -16,6 +16,7 @@ class CreateSecuresTable extends Migration
         Schema::create('secures', function (Blueprint $table) {
             $table->increments('id');
             $table->string('tipo');
+            $table->integer('precio');
             $table->unsignedInteger('passenger_id');
             $table->foreign('passenger_id')->references('id')->on('passengers');
             $table->timestamps();

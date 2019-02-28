@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Secure;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Auth;
 
 class SecureController extends Controller
 {
@@ -24,7 +25,7 @@ class SecureController extends Controller
     public function index()
     {
         $secures = Secure::all();
-        
+
         return view('secures.principal', compact('secures'));
     }
 
@@ -107,5 +108,38 @@ class SecureController extends Controller
     {
         $secure->delete();//TE ODIO >:(
         return Response()->json(['success']);
+    }
+
+    public function reservarSeguro(Request $request)
+    {
+      $seguro = \App\Secure::find($request->id_seguro);
+      $user = Auth::user();
+
+      $reserva_aux = $user->reservation->last();
+      if ($reserva_aux==null) {
+         $reserva = new \App\reservation;
+         $reserva->precio = $reserva->precio + $seguro->precio;
+         $reserva->user_id = $user->id;
+         $reserva->fecha_reserva = Carbon::now();
+         $reserva->disponibilidad= true;
+         $reserva->save();
+      }
+      else{
+         $booleano = \App\reservation::all()->last()->disponibilidad;
+         if($booleano==false){
+             $reserva = new \App\reservation;
+             $reserva->precio = $reserva->precio + $seguro->precio;
+             $reserva->user_id = $user->id;
+             $reserva->fecha_reserva = Carbon::now();
+             $reserva->save();
+         }
+         else{
+             $reserva = \App\reservation::all()->last();
+             $reserva->precio = $reserva->precio + $seguro->precio;
+             $reserva->save();
+         }
+      }
+
+     return view('cart',compact('reserva','request'));
     }
 }
