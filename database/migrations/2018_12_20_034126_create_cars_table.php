@@ -20,9 +20,13 @@ class CreateCarsTable extends Migration
             $table->string('modelo');
             $table->integer('capacidad');
             $table->integer('precio');
+            $table->date('fecha_ida');
+            $table->date('fecha_vuelta');
             $table->boolean('disponibilidad');
+            $table->unsignedInteger('destiny_id');
             $table->unsignedInteger('package_id')->nullable();
             $table->unsignedInteger('reservation_id');
+            $table->foreign('destiny_id')->references('id')->on('destinies');
             $table->foreign('package_id')->references('id')->on('packages');
             $table->foreign('reservation_id')->references('id')->on('reservations');
             $table->timestamps();

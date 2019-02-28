@@ -21,4 +21,7 @@ class destiny extends Model
     public function hotel(){
     	return $this->hasMany(hotel::class);
     }
+    public function car(){
+        return $this->hasMany(car::class);
+    }
 }

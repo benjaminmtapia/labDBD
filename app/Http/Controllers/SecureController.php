@@ -6,6 +6,7 @@ use App\Secure;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
+use Carbon\Carbon;
 
 class SecureController extends Controller
 {

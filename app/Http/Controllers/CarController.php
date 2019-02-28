@@ -162,4 +162,17 @@ class CarController extends Controller
         
         return view('cart',compact('reserva','request'));
     }
+    public function buscarAuto(Request $request){
+        $fecha_ida = $request->fecha_ida;
+        $fecha_vuelta = $request->fecha_vuelta;
+        $lugar_arriendo = $request->lugar_arriendo;
+        $autos = \App\car::where('fecha_ida','>=',$request->fecha_ida)->where('fecha_vuelta','<=',$request->fecha_vuelta)->get();
+        $cars=[];
+        foreach ($autos as $auto) {
+            if($auto->destiny->ciudad == $request->lugar_arriendo){
+                $cars[]=$auto;
+            }
+        }
+        return view('cars.buscar',compact('cars'));
+    }
 }

@@ -43,7 +43,7 @@ Route::resource('/carrito', 'CarritoController');
 
 Route::post('/vuelos/busqueda','FlightController@buscar');
 Route::post('/vuelos/reserva','FlightController@reservarVuelo');
-Route::post('/autos/reserva','CarController@reservarAuto');
+
 Route::post('/seguros/reserva', 'SecureController@reservarSeguro');
 Route::post('/vuelos/busquedaporfecha','FlightController@buscarporfecha');
 Route::post('/vuelos/verdetalle','FlightController@verDetalle');
@@ -55,7 +55,8 @@ Route::post('/hoteles/habitaciones','HotelController@verHabitaciones');
 Route::post('/hoteles/reservar','RoomController@reservarHabitacion');
 Route::post('/hoteles/buscar','HotelController@buscarHotel');
 
-
+Route::post('/autos/reserva','CarController@reservarAuto');
+Route::post('/autos/busqueda','CarController@buscarAuto');
 
 Auth::routes();
 

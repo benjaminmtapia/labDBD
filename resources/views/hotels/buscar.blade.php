@@ -89,10 +89,10 @@
 
                     <p class="bottom-area d-flex">
 
-                      <button type="submit" class="btn btn-danger">Reservar</button>
+                      <button type="submit" class="btn btn-info">Ver Habitaciones</button>
                     </p>
                 </form>
-                      <span class="ml-auto"><a href="/hoteles/ciudad">Ver más</a></span>
+                    
                     </p>
                   </div>
                 </div>

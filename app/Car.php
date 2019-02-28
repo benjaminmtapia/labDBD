@@ -21,5 +21,8 @@ class car extends Model
     public function package(){
     	return $this->belongsTo(package::class);
     }
+    public function destiny(){
+        return $this->belongsTo(destiny::class);
+    }
 
 }
