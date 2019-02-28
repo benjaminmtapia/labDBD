@@ -8,7 +8,7 @@ $factory->define(App\Hotel::class, function (Faker $faker) {
     	'ciudad'=>$faker->city,
     	'nombre'=>$faker->company,
     	'clase'=>$faker->numberBetween($min=1, $max=5), 
-    	'disponible'=>$faker->boolean(50),
+    	'disponible'=>$faker->boolean($chanceOfGettingTrue = 100),
     	'destiny_id'=>$destino->random()->id
     ];
 });

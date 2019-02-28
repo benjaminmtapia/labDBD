@@ -166,37 +166,36 @@ class FlightController extends Controller
         return view('flights.busquedaporfecha',compact('date','origen','destino'));
     }
     public function reservarVuelo(Request $request){
-         $vuelo = \App\Flight::find($request->id_vuelo);
-         
-         $user = Auth::user();
-         $reserva_aux = $user->reservation->last();
-         if ($reserva_aux==null) {
-             $reserva = new \App\reservation;
-             $reserva->precio = $reserva->precio+ $vuelo->precio;
-             $reserva->user_id = $user->id;
-             $reserva->fecha_reserva = Carbon::now();
-             $reserva->disponibilidad= true;
-             $reserva->save();
-         }
-         else{
+        $vuelo = \App\Flight::find($request->id_vuelo); 
+        $user = Auth::user();
+        $reserva_aux = $user->reservation->last();
+        if ($reserva_aux==null) {
+            $reserva = new \App\reservation;
+            $reserva->precio = $reserva->precio+ $vuelo->precio;
+            $reserva->user_id = $user->id;
+            $reserva->fecha_reserva = Carbon::now();
+            $reserva->disponibilidad= true;
+            $reserva->save();
+        }
+        else{
             $booleano = \App\reservation::all()->last()->disponibilidad;
             if($booleano==false){
-             $reserva = new \App\reservation;
-             $reserva->precio = $reserva->precio+ $vuelo->precio;
-             $reserva->user_id = $user->id;
-             $reserva->fecha_reserva = Carbon::now();
-             $reserva->disponibilidad= true;
-             $reserva->save();
-
+                $reserva = new \App\reservation;
+                $reserva->precio = $reserva->precio+ $vuelo->precio;
+                $reserva->user_id = $user->id;
+                $reserva->fecha_reserva = Carbon::now();
+                $reserva->disponibilidad= true;
+                $reserva->save();
             }
             else{
                 $reserva = \App\reservation::all()->last();
                 $reserva->precio = $reserva->precio+ $vuelo->precio;
                 $reserva->save();
             }
-
-         }
-         return view('cart',compact('reserva'));
+        }
+    //    $vuelo->reservation_id = $reserva->id;
+    //    $vuelo->save();
+        return view('cart',compact('reserva'));
     }
 
     public function verDetalle(Request $request){

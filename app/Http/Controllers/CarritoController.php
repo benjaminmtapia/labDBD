@@ -53,6 +53,9 @@ class CarritoController extends Controller
     public function show($id){
         $user = Auth::user();
         $reservation = $user->reservation->last();
+        if($reservation == null){
+            $reservation = new \App\reservation;
+        }
         $id_res = $reservation->id; 
     //    $flights = flight::all()->where('reservation_id', $id_res);
         $cars = car::all()->where('reservation_id', $id_res);

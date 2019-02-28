@@ -132,19 +132,19 @@ class CarController extends Controller
     }
 
     public function reservarAuto(Request $request){
-         $auto = \App\Car::find($request->id_auto);
-         $user = Auth::user();
-         //dd($user->name);
-         $reserva_aux = $user->reservation->last();
-         if ($reserva_aux==null) {
+        $auto = \App\Car::find($request->id_auto);
+        $user = Auth::user();
+        //dd($user->name);
+        $reserva_aux = $user->reservation->last();
+        if ($reserva_aux==null) {
             $reserva = new \App\reservation;
             $reserva->precio = $reserva->precio + $auto->precio;
             $reserva->user_id = $user->id;
             $reserva->fecha_reserva = Carbon::now();
             $reserva->disponibilidad= true;
             $reserva->save();
-         }
-         else{
+        }
+        else{
             $booleano = \App\reservation::all()->last()->disponibilidad;
             if($booleano==false){
                 $reserva = new \App\reservation;
@@ -158,10 +158,13 @@ class CarController extends Controller
                 $reserva->precio = $reserva->precio + $auto->precio;
                 $reserva->save();
             }
-         }
-        
+        }
+        $auto->reservation_id = $reserva->id;
+        $auto->disponibilidad = false;
+        $auto->save();
         return view('cart',compact('reserva','request'));
     }
+
     public function buscarAuto(Request $request){
         $fecha_ida = $request->fecha_ida;
         $fecha_vuelta = $request->fecha_vuelta;

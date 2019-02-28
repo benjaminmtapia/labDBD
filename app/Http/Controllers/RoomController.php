@@ -128,13 +128,15 @@ class RoomController extends Controller
     public function reservarHabitacion(Request $request){
         $habitacion = \App\room::find($request->id_habitacion);
         $user = Auth::user();
-        $reserva_aux= $user->reservation->last();
+        $reserva_aux = $user->reservation->last();
         if($reserva_aux == null){
             $reserva = new \App\reservation;
             $reserva->precio = $reserva->precio + $habitacion->precio;
             $reserva->user_id = $user->id;
             $reserva->fecha_reserva = Carbon::now();
             $reserva->disponibilidad = true;
+            $habitacion->reservation_id = $reserva->id;
+            $habitacion->save();
             $reserva->save();
 
         }
@@ -146,20 +148,22 @@ class RoomController extends Controller
                 $reserva->user_id = $user->id;
                 $reserva->fecha_reserva= Carbon::now();
                 $reserva->disponibilidad = true;
+                $habitacion->reservation_id = $reserva->id;
+                $habitacion->save();
                 $reserva->save();
             }
             else{
                 $reserva = \App\reservation::all()->last();
-                 $reserva->precio = $reserva->precio+ $habitacion->precio;
-                 $reserva->save();
-
+                $reserva->precio = $reserva->precio+ $habitacion->precio;
+                $habitacion->reservation_id = $reserva->id;
+                $habitacion->save();
+                $reserva->save();
             }
-
         }
+        $habitacion->reservation_id = $reserva->id;
+        $habitacion->disponible = false;
+        $habitacion->save();
         return view('cart',compact('reserva'));
 
     }
-
-   
-
 }
