@@ -42,7 +42,13 @@ class CarController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+        if ($user->is_admin) {
+          return view('cars.crear');
+        }
+        else {
+          abort(401);
+        }
     }
 
     /**
@@ -57,16 +63,27 @@ class CarController extends Controller
         if($validator->fails()){
             return $validator->messages();
         }
-        $car = new \App\car;
-        $car->patente = $request->get('patente');
-        $car->marca = $request->get('marca');
-        $car->modelo = $request->get('modelo');
-        $car->capacidad = $request->get('capacidad');
-        $car->precio = $request->get('precio');
-        $car->reservation_id = $request->get('reservation_id');
-        $car->package_id = $request->get('package_id');
-        $car->save();
-        return $car;
+        $user = Auth::user();
+        if ($user->is_admin) {
+          $car = new \App\car;
+          $car->patente = $request->get('patente');
+          $car->marca = $request->get('marca');
+          $car->modelo = $request->get('modelo');
+          $car->capacidad = $request->get('capacidad');
+          $car->precio = $request->get('precio');
+          $car->fecha_ida = $request->get('fecha_ida');
+          $car->fecha_vuelta = $request->get('fecha_vuelta');
+          $car->disponibilidad = $request->get('disponibilidad');
+          $car->destiny_id = $request->get('destiny_id');
+          $car->reservation_id = $request->get('reservation_id');
+          $car->package_id = $request->get('package_id');
+          $car->save();
+          $cars = car::all();
+          return view('cars.principal', compact('cars'));
+        }
+        else {
+          return view('cars.principal');
+        }
     }
 
     /**
@@ -78,7 +95,7 @@ class CarController extends Controller
     public function show($id)
     {
         $car = Car::find($id);
-        return $car; 
+        return $car;
     }
 
     /**
