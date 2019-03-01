@@ -165,13 +165,13 @@ class FlightController extends Controller
         }
         return view('flights.busquedaporfecha',compact('date','origen','destino'));
     }
-    public function reservarVuelo(Request $request){
-        $vuelo = \App\Flight::find($request->id_vuelo); 
+    public function reservarAsiento(Request $request){
+        $seat = \App\Seat::find($request->id_asiento); 
         $user = Auth::user();
         $reserva_aux = $user->reservation->last();
         if ($reserva_aux==null) {
             $reserva = new \App\reservation;
-            $reserva->precio = $reserva->precio+ $vuelo->precio;
+            $reserva->precio = $reserva->precio+ $seat->precio;
             $reserva->user_id = $user->id;
             $reserva->fecha_reserva = Carbon::now();
             $reserva->disponibilidad= true;
@@ -181,7 +181,7 @@ class FlightController extends Controller
             $booleano = \App\reservation::all()->last()->disponibilidad;
             if($booleano==false){
                 $reserva = new \App\reservation;
-                $reserva->precio = $reserva->precio+ $vuelo->precio;
+                $reserva->precio = $reserva->precio+ $seat->precio;
                 $reserva->user_id = $user->id;
                 $reserva->fecha_reserva = Carbon::now();
                 $reserva->disponibilidad= true;
@@ -189,7 +189,7 @@ class FlightController extends Controller
             }
             else{
                 $reserva = \App\reservation::all()->last();
-                $reserva->precio = $reserva->precio+ $vuelo->precio;
+                $reserva->precio = $reserva->precio+ $seat->precio;
                 $reserva->save();
             }
         }
@@ -201,5 +201,11 @@ class FlightController extends Controller
     public function verDetalle(Request $request){
         $flights = \App\Flight::find($request->id_vuelo);
         return view('flights.detalle', compact('flights'));
+    }
+
+    public function verAsientos(Request $request){
+        $vuelo = \App\Flight::find($request->id_vuelo);
+        $asientos = $vuelo->seat;
+        return view('flights.seats',compact('asientos'));
     }
 }

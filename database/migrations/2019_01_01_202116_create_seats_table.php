@@ -18,11 +18,12 @@ class CreateSeatsTable extends Migration
             $table->char('letra',1);
             $table->integer('numero');
             $table->boolean('disponibilidad');
+            $table->integer('precio');
+            $table->string('tipo');
             $table->unsignedInteger('reservation_id');
             $table->unsignedInteger('package_id');
             $table->unsignedInteger('flight_id');
             $table->unsignedInteger('passenger_id');
-            
             $table->foreign('reservation_id')->references('id')->on('reservations'); 
             $table->foreign('flight_id')->references('id')->on('flights');
             $table->foreign('package_id')->references('id')->on('packages');

@@ -5,27 +5,27 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="{{ asset('css/open-iconic-bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}" type="text/css">
 
-    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}" type="text/css">
 
-    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="{{ asset('css/aos.css') }}" type="text/css">
 
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}" type="text/css">
 
-    
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/jquery.timepicker.css') }}" type="text/css">
+
+
+    <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
   </head>
   <body>
     
@@ -51,12 +51,12 @@
     </nav>
     <!-- END nav -->
     
-    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
+    <div class="hero-wrap js-fullheight" style="background-image: url('{{URL::asset('images/bg_1.jpg')}}');">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Destinations</h1>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Asientos</h1>
           </div>
         </div>
       </div>
@@ -69,7 +69,7 @@
             
             <div class="sidebar-wrap ftco-animate">
               <h3 class="heading mb-4">Buscar Vuelo</h3>
-              <form action="/vuelos/busqueda" method="post">
+            
                 <div class="fields">
                   <div class="form-group">
                     
@@ -84,7 +84,7 @@
                     <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
                   </div>
                 </div>
-              </form>
+              
             </div>
             <div class="col-lg-15 sidebar order-md-last ftco-animate">
             <div class="sidebar-wrap ftco-animate" style="text-align: left;">
@@ -99,57 +99,24 @@
 
           <div class="col-lg-9">
 
-            <div class="row">
-                @foreach($flights as $flight)
-
-              <div class="col-sm col-md-6 col-lg-4 ftco-animate">
-                <div class="destination">
-                  <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(https://www.imore.com/sites/imore.com/files/styles/xlarge/public/field/image/2017/02/airplane-flight-sunset.jpg?itok=8iUtkHU-);">
-                  </a>
-                  <div class="text p-3">
-                    <div class="d-flex">
-                      <div class="one">
-                        <h3><a href="#">{{$flight->destiny->ciudad}}</a></h3>
-                        <p>from {{$flight->origin->ciudad}}</p>
-                    
-                        
-                        Asientos Disponibles: {{count($flight->seat)}}
-                      </div>
-
-                      <div class="two">
-                        <span class="price">${{$flight->precio}}</span>
-                        
-                      </div>
-                    </div>
-                    
-                    <hr>
-                    <form method="post" action="vuelos/asientos">
-                    <p class="bottom-area d-flex">
-                      <input type="hidden"  value="{{$flight}}" name="vuelo">
-                      <input type="hidden"  value="{{$flight->id}}" name="id_vuelo">
-
-                      <button type="submit" class="btn btn-danger">Ver asientos</button>
-                    </p>
-                </form>
-                  </div>
+            <div class="row" style="padding:15px;">
+            	@foreach($asientos as $asiento)
+            	@if($asiento->disponibilidad == TRUE)
+                <div class="col-8" style="border: 1px solid #f6f6f6; padding:15px;">
+                	<h5>Asiento {{$asiento->numero}} {{$asiento->letra}}</h5>
+                	
+                	Tipo: {{$asiento->tipo}}
                 </div>
-              </div>
-          @endforeach
-            <div class="row mt-5">
-              <div class="col text-center">
-                <div class="block-27">
-                  <ul>
-                    <li><a href="#">&lt;</a></li>
-                    <li class="active"><span>1</span></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&gt;</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+ 				 <div class="col-4" style="border:1px solid #f6f6f6; padding:15px;"> ${{$asiento->precio}} 
+ 				 	<br>
+ 				 	
+ 				 	<form action="/asiento/reserva" method="post">
+ 				 		<input type="hidden" name="id_asiento" value="{{$asiento->id}}">
+ 				 		<button type="submit" class="btn btn-warning">Reservar</button>
+ 				 	</form>
+ 				 </div>
+ 				 @endif
+ 				 @endforeach
           </div> <!-- .col-md-8 -->
         </div>
       </div>
@@ -249,23 +216,22 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/jquery.timepicker.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.stellar.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/owl.carousel.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/aos.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.animateNumber.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.timepicker.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/scrollax.min.js') }}"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
-    
+  <script type="text/javascript" src="{{ asset('js/google-map.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>    
   </body>
 </html>

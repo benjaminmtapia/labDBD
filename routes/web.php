@@ -42,7 +42,8 @@ Route::resource('/carrito', 'CarritoController');
 
 
 Route::post('/vuelos/busqueda','FlightController@buscar');
-Route::post('/vuelos/reserva','FlightController@reservarVuelo');
+Route::post('/asiento/reserva','FlightController@reservarAsiento');
+Route::post('/vuelos/asientos','FlightController@verAsientos');
 
 Route::post('/seguros/reserva', 'SecureController@reservarSeguro');
 Route::post('/vuelos/busquedaporfecha','FlightController@buscarporfecha');
