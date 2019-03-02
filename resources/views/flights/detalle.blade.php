@@ -1,32 +1,31 @@
 @extends('layouts.app')
 <!DOCTYPE html>
-<html lang="en">
   <head>
     <title>DIINF++</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" type="text/css" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/open-iconic-bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/animate.css')}}">
+    
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/owl.theme.default.min.css')}}">
+    <link rel="stylesheet"  type="text/css" href="{{URL::asset('css/magnific-popup.css')}}">
 
-    <link href="{{ asset('css/open-iconic-bootstrap.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/animate.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css"  href="{{URL::asset('css/aos.css')}}">
 
-    <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/owl.theme.default.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/magnific-popup.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/css/ionicons.min.css')}}">
 
-    <link href="{{ asset('css/aos.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/bootstrap-datepicker.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/jquery.timepicker.css')}}">
 
-    <link href="{{ asset('css/ionicons.min.css') }}" rel="stylesheet" type="text/css">
-
-    <link href="{{ asset('css/bootstrap-datepicker.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/jquery.timepicker.css') }}" rel="stylesheet" type="text/css">
-
-
-    <link href="{{ asset('css/flaticon.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/icomoon.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css">
+    
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/flaticon.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/icomoon.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/style.css')}}">
   </head>
   <body>
     
@@ -40,8 +39,8 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="/flights" class="nav-link">Vuelos</a></li>
-            <li class="nav-item"><a href="/rooms" class="nav-link">Habitaciones</a></li>
+            <li class="nav-item active"><a href="/flights" class="nav-link">Vuelos</a></li>
+            <li class="nav-item"><a href="/destinies" class="nav-link">Alojamiento</a></li>
             <li class="nav-item"><a href="/cars" class="nav-link">Autos</a></li>
             <li class="nav-item"><a href="/packages" class="nav-link">Paquetes</a></li>
             <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
@@ -68,101 +67,45 @@
     <section class="ftco-section">
       <div class="container">
         <div class="row">
-          <div class="col-lg-3 sidebar order-md-last ftco-animate">
-            <div class="sidebar-wrap ftco-animate">
-              <h3 class="heading mb-4">Buscador</h3>
-              <form action="/vuelos/busqueda" method="post">
-                <div class="fields">
-                  <div class="form-group">
-                    <input type="text" name="marca" class="form-control" placeholder="Marca">
-                  </div>
-                  <div class="form-group">
-                    <div class="select-wrap one-third">
-                      
-                     <input type="text" name="modelo" class="form-control" placeholder="Modelo">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <input type="text" name="capacidad" id="checkin_date" class="form-control checkin_date" placeholder="Capacidad">
-                  </div>
-
-                  <div class="form-group">
-                    <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
-                  </div>
-                </div>
-              </form>
-            </div>
-          
-          </div><!-- END-->
-          
           <div class="col-lg-9">
-
-            <div class="row">
-                @foreach($flights as $flight)
-
-              <div class="col-sm col-md-6 col-lg-4 ftco-animate">
+            <h1 class="font-weight-bold text-center">Detalles del vuelo</h1>
+                <h2 class="text-center">N° Vuelo: {{$flights->id}}</h2>
                 <div class="destination">
-                  <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(https://www.rentacarlasrosas.com/tenerife/wp-content/uploads/2018/06/Alquilar-un-coche-por-Internet.jpg);">
+                  <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(https://midatlantic.aaa.com/-/media/Images/Global/Travel/flights/aaa-flights-1470x600.ashx?h=600&la=en&w=1470&hash=40B21A21E8F13B7C22C1D21C26C1F71E19A0710D);">
                   </a>
                   <div class="text p-3">
-                    <div class="d-flex">
-                      <div class="one">
-                        <h3>Origen: {{$flight->origin_id}}</h3>
-                        <h3>Destino: {{$flight->destiny_id}}</h3>
-                        <h3>Fecha de ida: {{$flight->fecha_ida}}</h3>
-                        <h3>Fecha de vuelta: {{$flight->fecha_vuelta}}</h3>
-                      </div>
-                      <div class="two">
-                        <span class="price">${{$flight->precio}}</span>
-                      </div>
-                    </div>
-                    
-                   
+                    <table class="table">
+                          <tr>
+                            <th class="cell">Origen</th>
+                            <th class="cell"></th>
+                            <th class="font-weight-normal cell">{{$flights->origin->ciudad}}</th>
+                          </tr>
+                          <tr>
+                            <th class="cell">Destino</th>
+                            <th class="cell"></th>
+                            <th class="font-weight-normal cell">{{$flights->destiny->ciudad}}</th>
+                          </tr>
+                          <tr>
+                            <th class="cell">Fecha de ida<th/>
+                            <th class="font-weight-normal cell">{{$flights->fecha_ida}}</th>
+                          </tr>
+                          <tr>
+                            <th class="cell">Fecha de vuelta<th/> 
+                            <th class="font-weight-normal cell">{{$flights->fecha_vuelta}}</th>
+                          </tr>
+                          <tr>
+                            <th class="cell">Precio</th>
+                            <th class="cell"></th>
+                            <th class="font-weight-normal cell">${{$flights->precio}}</th>
+                          </tr>
+                    </table>                          
                     <hr>
-                    <p class="bottom-area d-flex">
-
-                      <form method="post" action="{{action('FlightController@reservarVuelo',$flight)}}">
-                        <input type="hidden" name="precio" value="$flight->precio">
-                        <button type="submit" class="btn btn-danger">Reservar</button>
-                      </form>
-                        
-
-
-                
-                    </p>
+                      <button type="button" class="btn btn-warning">Volver</button>
                   </div>
                 </div>
-              </div>
-          @endforeach
-            <div class="row mt-5">
-              <div class="col text-center">
-                <div class="block-27">
-                  <ul>
-                    <li><a href="#">&lt;</a></li>
-                    <li class="active"><span>1</span></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&gt;</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
           </div> <!-- .col-md-8 -->
-        </div>
       </div>
     </section> <!-- .section -->
-
-
-
-
-
-
-
-
-        
-
 
     <section class="ftco-section-parallax">
       <div class="parallax-img d-flex align-items-center">

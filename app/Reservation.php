@@ -32,6 +32,10 @@ class reservation extends Model
 
     public function room(){
         return $this->hasMany(room::class);
+    }
+
+    public function secure(){
+        return $this->hasMany(Secure::class);
     }    
 
 }

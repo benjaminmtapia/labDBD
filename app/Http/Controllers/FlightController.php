@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Validator;
 use Auth;
 use Carbon\Carbon;
+use App\Carrito;
 class FlightController extends Controller
 {
     
@@ -168,6 +169,13 @@ class FlightController extends Controller
     public function reservarAsiento(Request $request){
         $seat = \App\Seat::find($request->id_asiento); 
         $user = Auth::user();
+        $carrito = $user->carrito; 
+        if ($carrito == null){
+            $carrito = new \app\Carrito;
+            $carrito->fecha = Carbon::now();
+            $carrito->user_id = $user->id;
+            $carrito->save;
+        }        
         $reserva_aux = $user->reservation->last();
         if ($reserva_aux==null) {
             $reserva = new \App\reservation;
@@ -193,8 +201,8 @@ class FlightController extends Controller
                 $reserva->save();
             }
         }
-    //    $vuelo->reservation_id = $reserva->id;
-    //    $vuelo->save();
+        $seat->reservation_id = $reserva->id;
+        $seat->save();
         return view('cart',compact('reserva'));
     }
 

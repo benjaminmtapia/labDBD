@@ -54,6 +54,7 @@ class SecureController extends Controller
         }
         $secure = new \App\Secure;
         $secure->tipo = $request->get('tipo');
+        $secure->reservation_id = $request->get('reservation_id');
         $secure->passenger_id = $request->get('passenger_id');
         return $secure;
     }
@@ -95,6 +96,7 @@ class SecureController extends Controller
             return $validator->messages();
         }
         $secure->tipo = $request->get('tipo');
+        $secure->reservation_id = $request->get('reservation_id');
         $secure->passenger_id = $request->get('passenger_id');
         return $secure;
     }
@@ -115,7 +117,13 @@ class SecureController extends Controller
     {
       $seguro = \App\Secure::find($request->id_seguro);
       $user = Auth::user();
-
+      $carrito = $user->carrito; 
+        if ($carrito == null){
+            $carrito = new \app\Carrito;
+            $carrito->fecha = Carbon::now();
+            $carrito->user_id = $user->id;
+            $carrito->save;
+        }
       $reserva_aux = $user->reservation->last();
       if ($reserva_aux==null) {
          $reserva = new \App\reservation;
@@ -140,7 +148,8 @@ class SecureController extends Controller
              $reserva->save();
          }
       }
-
+      $seguro->reservation_id = $reserva->id;
+      $seguro->save();
      return view('cart',compact('reserva','request'));
     }
 }

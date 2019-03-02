@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Carrito;
 use App\reservation;
 use App\car;
-use App\flight;
+use App\Seat;
 use App\room;
+use App\Secure;
 use Auth;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -20,7 +22,7 @@ class CarritoController extends Controller
      */
     public function index()
     {
-        //
+        return Carrito::all();
     }
 
     /**
@@ -41,7 +43,10 @@ class CarritoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $carrito = new \App\Carrito;
+        $carrito->fecha = Carbon::now();
+        $carrito->save();
+        $carrito->user_id = $request->get('user_id');
     }
 
     /**
@@ -52,15 +57,39 @@ class CarritoController extends Controller
      */
     public function show($id){
         $user = Auth::user();
+        $carrito = $user->carrito;
+        if($carrito == null){
+            $carrito = new \App\carrito;
+            $carrito->user_id = $user->id;
+        }
         $reservation = $user->reservation->last();
         if($reservation == null){
             $reservation = new \App\reservation;
         }
         $id_res = $reservation->id; 
-    //    $flights = flight::all()->where('reservation_id', $id_res);
+        $seats = Seat::all()->where('reservation_id', $id_res);
         $cars = car::all()->where('reservation_id', $id_res);
         $rooms = room::all()->where('reservation_id', $id_res);
-        return view('carrito',compact('reservation', 'cars', 'rooms'));
+        $secures = Secure::all()->where('reservation_id', $id_res);
+        
+        foreach($seats as $seat){
+            $reservation->precio = $reservation->precio+ $seat->precio;
+        }
+
+        foreach($cars as $car){
+            $reservation->precio = $reservation->precio+ $car->precio;
+        }
+
+        foreach($rooms as $room){
+            $reservation->precio = $reservation->precio+ $room->precio;
+        }
+
+        foreach($secures as $secure){
+            $reservation->precio = $reservation->precio+ $secure->precio;
+        }
+        
+        $reservation->save();
+        return view('carrito',compact('reservation', 'seats', 'cars', 'rooms', 'secures'));
     }
 
     /**

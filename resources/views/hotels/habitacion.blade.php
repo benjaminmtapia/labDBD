@@ -31,20 +31,20 @@
     
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Adventure</a>
+	      <a class="navbar-brand" href="index.html">Habitaciones</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	          <li class="nav-item"><a href="places.html" class="nav-link">Places</a></li>
-	          <li class="nav-item active"><a href="hotel.html" class="nav-link">Hotels</a></li>
-	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-	        </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/flights" class="nav-link">Vuelos</a></li>
+            <li class="nav-item active"><a href="/destinies" class="nav-link">Alojamiento</a></li>
+            <li class="nav-item"><a href="/cars" class="nav-link">Autos</a></li>
+            <li class="nav-item"><a href="/packages" class="nav-link">Paquetes</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
 	      </div>
 	    </div>
 	  </nav>
@@ -55,8 +55,7 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Hotel</span></p>
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Hotels</h1>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Hotel {{$hotel->nombre}}</h1>
           </div>
         </div>
       </div>
@@ -80,12 +79,11 @@
 				    					<div class="text p-3">
 				    						<div class="d-flex">
 				    							<div class="one">
-						    						<h3><a href="hotel-single.html">Habitacion: {{$room->numero}}</a></h3>
+						    						<h3><a href="hotel-single.html">Habitación: {{$room->numero}}</a></h3>
 						    						<p class="rate">
                               @for($i=0; $i<$room->hotel->clase;$i= $i+1)
 						    							<i class="icon-star"></i>
                               @endfor
-						    							{{$room->precio}}
 						    						</p>
 					    						</div>
 					    						<div class="two">
@@ -107,7 +105,7 @@
 				    	@endforeach		
           			</div>
           		</div>
-          		<div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">
+        <!--  		<div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">
           			<h4 class="mb-4">Related Hotels</h4>
           			<div class="row">
           				<div class="col-md-4">
@@ -198,7 +196,7 @@
 				    				</div>
 				    			</div>
           			</div>
-          		</div>
+          		</div> -->
 
           	</div>
           </div> <!-- .col-md-8 -->

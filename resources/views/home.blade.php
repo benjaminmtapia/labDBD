@@ -40,7 +40,7 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
             <li class="nav-item active"><a href="/flights" class="nav-link">Vuelos</a></li>
-            <li class="nav-item"><a href="/destinies" class="nav-link">Habitaciones</a></li>
+            <li class="nav-item"><a href="/destinies" class="nav-link">Alojamiento</a></li>
             <li class="nav-item"><a href="/cars" class="nav-link">Autos</a></li>
             <li class="nav-item"><a href="/packages" class="nav-link">Paquetes</a></li>
             <li class="nav-item"><a href="/login" class="nav-link">Ingresar</a></li>

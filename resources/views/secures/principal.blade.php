@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Diinf++</title>
+    <title>DIINF++</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -67,7 +67,7 @@
           <div class="col-lg-3 sidebar order-md-last ftco-animate">
 
             <div class="sidebar-wrap ftco-animate">
-              <h3 class="heading mb-4">Buscar Alojo</h3>
+              <h3 class="heading mb-4">Buscar Alojamiento</h3>
               <form action="/vuelos/busqueda" method="post">
                 <div class="fields">
                   <div class="form-group">
@@ -99,7 +99,7 @@
                     <div class="d-flex">
                       <div class="one">
                         <h3><a href="#">{{$secure->tipo}}</a></h3>
-                        <p>from {{$secure->tipo}}</p>
+             <!--           <p>from {{$secure->tipo}}</p> -->
 
                       <!--   <p class="rate">
                          <i class="icon-star"></i>
@@ -132,21 +132,6 @@
                 </div>
               </div>
           @endforeach
-            <div class="row mt-5">
-              <div class="col text-center">
-                <div class="block-27">
-                  <ul>
-                    <li><a href="#">&lt;</a></li>
-                    <li class="active"><span>1</span></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&gt;</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
           </div> <!-- .col-md-8 -->
         </div>
       </div>

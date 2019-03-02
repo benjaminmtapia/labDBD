@@ -18,7 +18,9 @@ class CreateSecuresTable extends Migration
             $table->string('tipo');
             $table->integer('precio');
             $table->unsignedInteger('passenger_id');
+            $table->unsignedInteger('reservation_id');
             $table->foreign('passenger_id')->references('id')->on('passengers');
+            $table->foreign('reservation_id')->references('id')->on('reservations');
             $table->timestamps();
             $table->softDeletes();
         });

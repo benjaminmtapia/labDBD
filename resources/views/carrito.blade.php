@@ -5,28 +5,28 @@
     <title>DIINF++</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" type="text/css" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/open-iconic-bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/animate.css')}}">
+    
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/owl.theme.default.min.css')}}">
+    <link rel="stylesheet"  type="text/css" href="{{URL::asset('css/magnific-popup.css')}}">
 
-    <link href="{{ asset('css/open-iconic-bootstrap.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/animate.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css"  href="{{URL::asset('css/aos.css')}}">
 
-    <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/owl.theme.default.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/magnific-popup.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/css/ionicons.min.css')}}">
 
-    <link href="{{ asset('css/aos.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/bootstrap-datepicker.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/jquery.timepicker.css')}}">
 
-    <link href="{{ asset('css/ionicons.min.css') }}" rel="stylesheet" type="text/css">
-
-    <link href="{{ asset('css/bootstrap-datepicker.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/jquery.timepicker.css') }}" rel="stylesheet" type="text/css">
-
-
-    <link href="{{ asset('css/flaticon.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/icomoon.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css">
+    
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/flaticon.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/icomoon.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/style.css')}}">
   </head>
   <body>
     
@@ -38,10 +38,10 @@
         </button>
 
         <div class="collapse navbar-collapse" id="ftco-nav">
-          <ul class="navbar-nav ml-auto">
+           <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
             <li class="nav-item"><a href="/flights" class="nav-link">Vuelos</a></li>
-            <li class="nav-item"><a href="/rooms" class="nav-link">Habitaciones</a></li>
+            <li class="nav-item"><a href="/destinies" class="nav-link">Alojamiento</a></li>
             <li class="nav-item"><a href="/cars" class="nav-link">Autos</a></li>
             <li class="nav-item"><a href="/packages" class="nav-link">Paquetes</a></li>
             <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
@@ -74,54 +74,91 @@
             <th class="cell">Precio</th>
           </tr>
  
+          @foreach($seats as $s)
+          <tr>
+            <th class="font-weight-normal cell">Asiento</th>
+            <th class="font-weight-normal cell">{{$s->tipo}} en el vuelo desde {{$s->flight->origin->ciudad}} a {{$s->flight->destiny->ciudad}}</th>
+            <th class="font-weight-normal cell">${{$s->precio}}</th>   
+            <th>
+              <form method="put" action="/asiento/eliminar_reserva">
+                <p class="bottom-area d-flex">
+                  <input type="hidden"  value="{{$s}}" name="asiento">
+                  <input type="hidden"  value="{{$s->id}}" name="id_asiento">
+                  <button type="submit" class="btn btn-danger">Eliminar del carrito</button>
+                </p>
+              </form>
+            </th>
+          </tr>
+          @endforeach
+
           @foreach($cars as $c)
           <tr>
-            <th class="cell">Auto</th>
-            <th class="cell">{{$c->marca}}, {{$c->modelo}}</th>
-            <th class="cell">{{$c->precio}}</th>         
+            <th class="font-weight-normal cell">Auto</th>
+            <th class="font-weight-normal cell">Marca: {{$c->marca}} / Modelo: {{$c->modelo}}</th>
+            <th class="font-weight-normal cell">${{$c->precio}}</th>
+            <th>
+              <form method="put" action="/autos/eliminar_reserva">
+                <p class="bottom-area d-flex">
+                  <input type="hidden"  value="{{$c}}" name="auto">
+                  <input type="hidden"  value="{{$c->id}}" name="id_auto">
+                  <button type="submit" class="btn btn-danger">Eliminar del carrito</button>
+                </p>
+              </form>
+            </th>
           </tr>
           @endforeach
 
           @foreach($rooms as $r)
           <tr>
-            <th class="cell">Habitación</th>
-            <th class="cell">Capacidad {{$r->capacidad}} personas</th>
-            <th class="cell">{{$r->precio}}</th>         
+            <th class="font-weight-normal cell">Habitación</th>
+            <th class="font-weight-normal cell">En el hotel {{$r->hotel->nombre}} con capacidad para {{$r->capacidad}} persona(s)</th>
+            <th class="font-weight-normal cell">${{$r->precio}}</th>
+            <th>
+              <form method="put" action="/habitaciones/eliminar_reserva">
+                <p class="bottom-area d-flex">
+                  <input type="hidden"  value="{{$r}}" name="habitacion">
+                  <input type="hidden"  value="{{$r->id}}" name="id_habitacion">
+                  <button type="submit" class="btn btn-danger">Eliminar del carrito</button>
+                </p>
+              </form>
+            </th>
           </tr>
           @endforeach
 
+          @foreach($secures as $sec)
+          <tr>
+            <th class="font-weight-normal cell">Seguro</th>
+            <th class="font-weight-normal cell">Tipo: {{$sec->tipo}}</th>
+            <th class="font-weight-normal cell">${{$sec->precio}}</th>
+            <th>
+              <form method="put" action="/secures/eliminar_reserva">
+                <p class="bottom-area d-flex">
+                  <input type="hidden"  value="{{$sec}}" name="seguro">
+                  <input type="hidden"  value="{{$sec->id}}" name="id_seguro">
+                  <button type="submit" class="btn btn-danger">Eliminar del carrito</button>
+                </p>
+              </form>
+            </th>
+          </tr>
+          @endforeach
 
+          <tr>
+            <th class="cell">Total</th>
+            <th class="cell"></th>
+            <th class="cell">${{$reservation->precio}}</th>
+          </tr>
+    </table> 
 
-        </table> 
-        
-    <section class="ftco-section">
-      <div class="container">
-        <div class="row">
-          
-          <div class="col-lg-9">
+<!--
+    @foreach($secures as $sec)
+      <h1>ID {{$sec->id}}</h1>
+      <h1>TI {{$sec->tipo}}</h1>
+      <h1>PR {{$sec->precio}}</h1>
+      <h1>PI {{$sec->passenger_id}}</h1>
+      <h1>RI {{$sec->reservation_id}}</h1>
+    @endforeach
 
-            <div class="row">
-
-            <div class="row mt-5">
-              <div class="col text-center">
-                <div class="block-27">
-                  <ul>
-                    <li><a href="#">&lt;</a></li>
-                    <li class="active"><span>1</span></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&gt;</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div> <!-- .col-md-8 -->
-        </div>
-      </div>
-    </section> <!-- .section -->
-
+-->
     <section class="ftco-section-parallax">
       <div class="parallax-img d-flex align-items-center">
         <div class="container">

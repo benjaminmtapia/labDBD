@@ -18,4 +18,8 @@ class Secure extends Model
     	return $this->belongsTo(passenger::class);
     }
 
+	public function reservation(){
+    	return $this->belongsTo(reservation::class);
+    }
+
 }

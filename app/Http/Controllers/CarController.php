@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\car;
+use App\Carrito;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
@@ -152,6 +153,13 @@ class CarController extends Controller
         $auto = \App\Car::find($request->id_auto);
         $user = Auth::user();
         //dd($user->name);
+        $carrito = $user->carrito; 
+        if ($carrito == null){
+            $carrito = new \app\Carrito;
+            $carrito->fecha = Carbon::now();
+            $carrito->user_id = $user->id;
+            $carrito->save;
+        }
         $reserva_aux = $user->reservation->last();
         if ($reserva_aux==null) {
             $reserva = new \App\reservation;

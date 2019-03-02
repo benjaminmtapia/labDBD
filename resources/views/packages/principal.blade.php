@@ -41,7 +41,7 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
             <li class="nav-item"><a href="/flights" class="nav-link">Vuelos</a></li>
-            <li class="nav-item"><a href="/rooms" class="nav-link">Habitaciones</a></li>
+            <li class="nav-item"><a href="/destinies" class="nav-link">Alojamiento</a></li>
             <li class="nav-item"><a href="/cars" class="nav-link">Autos</a></li>
             <li class="nav-item active"><a href="/packages" class="nav-link">Paquetes</a></li>
             <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
@@ -154,21 +154,6 @@
                 </div>
               </div>
           @endforeach
-            <div class="row mt-5">
-              <div class="col text-center">
-                <div class="block-27">
-                  <ul>
-                    <li><a href="#">&lt;</a></li>
-                    <li class="active"><span>1</span></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&gt;</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
           </div> <!-- .col-md-8 -->
         </div>
       </div>

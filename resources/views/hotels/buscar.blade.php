@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Diinf++</title>
+    <title>DIINF++</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -42,7 +42,7 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
             <li class="nav-item"><a href="/flights" class="nav-link">Vuelos</a></li>
-            <li class="nav-item active"><a href="/rooms" class="nav-link">Habitaciones</a></li>
+            <li class="nav-item active font-weight-bold"><a href="/destinies" class="nav-link">Alojamiento</a></li>
             <li class="nav-item"><a href="/cars" class="nav-link">Autos</a></li>
             <li class="nav-item"><a href="/packages" class="nav-link">Paquetes</a></li>
             <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
@@ -67,18 +67,15 @@
               <div class="col-sm col-md-6 col-lg-4 ftco-animate">
                 <div class="destination">
                   <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-3.jpg);">
-                    <div class="icon d-flex justify-content-center align-items-center">
-                      <span class="icon-link"></span>
-                    </div>
                   </a>
                   <div class="text p-3">
                     <div class="d-flex">
                       <div class="one">
-                        <h6>Ciudad: {{$hotel->nombre}}</h3>
+                        <h6>Hotel: {{$hotel->nombre}}</h3>
 
                       </div>
                       <div class="two">
-                        <span class="price">$200</span>
+                        <span class="price"></span>
                       </div>
                     </div>
 
@@ -89,7 +86,7 @@
 
                     <p class="bottom-area d-flex">
 
-                      <button type="submit" class="btn btn-info">Ver Habitaciones</button>
+                      <button type="submit" class="btn btn-info">Ver habitaciones</button>
                     </p>
                 </form>
                     
@@ -98,21 +95,6 @@
                 </div>
               </div>
           @endforeach
-            <div class="row mt-5">
-              <div class="col text-center">
-                <div class="block-27">
-                  <ul>
-                    <li><a href="#">&lt;</a></li>
-                    <li class="active"><span>1</span></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&gt;</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
           </div> <!-- .col-md-8 -->
         </div>
       </div>

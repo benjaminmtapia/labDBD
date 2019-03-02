@@ -33,8 +33,13 @@ class User extends Authenticatable
     public function reservation(){
         return $this->hasMany(reservation::class);
     }
+
     public function check_in(){
         return $this->hasOne(check_in::class);
+    }
+
+    public function carrito(){
+        return $this->hasOne(Carrito::class);
     }
 
     public function isAdmin(){
