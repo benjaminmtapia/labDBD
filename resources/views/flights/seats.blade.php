@@ -100,7 +100,7 @@
 
             <div class="row" style="padding:15px;">
             	@foreach($asientos as $asiento)
-            	@if($asiento->disponibilidad == TRUE)
+            	@if($asiento->disponibilidad==TRUE)
                 <div class="col-8" style="border: 1px solid #f6f6f6; padding:15px;">
                 	<h5>Asiento {{$asiento->numero}} {{$asiento->letra}}</h5>
                 	
@@ -109,8 +109,9 @@
  				 <div class="col-4" style="border:1px solid #f6f6f6; padding:15px;"> ${{$asiento->precio}} 
  				 	<br>
  				 	
- 				 	<form action="/asiento/reserva" method="post">
+ 				 	<form action="/asiento/pasajero" method="post">
  				 		<input type="hidden" name="id_asiento" value="{{$asiento->id}}">
+            <input type="hidden" name="id_vuelo" value="{{$asiento->flight->id}}">
  				 		<button type="submit" class="btn btn-warning">Reservar</button>
  				 	</form>
  				 </div>

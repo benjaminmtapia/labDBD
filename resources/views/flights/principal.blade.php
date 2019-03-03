@@ -110,7 +110,8 @@
                       <div class="one">
                         <h3><a href="#">{{$flight->destiny->ciudad}}</a></h3>
                         <p>desde {{$flight->origin->ciudad}}</p>
-                        Asientos Disponibles: {{count($flight->seat)}}
+                        Asientos Disponibles
+                        {{$flight->seat->filter(function($asiento) {return $asiento->disponibilidad==TRUE;})->count()}}
                       </div>
 
               <!--        <div class="two">
@@ -120,7 +121,7 @@
                     </div>
                     
                     <hr>
-                    <form method="post" action="vuelos/asientos">
+                    <form method="post" action="/vuelos/asientos">
                     <p class="bottom-area d-flex">
                       <input type="hidden"  value="{{$flight}}" name="vuelo">
                       <input type="hidden"  value="{{$flight->id}}" name="id_vuelo">

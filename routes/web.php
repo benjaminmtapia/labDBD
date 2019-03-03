@@ -39,11 +39,14 @@ Route::resource('/reservation_users','ReservationUserController');
 Route::resource('/seats', 'SeatController');
 Route::resource('/secures', 'SecureController');
 Route::resource('/carrito', 'CarritoController');
-Route::get('autos/crear', 'CarController@create');
+Route::get('/carrito/{id}','CarritoController@show');
+
+Route::get('/autos/crear', 'CarController@create');
 
 
 Route::post('/vuelos/busqueda','FlightController@buscar');
-Route::post('/asiento/reserva','FlightController@reservarAsiento');
+Route::post('/asiento/pasajero','FlightController@inscribirPasajero');
+Route::post('/asiento/reserva','PassengerController@reservarAsiento');
 Route::post('/vuelos/asientos','FlightController@verAsientos');
 
 Route::post('/seguros/reserva', 'SecureController@reservarSeguro');

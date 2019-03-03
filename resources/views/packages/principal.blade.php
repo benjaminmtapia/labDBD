@@ -122,8 +122,8 @@
                     
                     <p class="vuelo"><span>
                     @if(optional($p->flight()->first())->origin_id != '')
-                      Vuelo desde {{optional($p->flight()->first())->origin_id}} 
-                      a {{optional($p->flight()->first())->destiny_id}} 
+                      Vuelo desde {{optional($p->flight()->first())->origin->ciudad}} 
+                      a {{optional($p->flight()->first())->destiny->ciudad}} 
                     @endif                      
                     </span></p>
 
@@ -139,7 +139,7 @@
                     <p class="habitacion"><span>
                       @if(optional($p->room()->first())->capacidad != '')
                         Habitación para {{optional($p->room()->first())->capacidad}} 
-                        personas en el hotel {{optional($p->room()->first())->hotel_id}}
+                        personas en el hotel {{optional($p->room()->first())->hotel->nombre}}
                       @endif
                       </span></p>
                     <hr>

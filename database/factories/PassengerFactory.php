@@ -3,11 +3,11 @@
 use Faker\Generator as Faker;
 
 $factory->define(App\passenger::class, function (Faker $faker) {
-	$vuelo = DB::table('flights')->select('id')->get();
+	$asiento = DB::table('seats')->select('id')->get();
     return [
         'nombre'=>$faker->name,
         'apellido'=>$faker->lastName,
         'edad'=>$faker->numberBetween(1, 99),
-        'flight_id'=>$vuelo->random()->id
+        'seat_id'=>$asiento->random()->id
     ];
 });

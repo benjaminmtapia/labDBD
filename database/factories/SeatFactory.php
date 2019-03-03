@@ -15,7 +15,6 @@ $factory->define(App\Seat::class, function (Faker $faker) {
         'disponibilidad'=>$faker->boolean($chanceOfGettingTrue = 100),
         'reservation_id'=>$reservation->random()->id,
         'package_id'=>$package->random()->id,
-        'flight_id'=>$flight->random()->id,        
-        'passenger_id'=>$passenger->random()->id
+        'flight_id'=>$flight->random()->id
     ];
 });

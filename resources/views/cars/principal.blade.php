@@ -97,7 +97,7 @@
 
             <div class="row">
                 @foreach($cars as $car)
-
+                @if($car->disponibilidad==TRUE)
               <div class="col-sm col-md-6 col-lg-4 ftco-animate">
                 <div class="destination">
                   <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(https://www.rentacarlasrosas.com/tenerife/wp-content/uploads/2018/06/Alquilar-un-coche-por-Internet.jpg);">
@@ -130,6 +130,7 @@
                   </div>
                 </div>
               </div>
+              @endif
           @endforeach
           </div> <!-- .col-md-8 -->
         </div>

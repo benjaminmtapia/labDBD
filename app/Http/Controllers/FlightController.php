@@ -119,15 +119,6 @@ class FlightController extends Controller
         return response()->json(['success']);
     }
 
-    public function reservaVuelo(Request $request){
-        $id_origen = $request->origin_id;
-        $id_destino = $request->destiny_id;
-        $origen = flight::where('origin_id',$id_origen)->first();
-        $destino = flight::where('destiny_id',$id_destino)->first();
-
-        //$reserva = reservation::where('')
-        return ;
-    }
     public function buscar(Request $request){
         $lugar_origen = $request->lugar_origen;
         $lugar_destino = $request->lugar_destino;
@@ -166,8 +157,10 @@ class FlightController extends Controller
         }
         return view('flights.busquedaporfecha',compact('date','origen','destino'));
     }
+
     public function reservarAsiento(Request $request){
         $seat = \App\Seat::find($request->id_asiento); 
+
         $user = Auth::user();
         $carrito = $user->carrito; 
         if ($carrito == null){
@@ -202,6 +195,7 @@ class FlightController extends Controller
             }
         }
         $seat->reservation_id = $reserva->id;
+        $seat->disponibilidad=false;
         $seat->save();
         return view('cart',compact('reserva'));
     }
@@ -215,5 +209,9 @@ class FlightController extends Controller
         $vuelo = \App\Flight::find($request->id_vuelo);
         $asientos = $vuelo->seat;
         return view('flights.seats',compact('asientos'));
+    }
+    public function inscribirPasajero(Request $request){
+        $asiento = \App\Seat::find($request->id_asiento);
+        return view('flights.pasajero',compact('asiento'));
     }
 }

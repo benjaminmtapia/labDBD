@@ -144,6 +144,7 @@ class RoomController extends Controller
             $reserva->fecha_reserva = Carbon::now();
             $reserva->disponibilidad = true;
             $habitacion->reservation_id = $reserva->id;
+            $habitacion->disponible = false;
             $habitacion->save();
             $reserva->save();
 
@@ -153,6 +154,7 @@ class RoomController extends Controller
             if($booleano == false){
                 $reserva = new \App\reservation;
                 $reserva->precio = $reserva->precio + $habitacion->precio;
+                $habitacion->disponible = false;
                 $reserva->user_id = $user->id;
                 $reserva->fecha_reserva= Carbon::now();
                 $reserva->disponibilidad = true;
@@ -163,6 +165,7 @@ class RoomController extends Controller
             else{
                 $reserva = \App\reservation::all()->last();
                 $reserva->precio = $reserva->precio+ $habitacion->precio;
+                $habitacion->disponible = false;
                 $habitacion->reservation_id = $reserva->id;
                 $habitacion->save();
                 $reserva->save();
