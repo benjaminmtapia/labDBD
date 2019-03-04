@@ -150,6 +150,7 @@ class SecureController extends Controller
       }
       $seguro->reservation_id = $reserva->id;
       $seguro->save();
-     return view('cart',compact('reserva','request'));
+     //return view('carrito',compact('reserva','request'));
+      return redirect()->action('CarritoController@show',['id' => $user->id]);
     }
 }

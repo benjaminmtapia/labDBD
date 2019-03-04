@@ -187,7 +187,8 @@ class CarController extends Controller
         $auto->reservation_id = $reserva->id;
         $auto->disponibilidad = false;
         $auto->save();
-        return view('cart',compact('reserva','request'));
+        //return view('cart',compact('reserva','request'));
+        return redirect()->action('CarritoController@show',['id' => $user->id]);
     }
 
     public function buscarAuto(Request $request){

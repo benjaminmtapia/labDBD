@@ -162,6 +162,7 @@ class PassengerController extends Controller
         $seat->save();
       //return redirect::back()->withErrors(['msg', 'Asiento reservado']);
        // return redirect()->to('flights')->withErrors(['msg','Asiento reservado']);
-        return view('cart',compact('reserva')); 
+        return redirect()->action('CarritoController@show',['id' => $user->id]);
+        //return view('cart',compact('reserva')); 
     }
 }

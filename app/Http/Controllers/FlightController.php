@@ -197,7 +197,8 @@ class FlightController extends Controller
         $seat->reservation_id = $reserva->id;
         $seat->disponibilidad=false;
         $seat->save();
-        return view('cart',compact('reserva'));
+//        return view('cart',compact('reserva'));
+        return redirect()->action('CarritoController@show',['id' => $user->id]);
     }
 
     public function verDetalle(Request $request){

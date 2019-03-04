@@ -66,6 +66,7 @@ class CarritoController extends Controller
         if($reservation == null){
             $reservation = new \App\reservation;
         }
+        $reservation->precio = 0;
         $id_res = $reservation->id; 
         $seats = Seat::all()->where('reservation_id', $id_res);
         $cars = car::all()->where('reservation_id', $id_res);
