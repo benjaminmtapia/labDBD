@@ -19,7 +19,6 @@ Auth::routes();
 
 
 Route::resource('/airports', 'AirportController');
-Route::resource('/administrators', 'AdministratorController');
 Route::resource('/flights', 'FlightController');
 Route::resource('/tickets', 'TicketController');
 Route::resource('/cars', 'CarController');
@@ -42,7 +41,8 @@ Route::resource('/carrito', 'CarritoController');
 Route::get('/carrito/{id}','CarritoController@show');
 
 Route::get('/autos/crear', 'CarController@create');
-
+Route::get('cars/{id}/edit', 'CarController@edit');
+Route::put('cars/{car}', 'CarController@update');
 
 Route::post('/vuelos/busqueda','FlightController@buscar');
 Route::post('/asiento/pasajero','FlightController@inscribirPasajero');

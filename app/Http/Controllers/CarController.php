@@ -10,6 +10,7 @@ use Validator;
 use \App\ReservationUser;
 use \App\reservation;
 use Auth;
+use Session;
 use \App\User;
 use Carbon\Carbon;
 class CarController extends Controller
@@ -107,7 +108,14 @@ class CarController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = Auth::user();
+        $car = car::find($id);
+        if ($user->is_admin) {
+          return view('cars.editar', compact('car'));
+        }
+        else {
+          abort(401);
+        }
     }
 
     /**
@@ -128,10 +136,16 @@ class CarController extends Controller
         $car->modelo = $request->get('modelo');
         $car->capacidad = $request->get('capacidad');
         $car->precio = $request->get('precio');
+        $car->fecha_ida = $request->get('fecha_ida');
+        $car->fecha_vuelta = $request->get('fecha_vuelta');
+        $car->disponibilidad = $request->get('disponibilidad');
+        $car->destiny_id = $request->get('destiny_id');
         $car->reservation_id = $request->get('reservation_id');
         $car->package_id = $request->get('package_id');
         $car->save();
-        return $car;
+        $cars = car::all();
+        Session::flash('flash_message', 'Auto editado');
+        return view('cars.principal', compact('cars'));
     }
 
 
@@ -153,7 +167,7 @@ class CarController extends Controller
         $auto = \App\Car::find($request->id_auto);
         $user = Auth::user();
         //dd($user->name);
-        $carrito = $user->carrito; 
+        $carrito = $user->carrito;
         if ($carrito == null){
             $carrito = new \app\Carrito;
             $carrito->fecha = Carbon::now();
