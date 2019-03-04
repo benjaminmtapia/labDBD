@@ -63,6 +63,10 @@ Route::post('/hoteles/buscar','HotelController@buscarHotel');
 Route::post('/autos/reserva','CarController@reservarAuto');
 Route::post('/autos/busqueda','CarController@buscarAuto');
 
+
+Route::get('/email', 'MailController@home');
+Route::post('/email_send', 'MailController@sendMail');
+
 Auth::routes();
 
 
