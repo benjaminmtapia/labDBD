@@ -48,6 +48,9 @@ Route::post('/vuelos/busqueda','FlightController@buscar');
 Route::post('/asiento/pasajero','FlightController@inscribirPasajero');
 Route::post('/asiento/reserva','PassengerController@reservarAsiento');
 Route::post('/vuelos/asientos','FlightController@verAsientos');
+Route::get('vuelos/crear', 'FlightController@create');
+Route::get('flights/{id}/edit', 'FlightController@edit');
+Route::put('flights/{flight}', 'FlightController@update');
 
 Route::post('/seguros/reserva', 'SecureController@reservarSeguro');
 Route::post('/vuelos/busquedaporfecha','FlightController@buscarporfecha');
