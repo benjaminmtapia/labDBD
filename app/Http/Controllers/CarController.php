@@ -77,7 +77,7 @@ class CarController extends Controller
           $car->fecha_vuelta = $request->get('fecha_vuelta');
           $car->disponibilidad = $request->get('disponibilidad');
           $car->destiny_id = $request->get('destiny_id');
-          $car->reservation_id = $request->get('reservation_id');
+          $car->reservation_id = 1;
           $car->package_id = $request->get('package_id');
           $car->save();
           $cars = car::all();
@@ -139,8 +139,7 @@ class CarController extends Controller
         $car->fecha_ida = $request->get('fecha_ida');
         $car->fecha_vuelta = $request->get('fecha_vuelta');
         $car->disponibilidad = $request->get('disponibilidad');
-        $car->destiny_id = $request->get('destiny_id');
-        $car->reservation_id = $request->get('reservation_id');
+        $car->destiny_id = $request->get('destiny_id');        
         $car->package_id = $request->get('package_id');
         $car->save();
         $cars = car::all();

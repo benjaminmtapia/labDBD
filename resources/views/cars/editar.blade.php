@@ -104,11 +104,7 @@
 
                   <div class="form-group">
                     <input type="text" name="destiny_id" class="form-control" placeholder="Id destino" value={{$car->destiny_id}}>
-                  </div>
-
-                  <div class="form-group">
-                    <input type="text" name="reservation_id" class="form-control" placeholder="Id Reservacion" value={{$car->reservation_id}}>
-                  </div>
+                  </div>                  
 
                   <div class="form-group">
                     <input type="text" name="package_id" class="form-control" placeholder="Id Paquete" value={{$car->package_id}}>

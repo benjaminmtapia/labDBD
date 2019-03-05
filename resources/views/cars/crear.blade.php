@@ -102,11 +102,7 @@
 
                   <div class="form-group">
                     <input type="text" name="destiny_id" class="form-control" placeholder="Id destino">
-                  </div>
-
-                  <div class="form-group">
-                    <input type="text" name="reservation_id" class="form-control" placeholder="Id Reservacion">
-                  </div>
+                  </div>                  
 
                   <div class="form-group">
                     <input type="text" name="package_id" class="form-control" placeholder="Id Paquete">
