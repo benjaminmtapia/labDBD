@@ -125,6 +125,7 @@ class CheckInController extends Controller
         $check_in = self::store($request);
         $asiento = $check_in->passenger->seat;
         $asiento->check_in = true;
+        $asiento->save();
         $reserva = \App\reservation::find($request->id_reserva);
         $seat = $reserva->seat;
         return view('checkin.passengers',compact('reserva','seat'));
