@@ -62,6 +62,9 @@ Route::post('/hoteles/ciudad','HotelController@verHoteles');
 Route::post('/hoteles/habitaciones','HotelController@verHabitaciones');
 Route::post('/hoteles/reservar','RoomController@reservarHabitacion');
 Route::post('/hoteles/buscar','HotelController@buscarHotel');
+Route::get('/hoteles/crear', 'HotelController@create');
+Route::get('hotels/{id}/edit', 'HotelController@edit');
+Route::put('hotels/{hotel}', 'HotelController@update');
 
 Route::post('/autos/reserva','CarController@reservarAuto');
 Route::post('/autos/busqueda','CarController@buscarAuto');
