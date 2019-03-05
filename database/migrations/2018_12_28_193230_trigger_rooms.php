@@ -34,10 +34,10 @@ class TriggerRooms extends Migration
                     rdm:= ((rdm * 1.5 * n * valor)%4) + 1;
                     rand:= ((rdm * 1.5 * n * valor)%10) +1;
                     this:= this + 3;
-                    next:= next + 7;
+                    next:= next + 4;
                     price:= rdm * 175;
-                    INSERT INTO rooms(hotel_id, numero, capacidad, disponible, precio, created_at, updated_at, fecha_ida, fecha_vuelta, package_id, reservation_id)
-                    VALUES (valor, n, rdm, disponible, price, NEW.created_at, NEW.updated_at, this, next, rand, 1);
+                    INSERT INTO rooms(hotel_id, numero, capacidad, disponible, precio, created_at, updated_at, fecha_ida, fecha_vuelta, package_id)
+                    VALUES (valor, n, rdm, disponible, price, NEW.created_at, NEW.updated_at, this, next, valor);
                 END LOOP;
                 RETURN NEW;
             END

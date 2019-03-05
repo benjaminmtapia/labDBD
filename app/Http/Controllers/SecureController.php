@@ -153,4 +153,13 @@ class SecureController extends Controller
      //return view('carrito',compact('reserva','request'));
       return redirect()->action('CarritoController@show',['id' => $user->id]);
     }
+
+    public function quitarDelCarrito(Request $request){
+        $user = Auth::user();
+        $id = $user->id;
+        $seguro = \App\Secure::find($request->id_seguro); 
+        $seguro->reservation_id = null;
+        $seguro->save();
+        return redirect()->action('CarritoController@show',['id' => $user->id]);
+    }
 }

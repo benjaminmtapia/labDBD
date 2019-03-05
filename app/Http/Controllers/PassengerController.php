@@ -9,6 +9,8 @@ use Auth;
 use Redirect;
 use Carbon\Carbon;
 use App\Carrito;
+use App\Seat; 
+
 class PassengerController extends Controller
 {
 
@@ -164,4 +166,18 @@ class PassengerController extends Controller
         return redirect()->action('CarritoController@show',['id' => $user->id]);
         //return view('cart',compact('reserva')); 
     }
+
+    public function quitarDelCarrito(Request $request){
+        $user = Auth::user();
+        $id = $user->id;
+        $asiento = \App\Seat::find($request->id_asiento); 
+        $id_as = $asiento->id; 
+        $asiento->reservation_id = null;
+        $asiento->disponibilidad = true;
+        $asiento->save();
+        $passenger = $asiento->passenger;
+        $passenger->seat_id = null;
+        $passenger->save();
+        return redirect()->action('CarritoController@show',['id' => $user->id]);
+    }    
 }

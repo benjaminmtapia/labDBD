@@ -217,4 +217,14 @@ class CarController extends Controller
         }
         return view('cars.buscar',compact('cars'));
     }
+
+    public function quitarDelCarrito(Request $request){
+        $user = Auth::user();
+        $id = $user->id;
+        $auto = \App\Car::find($request->id_auto); 
+        $auto->reservation_id = null;
+        $auto->disponibilidad = true;
+        $auto->save();
+        return redirect()->action('CarritoController@show',['id' => $user->id]);
+    }    
 }

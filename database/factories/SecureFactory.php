@@ -8,7 +8,7 @@ $factory->define(App\Secure::class, function (Faker $faker) {
     return [
         'tipo'=>$faker->randomElement(['Individual', 'Grupal']),
         'precio'=>$faker->numberBetween($min=200, $max=600),
-        'passenger_id'=>$passenger->random()->id,
-        'reservation_id'=>$reservation->random()->id
+        'passenger_id'=>$passenger->random()->id
+     //   'reservation_id'=>$reservation->random()->id
     ];
 });

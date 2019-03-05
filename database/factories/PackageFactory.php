@@ -7,6 +7,6 @@ $factory->define(App\package::class, function (Faker $faker) {
     return [
     	'precio'=>$faker->numberBetween(600, 800),
     	'disponible'=>$faker->boolean($chanceOfGettingTrue = 100),
-    	'reservation_id'=>$reservation->random()->id
+//    	'reservation_id'=>$reservation->random()->id
     ];
 });

@@ -17,7 +17,7 @@ class CreatePackagesTable extends Migration
             $table->increments('id');
             $table->integer('precio');
             $table->boolean('disponible');
-            $table->unsignedInteger('reservation_id');
+            $table->unsignedInteger('reservation_id')->nullable();
             $table->foreign('reservation_id')->references('id')->on('reservations');
             $table->timestamps();
             $table->softDeletes();

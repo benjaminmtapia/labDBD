@@ -177,4 +177,15 @@ class RoomController extends Controller
         //return view('cart',compact('reserva'));
         return redirect()->action('CarritoController@show',['id' => $user->id]);
     }
+
+    public function quitarDelCarrito(Request $request){
+        $user = Auth::user();
+        $id = $user->id;
+        $habitacion = \App\room::find($request->id_habitacion); 
+        $habitacion->reservation_id = null;
+        $habitacion->disponible = true;
+        $habitacion->save();
+        return redirect()->action('CarritoController@show',['id' => $user->id]);
+    }
+
 }

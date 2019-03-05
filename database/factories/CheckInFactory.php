@@ -11,7 +11,7 @@ $factory->define(App\check_in::class, function (Faker $faker) {
     	'nacionalidad'=>$faker->country,
     	'nombre_contacto'=>$faker->name,
     	'telefono_contacto'=>$faker->phoneNumber,
-        'passenger_id'=>$pasajero->random()->id,
-        'reservation_id'=>$reserva->random()->id
+        'passenger_id'=>$pasajero->random()->id
+        //'reservation_id'=>$reserva->random()->id
     ];
 });

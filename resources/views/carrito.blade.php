@@ -72,6 +72,7 @@
             <th class="cell">Ítem</th>
             <th class="cell">Descripción</th>
             <th class="cell">Precio</th>
+            <th>          </th>
           </tr>
  
           @foreach($seats as $s)
@@ -80,7 +81,7 @@
             <th class="font-weight-normal cell">{{$s->tipo}} en el vuelo desde {{$s->flight->origin->ciudad}} a {{$s->flight->destiny->ciudad}}</th>
             <th class="font-weight-normal cell">${{$s->precio}}</th>   
             <th>
-              <form method="put" action="/asiento/eliminar_reserva">
+              <form method="post" action="/asientos/eliminar_reserva">
                 <p class="bottom-area d-flex">
                   <input type="hidden"  value="{{$s}}" name="asiento">
                   <input type="hidden"  value="{{$s->id}}" name="id_asiento">
@@ -97,7 +98,7 @@
             <th class="font-weight-normal cell">Marca: {{$c->marca}} / Modelo: {{$c->modelo}}</th>
             <th class="font-weight-normal cell">${{$c->precio}}</th>
             <th>
-              <form method="put" action="/autos/eliminar_reserva">
+              <form method="post" action="/autos/eliminar_reserva">
                 <p class="bottom-area d-flex">
                   <input type="hidden"  value="{{$c}}" name="auto">
                   <input type="hidden"  value="{{$c->id}}" name="id_auto">
@@ -114,7 +115,7 @@
             <th class="font-weight-normal cell">En el hotel {{$r->hotel->nombre}} con capacidad para {{$r->capacidad}} persona(s)</th>
             <th class="font-weight-normal cell">${{$r->precio}}</th>
             <th>
-              <form method="put" action="/habitaciones/eliminar_reserva">
+              <form method="post" action="/habitaciones/eliminar_reserva">
                 <p class="bottom-area d-flex">
                   <input type="hidden"  value="{{$r}}" name="habitacion">
                   <input type="hidden"  value="{{$r->id}}" name="id_habitacion">
@@ -131,7 +132,7 @@
             <th class="font-weight-normal cell">Tipo: {{$sec->tipo}}</th>
             <th class="font-weight-normal cell">${{$sec->precio}}</th>
             <th>
-              <form method="put" action="/secures/eliminar_reserva">
+              <form method="post" action="/secures/eliminar_reserva">
                 <p class="bottom-area d-flex">
                   <input type="hidden"  value="{{$sec}}" name="seguro">
                   <input type="hidden"  value="{{$sec->id}}" name="id_seguro">
@@ -146,8 +147,21 @@
             <th class="cell">Total</th>
             <th class="cell"></th>
             <th class="cell">${{$reservation->precio}}</th>
+            <th>
+              @if($reservation->precio != 0)
+              <form method="post" action="">
+                <p class="bottom-area d-flex">
+                <input type="hidden"  value="" name="">
+                <input type="hidden"  value="" name="">
+                <button type="submit" class="btn btn-success">Confirmar reserva</button>
+                </p>
+              </form>
+              @endif
+            </th>
           </tr>
     </table> 
+
+
 
 <!--
     @foreach($secures as $sec)

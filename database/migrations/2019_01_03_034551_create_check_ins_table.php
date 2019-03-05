@@ -23,7 +23,7 @@ class CreateCheckInsTable extends Migration
             $table->string('telefono_contacto');
             $table->unsignedInteger('passenger_id');
             $table->foreign('passenger_id')->references('id')->on('passengers');
-            $table->unsignedInteger('reservation_id');
+            $table->unsignedInteger('reservation_id')->nullable();
             $table->foreign('reservation_id')->references('id')->on('reservations');
             $table->timestamps();
             $table->softDeletes();

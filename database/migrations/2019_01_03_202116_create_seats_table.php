@@ -21,7 +21,7 @@ class CreateSeatsTable extends Migration
             $table->integer('precio');
             $table->string('tipo');
             $table->boolean('check_in');
-            $table->unsignedInteger('reservation_id');
+            $table->unsignedInteger('reservation_id')->nullable();
             $table->unsignedInteger('package_id');
             $table->unsignedInteger('flight_id');
             $table->unsignedInteger('passenger_id');

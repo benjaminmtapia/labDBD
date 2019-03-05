@@ -87,7 +87,7 @@
 
                   <div class="form-group">
                    <input type="hidden" value="{{$asiento->id}}" name="seat_id">
-                   <input type="hidden" value="{{$asiento->reservation->id}}" name="id_reserva">
+                 
                     <input type="submit" value="Crear" class="btn btn-primary py-3 px-5">
 
                   </div>

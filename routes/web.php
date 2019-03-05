@@ -76,6 +76,11 @@ Route::post('/checkin/submit','CheckInController@finalizarCheckin');
 Route::get('/email', 'MailController@home');
 Route::post('/email_send', 'MailController@sendMail');
 
+Route::post('/asientos/eliminar_reserva', 'PassengerController@quitarDelCarrito');
+Route::post('/autos/eliminar_reserva', 'CarController@quitarDelCarrito');
+Route::post('/habitaciones/eliminar_reserva', 'RoomController@quitarDelCarrito');
+Route::post('/seguros/eliminar_reserva', 'SecureController@quitarDelCarrito');
+
 Auth::routes();
 
 
