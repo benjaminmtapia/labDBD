@@ -14,15 +14,15 @@ class package extends Model
     ];
 
     public function flight(){
-        return $this->hasMany(flight::class);
+        return $this->hasOne(flight::class);
     }
 
     public function car(){
-    	return $this->hasMany(car::class);
+    	return $this->hasOne(car::class);
     }
 
      public function room(){
-    	return $this->hasMany(room::class);
+    	return $this->hasOne(room::class);
     }
     
     public function reservation(){
@@ -30,7 +30,9 @@ class package extends Model
     }
 
     public function seat(){
-    	return $this->hasMany(Seat::class);
+        $vuelos = $this->flight;
+        $asientos = $vuelos->seat;
+    	return $this->hasMany(Seat::class)->take($max = 4);
     }  
 
 }

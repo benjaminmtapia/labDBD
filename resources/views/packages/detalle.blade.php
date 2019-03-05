@@ -1,32 +1,31 @@
 @extends('layouts.app')
 <!DOCTYPE html>
-<html lang="en">
   <head>
     <title>DIINF++</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" type="text/css" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/open-iconic-bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/animate.css')}}">
     
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/owl.theme.default.min.css')}}">
+    <link rel="stylesheet"  type="text/css" href="{{URL::asset('css/magnific-popup.css')}}">
 
-    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" type="text/css"  href="{{URL::asset('css/aos.css')}}">
 
-    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/css/ionicons.min.css')}}">
 
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/bootstrap-datepicker.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/jquery.timepicker.css')}}">
 
     
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/flaticon.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/icomoon.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/style.css')}}">
   </head>
   <body>
     
@@ -40,10 +39,10 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="/flights" class="nav-link">Vuelos</a></li>
+            <li class="nav-item active"><a href="/flights" class="nav-link">Vuelos</a></li>
             <li class="nav-item"><a href="/destinies" class="nav-link">Alojamiento</a></li>
             <li class="nav-item"><a href="/cars" class="nav-link">Autos</a></li>
-            <li class="nav-item active"><a href="/packages" class="nav-link">Paquetes</a></li>
+            <li class="nav-item"><a href="/packages" class="nav-link">Paquetes</a></li>
             <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
           </ul>
         </div>
@@ -56,114 +55,65 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Paquetes</h1>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Detalle de vuelo</h1>
           </div>
         </div>
       </div>
     </div>
+
     
+
+
     <section class="ftco-section">
       <div class="container">
         <div class="row">
-          <div class="col-lg-3 sidebar order-md-last ftco-animate">
-            <div class="sidebar-wrap ftco-animate">
-              <h3 class="heading mb-4">Buscar Vuelo</h3>
-              <form action="/vuelos/busqueda" method="post">
-                <div class="fields">
-                  <div class="form-group">
-                    <input type="text" name="lugar_origen" class="form-control" placeholder="Origen">
-                  </div>
-                  <div class="form-group">
-                    <div class="select-wrap one-third">
-                      
-                     <input type="text" name="lugar_destino" class="form-control" placeholder="Destino">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <input type="text" name="fecha" id="checkin_date" class="form-control checkin_date" placeholder="Fecha">
-                  </div>
-
-                  <div class="form-group">
-                    <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
-                  </div>
-                </div>
-              </form>
-            </div>
-          
-          </div><!-- END-->
-          
           <div class="col-lg-9">
-
-            <div class="row">
-                @foreach($paquetes as $p)
-
-              <div class="col-sm col-md-6 col-lg-4 ftco-animate">
+            <h1 class="font-weight-bold text-center">Detalles del Paquete</h1>
                 <div class="destination">
-                  <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(https://akimg0.ask.fm/wallpapers2/080/990/485/760/original/file.jpg);">
+                
                   </a>
                   <div class="text p-3">
-                    <div class="d-flex">
-                      <div class="one">
-                        <h3>Paquete n°: {{$p->id}}</h3>
-                      
-                      <!--  <p class="rate">
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star-o"></i>
-                          <span>8 Rating</span>
-                        </p> -->
-                      </div>
-                      <div class="two">
-                        <span class="price">${{$p->precio}}</span>
-                      </div>
-                    </div>
-                    
-                    <p class="vuelo"><span>
-                    @if(optional($p->flight()->first())->origin_id != '')
-                      Vuelo desde {{optional($p->flight()->first())->origin->ciudad}} 
-                      a {{optional($p->flight()->first())->destiny->ciudad}} 
-                    @endif                      
-                    </span></p>
-
-
-                    <p class="auto"><span>
-                      @if(optional($p->car()->first())->marca != '')
-                        Auto: {{optional($p->car()->first())->marca}}, 
-                        {{optional($p->car()->first())->modelo}}
-                      @endif
-                    </span></p>
-
-
-                    <p class="habitacion"><span>
-                      @if(optional($p->room()->first())->capacidad != '')
-                        Habitación para {{optional($p->room()->first())->capacidad}} 
-                        personas en el hotel {{optional($p->room()->first())->hotel->nombre}}
-                      @endif
-                      </span></p>
+                    <table class="table">
+                          <tr>
+                            <th class="cell">Origen</th>
+                            <th class="cell"></th>
+                            <th class="font-weight-normal cell">{{$flight->origin->ciudad}}</th>
+                          </tr>
+                          <tr>
+                            <th class="cell">Destino</th>
+                            <th class="cell"></th>
+                            <th class="font-weight-normal cell">{{$flight->destiny->ciudad}}</th>
+                          </tr>
+                          <tr>
+                            <th class="cell">Fecha de ida<th/>
+                            <th class="font-weight-normal cell">{{$flight->fecha_ida}}</th>
+                          </tr>
+                          <tr>
+                            <th class="cell">Fecha de vuelta<th/> 
+                            <th class="font-weight-normal cell">{{$flight->fecha_vuelta}}</th>
+                          </tr>
+                          <tr>
+                            <th class="cell">Precio</th>
+                            <th class="cell"></th>
+                            <th class="font-weight-normal cell">${{$flight->precio}}</th>
+                          </tr>
+                          <tr>
+                          	<th class="cell">Hotel</th>
+                          	<th class="cell"></th>
+                          	<th class="font-weight-normal">
+                          		{{$room->hotel->name}},{{$room->hotel->destiny->ciudad}}
+                          </tr>
+                          <tr>
+                          	<th class="cell">Auto</th>
+                          	<th class="cell"></th>
+                          	<th class="font-weight-normal">{{$car->marca}} {{$car->modelo}}
+                          </tr>
+                    </table>                          
                     <hr>
-                    <p class="bottom-area d-flex">
-                      
-                      <form method="post" action="/paquetes/reserva">
-                        <input type="hidden"  value="{{$p}}" name="paquete">
-                        <input type="hidden"  value="{{$p->id}}" name="id_paquete">
-                        <button type="submit" class="btn btn-danger">Reservar</button>
-                      </form>
-                    </p>
-                    <form method="post" action="/paquetes/verdetalle">
-                    <p class="bottom-area d-flex">                      
-                      <input type="hidden"  value="{{$p}}" name="paquete">
-                      <input type="hidden"  value="{{$p->id}}" name="id_paquete">
-                      <button type="submit" class="btn btn-info">Ver detalles</button>
-                    </p>
-                    </form> 
+                      <a href="/packages" class="btn btn-warning">Volver</a>
                   </div>
                 </div>
-              </div>
-          @endforeach
           </div> <!-- .col-md-8 -->
-        </div>
       </div>
     </section> <!-- .section -->
 
@@ -261,23 +211,23 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/jquery.timepicker.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.stellar.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/owl.carousel.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/aos.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.animateNumber.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.timepicker.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/scrollax.min.js') }}"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
-    
+  <script type="text/javascript" src="{{ asset('js/google-map.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+
   </body>
 </html>

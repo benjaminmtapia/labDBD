@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
 use App\car;
+use Carbon\Carbon;
+use Auth;
 class PackageController extends Controller
 {
 
@@ -114,7 +116,74 @@ class PackageController extends Controller
         return response()->json(['success']);
     }
 
-    public function reservarPaquete($request){
-        return $request;
+    public function reservarPaquete(Request $request){
+        $paquete = \App\package::find($request->id_paquete);
+        $user = Auth::user();
+        $carrito = $user->carrito; 
+        if ($carrito == null){
+            $carrito = new \app\Carrito;
+            $carrito->fecha = Carbon::now();
+            $carrito->user_id = $user->id;
+            $carrito->save;
+        }        
+        $reserva_aux = $user->reservation->last();
+        if($reserva_aux == null){
+            $reserva = new \App\reservation;
+            $reserva->precio = $reserva->precio + $paquete->precio;
+            $reserva->user_id = $user->id;
+            $reserva->fecha_reserva = Carbon::now();
+            $reserva->disponibilidad = true;
+            $paquete->reservation_id = $reserva->id;
+            $paquete->disponible = false;
+            $paquete->save();
+            $reserva->save();
+
+        }
+        else{
+            $booleano = \App\reservation::all()->last()->disponibilidad;
+            if($booleano == false){
+                $reserva = new \App\reservation;
+                $reserva->precio = $reserva->precio + $paquete->precio;
+                $paquete->disponible = false;
+                $reserva->user_id = $user->id;
+                $reserva->fecha_reserva= Carbon::now();
+                $reserva->disponibilidad = true;
+                $paquete->reservation_id = $reserva->id;
+                $paquete->save();
+                $reserva->save();
+            }
+            else{
+                $reserva = \App\reservation::all()->last();
+                $reserva->precio = $reserva->precio+ $paquete->precio;
+                $paquete->disponible = false;
+                $paquete->reservation_id = $reserva->id;
+                $paquete->save();
+                $reserva->save();
+            }
+        }
+        $paquete->reservation_id = $reserva->id;
+        $paquete->disponible = false;
+        $paquete->save();
+        //return view('cart',compact('reserva'));
+        return redirect()->action('CarritoController@show',['id' => $user->id]);
+    }
+
+    public function quitarDelCarrito(Request $request){
+        $user = Auth::user();
+        $id = $user->id;
+        $paquete = \App\package::find($request->id_paquete); 
+        $paquete->reservation_id = null;
+        $paquete->disponible = true;
+        $paquete->dias = 0;
+        $paquete->save();
+        return redirect()->action('CarritoController@show',['id' => $user->id]);
+    }
+
+    public function verDetalle(Request $request){
+        $package = \App\package::find($request->id_paquete);
+        $car = $package->car;
+        $flight = $package->flight;
+        $room = $package->room;
+        return view('packages.detalle',compact('package','car','flight','room'));
     }
 }

@@ -100,7 +100,7 @@
                           </tr>
                     </table>                          
                     <hr>
-                      <button type="button" class="btn btn-warning">Volver</button>
+                      <a href="/flights" class="btn btn-warning">Volver</a>
                   </div>
                 </div>
           </div> <!-- .col-md-8 -->

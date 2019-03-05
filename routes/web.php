@@ -57,6 +57,7 @@ Route::post('/vuelos/busquedaporfecha','FlightController@buscarporfecha');
 Route::post('/vuelos/verdetalle','FlightController@verDetalle');
 
 Route::post('/paquetes/reserva','PackageController@reservarPaquete');
+Route::post('/paquetes/verdetalle','PackageController@verDetalle');
 
 Route::post('/hoteles/ciudad','HotelController@verHoteles');
 Route::post('/hoteles/habitaciones','HotelController@verHabitaciones');
