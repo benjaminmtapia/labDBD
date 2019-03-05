@@ -17,7 +17,10 @@ class CreatePurchasesTable extends Migration
             $table->increments('id');
             $table->timestamp('fecha');
             $table->integer('precio');
-            $table->string('mediodepago');
+            $table->string('tipo_tarjeta');
+            $table->string('numero_tarjeta');
+            $table->string('nombre_titular');
+            $table->string('apellido_titular');
             $table->unsignedInteger('reservation_id')->nullable();
             $table->foreign('reservation_id')->references('id')->on('reservations');
             $table->timestamps();

@@ -81,6 +81,8 @@ Route::post('/autos/eliminar_reserva', 'CarController@quitarDelCarrito');
 Route::post('/habitaciones/eliminar_reserva', 'RoomController@quitarDelCarrito');
 Route::post('/seguros/eliminar_reserva', 'SecureController@quitarDelCarrito');
 
+Route::post('/confirmar_compra/{id}', 'CarritoController@confirmarCompra');
+
 Auth::routes();
 
 

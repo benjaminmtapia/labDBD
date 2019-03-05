@@ -56,7 +56,7 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Carrito de Compras</h1>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Checkout</h1>
           </div>
         </div>
       </div>
@@ -65,14 +65,13 @@
     <div class="container" style ="margin-top:20px;">
 
 
-    <h1 class="font-weight-bold text-center">Carrito de Compras</h1>
+    <h1 class="font-weight-bold text-center">Lista de ítems</h1>
     <h2 class="text-center">N° Reserva: {{$reservation->id}}</h2>
     <table class="table">
           <tr>
             <th class="cell">Ítem</th>
             <th class="cell">Descripción</th>
             <th class="cell">Precio</th>
-            <th>          </th>
           </tr>
  
           @foreach($seats as $s)
@@ -80,15 +79,6 @@
             <th class="font-weight-normal cell">Asiento</th>
             <th class="font-weight-normal cell">{{$s->tipo}} en el vuelo desde {{$s->flight->origin->ciudad}} a {{$s->flight->destiny->ciudad}}</th>
             <th class="font-weight-normal cell">${{$s->precio}}</th>   
-            <th>
-              <form method="post" action="/asientos/eliminar_reserva">
-                <p class="bottom-area d-flex">
-                  <input type="hidden"  value="{{$s}}" name="asiento">
-                  <input type="hidden"  value="{{$s->id}}" name="id_asiento">
-                  <button type="submit" class="btn btn-danger">Eliminar del carrito</button>
-                </p>
-              </form>
-            </th>
           </tr>
           @endforeach
 
@@ -97,15 +87,6 @@
             <th class="font-weight-normal cell">Auto</th>
             <th class="font-weight-normal cell">Marca: {{$c->marca}} / Modelo: {{$c->modelo}}</th>
             <th class="font-weight-normal cell">${{$c->precio}}/día x {{$c->dias}} días</th>
-            <th>
-              <form method="post" action="/autos/eliminar_reserva">
-                <p class="bottom-area d-flex">
-                  <input type="hidden"  value="{{$c}}" name="auto">
-                  <input type="hidden"  value="{{$c->id}}" name="id_auto">
-                  <button type="submit" class="btn btn-danger">Eliminar del carrito</button>
-                </p>
-              </form>
-            </th>
           </tr>
           @endforeach
 
@@ -114,15 +95,6 @@
             <th class="font-weight-normal cell">Habitación</th>
             <th class="font-weight-normal cell">En el hotel {{$r->hotel->nombre}} con capacidad para {{$r->capacidad}} persona(s)</th>
             <th class="font-weight-normal cell">${{$r->precio}}/noche x {{$r->dias}} noches</th>
-            <th>
-              <form method="post" action="/habitaciones/eliminar_reserva">
-                <p class="bottom-area d-flex">
-                  <input type="hidden"  value="{{$r}}" name="habitacion">
-                  <input type="hidden"  value="{{$r->id}}" name="id_habitacion">
-                  <button type="submit" class="btn btn-danger">Eliminar del carrito</button>
-                </p>
-              </form>
-            </th>
           </tr>
           @endforeach
 
@@ -131,15 +103,6 @@
             <th class="font-weight-normal cell">Seguro</th>
             <th class="font-weight-normal cell">Tipo: {{$sec->tipo}}</th>
             <th class="font-weight-normal cell">${{$sec->precio}}</th>
-            <th>
-              <form method="post" action="/secures/eliminar_reserva">
-                <p class="bottom-area d-flex">
-                  <input type="hidden"  value="{{$sec}}" name="seguro">
-                  <input type="hidden"  value="{{$sec->id}}" name="id_seguro">
-                  <button type="submit" class="btn btn-danger">Eliminar del carrito</button>
-                </p>
-              </form>
-            </th>
           </tr>
           @endforeach
 
@@ -147,20 +110,82 @@
             <th class="cell">Total</th>
             <th class="cell"></th>
             <th class="cell">${{$reservation->precio}}</th>
-            <th>
-              @if($reservation->precio != 0)
-              <form method="post" action="/confirmar_compra/{{$reservation->id}}">
-                <p class="bottom-area d-flex">
-                  <input type="hidden"  value="{{$reservation}}" name="reservation">
-                  <input type="hidden"  value="{{$reservation->id}}" name="reservation_id">
-                <button type="submit" class="btn btn-success">Confirmar reserva</button>
-                </p>
-              </form>
-              @endif
-            </th>
           </tr>
     </table> 
 
+    <hr>
+
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-4 text-center order-md-last ftco-animate">
+            <div class="sidebar-wrap ftco-animate">
+              <h3 class="heading mb-4">Formulario de confirmación de compra</h3>
+              <form action="" method="post">
+                <div class="fields">
+
+                    <div class="form-group">
+                      <div class="select-wrap one-third">
+                        <select class="form-control" id="sel1">
+                        <option hidden>Tipo tajeta</option>
+                        <option value="Visa">Visa</option>
+                        <option value="Master Card">Master Card</option>
+                        <option value="American Express">American Express</option>
+                        <option value="Discover Card">Discover Card</option>
+                        </select>
+                      </div>                    
+                    </div>
+
+                  <div class="form-group">
+                    <div class="select-wrap one-third">
+
+                     <input type="text" minlength=13 maxlength=19 name="n_tarjeta" class="form-control" placeholder="N° Tarjeta">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="select-wrap one-third">
+                     <input type="text" name="f_vence" minlength=7 maxlength=7 class="form-control" placeholder="Fecha de vencimiento (MM/YYYY)">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <input type="password" name="cvv" minlength=3 maxlength=3 class="form-control" placeholder="CVV">
+                  </div>
+
+                  <div class="form-group">
+                    <input type="text" name="nombre_t" minlength=2 class="form-control" placeholder="Nombre del titular">
+                  </div>
+
+                  <div class="form-group">
+                    <input type="text" name="apellido_t" minlength=3 class="form-control" placeholder="Apellido del titular">
+                  </div>
+
+                  <div class="form-group">
+                    <input type="submit" value="Crear" class="btn btn-primary py-3 px-5">
+                  </div>
+                </div>
+              </form>
+            </div>
+
+          </div><!-- END-->
+
+      </div>
+    </section> <!-- .section -->
+
+    <hr>
+
+    <div>
+      @if($reservation->precio != 0)
+        <form method="post" action="">
+          <p class="bottom-area d-flex">
+            <input type="hidden"  value="" name="">
+            <input type="hidden"  value="" name="">
+            <button type="submit" class="btn btn-success">Confirmar reserva</button>
+          </p>
+        </form>
+      @endif
+    </div>
 
 
 <!--

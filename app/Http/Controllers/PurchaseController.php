@@ -6,6 +6,7 @@ use App\purchase;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
+use Carbon\Carbon;
 class PurchaseController extends Controller
 {
 
@@ -48,8 +49,16 @@ class PurchaseController extends Controller
             return $validator->messages();
         }   
         $purchase = new \App\purchase; 
-        $purchase->fecha = $request->get('fecha'); 
-        return $purchase; 
+        $purchase->fecha = Carbon::now();
+        $purchase->precio = $request->get('precio'); 
+        $purchase->tipo_tarjeta = $request->get('tipo_tarjeta'); 
+        $purchase->numero_tajeta = $request->get('numero_tajeta'); 
+        $purchase->nombre_titular = $request->get('nombre_titular'); 
+        $purchase->apellido_titular = $request->get('apellido_titular'); 
+        $purchase->reservation_id = $request->get('reservation_id'); 
+        $purchase->save();
+        $reservation = \App\reservation::find($request->reservation_id);
+    //    return view('compra', compact('purchase', 'reservation'));
     }
 
     /**
