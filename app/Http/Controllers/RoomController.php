@@ -184,6 +184,7 @@ class RoomController extends Controller
         $habitacion = \App\room::find($request->id_habitacion); 
         $habitacion->reservation_id = null;
         $habitacion->disponible = true;
+        $habitacion->dias = 0;
         $habitacion->save();
         return redirect()->action('CarritoController@show',['id' => $user->id]);
     }

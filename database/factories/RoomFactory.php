@@ -10,6 +10,7 @@ $factory->define(App\room::class, function (Faker $faker) {
         'capacidad'=>$faker->numberBetween(2,5),
         'precio'=>$faker->numberBetween(300,700),
         'disponible'=>$faker->boolean($chanceOfGettingTrue = 100),
+        'dias'=>0,
         'hotel_id'=>$hotel->random()->id,
         'package_id'=>$paquete->random()->id,
         'fecha_ida' => $faker->dateTimeBetween($startDate = 'now', $endDate = '+ 10 days'),

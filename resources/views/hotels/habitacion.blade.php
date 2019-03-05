@@ -87,7 +87,7 @@
 						    						</p>
 					    						</div>
 					    						<div class="two">
-					    							<span class="price per-price">${{$room->precio}}<br><small>/night</small></span>
+					    							<span class="price per-price">${{$room->precio}}<br><small>/noche</small></span>
 				    							</div>
 				    						</div>
 				    						<hr>

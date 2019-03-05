@@ -66,7 +66,7 @@
 
               <div class="col-sm col-md-6 col-lg-4 ftco-animate">
                 <div class="destination">
-                  <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-3.jpg);">
+                  <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url('http://www.grandhotelslux.com/uploads/9/8/7/0/98709092/published/piscina-fachada-azul-media_4.jpg');">
                   </a>
                   <div class="text p-3">
                     <div class="d-flex">

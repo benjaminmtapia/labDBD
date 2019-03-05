@@ -72,17 +72,22 @@ class CarritoController extends Controller
         $cars = car::all()->where('reservation_id', $id_res);
         $rooms = room::all()->where('reservation_id', $id_res);
         $secures = Secure::all()->where('reservation_id', $id_res);
-        
         foreach($seats as $seat){
             $reservation->precio = $reservation->precio+ $seat->precio;
         }
 
         foreach($cars as $car){
-            $reservation->precio = $reservation->precio+ $car->precio;
+            $au1 = \Carbon\Carbon::parse($car->fecha_ida); 
+            $au2 = \Carbon\Carbon::parse($car->fecha_vuelta); 
+            $car->dias = $au1->diffInDays($au2, false);
+            $reservation->precio = $reservation->precio+ $car->dias*$car->precio;
         }
 
         foreach($rooms as $room){
-            $reservation->precio = $reservation->precio+ $room->precio;
+            $ro1 = \Carbon\Carbon::parse($room->fecha_ida); 
+            $ro2 = \Carbon\Carbon::parse($room->fecha_vuelta); 
+            $room->dias = $ro1->diffInDays($ro2, false);
+            $reservation->precio = $reservation->precio+ $room->dias*$room->precio;
         }
 
         foreach($secures as $secure){

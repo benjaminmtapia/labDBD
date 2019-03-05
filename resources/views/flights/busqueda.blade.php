@@ -50,7 +50,7 @@
     </nav>
     <!-- END nav -->
 
-    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
+    <div class="hero-wrap js-fullheight" style="background-image: url('https://thumb2.holidaypirates.com/og6yKAFpUmnXerotHLu4tVOah5Q=/1314x600/https://media.mv.urlaubspiraten.de/images/2016/03/56f987ad974d7110624255b500ktzb.jpg');">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
@@ -98,7 +98,7 @@
                     <div class="d-flex">
                       <div class="one">
                         <h3><a href="#">{{$flight->destiny->ciudad}}</a></h3>
-                        <p>from {{$flight->origin->ciudad}}</p>
+                        <p>desde {{$flight->origin->ciudad}}</p>
 
                         Capacidad: {{count($flight->seat)}}
                       </div>

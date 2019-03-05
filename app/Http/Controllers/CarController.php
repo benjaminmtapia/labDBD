@@ -224,6 +224,7 @@ class CarController extends Controller
         $auto = \App\Car::find($request->id_auto); 
         $auto->reservation_id = null;
         $auto->disponibilidad = true;
+        $auto->dias = 0;
         $auto->save();
         return redirect()->action('CarritoController@show',['id' => $user->id]);
     }    

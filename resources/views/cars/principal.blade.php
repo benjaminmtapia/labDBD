@@ -110,7 +110,7 @@
                         </p>
                       </div>
                       <div class="two">
-                        <span class="price">${{$car->precio}}</span>
+                        <span class="price per-price">${{$car->precio}}<br><small>/día</small></span>
                       </div>
                     </div>
                     

@@ -174,10 +174,8 @@ class PassengerController extends Controller
         $id_as = $asiento->id; 
         $asiento->reservation_id = null;
         $asiento->disponibilidad = true;
+        $asiento->passenger_id = null;
         $asiento->save();
-        $passenger = $asiento->passenger;
-        $passenger->seat_id = null;
-        $passenger->save();
         return redirect()->action('CarritoController@show',['id' => $user->id]);
     }    
 }

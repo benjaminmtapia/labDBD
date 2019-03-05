@@ -19,6 +19,7 @@ class CreateRoomsTable extends Migration
             $table->integer('capacidad');
             $table->boolean('disponible');
             $table->integer('precio');
+            $table->integer('dias');
             $table->date('fecha_ida')->nullable();
             $table->date('fecha_vuelta')->nullable();
             $table->unsignedInteger('hotel_id');

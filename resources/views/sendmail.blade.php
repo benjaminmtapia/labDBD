@@ -35,7 +35,7 @@
             <th>     |     </th>
             <th class="font-weight-normal cell">Marca: {{$c->marca}} / Modelo: {{$c->modelo}}</th>
             <th>     |     </th>
-            <th class="font-weight-normal cell">${{$c->precio}}</th>
+            <th class="font-weight-normal cell">${{$c->precio}}/día x {{$c->dias}} días</th>
           </tr>
           @endforeach
 
@@ -45,7 +45,7 @@
             <th>     |     </th>
             <th class="font-weight-normal cell">En el hotel {{$r->hotel->nombre}} con capacidad para {{$r->capacidad}} persona(s)</th>
             <th>     |     </th>
-            <th class="font-weight-normal cell">${{$r->precio}}</th>
+            <th class="font-weight-normal cell">${{$r->precio}}/noche x {{$r->dias}} noches</th>
           </tr>
           @endforeach
 

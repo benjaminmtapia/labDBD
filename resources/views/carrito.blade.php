@@ -6,27 +6,27 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/open-iconic-bootstrap.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/animate.css')}}">
-    
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/owl.theme.default.min.css')}}">
-    <link rel="stylesheet"  type="text/css" href="{{URL::asset('css/magnific-popup.css')}}">
+    <link href="{{ asset('css/open-iconic-bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/animate.css') }}" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" type="text/css"  href="{{URL::asset('css/aos.css')}}">
+    <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/owl.theme.default.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/magnific-popup.css') }}" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/css/ionicons.min.css')}}">
+    <link href="{{ asset('css/aos.css') }}" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/bootstrap-datepicker.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/jquery.timepicker.css')}}">
+    <link href="{{ asset('css/ionicons.min.css') }}" rel="stylesheet" type="text/css">
 
-    
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/flaticon.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/icomoon.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/style.css')}}">
+    <link href="{{ asset('css/bootstrap-datepicker.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/jquery.timepicker.css') }}" rel="stylesheet" type="text/css">
+
+
+    <link href="{{ asset('css/flaticon.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/icomoon.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css">
   </head>
   <body>
     
@@ -51,7 +51,7 @@
     </nav>
     <!-- END nav -->
     
-    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
+    <div class="hero-wrap js-fullheight" style="background-image: url('https://pctravel.ca/assets/userfiles/hero_flights3-1.gif');">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
@@ -96,7 +96,7 @@
           <tr>
             <th class="font-weight-normal cell">Auto</th>
             <th class="font-weight-normal cell">Marca: {{$c->marca}} / Modelo: {{$c->modelo}}</th>
-            <th class="font-weight-normal cell">${{$c->precio}}</th>
+            <th class="font-weight-normal cell">${{$c->precio}}/día x {{$c->dias}} días</th>
             <th>
               <form method="post" action="/autos/eliminar_reserva">
                 <p class="bottom-area d-flex">
@@ -113,7 +113,7 @@
           <tr>
             <th class="font-weight-normal cell">Habitación</th>
             <th class="font-weight-normal cell">En el hotel {{$r->hotel->nombre}} con capacidad para {{$r->capacidad}} persona(s)</th>
-            <th class="font-weight-normal cell">${{$r->precio}}</th>
+            <th class="font-weight-normal cell">${{$r->precio}}/noche x {{$r->dias}} noches</th>
             <th>
               <form method="post" action="/habitaciones/eliminar_reserva">
                 <p class="bottom-area d-flex">
