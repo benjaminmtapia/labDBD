@@ -80,6 +80,7 @@ class CarritoController extends Controller
             $au1 = \Carbon\Carbon::parse($car->fecha_ida); 
             $au2 = \Carbon\Carbon::parse($car->fecha_vuelta); 
             $car->dias = $au1->diffInDays($au2, false);
+            $car->save();
             $reservation->precio = $reservation->precio+ $car->dias*$car->precio;
         }
 
@@ -87,6 +88,7 @@ class CarritoController extends Controller
             $ro1 = \Carbon\Carbon::parse($room->fecha_ida); 
             $ro2 = \Carbon\Carbon::parse($room->fecha_vuelta); 
             $room->dias = $ro1->diffInDays($ro2, false);
+            $room->save();
             $reservation->precio = $reservation->precio+ $room->dias*$room->precio;
         }
 
@@ -158,6 +160,7 @@ class CarritoController extends Controller
             $au1 = \Carbon\Carbon::parse($car->fecha_ida); 
             $au2 = \Carbon\Carbon::parse($car->fecha_vuelta); 
             $car->dias = $au1->diffInDays($au2, false);
+            $car->save();
             $reservation->precio = $reservation->precio+ $car->dias*$car->precio;
         }
 
@@ -165,6 +168,7 @@ class CarritoController extends Controller
             $ro1 = \Carbon\Carbon::parse($room->fecha_ida); 
             $ro2 = \Carbon\Carbon::parse($room->fecha_vuelta); 
             $room->dias = $ro1->diffInDays($ro2, false);
+            $room->save();
             $reservation->precio = $reservation->precio+ $room->dias*$room->precio;
         }
 

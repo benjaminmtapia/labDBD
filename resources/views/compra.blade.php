@@ -114,6 +114,13 @@
     </table> 
 
     <hr>
+    
+    <button type="button" onclick="volver()" class="btn btn-warning">Volver</button>
+      <script>
+        function volver() {
+          window.history.back();
+        }
+      </script>      
 
     <section class="ftco-section">
       <div class="container">
@@ -121,13 +128,13 @@
           <div class="col-lg-4 text-center order-md-last ftco-animate">
             <div class="sidebar-wrap ftco-animate">
               <h3 class="heading mb-4">Formulario de confirmación de compra</h3>
-              <form action="" method="post">
+              <form action="/ejecutar_compra/{{$reservation->id}}" method="post">
                 <div class="fields">
 
                     <div class="form-group">
                       <div class="select-wrap one-third">
-                        <select class="form-control" id="sel1">
-                        <option hidden>Tipo tajeta</option>
+                        <select class="form-control" id="sel1" name="tipo_tarjeta">
+                        <option hidden>Tipo tarjeta</option>
                         <option value="Visa">Visa</option>
                         <option value="Master Card">Master Card</option>
                         <option value="American Express">American Express</option>
@@ -139,7 +146,7 @@
                   <div class="form-group">
                     <div class="select-wrap one-third">
 
-                     <input type="text" minlength=13 maxlength=19 name="n_tarjeta" class="form-control" placeholder="N° Tarjeta">
+                     <input type="text" minlength=13 maxlength=19 name="numero_tarjeta" class="form-control" placeholder="N° Tarjeta">
                     </div>
                   </div>
 
@@ -154,15 +161,23 @@
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="nombre_t" minlength=2 class="form-control" placeholder="Nombre del titular">
+                    <input type="text" name="nombre_titular" minlength=2 class="form-control" placeholder="Nombre del titular">
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="apellido_t" minlength=3 class="form-control" placeholder="Apellido del titular">
+                    <input type="text" name="apellido_titular" minlength=3 class="form-control" placeholder="Apellido del titular">
                   </div>
 
                   <div class="form-group">
-                    <input type="submit" value="Crear" class="btn btn-primary py-3 px-5">
+                    <div>
+                      @if($reservation->precio != 0)
+                        <p class="bottom-area d-flex">
+                          <input type="hidden"  value="{{$reservation->id}}" name="reservation_id">
+                          <input type="hidden"  value="{{$reservation->precio}}" name="precio">
+                          <button type="submit" class="btn btn-success">Confirmar compra</button>
+                        </p>
+                      @endif
+                    </div>
                   </div>
                 </div>
               </form>
@@ -175,17 +190,7 @@
 
     <hr>
 
-    <div>
-      @if($reservation->precio != 0)
-        <form method="post" action="">
-          <p class="bottom-area d-flex">
-            <input type="hidden"  value="" name="">
-            <input type="hidden"  value="" name="">
-            <button type="submit" class="btn btn-success">Confirmar reserva</button>
-          </p>
-        </form>
-      @endif
-    </div>
+
 
 
 <!--

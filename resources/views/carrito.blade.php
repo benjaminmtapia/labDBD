@@ -161,7 +161,16 @@
           </tr>
     </table> 
 
+    <hr>
 
+    <button type="button" onclick="volver()" class="btn btn-warning">Volver</button>
+      <script>
+        function volver() {
+          window.history.back();
+        }
+      </script>     
+
+    <hr> 
 
 <!--
     @foreach($secures as $sec)

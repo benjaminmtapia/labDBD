@@ -12,7 +12,12 @@ class PurchaseController extends Controller
 
    public function rules(){
         return[
-            'fecha' => 'required|date'
+            'precio' => 'required|integer', 
+            'tipo_tarjeta' => 'required|string',
+            'numero_tarjeta' => 'required|integer',
+            'nombre_titular' => 'required|string',
+            'apellido_titular' => 'required|string',
+            'reservation_id' => 'required|integer'
         ];
     }   
 
@@ -52,13 +57,15 @@ class PurchaseController extends Controller
         $purchase->fecha = Carbon::now();
         $purchase->precio = $request->get('precio'); 
         $purchase->tipo_tarjeta = $request->get('tipo_tarjeta'); 
-        $purchase->numero_tajeta = $request->get('numero_tajeta'); 
+        $purchase->numero_tarjeta = $request->get('numero_tarjeta'); 
         $purchase->nombre_titular = $request->get('nombre_titular'); 
         $purchase->apellido_titular = $request->get('apellido_titular'); 
         $purchase->reservation_id = $request->get('reservation_id'); 
         $purchase->save();
         $reservation = \App\reservation::find($request->reservation_id);
-    //    return view('compra', compact('purchase', 'reservation'));
+        $user_id = $reservation->user_id;
+        return redirect()->action('MailController@sendMail',['user_id' => $user_id]);
+        //return view('compra', compact('purchase', 'reservation'));
     }
 
     /**

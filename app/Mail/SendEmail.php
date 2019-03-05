@@ -13,6 +13,7 @@ use App\room;
 use App\Secure;
 use Auth;
 use Carbon\Carbon;
+use \App\User;
 
 class SendEmail extends Mailable
 {
@@ -30,9 +31,9 @@ class SendEmail extends Mailable
     public $rooms;
     public $secures;
 
-    public function __construct($subject)
+    public function __construct($subject, $user_id)
     {
-        $user = Auth::user();
+        $user = \App\User::find($user_id);
         $email = $user->email;
         $subject = "Confirmación de reserva en Aerolínea DIINF++";
         $reservation = $user->reservation->last();

@@ -50,7 +50,7 @@
     </nav>
     <!-- END nav -->
     
-    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
+    <div class="hero-wrap js-fullheight" style="background-image: url('https://midatlantic.aaa.com/-/media/Images/Global/Travel/flights/aaa-flights-1470x600.ashx?h=600&la=en&w=1470&hash=40B21A21E8F13B7C22C1D21C26C1F71E19A0710D');">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
@@ -66,13 +66,9 @@
 
     <section class="ftco-section">
       <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
           <div class="col-lg-9">
-            <h1 class="font-weight-bold text-center">Detalles del vuelo</h1>
-                <h2 class="text-center">N° Vuelo: {{$flights->id}}</h2>
-                <div class="destination">
-                  <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(https://midatlantic.aaa.com/-/media/Images/Global/Travel/flights/aaa-flights-1470x600.ashx?h=600&la=en&w=1470&hash=40B21A21E8F13B7C22C1D21C26C1F71E19A0710D);">
-                  </a>
+            <h1 class="font-weight-bold text-center">Detalles del vuelo n°: {{$flights->id}}</h1>
                   <div class="text p-3">
                     <table class="table">
                           <tr>
@@ -102,7 +98,6 @@
                     <hr>
                       <a href="/flights" class="btn btn-warning">Volver</a>
                   </div>
-                </div>
           </div> <!-- .col-md-8 -->
       </div>
     </section> <!-- .section -->

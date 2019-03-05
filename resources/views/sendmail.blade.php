@@ -25,7 +25,7 @@
             <th>     |     </th>
             <th class="font-weight-normal cell">{{$s->tipo}} en el vuelo desde {{$s->flight->origin->ciudad}} a {{$s->flight->destiny->ciudad}}</th>
             <th>     |     </th>
-            <th class="font-weight-normal cell">${{$s->precio}}</th>   
+            <th class="font-weight-normal cell">${{$c->precio}}/día x {{$c->dias}} días</th>   
           </tr>
           @endforeach
 
