@@ -75,7 +75,7 @@ Route::post('/checkin/datos','CheckInController@realizarCheckin');
 Route::post('/checkin/submit','CheckInController@finalizarCheckin');
 
 Route::get('/email', 'MailController@home');
-Route::post('/email_send', 'MailController@sendMail');
+Route::get('/email_send/{id}', 'MailController@sendMail');
 
 Route::post('/asientos/eliminar_reserva', 'PassengerController@quitarDelCarrito');
 Route::post('/autos/eliminar_reserva', 'CarController@quitarDelCarrito');
