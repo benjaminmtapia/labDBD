@@ -19,7 +19,6 @@ Auth::routes();
 
 
 Route::resource('/airports', 'AirportController');
-Route::resource('/administrators', 'AdministratorController');
 Route::resource('/flights', 'FlightController');
 Route::resource('/tickets', 'TicketController');
 Route::resource('/cars', 'CarController');
@@ -42,12 +41,16 @@ Route::resource('/carrito', 'CarritoController');
 Route::get('/carrito/{id}','CarritoController@show');
 
 Route::get('/autos/crear', 'CarController@create');
-
+Route::get('cars/{id}/edit', 'CarController@edit');
+Route::put('cars/{car}', 'CarController@update');
 
 Route::post('/vuelos/busqueda','FlightController@buscar');
 Route::post('/asiento/pasajero','FlightController@inscribirPasajero');
 Route::post('/asiento/reserva','PassengerController@reservarAsiento');
 Route::post('/vuelos/asientos','FlightController@verAsientos');
+Route::get('vuelos/crear', 'FlightController@create');
+Route::get('flights/{id}/edit', 'FlightController@edit');
+Route::put('flights/{flight}', 'FlightController@update');
 
 Route::post('/seguros/reserva', 'SecureController@reservarSeguro');
 Route::post('/vuelos/busquedaporfecha','FlightController@buscarporfecha');
@@ -59,6 +62,9 @@ Route::post('/hoteles/ciudad','HotelController@verHoteles');
 Route::post('/hoteles/habitaciones','HotelController@verHabitaciones');
 Route::post('/hoteles/reservar','RoomController@reservarHabitacion');
 Route::post('/hoteles/buscar','HotelController@buscarHotel');
+Route::get('/hoteles/crear', 'HotelController@create');
+Route::get('hotels/{id}/edit', 'HotelController@edit');
+Route::put('hotels/{hotel}', 'HotelController@update');
 
 Route::post('/autos/reserva','CarController@reservarAuto');
 Route::post('/autos/busqueda','CarController@buscarAuto');
@@ -66,6 +72,10 @@ Route::post('/autos/busqueda','CarController@buscarAuto');
 Route::post('/checkin','HomeController@gotocheckin');
 Route::post('/checkin/datos','CheckInController@realizarCheckin');
 Route::post('/checkin/submit','CheckInController@finalizarCheckin');
+
+Route::get('/email', 'MailController@home');
+Route::post('/email_send', 'MailController@sendMail');
+
 Auth::routes();
 
 

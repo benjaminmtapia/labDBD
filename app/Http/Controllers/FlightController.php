@@ -8,11 +8,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Validator;
 use Auth;
+use Session;
 use Carbon\Carbon;
 use App\Carrito;
 class FlightController extends Controller
 {
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -22,14 +23,15 @@ class FlightController extends Controller
          return[
              'precio' => 'required|integer',
              'fecha_ida' => 'required|date',
-             'capacidad' => 'required|integer',
-             'num_pasajeros' => 'required|integer'
+             'fecha_vuelta' => 'required|date',
+             'origin_id' => 'required|integer',
+             'destiny_id' => 'required|integer'
          ];
      }
     public function index()
     {
         $flights =  flight::all();
-    
+
         return view('flights.principal',compact('flights'));
     }
 
@@ -40,7 +42,13 @@ class FlightController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+        if ($user->is_admin) {
+          return view('flights.crear');
+        }
+        else {
+          abort(401);
+        }
     }
 
     /**
@@ -55,13 +63,22 @@ class FlightController extends Controller
         if ($validator->fails()) {
           return $validator->messages();
         }
-        $vuelo = new \App\flight;
-        $vuelo->fecha_ida = $request->get('fecha_ida');
-        $vuelo->num_pasajeros = $request->get('num_pasajeros');
-        $vuelo->capacidad = $request->get('capacidad');
-        $vuelo->precio = $request->get('precio');
-        $vuelo->save();
-        return $vuelo;
+        $user = Auth::user();
+        if ($user->is_admin) {
+          $vuelo = new \App\flight;
+          $vuelo->fecha_ida = $request->get('fecha_ida');
+          $vuelo->fecha_vuelta = $request->get('fecha_vuelta');
+          $vuelo->precio = $request->get('precio');
+          $vuelo->origin_id = $request->get('origin_id');
+          $vuelo->destiny_id = $request->get('destiny_id');
+          $vuelo->package_id = $request->get('package_id');
+          $vuelo->save();
+          $flights = flight::all();
+          return view('flights.principal', compact('flights'));
+        }
+        else {
+          abort(401);
+        }
     }
 
     /**
@@ -81,9 +98,16 @@ class FlightController extends Controller
      * @param  \App\flight  $flight
      * @return \Illuminate\Http\Response
      */
-    public function edit(flight $flight)
+    public function edit($id)
     {
-        //
+      $user = Auth::user();
+      $flight = flight::find($id);
+      if ($user->is_admin) {
+        return view('flights.editar', compact('flight'));
+      }
+      else {
+        abort(401);
+      }
     }
 
     /**
@@ -99,12 +123,16 @@ class FlightController extends Controller
         if ($validator->fails()) {
           return $validator->messages();
         }
-        $vuelo->fecha_ida = $request->get('fecha_ida');
-        $vuelo->num_pasajeros = $request->get('num_pasajeros');
-        $vuelo->capacidad = $request->get('capacidad');
-        $vuelo->precio = $request->get('precio');
-        $vuelo->save();
-        return $vuelo;
+        $flight->fecha_ida = $request->get('fecha_ida');
+        $flight->fecha_vuelta = $request->get('fecha_vuelta');
+        $flight->precio = $request->get('precio');
+        $flight->origin_id = $request->get('origin_id');
+        $flight->destiny_id = $request->get('destiny_id');
+        $flight->package_id = $request->get('package_id');
+        $flight->save();
+        $flights = flight::all();
+        Session::flash('flash_message', 'Vuelo editado');
+        return view('flights.principal', compact('flights'));
     }
 
     /**
@@ -146,7 +174,7 @@ class FlightController extends Controller
             }
         }
         return view('flights.busqueda')->with(compact('vuelos','num_pasajeros'));
-        
+
     }
     public function buscarporfecha(Request $request){
         $vuelo = $request;
@@ -159,16 +187,16 @@ class FlightController extends Controller
     }
 
     public function reservarAsiento(Request $request){
-        $seat = \App\Seat::find($request->id_asiento); 
+        $seat = \App\Seat::find($request->id_asiento);
 
         $user = Auth::user();
-        $carrito = $user->carrito; 
+        $carrito = $user->carrito;
         if ($carrito == null){
             $carrito = new \app\Carrito;
             $carrito->fecha = Carbon::now();
             $carrito->user_id = $user->id;
             $carrito->save;
-        }        
+        }
         $reserva_aux = $user->reservation->last();
         if ($reserva_aux==null) {
             $reserva = new \App\reservation;

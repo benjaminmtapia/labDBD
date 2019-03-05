@@ -68,53 +68,55 @@
         <div class="row justify-content-center">
           <div class="col-lg-4 text-center order-md-last ftco-animate">
             <div class="sidebar-wrap ftco-animate">
-              <h3 class="heading mb-4">Crear Auto</h3>
-              <form action="/cars" method="post">
+              <h3 class="heading mb-4">Editar Auto</h3>
+              <form action="{{route('cars.update', $car)}}" method="post">
+                @method('PATCH')
+                @csrf
                 <div class="fields">
                   <div class="form-group">
-                    <input type="text" name="patente" class="form-control" placeholder="Patente">
+                    <input type="text" name="patente" class="form-control" placeholder="Patente" value={{$car->patente}}>
                   </div>
                   <div class="form-group">
                     <div class="select-wrap one-third">
 
-                     <input type="text" name="marca" class="form-control" placeholder="Marca">
+                     <input type="text" name="marca" class="form-control" placeholder="Marca" value={{$car->marca}}>
                     </div>
                   </div>
                   <div class="form-group">
-                    <input type="text" name="modelo" class="form-control" placeholder="Modelo">
+                    <input type="text" name="modelo" class="form-control" placeholder="Modelo" value={{$car->modelo}}>
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="capacidad" class="form-control" placeholder="Capacidad">
+                    <input type="text" name="capacidad" class="form-control" placeholder="Capacidad" value={{$car->capacidad}}>
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="precio" class="form-control" placeholder="Precio">
+                    <input type="text" name="precio" class="form-control" placeholder="Precio" value={{$car->precio}}>
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="fecha_ida" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de Inicio">
+                    <input type="text" name="fecha_ida" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de Inicio" value={{$car->fecha_ida}}>
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="fecha_vuelta" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de Termino">
+                    <input type="text" name="fecha_vuelta" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de Termino" value={{$car->fecha_vuelta}}>
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="destiny_id" class="form-control" placeholder="Id destino">
+                    <input type="text" name="destiny_id" class="form-control" placeholder="Id destino" value={{$car->destiny_id}}>
                   </div>                  
 
                   <div class="form-group">
-                    <input type="text" name="package_id" class="form-control" placeholder="Id Paquete">
+                    <input type="text" name="package_id" class="form-control" placeholder="Id Paquete" value={{$car->package_id}}>
                   </div>
 
                   <div class="form-group">
-                    <input type="checkbox" name="disponibilidad" class="form-check-input" id="checkDispo">
+                    <input type="checkbox" name="disponibilidad" class="form-check-input" id="checkDispo" value={{$car->disponibilidad}}>
                     <label class="form-check-label" for="checkDispo">Disponibilidad</label>
                   </div>
 
                   <div class="form-group">
-                    <input type="submit" value="Crear" class="btn btn-primary py-3 px-5">
+                    <input type="submit" value="Guardar cambios" class="btn btn-primary py-3 px-5">
                   </div>
                 </div>
               </form>

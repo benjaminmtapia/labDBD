@@ -68,26 +68,10 @@
         <div class="row justify-content-center">
           <div class="col-lg-4 text-center order-md-last ftco-animate">
             <div class="sidebar-wrap ftco-animate">
-              <h3 class="heading mb-4">Crear Auto</h3>
-              <form action="/cars" method="post">
+              <h3 class="heading mb-4">Crear Vuelo</h3>
+              <form action="/flights" method="post">
                 <div class="fields">
-                  <div class="form-group">
-                    <input type="text" name="patente" class="form-control" placeholder="Patente">
-                  </div>
-                  <div class="form-group">
-                    <div class="select-wrap one-third">
-
-                     <input type="text" name="marca" class="form-control" placeholder="Marca">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <input type="text" name="modelo" class="form-control" placeholder="Modelo">
-                  </div>
-
-                  <div class="form-group">
-                    <input type="text" name="capacidad" class="form-control" placeholder="Capacidad">
-                  </div>
-
+                                                                                      
                   <div class="form-group">
                     <input type="text" name="precio" class="form-control" placeholder="Precio">
                   </div>
@@ -101,16 +85,15 @@
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="destiny_id" class="form-control" placeholder="Id destino">
-                  </div>                  
-
-                  <div class="form-group">
-                    <input type="text" name="package_id" class="form-control" placeholder="Id Paquete">
+                    <input type="text" name="origin_id" class="form-control" placeholder="Id origen">
                   </div>
 
                   <div class="form-group">
-                    <input type="checkbox" name="disponibilidad" class="form-check-input" id="checkDispo">
-                    <label class="form-check-label" for="checkDispo">Disponibilidad</label>
+                    <input type="text" name="destiny_id" class="form-control" placeholder="Id destino">
+                  </div>
+
+                  <div class="form-group">
+                    <input type="text" name="package_id" class="form-control" placeholder="Id Paquete">
                   </div>
 
                   <div class="form-group">
