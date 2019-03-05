@@ -6,12 +6,12 @@ use App\check_in;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
-
+use Redirect;
 class CheckInController extends Controller
 {
     public function rules(){
         return[
-            'apellidoP' => 'required|string'
+            'nacionalidad' => 'required|string'
         ];
     }
 
@@ -22,7 +22,8 @@ class CheckInController extends Controller
      */
     public function index()
     {
-        return check_in::all();
+        $check_in = check_in::all();
+        return view('checkin.checkin',compact('check_in'));
     }
 
     /**
@@ -48,7 +49,15 @@ class CheckInController extends Controller
             return $validator->messages();
         }
         $check_in = new \App\check_in;
-        $check_in->apellidoP = $request->get('apellidoP');
+        $check_in->genero = $request->get('gender');    
+        $check_in->email= $request->get('mail');
+        $check_in->nacionalidad= $request->get('nacionalidad');
+        $check_in->nombre_contacto= $request->get('nombre_contacto');
+        $check_in->telefono_contacto= $request->get('telefono_contacto');
+        $check_in->passenger_id = $request->get('id_pasajero');
+
+        $check_in->reservation_id = $request->get('id_reserva');
+
         $check_in->save();
         return $check_in;
     }
@@ -104,5 +113,20 @@ class CheckInController extends Controller
     {
         $check_in->delete();
         return response()->json(['success']);
+    }
+    public function realizarCheckin(Request $request){
+        $passenger = \App\passenger::find($request->passenger_id);
+        $asiento = \App\Seat::find($request->id_asiento);
+        
+        return view('checkin.checkin',compact('passenger','asiento'));
+    }
+
+    public function finalizarCheckin(Request $request){
+        $check_in = self::store($request);
+        $asiento = $check_in->passenger->seat;
+        $asiento->check_in = true;
+        $reserva = \App\reservation::find($request->id_reserva);
+        $seat = $reserva->seat;
+        return view('checkin.passengers',compact('reserva','seat'));
     }
 }

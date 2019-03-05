@@ -30,7 +30,7 @@
   </head>
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <nav class="navbar navbar-expand-lg  id="ftco-navbar">
       <div class="container">
         <a class="navbar-brand" href="index.html">DIINF++</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,45 +52,40 @@
     </nav>
     <!-- END nav -->
 
-    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Autos</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <section class="ftco-section">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-4 text-center order-md-last ftco-animate">
             <div class="sidebar-wrap ftco-animate">
-              <h3 class="heading mb-4">Inscribir Pasajero</h3>
-              <form action="/asiento/reserva" method="post">
-
+              <h3 class="heading mb-4">Check IN</h3>
+              <form action="/cars" method="post">
                 <div class="fields">
                   <div class="form-group">
-                    <input type="text" name="nombre" class="form-control" placeholder="Nombre">
+                    Genero:
+                    <input type="radio" name="gender" value="male" checked> Masculino 
+  <input type="radio" name="gender" value="female"> Femenino 
+  <input type="radio" name="gender" value="other"> Otro
                   </div>
                   <div class="form-group">
                     <div class="select-wrap one-third">
 
-                     <input type="text" name="apellido" class="form-control" placeholder="Apellido">
+                     <input type="mail" name="mail" class="form-control" placeholder="E-mail">
                     </div>
                   </div>
                   <div class="form-group">
-                    <input type="number" name="edad" class="form-control" placeholder="Edad">
+                    <input type="text" name="nacionalidad" class="form-control" placeholder="Nacionalidad">
+                  </div>
+                  <br>
+                  Contacto
+                  <div class="form-group">
+                    <input type="text" name="nombre_contacto" class="form-control" placeholder="Nombre de Contacto">
                   </div>
 
                   <div class="form-group">
-                   <input type="hidden" value="{{$asiento->id}}" name="seat_id">
-                   <input type="hidden" value="{{$asiento->reservation->id}}" name="id_reserva">
-                    <input type="submit" value="Crear" class="btn btn-primary py-3 px-5">
-
+                    <input type="number" name="telefono_contacto" class="form-control" placeholder="Telefono de Contacto">
                   </div>
+
+                  
                 </div>
               </form>
             </div>
@@ -215,3 +210,4 @@
 
   </body>
 </html>
+  

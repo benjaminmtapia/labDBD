@@ -12,7 +12,9 @@ class check_in extends Model
     ];
     
     public function reservation(){
-    	return $this->belongsTo(User::class);
+    	return $this->belongsTo(reservation::class);
     }
-
+    public function passenger(){
+    	return $this->belongsTo(passenger::class);
+    }
 }

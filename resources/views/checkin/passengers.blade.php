@@ -30,7 +30,7 @@
   </head>
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <nav class="navbar navbar-expand-lg  id="ftco-navbar">
       <div class="container">
         <a class="navbar-brand" href="index.html">DIINF++</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,47 +52,39 @@
     </nav>
     <!-- END nav -->
 
-    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Autos</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <section class="ftco-section">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-4 text-center order-md-last ftco-animate">
             <div class="sidebar-wrap ftco-animate">
-              <h3 class="heading mb-4">Inscribir Pasajero</h3>
-              <form action="/asiento/reserva" method="post">
-
+              <h3 class="heading mb-4">Check IN</h3>
+              <form action="/checkin/datos" method="post">
                 <div class="fields">
-                  <div class="form-group">
-                    <input type="text" name="nombre" class="form-control" placeholder="Nombre">
-                  </div>
-                  <div class="form-group">
-                    <div class="select-wrap one-third">
+                @foreach($seat as $seat)
 
-                     <input type="text" name="apellido" class="form-control" placeholder="Apellido">
-                    </div>
-                  </div>
+                <div class="form-group">
+                  <h5>Pasajero/a: {{$seat->passenger->nombre}} {{$seat->passenger->apellido}}</h5>
                   <div class="form-group">
-                    <input type="number" name="edad" class="form-control" placeholder="Edad">
-                  </div>
+                  Asiento: {{$seat->numero}}{{$seat->letra}}
+                  <br>
 
-                  <div class="form-group">
-                   <input type="hidden" value="{{$asiento->id}}" name="seat_id">
-                   <input type="hidden" value="{{$asiento->reservation->id}}" name="id_reserva">
-                    <input type="submit" value="Crear" class="btn btn-primary py-3 px-5">
-
-                  </div>
+                  @if($seat->check_in == TRUE)
+                  Confirmado
+                  @endif
+                  @if($seat->check_in==FALSE)
+                  Por confirmar
+                  @endif
+                </div>
+                <input type="hidden" name="id_asiento" value="{{$seat->id}}">
+                <input type="hidden" value="{{$seat->passenger->id}}" name="passenger_id">
+                <input type="hidden" value="{{$reserva->id}}" name="id_reserva">
+                  <button type="submit" class="btn btn-warning">Confirmar datos</button>
+                </div>
+                @endforeach
+                  
                 </div>
               </form>
+             
             </div>
 
           </div><!-- END-->
@@ -215,3 +207,4 @@
 
   </body>
 </html>
+   

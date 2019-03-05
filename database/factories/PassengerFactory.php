@@ -7,7 +7,6 @@ $factory->define(App\passenger::class, function (Faker $faker) {
     return [
         'nombre'=>$faker->firstName,
         'apellido'=>$faker->lastName,
-        'edad'=>$faker->numberBetween(1, 99),
-        'seat_id'=>$asiento->random()->id
+        'edad'=>$faker->numberBetween(1, 99) 
     ];
 });

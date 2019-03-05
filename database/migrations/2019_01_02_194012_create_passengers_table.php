@@ -18,8 +18,6 @@ class CreatePassengersTable extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->integer('edad');
-            $table->unsignedInteger('seat_id');
-            $table->foreign('seat_id')->references('id')->on('seats');
             $table->timestamps();
             $table->softDeletes();
         });

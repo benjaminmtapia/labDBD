@@ -19,6 +19,7 @@ class CreateReservationsTable extends Migration
             $table->integer('num_pasaporte')->nullable();
             $table->date('fecha_reserva');
             $table->boolean('disponibilidad')->default('true');
+            $table->boolean('check_in')->default('false');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');            
             $table->timestamps();

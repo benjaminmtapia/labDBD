@@ -25,4 +25,10 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function gotocheckin(Request $request){
+        $reserva = \App\reservation::find($request->id_reserva);
+        $seat = $reserva->seat;
+        return view('checkin.passengers',compact('reserva','seat'));
+    }
 }

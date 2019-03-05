@@ -55,9 +55,22 @@
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
-          <div class="col-md-9 ftco-animate mb-5 pb-5 text-center text-md-left" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Discover <br>A new Place</h1>
-            <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great places to stay, eat, shop, or visit from local experts</p>
+          <div class="col-md-9 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+            <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><strong>Explore <br></strong> your amazing city</h1>
+            <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">¿Reservaste un Vuelo? Realiza tu Check-in!</p>
+            <div class="block-17 my-4">
+              <form action="/checkin" method="post" class="d-block d-flex">
+                <div class="fields d-block d-flex">
+                 
+                    <input type="text" class="form-control" name="id_reserva" placeholder="Código de Reserva">
+                    <input type="text" style="border-left: 1px #f6f6f6;" class="form-control" name="apellido_paterno" placeholder="Apellido Paterno">
+                  
+                    
+                  </div>
+                </div>
+                <input type="submit" class="search-submit btn btn-primary" value="Buscar">  
+              </form>
+            </div>
           </div>
         </div>
       </div>

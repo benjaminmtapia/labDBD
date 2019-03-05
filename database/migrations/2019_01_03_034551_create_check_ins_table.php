@@ -16,9 +16,15 @@ class CreateCheckInsTable extends Migration
     {
         Schema::create('check_ins', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('flight_id'); 
-            $table->boolean('verificado');
-            $table->foreign('flight_id')->references('id')->on('flights');
+            $table->string('genero');
+            $table->string('email')->unique();
+            $table->string('nacionalidad');
+            $table->string('nombre_contacto');
+            $table->string('telefono_contacto');
+            $table->unsignedInteger('passenger_id');
+            $table->foreign('passenger_id')->references('id')->on('passengers');
+            $table->unsignedInteger('reservation_id');
+            $table->foreign('reservation_id')->references('id')->on('reservations');
             $table->timestamps();
             $table->softDeletes();
         });

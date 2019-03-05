@@ -57,7 +57,6 @@ class PassengerController extends Controller
         $pasajero->nombre = $request->get('nombre');
         $pasajero->apellido = $request->get('apellido');
         $pasajero->edad = $request->get('edad');
-        $pasajero->seat_id = $request->get('seat_id');
         $pasajero->save();
         return $pasajero;
     }
@@ -121,7 +120,7 @@ class PassengerController extends Controller
     public function reservarAsiento(Request $request){
         $seat = \App\Seat::find($request->seat_id);
         $pasajero = self::store($request);
-        $pasajero->seat_id = $seat->id;
+        $seat->passenger_id = $pasajero->id;
         $user = Auth::user();
         $carrito = $user->carrito; 
         if ($carrito == null){

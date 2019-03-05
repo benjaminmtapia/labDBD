@@ -63,6 +63,9 @@ Route::post('/hoteles/buscar','HotelController@buscarHotel');
 Route::post('/autos/reserva','CarController@reservarAuto');
 Route::post('/autos/busqueda','CarController@buscarAuto');
 
+Route::post('/checkin','HomeController@gotocheckin');
+Route::post('/checkin/datos','CheckInController@realizarCheckin');
+Route::post('/checkin/submit','CheckInController@finalizarCheckin');
 Auth::routes();
 
 

@@ -37,5 +37,8 @@ class reservation extends Model
     public function secure(){
         return $this->hasMany(Secure::class);
     }    
+    public function checkin(){
+        return $this->hasOne(check_in::class);
+    }
 
 }

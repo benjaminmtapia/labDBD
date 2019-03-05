@@ -13,10 +13,13 @@ class passenger extends Model
 	protected $fillable = ['nombre','apellido','edad'];
 	
     public function seat(){
-    	return $this->belongsTo(seat::class);
+    	return $this->hasOne(Seat::class);
     }
 
 	public function secure(){
     	return $this->hasOne(Secure::class);
+    }
+    public function checkin(){
+    	return $this->hasOne(check_in::class);
     }
 }
