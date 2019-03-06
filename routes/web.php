@@ -39,6 +39,7 @@ Route::resource('/seats', 'SeatController');
 Route::resource('/secures', 'SecureController');
 Route::resource('/carrito', 'CarritoController');
 Route::get('/carrito/{id}','CarritoController@show');
+Route::get('log', 'UserController@mostrarHistorial');
 
 Route::get('/autos/crear', 'CarController@create');
 Route::get('cars/{id}/edit', 'CarController@edit');

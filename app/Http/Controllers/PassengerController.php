@@ -9,7 +9,7 @@ use Auth;
 use Redirect;
 use Carbon\Carbon;
 use App\Carrito;
-use App\Seat; 
+use App\Seat;
 
 class PassengerController extends Controller
 {
@@ -54,7 +54,7 @@ class PassengerController extends Controller
        $validator = Validator::make($request->all(),$this->rules());
         if($validator->fails()){
             return $validator->messages();
-        }        
+        }
         $pasajero = new \App\passenger;
         $pasajero->nombre = $request->get('nombre');
         $pasajero->apellido = $request->get('apellido');
@@ -99,7 +99,7 @@ class PassengerController extends Controller
         $validator = Validator::make($request->all(),$this->rules());
         if($validator->fails()){
             return $validator->messages();
-        }        
+        }
         $pasajero->nombre = $request->get('nombre');
         $pasajero->apellido = $request->get('apellido');
         $pasajero->edad = $request->get('pasajero');
@@ -124,13 +124,13 @@ class PassengerController extends Controller
         $pasajero = self::store($request);
         $seat->passenger_id = $pasajero->id;
         $user = Auth::user();
-        $carrito = $user->carrito; 
+        $carrito = $user->carrito;
         if ($carrito == null){
             $carrito = new \app\Carrito;
             $carrito->fecha = Carbon::now();
             $carrito->user_id = $user->id;
             $carrito->save;
-        }        
+        }
         $reserva_aux = $user->reservation->last();
         if ($reserva_aux==null) {
             $reserva = new \App\reservation;
@@ -161,21 +161,28 @@ class PassengerController extends Controller
         $seat->reservation_id = $reserva->id;
         $seat->disponibilidad=false;
         $seat->save();
+        activity('Asiento')
+            ->performedOn($user)
+            ->causedBy($user)
+            ->withProperties([
+                 'causante'    => $user->name,
+              ])
+            ->log('Reserva de Asiento');
       //return redirect::back()->withErrors(['msg', 'Asiento reservado']);
        // return redirect()->to('flights')->withErrors(['msg','Asiento reservado']);
         return redirect()->action('CarritoController@show',['id' => $user->id]);
-        //return view('cart',compact('reserva')); 
+        //return view('cart',compact('reserva'));
     }
 
     public function quitarDelCarrito(Request $request){
         $user = Auth::user();
         $id = $user->id;
-        $asiento = \App\Seat::find($request->id_asiento); 
-        $id_as = $asiento->id; 
+        $asiento = \App\Seat::find($request->id_asiento);
+        $id_as = $asiento->id;
         $asiento->reservation_id = null;
         $asiento->disponibilidad = true;
         $asiento->passenger_id = null;
         $asiento->save();
         return redirect()->action('CarritoController@show',['id' => $user->id]);
-    }    
+    }
 }

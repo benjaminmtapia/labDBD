@@ -45,5 +45,33 @@ class User extends Authenticatable
     public function isAdmin(){
         return $this->is_admin;
     }
-}
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($user) {
+           activity('user')
+               ->performedOn($user)
+               ->causedBy($user)
+               ->withProperties([
+                    'user_id'    => $user->id,
+                    'causante' => $user->name,
+                    'email'  => $user->email
+                 ])
+               ->log('Creacion de cuenta');
+        });
+
+        static::deleting(function ($user) {
+           activity('user')
+               ->performedOn($user)
+               ->causedBy(user())
+               ->withProperties([
+                    'user_id'    => $user->id,
+                    'first_name' => $user->name,
+                    'email'  => $user->email
+                ])
+               ->log('Account Deleted');
+        });
+    }
+}

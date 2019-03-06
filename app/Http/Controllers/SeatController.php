@@ -13,7 +13,7 @@ class SeatController extends Controller
             'letra' => 'required|char',
             'numero' => 'required|integer'
         ];
-    } 
+    }
 
     /**
      * Display a listing of the resource.
@@ -46,11 +46,11 @@ class SeatController extends Controller
        $validator = Validator::make($request->all(), $this->rules());
         if($validator->fails()){
             return $validator->messages();
-        }   
-        $seat = new \App\Seat; 
-        $seat->letra = $request->get('letra'); 
-        $seat->numero = $request->get('numero'); 
-        return $seat; 
+        }
+        $seat = new \App\Seat;
+        $seat->letra = $request->get('letra');
+        $seat->numero = $request->get('numero');
+        return $seat;
     }
 
     /**
@@ -62,7 +62,7 @@ class SeatController extends Controller
     public function show($id)
     {
         $seat = Seat::find($id);
-        return $seat; 
+        return $seat;
     }
 
     /**
@@ -88,10 +88,10 @@ class SeatController extends Controller
        $validator = Validator::make($request->all(), $this->rules());
         if($validator->fails()){
             return $validator->messages();
-        }   
-        $seat->letra = $request->get('letra'); 
-        $seat->numero = $request->get('numero'); 
-        return $seat; 
+        }
+        $seat->letra = $request->get('letra');
+        $seat->numero = $request->get('numero');
+        return $seat;
     }
 
     /**
@@ -105,7 +105,7 @@ class SeatController extends Controller
         $seat->delete();//TE ODIO >:(
         return Response()->json(['success']);
     }
-    
+
     public function reservarAsiento(Request $request){
         $id_reserva = $request->id_reserva;
         $asiento = Seat::where('reservation_id',$id_reserva);
@@ -114,4 +114,3 @@ class SeatController extends Controller
         return view('flights.principal');
     }
 }
-

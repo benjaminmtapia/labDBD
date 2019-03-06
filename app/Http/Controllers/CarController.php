@@ -13,6 +13,7 @@ use Auth;
 use Session;
 use \App\User;
 use Carbon\Carbon;
+use Spatie\Activitylog\Traits\LogsActivity;
 class CarController extends Controller
 {
 
@@ -139,7 +140,7 @@ class CarController extends Controller
         $car->fecha_ida = $request->get('fecha_ida');
         $car->fecha_vuelta = $request->get('fecha_vuelta');
         $car->disponibilidad = $request->get('disponibilidad');
-        $car->destiny_id = $request->get('destiny_id');        
+        $car->destiny_id = $request->get('destiny_id');
         $car->package_id = $request->get('package_id');
         $car->save();
         $cars = car::all();
@@ -200,11 +201,19 @@ class CarController extends Controller
         $auto->reservation_id = $reserva->id;
         $auto->disponibilidad = false;
         $auto->save();
+        activity('Auto')
+            ->performedOn($user)
+            ->causedBy($user)
+            ->withProperties([
+                 'causante'    => $user->name,
+              ])
+            ->log('Reserva de Auto');
         //return view('cart',compact('reserva','request'));
         return redirect()->action('CarritoController@show',['id' => $user->id]);
     }
 
     public function buscarAuto(Request $request){
+        $user = Auth::user();
         $fecha_ida = $request->fecha_ida;
         $fecha_vuelta = $request->fecha_vuelta;
         $lugar_arriendo = $request->lugar_arriendo;
@@ -215,17 +224,24 @@ class CarController extends Controller
                 $cars[]=$auto;
             }
         }
+        activity('Auto')
+            ->performedOn($user)
+            ->causedBy($user)
+            ->withProperties([
+                 'causante'    => $user->name,
+              ])
+            ->log("Busqueda de auto con fecha de ida $fecha_ida");
         return view('cars.buscar',compact('cars'));
     }
 
     public function quitarDelCarrito(Request $request){
         $user = Auth::user();
         $id = $user->id;
-        $auto = \App\Car::find($request->id_auto); 
+        $auto = \App\Car::find($request->id_auto);
         $auto->reservation_id = null;
         $auto->disponibilidad = true;
         $auto->dias = 0;
         $auto->save();
         return redirect()->action('CarritoController@show',['id' => $user->id]);
-    }    
+    }
 }

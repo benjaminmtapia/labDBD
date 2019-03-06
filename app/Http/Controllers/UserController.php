@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use \App\User;
 use Illuminate\Http\Request;
 use Validator;
+use Spatie\Activitylog\Models\Activity;
+use Auth;
+
 class UserController extends Controller
 {
     public function rules(){
@@ -26,7 +29,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -37,7 +40,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-    	
+
         $validator = Validator::make($request->all(),$this->rules());
         if($validator->fails()){
             return $validator->messages();
@@ -48,7 +51,7 @@ class UserController extends Controller
         $airport->password = $request->get('password');
         $airport->save();
         return $airport;
-        
+
     }
 
     /**
@@ -59,7 +62,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-     
+
     }
 
     /**
@@ -70,7 +73,7 @@ class UserController extends Controller
      */
     public function edit(airport $airport)
     {
-        //return view('airport.createForm')->with('aiport',$airport);  
+        //return view('airport.createForm')->with('aiport',$airport);
 
     }
 
@@ -82,8 +85,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user)
-    {    
-    	
+    {
+
         $validator = Validator::make($request->all(),$this->rules());
         if($validator->fails()){
             return $validator->messages();
@@ -94,7 +97,7 @@ class UserController extends Controller
 
         $user->save();
         return $user;
-        
+
     }
 
     /**
@@ -107,5 +110,17 @@ class UserController extends Controller
     {
         $user->delete();
         return response()->json(['success']);
+    }
+
+    public function mostrarHistorial()
+    {
+      $user = Auth::user();
+      if ($user->is_admin) {
+        $actividades = Activity::orderBy('created_at', 'DESC')->paginate(50);
+      }
+      else {
+        $actividades = Activity::where('causer_id', $user->id)->orderBy('created_at', 'DESC')->paginate(50);
+      }
+      return view('historial', compact('actividades'));
     }
 }
