@@ -29,27 +29,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
   </head>
   <body>
-
-    <nav class="navbar navbar-expand-lg  id="ftco-navbar">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">DIINF++</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="oi oi-menu"></span> Menu
-        </button>
-
-        <div class="collapse navbar-collapse" id="ftco-nav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="/flights" class="nav-link">Vuelos</a></li>
-            <li class="nav-item"><a href="/destinies" class="nav-link">Habitaciones</a></li>
-            <li class="nav-item active"><a href="/cars" class="nav-link">Autos</a></li>
-            <li class="nav-item"><a href="/packages" class="nav-link">Paquetes</a></li>
-            <li class="nav-item"><a href="/login" class="nav-link">Ingresar</a></li>
-            <li class="nav-item"><a href="/register" class="nav-link">Registrarse</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    
     <!-- END nav -->
 
     <section class="ftco-section">

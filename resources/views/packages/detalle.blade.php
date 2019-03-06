@@ -1,5 +1,6 @@
 @extends('layouts.app')
 <!DOCTYPE html>
+<html lang="en">
   <head>
     <title>DIINF++</title>
     <meta charset="utf-8">
@@ -29,10 +30,9 @@
   </head>
   <body>
     
- 
     <!-- END nav -->
     
-    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
+    <div class="hero-wrap js-fullheight" style="background-image: url('https://www.adventuretoafrica.com/wp-content/uploads/edd/2015/12/BANNER_DREAMS-TAKE-FLIGHT.jpg');">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
@@ -48,9 +48,9 @@
 
     <section class="ftco-section">
       <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
           <div class="col-lg-9">
-            <h1 class="font-weight-bold text-center">Detalles del Paquete</h1>
+            <h1 class="font-weight-bold text-center">Detalles del paquete n°: {{$package->id}}</h1>
                 <div class="destination">
                 
                   </a>
@@ -77,13 +77,13 @@
                           <tr>
                             <th class="cell">Precio</th>
                             <th class="cell"></th>
-                            <th class="font-weight-normal cell">${{$flight->precio}}</th>
+                            <th class="font-weight-normal cell">${{$package->precio}}</th>
                           </tr>
                           <tr>
-                          	<th class="cell">Hotel</th>
-                          	<th class="cell"></th>
-                          	<th class="font-weight-normal">
-                          		{{$room->hotel->name}},{{$room->hotel->destiny->ciudad}}
+                            <th class="cell">Hotel</th>
+                            <th class="cell"></th>
+                            <th class="font-weight-normal">
+                              {{$room->hotel->nombre}}, {{$room->hotel->destiny->ciudad}}
                           </tr>
                           <tr>
                           	<th class="cell">Auto</th>
