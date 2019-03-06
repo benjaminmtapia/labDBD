@@ -30,8 +30,6 @@ class package extends Model
     }
 
     public function seat(){
-        $vuelos = $this->flight;
-        $asientos = $vuelos->seat;
     	return $this->hasMany(Seat::class)->take($max = 4);
     }  
 
