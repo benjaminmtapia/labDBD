@@ -167,6 +167,16 @@ class PackageController extends Controller
         //return view('cart',compact('reserva'));
         return redirect()->action('CarritoController@show',['id' => $user->id]);
     }
+    public function inscribirPasajero(Request $request){
+        $package = \App\package::find($request->id_paquete);
+        $asiento = \App\Seat::find($request->id_asiento);
+        $pasajero = new \App\passenger;
+        $pasajero->nombre = $request->get('nombre');
+        $pasajero->apellido = $request->get('apellido');
+        $pasajero->edad = $request->get('edad');
+        $pasajero->save();
+        return $pasajero;
+    }
 
     public function quitarDelCarrito(Request $request){
         $user = Auth::user();
@@ -175,7 +185,7 @@ class PackageController extends Controller
         $paquete->reservation_id = null;
         $paquete->disponible = true;
         $paquete->dias = 0;
-        $paquete->save();
+        $paquete->dbplus_savepos(relation)();
         return redirect()->action('CarritoController@show',['id' => $user->id]);
     }
 
@@ -186,4 +196,40 @@ class PackageController extends Controller
         $room = $package->room;
         return view('packages.detalle',compact('package','car','flight','room'));
     }
+        public function verAsientos(Request $request){
+        $package = \App\package::find($request->id_paquete);
+        
+        $vuelo = $package->flight;
+        $asientos = $vuelo->seat;
+        return view('packages.seats',compact('asientos','package'));
+    }
+    public function verHoteles(Request $request){
+        $package = \App\package::find($request->id_paquete);
+        $vuelo = $package->flight;
+        $destino = $vuelo->destiny;
+        $habitaciones = $destino->hotel;
+        return $habitaciones;
+    }
+
+    public function gotoForm(Request $request){
+
+        $package = \App\package::find($request->id_paquete);
+        $asiento = \App\Seat::find($request->id_asiento);
+        return view('packages.pasajero',compact('package','asiento'));
+    }
+    public function agregarAsiento(Request $request){
+        $package = \App\package::find($request->id_paquete);
+        $asiento = \App\Seat::find($request->id_asiento);
+        $pasajero = self::inscribirPasajero($request);
+        $asiento->package_id = $package->id;
+        $asiento->passenger_id = $pasajero->id;
+        $vuelo = $package->flight;
+        $asiento->disponibilidad = false;
+        $asiento->save();
+        $asientos = $vuelo->seat;
+        $habitaciones = $vuelo->destiny->room;
+        return view('packages.seats',compact('package','asientos'));
+        
+    }
+    
 }
