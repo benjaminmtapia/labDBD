@@ -25,7 +25,7 @@
             <th>     |     </th>
             <th class="font-weight-normal cell">{{$s->tipo}} en el vuelo desde {{$s->flight->origin->ciudad}} a {{$s->flight->destiny->ciudad}}</th>
             <th>     |     </th>
-            <th class="font-weight-normal cell">${{$c->precio}}/día x {{$c->dias}} días</th>   
+            <th class="font-weight-normal cell">${{$s->precio}}</th>   
           </tr>
           @endforeach
 
@@ -72,6 +72,7 @@
 
     <h3>Aerolíneas DIINF++ agradece su preferencia.</h3>
 
-  </body>
-  </html>
+  </body>             
+
+</html>
 

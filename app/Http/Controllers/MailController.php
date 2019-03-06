@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Mail;
 use App\Mail\SendEmail;
 use Auth;
+use Session;
 
 class MailController extends Controller
 {
@@ -25,7 +26,8 @@ class MailController extends Controller
         $subject = "Confirmación de reserva en Aerolínea DIINF++";
 
         Mail::to($email)->send(new SendEmail($subject, $user_id));
-
+        Session::flash("success");
+        return redirect('home');
     }
 
 

@@ -174,8 +174,28 @@
                         <p class="bottom-area d-flex">
                           <input type="hidden"  value="{{$reservation->id}}" name="reservation_id">
                           <input type="hidden"  value="{{$reservation->precio}}" name="precio">
-                          <button type="submit" class="btn btn-success">Confirmar compra</button>
+                          <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                            Confirmar compra
+                          </button>
+
+                          <!-- Modal -->
+                          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby=aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">¡Compra exitosa!</h5>
+                                    <span aria-hidden="true">&times;</span>
+                                </div>
+                                <div class="modal-body">
+                                  Se le ha enviado un email de confirmación de compra a la dirección de correo que ha registrado en la página.
+                                </div>
+                                <div class="modal-footer">
+                                </div>
+                              </div>
+                            </div>
+                          </div>                          
                         </p>
+
                       @endif
                     </div>
                   </div>
@@ -189,8 +209,6 @@
     </section> <!-- .section -->
 
     <hr>
-
-
 
 
 <!--
