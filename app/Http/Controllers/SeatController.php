@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Seat;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class SeatController extends Controller

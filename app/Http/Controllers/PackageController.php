@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
 use App\car;
+use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Auth;
 class PackageController extends Controller
@@ -129,6 +130,7 @@ class PackageController extends Controller
         $reserva_aux = $user->reservation->last();
         if($reserva_aux == null){
             $reserva = new \App\reservation;
+            $reserva->cod_reserva = Str::random(16);
             $reserva->precio = $reserva->precio + $paquete->precio;
             $reserva->user_id = $user->id;
             $reserva->fecha_reserva = Carbon::now();
@@ -143,6 +145,7 @@ class PackageController extends Controller
             $booleano = \App\reservation::all()->last()->disponibilidad;
             if($booleano == false){
                 $reserva = new \App\reservation;
+                $reserva->cod_reserva = Str::random(16);
                 $reserva->precio = $reserva->precio + $paquete->precio;
                 $paquete->disponible = false;
                 $reserva->user_id = $user->id;

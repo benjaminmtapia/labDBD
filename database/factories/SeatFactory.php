@@ -13,7 +13,7 @@ $factory->define(App\Seat::class, function (Faker $faker) {
         'tipo'=>$faker->randomElement(['Economico','Business','Primera']),
         'precio'=>$faker->numberBetween(150,800),
         'disponibilidad'=>$faker->boolean($chanceOfGettingTrue = 100),
-        'check_in'=>$faker->boolean($chanceOfGettingTrue = 100),
+        'check_in'=>$faker->boolean($chanceOfGettingTrue = 0),
         //'reservation_id'=>$reservation->random()->id,
         'package_id'=>$package->random()->id,
         'flight_id'=>$flight->random()->id

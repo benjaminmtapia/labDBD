@@ -7,6 +7,7 @@ use App\Carrito;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
+use Illuminate\Support\Str;
 
 use Auth;
 use Carbon\Carbon;
@@ -139,6 +140,7 @@ class RoomController extends Controller
         $reserva_aux = $user->reservation->last();
         if($reserva_aux == null){
             $reserva = new \App\reservation;
+            $reserva->cod_reserva = Str::random(16);
             $reserva->precio = $reserva->precio + $habitacion->precio;
             $reserva->user_id = $user->id;
             $reserva->fecha_reserva = Carbon::now();
@@ -153,6 +155,7 @@ class RoomController extends Controller
             $booleano = \App\reservation::all()->last()->disponibilidad;
             if($booleano == false){
                 $reserva = new \App\reservation;
+                $reserva->cod_reserva = Str::random(16);
                 $reserva->precio = $reserva->precio + $habitacion->precio;
                 $habitacion->disponible = false;
                 $reserva->user_id = $user->id;

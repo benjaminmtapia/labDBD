@@ -10,6 +10,7 @@ use Validator;
 use \App\ReservationUser;
 use \App\reservation;
 use Auth;
+use Illuminate\Support\Str;
 use Session;
 use \App\User;
 use Carbon\Carbon;
@@ -177,6 +178,7 @@ class CarController extends Controller
         $reserva_aux = $user->reservation->last();
         if ($reserva_aux==null) {
             $reserva = new \App\reservation;
+            $reserva->cod_reserva = Str::random(16);
             $reserva->precio = $reserva->precio + $auto->precio;
             $reserva->user_id = $user->id;
             $reserva->fecha_reserva = Carbon::now();
@@ -187,6 +189,7 @@ class CarController extends Controller
             $booleano = \App\reservation::all()->last()->disponibilidad;
             if($booleano==false){
                 $reserva = new \App\reservation;
+                $reserva->cod_reserva = Str::random(16);
                 $reserva->precio = $reserva->precio + $auto->precio;
                 $reserva->user_id = $user->id;
                 $reserva->fecha_reserva = Carbon::now();

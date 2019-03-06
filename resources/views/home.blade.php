@@ -44,7 +44,7 @@
                 <div class="fields d-block d-flex">
                  
                     <input type="text" class="form-control" name="id_reserva" placeholder="Código de Reserva">
-                    <input type="text" style="border-left: 1px #f6f6f6;" class="form-control" name="apellido_paterno" placeholder="Apellido Paterno">
+                   
                   
                     
                   </div>

@@ -127,6 +127,7 @@ class SecureController extends Controller
       $reserva_aux = $user->reservation->last();
       if ($reserva_aux==null) {
          $reserva = new \App\reservation;
+         $reserva->cod_reserva = Str::random(16);
          $reserva->precio = $reserva->precio + $seguro->precio;
          $reserva->user_id = $user->id;
          $reserva->fecha_reserva = Carbon::now();
@@ -137,6 +138,7 @@ class SecureController extends Controller
          $booleano = \App\reservation::all()->last()->disponibilidad;
          if($booleano==false){
              $reserva = new \App\reservation;
+             $reserva->cod_reserva = Str::random(16);
              $reserva->precio = $reserva->precio + $seguro->precio;
              $reserva->user_id = $user->id;
              $reserva->fecha_reserva = Carbon::now();

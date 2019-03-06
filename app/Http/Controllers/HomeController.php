@@ -27,7 +27,8 @@ class HomeController extends Controller
     }
 
     public function gotocheckin(Request $request){
-        $reserva = \App\reservation::find($request->id_reserva);
+        
+        $reserva = \App\reservation::where('cod_reserva',$request->id_reserva)->first();
         $seat = $reserva->seat;
         return view('checkin.passengers',compact('reserva','seat'));
     }

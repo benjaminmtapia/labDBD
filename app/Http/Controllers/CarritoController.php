@@ -145,6 +145,7 @@ class CarritoController extends Controller
         $reservation = $user->reservation->last();
         if($reservation == null){
             $reservation = new \App\reservation;
+            $reserva->cod_reserva = Str::random(16);
         }
         $reservation->precio = 0;
         $id_res = $reservation->id; 

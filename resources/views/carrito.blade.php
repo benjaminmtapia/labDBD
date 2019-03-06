@@ -48,7 +48,7 @@
 
 
     <h1 class="font-weight-bold text-center">Carrito de Compras</h1>
-    <h2 class="text-center">N° Reserva: {{$reservation->id}}</h2>
+    <h3 class="text-center">Código de Reserva: {{$reservation->cod_reserva}}</h3>
     <table class="table">
           <tr>
             <th class="cell">Ítem</th>

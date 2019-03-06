@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\flight;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -200,6 +201,7 @@ class FlightController extends Controller
         $reserva_aux = $user->reservation->last();
         if ($reserva_aux==null) {
             $reserva = new \App\reservation;
+            $reserva->cod_reserva = Str::random(16);
             $reserva->precio = $reserva->precio+ $seat->precio;
             $reserva->user_id = $user->id;
             $reserva->fecha_reserva = Carbon::now();
@@ -210,6 +212,7 @@ class FlightController extends Controller
             $booleano = \App\reservation::all()->last()->disponibilidad;
             if($booleano==false){
                 $reserva = new \App\reservation;
+                $reserva = Str::random(16);
                 $reserva->precio = $reserva->precio+ $seat->precio;
                 $reserva->user_id = $user->id;
                 $reserva->fecha_reserva = Carbon::now();
