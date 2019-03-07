@@ -9,7 +9,7 @@ $factory->define(App\Seat::class, function (Faker $faker) {
     $passenger = DB::table('passengers')->select('id')->get();
     return [
         'letra'=>$faker->randomLetter(),
-        'numero'=>$faker->numberBetween(1,10),
+        'numero'=>$faker->numberBetween(1,100),
         'tipo'=>$faker->randomElement(['Economico','Business','Primera']),
         'precio'=>$faker->numberBetween(150,800),
         'disponibilidad'=>$faker->boolean($chanceOfGettingTrue = 100),
