@@ -5,7 +5,7 @@
     <title>DIINF++</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
 
@@ -29,9 +29,9 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
   </head>
   <body>
-    
+
     <!-- END nav -->
-    
+
     <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
       <div class="overlay"></div>
       <div class="container">
@@ -42,7 +42,7 @@
         </div>
       </div>
     </div>
-    
+
     <section class="ftco-section">
       <div class="container">
         <div class="row">
@@ -56,7 +56,7 @@
                   </div>
                   <div class="form-group">
                     <div class="select-wrap one-third">
-                      
+
                      <input type="text" name="fecha_vuelta" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de Termino">
                     </div>
                   </div>
@@ -70,9 +70,17 @@
                 </div>
               </form>
             </div>
-          
+            <div class="col-lg-15 sidebar order-md-last ftco-animate">
+            <div class="sidebar-wrap ftco-animate" style="text-align: left;">
+             @if(Auth::user()->is_admin)
+             <center> <a class="btn btn-warning" role ="button" href="/autos/crear">Crear auto</a> </center>
+             @endif
+            </div>
+
+          </div>
+
           </div><!-- END-->
-          
+
           <div class="col-lg-9">
 
             <div class="row">
@@ -93,8 +101,8 @@
                         <span class="price per-price">${{$car->precio}}<br><small>/día</small></span>
                       </div>
                     </div>
-                    
-                   
+
+
                     <hr>
                     <form method="post" action="/autos/reserva">
                     <p class="bottom-area d-flex">
@@ -105,7 +113,18 @@
                     </p>
                     </form>
 
-                
+                    <hr>
+                    @if(Auth::user()->is_admin)
+                    <form method="get" action="cars/{{$car->id}}/edit">
+                    <p class="bottom-area d-flex">
+                      <input type="hidden"  value="{{$car}}" name="auto">
+                      <input type="hidden"  value="{{$car->id}}" name="id_auto">
+                      <button type="submit" class="btn btn-info">Editar</button>
+                    </p>
+                    </form>
+                    @endif
+
+
                     </p>
                   </div>
                 </div>
@@ -204,8 +223,8 @@
         </div>
       </div>
     </footer>
-    
-  
+
+
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
@@ -228,6 +247,6 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script type="text/javascript" src="{{ asset('js/google-map.js') }}"></script>
   <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
-    
+
   </body>
 </html>

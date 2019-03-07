@@ -32,12 +32,12 @@
 
     <!-- END nav -->
 
-    
+
 
     <section class="ftco-section">
       <div class="container">
         <div class="row">
-        
+
 
           <div class="col-lg-9">
 
@@ -69,12 +69,38 @@
                       <button type="submit" class="btn btn-info">Ver habitaciones</button>
                     </p>
                 </form>
-                    
+
+                <hr>
+
+                @if(Auth::user()->is_admin)
+                <form method="get" action="hotels/{{$hotel->id}}/edit">
+                <p class="bottom-area d-flex">
+                  <input type="hidden"  value="{{$hotel}}" name="hotel">
+                  <input type="hidden"  value="{{$hotel->id}}" name="id_hotel">
+                  <button type="submit" class="btn btn-info">Editar</button>
+                </p>
+                </form>
+                @endif
+
                     </p>
                   </div>
                 </div>
               </div>
           @endforeach
+          <div class="col-lg-3 sidebar order-md-last ftco-animate">
+            <div class="sidebar-wrap ftco-animate">
+              <div class="col-lg-5 sidebar order-md-last ftco-animate">
+                <div class="row">
+                  <div class="sidebar-wrap ftco-animate" style="text-align: left;">
+                   @if(Auth::user()->is_admin)
+                   <center> <a class="btn btn-primary btn-lg" role ="button" href="/hoteles/crear">Crear Hotel</a> </center>
+                   @endif
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
           </div> <!-- .col-md-8 -->
         </div>
       </div>

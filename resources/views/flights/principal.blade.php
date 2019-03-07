@@ -5,13 +5,13 @@
     <title>DIINF++</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
 
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.css">
-    
+
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
@@ -23,15 +23,15 @@
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="css/jquery.timepicker.css">
 
-    
+
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    
+
     <!-- END nav -->
-    
+
     <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
       <div class="overlay"></div>
       <div class="container">
@@ -42,18 +42,18 @@
         </div>
       </div>
     </div>
-    
+
     <section class="ftco-section">
       <div class="container">
         <div class="row">
           <div class="col-lg-3 sidebar order-md-last ftco-animate">
-            
+
             <div class="sidebar-wrap ftco-animate">
               <h3 class="heading mb-4">Buscar Vuelo</h3>
               <form action="/vuelos/busqueda" method="post">
                 <div class="fields">
                   <div class="form-group">
-                    
+
                     <input type="text" name="fecha_ida" id="checkin_date" class="form-control checkin_date" placeholder="Fecha Ida">
                     <br>
                     <input type="text" name="fecha_vuelta" id="checkin_date" class="form-control checkin_date" placeholder="Fecha Vuelta">
@@ -72,11 +72,15 @@
               <h3 class="heading mb-4">Seguros</h3>
               Contamos con seguros de viaje para casos de emergencia, tenemos tanto para una como para más personas. Puedes revisarlos <a href="/secures">aquí</a><br><br>
              <center> <a class="btn btn-warning" role ="button" href="/secures">Ver Seguros</a> </center>
+             <hr>
+             @if(Auth::user()->is_admin)
+             <center> <a class="btn btn-warning" role ="button" href="/vuelos/crear">Crear vuelo</a> </center>
+             @endif
             </div>
-          
+
           </div>
           </div><!-- END-->
-          
+
 
           <div class="col-lg-9">
 
@@ -98,10 +102,10 @@
 
               <!--        <div class="two">
                         <span class="price">${{$flight->precio}}</span>
-                        
+
                       </div> -->
                     </div>
-                    
+
                     <hr>
                     <form method="post" action="/vuelos/asientos">
                     <p class="bottom-area d-flex">
@@ -110,16 +114,28 @@
                       <button type="submit" class="btn btn-danger">Ver asientos</button>
                     </p>
                     </form>
-                    
+
                     <hr>
-                    
+
                     <form method="post" action="vuelos/verdetalle">
-                    <p class="bottom-area d-flex">                      
+                    <p class="bottom-area d-flex">
                       <input type="hidden"  value="{{$flight}}" name="vuelo">
                       <input type="hidden"  value="{{$flight->id}}" name="id_vuelo">
                       <button type="submit" class="btn btn-info">Ver detalles</button>
                     </p>
-                    </form>  
+                    </form>
+
+                    <hr>
+
+                    @if(Auth::user()->is_admin)
+                    <form method="get" action="flights/{{$flight->id}}/edit">
+                    <p class="bottom-area d-flex">
+                      <input type="hidden"  value="{{$flight}}" name="vuelo">
+                      <input type="hidden"  value="{{$flight->id}}" name="id_vuelo">
+                      <button type="submit" class="btn btn-info">Editar</button>
+                    </p>
+                    </form>
+                    @endif
                   </div>
                 </div>
               </div>
@@ -216,8 +232,8 @@
         </div>
       </div>
     </footer>
-    
-  
+
+
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
@@ -240,6 +256,6 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
-    
+
   </body>
 </html>

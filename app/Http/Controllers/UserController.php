@@ -123,4 +123,12 @@ class UserController extends Controller
       }
       return view('historial', compact('actividades'));
     }
+
+    public function admin()
+    {
+      $user = Auth::user();
+      if ($user->is_admin) {
+        return view('admin');
+      }
+    }
 }
