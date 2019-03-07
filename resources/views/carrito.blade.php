@@ -125,6 +125,23 @@
           </tr>
           @endforeach
 
+          @foreach($packages as $pac)
+          <tr>
+            <th class="font-weight-normal cell">Paquete</th>
+            <th class="font-weight-normal cell">Destino: {{$pac->flight()->first()->destiny->ciudad}}</th>
+            <th class="font-weight-normal cell">${{$pac->precio}}</th>
+            <th>
+              <form method="post" action="/paquetes/eliminar_reserva">
+                <p class="bottom-area d-flex">
+                  <input type="hidden"  value="{{$pac}}" name="paquete">
+                  <input type="hidden"  value="{{$pac->id}}" name="id_paquete">
+                  <button type="submit" class="btn btn-danger">Eliminar del carrito</button>
+                </p>
+              </form>
+            </th>
+          </tr>
+          @endforeach          
+
           <tr>
             <th class="cell">Total</th>
             <th class="cell"></th>

@@ -87,6 +87,14 @@
           </tr>
           @endforeach
 
+          @foreach($packages as $pac)
+          <tr>
+            <th class="font-weight-normal cell">Paquete</th>
+            <th class="font-weight-normal cell">Destino: {{$pac->flight()->first()->destiny->ciudad}}</th>
+            <th class="font-weight-normal cell">${{$pac->precio}}</th>
+          </tr>
+          @endforeach          
+
           <tr>
             <th class="cell">Total</th>
             <th class="cell"></th>

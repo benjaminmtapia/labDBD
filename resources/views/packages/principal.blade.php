@@ -120,13 +120,13 @@
                     <p class="habitacion"><span>
                       @if(optional($p->room()->first())->capacidad != '')
                         Habitación para {{optional($p->room()->first())->capacidad}} 
-                        personas en el hotel {{optional($p->room()->first())->hotel->nombre}}
+                        persona(s) en el hotel {{optional($p->room()->first())->hotel->nombre}}
                       @endif
                       </span></p>
                     <hr>
                     <p class="bottom-area d-flex">
                       
-                      <form method="post" action="/paquetes/asientos">
+                      <form method="post" action="/paquetes/reserva">
                         <input type="hidden"  value="{{$p}}" name="paquete">
                         <input type="hidden"  value="{{$p->id}}" name="id_paquete">
                         <button type="submit" class="btn btn-danger">Reservar</button>

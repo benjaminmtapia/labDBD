@@ -6,7 +6,7 @@
   </head>
   <body>
   	
-    <h3>Detalles de la reserva n°: {{e_reservation->id}}</h3>
+    <h3>Detalles de la reserva n°: {{$e_reservation->id}}</h3>
   	<h3>Código de la reserva: {{$e_reservation->cod_reserva}}.</h3>
     <h4>Utilizar para el proceso de check-in</h4>
 
@@ -58,6 +58,16 @@
             <th class="font-weight-normal cell">Tipo: {{$sec->tipo}}</th>
             <th>     |     </th>
             <th class="font-weight-normal cell">${{$sec->precio}}</th>
+          </tr>
+          @endforeach
+
+          @foreach($packages as $pac)
+          <tr>
+            <th class="font-weight-normal cell">Paquete</th>
+            <th>     |     </th>
+            <th class="font-weight-normal cell">Destino: {{$pac->flight()->first()->destiny->ciudad}}</th>
+            <th>     |     </th>
+            <th class="font-weight-normal cell">${{$pac->precio}}</th>
           </tr>
           @endforeach
 

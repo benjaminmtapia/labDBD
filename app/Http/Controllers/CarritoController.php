@@ -8,6 +8,7 @@ use App\car;
 use App\Seat;
 use App\room;
 use App\Secure;
+use App\package;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -74,6 +75,7 @@ class CarritoController extends Controller
         $cars = car::all()->where('reservation_id', $id_res);
         $rooms = room::all()->where('reservation_id', $id_res);
         $secures = Secure::all()->where('reservation_id', $id_res);
+        $packages = package::all()->where('reservation_id', $id_res);
         foreach($seats as $seat){
             $reservation->precio = $reservation->precio+ $seat->precio;
         }
@@ -97,9 +99,13 @@ class CarritoController extends Controller
         foreach($secures as $secure){
             $reservation->precio = $reservation->precio+ $secure->precio;
         }
+
+        foreach ($packages as $package) {
+            $reservation->precio = $reservation->precio+ $package->precio;
+        }
         
         $reservation->save();
-        return view('carrito',compact('reservation', 'seats', 'cars', 'rooms', 'secures'));
+        return view('carrito',compact('reservation', 'seats', 'cars', 'rooms', 'secures', 'packages'));
     }
 
     /**
@@ -155,6 +161,7 @@ class CarritoController extends Controller
         $cars = car::all()->where('reservation_id', $id_res);
         $rooms = room::all()->where('reservation_id', $id_res);
         $secures = Secure::all()->where('reservation_id', $id_res);
+        $packages = package::all()->where('reservation_id', $id_res);
         foreach($seats as $seat){
             $reservation->precio = $reservation->precio+ $seat->precio;
         }
@@ -178,9 +185,13 @@ class CarritoController extends Controller
         foreach($secures as $secure){
             $reservation->precio = $reservation->precio+ $secure->precio;
         }
+
+        foreach($packages as $package){
+            $reservation->precio = $reservation->precio+ $package->precio;
+        }
         
         $reservation->save();
-        return view('compra',compact('reservation', 'seats', 'cars', 'rooms', 'secures'));
+        return view('compra',compact('reservation', 'seats', 'cars', 'rooms', 'secures', 'packages'));
     }    
 
 }
