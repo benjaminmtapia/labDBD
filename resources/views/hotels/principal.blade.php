@@ -5,13 +5,13 @@
     <title>DIINF++</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" type="text/css" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/open-iconic-bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/animate.css')}}">
-    
+
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/owl.carousel.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/owl.theme.default.min.css')}}">
     <link rel="stylesheet"  type="text/css" href="{{URL::asset('css/magnific-popup.css')}}">
@@ -23,13 +23,13 @@
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/bootstrap-datepicker.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/jquery.timepicker.css')}}">
 
-    
+
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/flaticon.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/icomoon.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/style.css')}}">
   </head>
   <body>
-  
+
     <!-- END nav -->
     
     
@@ -37,13 +37,14 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-3 sidebar order-md-last ftco-animate">
+            @if(Auth::user())
             @if(Auth::user()->is_admin == 0)
             <div class="sidebar-wrap ftco-animate">
               <h3 class="heading mb-4">Buscar Alojo</h3>
               <form action="/hoteles/buscar" method="post">
                 <div class="fields">
                   <div class="form-group">
-                    <input type="text" name="lugar_destino" class="form-control" placeholder="Ingrese Destino"> 
+                    <input type="text" name="lugar_destino" class="form-control" placeholder="Ingrese Destino">
                     <br>
 
                     <input type="text" name="fecha_ida" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de Ida"><br>
@@ -59,9 +60,10 @@
               </form>
             </div>
             @endif
-          
+            @endif
+
           </div><!-- END-->
-          
+
           <div class="col-lg-9">
 
             <div class="row">
@@ -75,24 +77,24 @@
                     <div class="d-flex">
                       <div class="one">
                         <h6>Ciudad: {{$destiny->ciudad}}</h3>
-                       
+
                       </div>
                       <div class="two">
                         <span class="price"></span>
                       </div>
                     </div>
-                    
-                  
+
+
                     <hr>
                    <form method="post" action="/hoteles/ciudad">
                     <input type="hidden"  value="{{$destiny}}" name="destino">
                     <input type="hidden"  value="{{$destiny->id}}" name="id_destino">
                     <p class="bottom-area d-flex">
-                     
+
                       <button type="submit" class="btn btn-info">Ver más</button>
                     </p>
                 </form>
-                     
+
                     </p>
                   </div>
                 </div>
@@ -190,8 +192,8 @@
         </div>
       </div>
     </footer>
-    
-  
+
+
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
@@ -213,7 +215,7 @@
   <script src="{{URL::asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false')}}"></script>
   <script src="{{URL::asset('js/google-map.js')}}"></script>
   <script src="{{URL::asset('js/main.js')}}"></script>
-    
-    
+
+
   </body>
 </html>
