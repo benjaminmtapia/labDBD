@@ -40,7 +40,7 @@
               <h3 class="heading mb-4">Check IN</h3>
               <form action="/checkin/submit" method="post">
                 <div class="fields">
-                  <div class="form-group">
+                  <div class="form-group" required>
                     Genero:
                     <input type="radio" name="gender" value="male"> Masculino 
   <input type="radio" name="gender" value="female"> Femenino 
@@ -49,20 +49,20 @@
                   <div class="form-group">
                     <div class="select-wrap one-third">
 
-                     <input type="mail" name="mail" class="form-control" placeholder="E-mail">
+                     <input type="mail" name="mail" class="form-control" required placeholder="E-Mail">
                     </div>
                   </div>
                   <div class="form-group">
-                    <input type="text" name="nacionalidad" class="form-control" placeholder="Nacionalidad">
+                    <input type="text" name="nacionalidad" class="form-control" required placeholder="Nacionalidad">
                   </div>
                   <br>
                   Contacto
                   <div class="form-group">
-                    <input type="text" name="nombre_contacto" class="form-control" placeholder="Nombre de Contacto">
+                    <input type="text" name="nombre_contacto" class="form-control" required placeholder="Nombre de Contacto">
                   </div>
 
                   <div class="form-group">
-                    <input type="number" name="telefono_contacto" class="form-control" placeholder="Telefono de Contacto">
+                    <input type="number" name="telefono_contacto" class="form-control" required placeholder="Teléfono de Contacto">
                   </div>
                   <input type="hidden" value="{{$passenger->id}}" name="id_pasajero">
                  <input type="hidden" value="{{$asiento->reservation->id}}" name="id_reserva">

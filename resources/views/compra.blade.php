@@ -47,7 +47,7 @@
 
 
     <h1 class="font-weight-bold text-center">Lista de ítems</h1>
-    <h2 class="text-center">N° Reserva: {{$reservation->id}}</h2>
+    <h3 class="text-center">Código de Reserva: {{$reservation->cod_reserva}}</h3>
     <table class="table">
           <tr>
             <th class="cell">Ítem</th>
@@ -127,26 +127,26 @@
                   <div class="form-group">
                     <div class="select-wrap one-third">
 
-                     <input type="text" minlength=13 maxlength=19 name="numero_tarjeta" class="form-control" placeholder="N° Tarjeta">
+                     <input type="text" minlength=13 maxlength=19 required name="numero_tarjeta" class="form-control" placeholder="N° Tarjeta">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <div class="select-wrap one-third">
-                     <input type="text" name="f_vence" minlength=7 maxlength=7 class="form-control" placeholder="Fecha de vencimiento (MM/YYYY)">
+                     <input type="text" name="f_vence" minlength=7 required maxlength=7 class="form-control" placeholder="Fecha de vencimiento (MM/YYYY)">
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <input type="password" name="cvv" minlength=3 maxlength=3 class="form-control" placeholder="CVV">
+                    <input type="password" name="cvv" minlength=3 required maxlength=3 class="form-control" placeholder="CVV">
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="nombre_titular" minlength=2 class="form-control" placeholder="Nombre del titular">
+                    <input type="text" name="nombre_titular" required minlength=2 class="form-control" placeholder="Nombre del titular">
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="apellido_titular" minlength=3 class="form-control" placeholder="Apellido del titular">
+                    <input type="text" name="apellido_titular" required minlength=3 class="form-control" placeholder="Apellido del titular">
                   </div>
 
                   <div class="form-group">

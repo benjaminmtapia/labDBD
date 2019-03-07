@@ -14,6 +14,7 @@ use App\Secure;
 use Auth;
 use Carbon\Carbon;
 use \App\User;
+use \App\Carrito;
 
 class SendEmail extends Mailable
 {
@@ -37,11 +38,16 @@ class SendEmail extends Mailable
         $email = $user->email;
         $subject = "Confirmación de reserva en Aerolínea DIINF++";
         $reservation = $user->reservation->last();
+        $carrito = $user->carrito;
         $id_res = $reservation->id; 
         $seats = Seat::all()->where('reservation_id', $id_res);
         $cars = car::all()->where('reservation_id', $id_res);
         $rooms = room::all()->where('reservation_id', $id_res);
         $secures = Secure::all()->where('reservation_id', $id_res);
+        $reservation->disponibilidad = false;
+        $reservation->save();
+        $carrito->disponibilidad = false;
+        $carrito->save();
         $this->sub = $subject;
         $this->reservation = $reservation;
         $this->seats = $seats;

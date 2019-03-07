@@ -32,17 +32,6 @@
 
     <!-- END nav -->
 
-    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Autos</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <section class="ftco-section">
       <div class="container">
         <div class="row justify-content-center">
@@ -52,36 +41,36 @@
               <form action="/cars" method="post">
                 <div class="fields">
                   <div class="form-group">
-                    <input type="text" name="patente" class="form-control" placeholder="Patente">
+                    <input type="text" name="patente" class="form-control" placeholder="Patente" required>
                   </div>
                   <div class="form-group">
                     <div class="select-wrap one-third">
 
-                     <input type="text" name="marca" class="form-control" placeholder="Marca">
+                     <input type="text" name="marca" class="form-control" placeholder="Marca" required>
                     </div>
                   </div>
                   <div class="form-group">
-                    <input type="text" name="modelo" class="form-control" placeholder="Modelo">
+                    <input type="text" name="modelo" class="form-control" placeholder="Modelo" required>
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="capacidad" class="form-control" placeholder="Capacidad">
+                    <input type="text" name="capacidad" class="form-control" placeholder="Capacidad" required>
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="precio" class="form-control" placeholder="Precio">
+                    <input type="text" name="precio" class="form-control" placeholder="Precio" required>
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="fecha_ida" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de Inicio">
+                    <input type="text" name="fecha_ida" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de Inicio" required>
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="fecha_vuelta" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de Termino">
+                    <input type="text" name="fecha_vuelta" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de Término" required>
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="destiny_id" class="form-control" placeholder="Id destino">
+                    <input type="text" name="destiny_id" class="form-control" placeholder="Id Destino" required>
                   </div>                  
 
                   <div class="form-group">
@@ -89,7 +78,7 @@
                   </div>
 
                   <div class="form-group">
-                    <input type="checkbox" name="disponibilidad" class="form-check-input" id="checkDispo">
+                    <input type="checkbox" name="disponibilidad" class="form-check-input" id="checkDispo" required>
                     <label class="form-check-label" for="checkDispo">Disponibilidad</label>
                   </div>
 

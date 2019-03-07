@@ -20,7 +20,7 @@ class CreateCarsTable extends Migration
             $table->string('modelo');
             $table->integer('capacidad');
             $table->integer('precio');
-            $table->integer('dias');
+            $table->integer('dias')->nullable();
             $table->date('fecha_ida')->nullable();
             $table->date('fecha_vuelta')->nullable();
             $table->boolean('disponibilidad');

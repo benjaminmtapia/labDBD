@@ -32,17 +32,6 @@
 
     <!-- END nav -->
 
-    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Hoteles</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <section class="ftco-section">
       <div class="container">
         <div class="row justify-content-center">
@@ -54,24 +43,24 @@
                 @csrf
                 <div class="fields">
                   <div class="form-group">
-                    <input type="text" name="ciudad" class="form-control" placeholder="Ciudad" value={{$hotel->ciudad}}>
+                    <input type="text" name="ciudad" class="form-control" required placeholder="Ciudad" value={{$hotel->ciudad}}>
                   </div>
                   <div class="form-group">
                     <div class="select-wrap one-third">
 
-                     <input type="text" name="nombre" class="form-control" placeholder="Nombre" value={{$hotel->nombre}}>
+                     <input type="text" name="nombre" class="form-control" required placeholder="Nombre" value={{$hotel->nombre}}>
                     </div>
                   </div>
                   <div class="form-group">
-                    <input type="text" name="clase" class="form-control" placeholder="Clase" value={{$hotel->clase}}>
+                    <input type="text" name="clase" class="form-control" required placeholder="Clase" value={{$hotel->clase}}>
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="destiny_id" class="form-control" placeholder="Id destino" value={{$hotel->destiny_id}}>
+                    <input type="text" name="destiny_id" class="form-control" required placeholder="Id destino" value={{$hotel->destiny_id}}>
                   </div>
 
                   <div class="form-group">
-                    <input type="checkbox" name="disponible" class="form-check-input" id="checkDispo" value={{$hotel->disponible}}>
+                    <input type="checkbox" name="disponible" class="form-check-input" required id="checkDispo" value={{$hotel->disponible}}>
                     <label class="form-check-label" for="checkDispo">Disponibilidad</label>
                   </div>
 

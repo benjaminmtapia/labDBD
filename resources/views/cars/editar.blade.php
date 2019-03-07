@@ -32,17 +32,6 @@
 
     <!-- END nav -->
 
-    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Autos</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <section class="ftco-section">
       <div class="container">
         <div class="row justify-content-center">
@@ -54,44 +43,44 @@
                 @csrf
                 <div class="fields">
                   <div class="form-group">
-                    <input type="text" name="patente" class="form-control" placeholder="Patente" value={{$car->patente}}>
+                    <input type="text" name="patente" class="form-control" placeholder="Patente" required value={{$car->patente}}>
                   </div>
                   <div class="form-group">
                     <div class="select-wrap one-third">
 
-                     <input type="text" name="marca" class="form-control" placeholder="Marca" value={{$car->marca}}>
+                     <input type="text" name="marca" class="form-control" placeholder="Marca" required value={{$car->marca}}>
                     </div>
                   </div>
                   <div class="form-group">
-                    <input type="text" name="modelo" class="form-control" placeholder="Modelo" value={{$car->modelo}}>
+                    <input type="text" name="modelo" class="form-control" placeholder="Modelo" required value={{$car->modelo}}>
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="capacidad" class="form-control" placeholder="Capacidad" value={{$car->capacidad}}>
+                    <input type="text" name="capacidad" class="form-control" placeholder="Capacidad" required value={{$car->capacidad}}>
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="precio" class="form-control" placeholder="Precio" value={{$car->precio}}>
+                    <input type="text" name="precio" class="form-control" placeholder="Precio" required value={{$car->precio}}>
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="fecha_ida" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de Inicio" value={{$car->fecha_ida}}>
+                    <input type="text" name="fecha_ida" id="checkin_date" class="form-control checkin_date" required placeholder="Fecha de Inicio" value={{$car->fecha_ida}}>
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="fecha_vuelta" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de Termino" value={{$car->fecha_vuelta}}>
+                    <input type="text" name="fecha_vuelta" id="checkin_date" class="form-control checkin_date" required placeholder="Fecha de Termino" value={{$car->fecha_vuelta}}>
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="destiny_id" class="form-control" placeholder="Id destino" value={{$car->destiny_id}}>
+                    <input type="text" name="destiny_id" class="form-control" placeholder="Id Destino" required value={{$car->destiny_id}}>
                   </div>                  
 
                   <div class="form-group">
-                    <input type="text" name="package_id" class="form-control" placeholder="Id Paquete" value={{$car->package_id}}>
+                    <input type="text" name="package_id" class="form-control" placeholder="Id Paquete" required value={{$car->package_id}}>
                   </div>
 
                   <div class="form-group">
-                    <input type="checkbox" name="disponibilidad" class="form-check-input" id="checkDispo" value={{$car->disponibilidad}}>
+                    <input type="checkbox" name="disponibilidad" class="form-check-input" id="checkDispo" required value={{$car->disponibilidad}}>
                     <label class="form-check-label" for="checkDispo">Disponibilidad</label>
                   </div>
 
