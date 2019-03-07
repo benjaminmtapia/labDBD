@@ -15,6 +15,7 @@ use Auth;
 use Carbon\Carbon;
 use \App\User;
 use \App\Carrito;
+use App\package;
 
 class SendEmail extends Mailable
 {
@@ -31,6 +32,7 @@ class SendEmail extends Mailable
     public $cars;
     public $rooms;
     public $secures;
+    public $packages;
 
     public function __construct($subject, $user_id)
     {
@@ -44,6 +46,7 @@ class SendEmail extends Mailable
         $cars = car::all()->where('reservation_id', $id_res);
         $rooms = room::all()->where('reservation_id', $id_res);
         $secures = Secure::all()->where('reservation_id', $id_res);
+        $packages = package::all()->where('reservation_id', $id_res);
         $reservation->disponibilidad = false;
         $reservation->save();
         $carrito->disponibilidad = false;
@@ -54,6 +57,7 @@ class SendEmail extends Mailable
         $this->cars = $cars;
         $this->rooms = $rooms;
         $this->secures = $secures;
+        $this->packages = $packages;
     }
 
     /**
@@ -69,6 +73,7 @@ class SendEmail extends Mailable
         $e_cars = $this->cars;
         $e_rooms = $this->rooms;
         $e_secures = $this->secures;
-        return $this->view('sendmail', compact('e_reservation', 'e_seats', 'e_cars', 'e_rooms', 'e_secures'))->subject($e_subject);
+        $e_packages = $this->packages;
+        return $this->view('sendmail', compact('e_reservation', 'e_seats', 'e_cars', 'e_rooms', 'e_secures', 'e_packages'))->subject($e_subject);
     }
 }
