@@ -220,7 +220,7 @@ class CarController extends Controller
         $fecha_ida = $request->fecha_ida;
         $fecha_vuelta = $request->fecha_vuelta;
         $lugar_arriendo = $request->lugar_arriendo;
-        $autos = \App\car::where('fecha_ida','>=',$request->fecha_ida)->where('fecha_vuelta','<=',$request->fecha_vuelta)->get();
+        $autos = \App\car::where('fecha_ida','<=',$request->fecha_ida)->where('fecha_vuelta','>=',$request->fecha_vuelta)->get();
         $cars=[];
         foreach ($autos as $auto) {
             if($auto->destiny->ciudad == $request->lugar_arriendo){

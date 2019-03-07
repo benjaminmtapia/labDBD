@@ -17,6 +17,7 @@ class CreatePassengersTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('apellido');
+            $table->string('doc_identidad');
             $table->integer('edad');
             $table->timestamps();
             $table->softDeletes();
