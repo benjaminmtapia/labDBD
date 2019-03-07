@@ -150,6 +150,14 @@
                       </div>
                     </div>
                     
+                     <p class="vuelo"><span>
+                    @if(optional($p->flight()->first())->origin_id != '')
+                      Vuelo desde {{optional($p->flight()->first())->origin->ciudad}} 
+                      a {{optional($p->flight()->first())->destiny->ciudad}} 
+                    @endif 
+                    <br>
+                    Incluye auto: {{$p->car->marca}} {{$p->car->modelo}}                 
+                    </span></p>
                      <p class="habitacion"><span>
                       @if(optional($p->room()->first())->capacidad != '')
                         Habitación para {{optional($p->room()->first())->capacidad}} 
