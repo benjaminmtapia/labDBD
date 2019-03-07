@@ -47,6 +47,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-3 sidebar order-md-last ftco-animate">
+            @if(Auth::user()->is_admin == 0)
             <div class="sidebar-wrap ftco-animate">
               <h3 class="heading mb-4">Buscar Auto</h3>
               <form action="/autos/busqueda" method="post">
@@ -70,6 +71,7 @@
                 </div>
               </form>
             </div>
+            @endif
             <div class="col-lg-15 sidebar order-md-last ftco-animate">
             <div class="sidebar-wrap ftco-animate" style="text-align: left;">
              @if(Auth::user()->is_admin)
@@ -102,8 +104,8 @@
                       </div>
                     </div>
 
-
                     <hr>
+                  @if(Auth::user()->is_admin == 0)
                     <form method="post" action="/autos/reserva">
                     <p class="bottom-area d-flex">
                       <input type="hidden"  value="{{$car}}" name="auto">
@@ -112,9 +114,10 @@
                       <button type="submit" class="btn btn-danger">Reservar</button>
                     </p>
                     </form>
+                    @endif
 
-                    <hr>
                     @if(Auth::user()->is_admin)
+                    <hr>
                     <form method="get" action="cars/{{$car->id}}/edit">
                     <p class="bottom-area d-flex">
                       <input type="hidden"  value="{{$car}}" name="auto">

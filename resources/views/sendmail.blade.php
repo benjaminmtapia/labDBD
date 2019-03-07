@@ -6,7 +6,9 @@
   </head>
   <body>
   	
-  	<h3>Detalles de la reserva n° {{$e_reservation->id}}.</h3>
+    <h3>Detalles de la reserva n°: {{e_reservation->id}}</h3>
+  	<h3>Código de la reserva: {{$e_reservation->cod_reserva}}.</h3>
+    <h4>Utilizar para el proceso de check-in</h4>
 
   	<hr>
 

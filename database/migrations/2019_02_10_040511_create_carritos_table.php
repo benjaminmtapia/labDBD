@@ -17,6 +17,7 @@ class CreateCarritosTable extends Migration
             $table->increments('id');
             $table->timestamp('fecha');
             $table->unsignedInteger('user_id');
+            $table->boolean('disponibilidad')->default('true');
             $table->foreign('user_id')->references('id')->on('users');   
             $table->timestamps();
             $table->softDeletes();

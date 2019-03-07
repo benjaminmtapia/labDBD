@@ -37,7 +37,7 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
           <div class="col-md-9 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><strong>Explore <br></strong> your amazing city</h1>
+            <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><strong>Recorre <br></strong> el mundo!</h1>
             <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">¿Reservaste un Vuelo? Realiza tu Check-in!</p>
             <div class="block-17 my-4">
               <form action="/checkin" method="post" class="d-block d-flex">
@@ -64,20 +64,22 @@
     		<div class="row">
     			<div class="col-md-4">
     				<div class="intro ftco-animate">
-    					<h3><span>01</span> Travel</h3>
-    					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+    					<h3><span>01</span> Laboratorio de Diseño de Base de Datos</h3>
+    					<p>Aplicación web programada en el lenguaje PHP con el framework Laravel que emule el funcionamiento de LATAM.com</p>
     				</div>
     			</div>
     			<div class="col-md-4">
     				<div class="intro ftco-animate">
-    					<h3><span>02</span> Experience</h3>
-    					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+    					<h3><span>02</span> Grupo de trabajo 14</h3>
+    					<p>Daniel Labra.</p>
+              <p>Benjamin Muñoz.</p>
+              <p>Fernando Villarreal.</p>
     				</div>
     			</div>
     			<div class="col-md-4">
     				<div class="intro ftco-animate">
-    					<h3><span>03</span> Relax</h3>
-    					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+    					<h3><span>03</span> Repositorio en GitHub</h3>
+    					<p>github.com/btzx/labDBD.</p>
     				</div>
     			</div>
     		</div>

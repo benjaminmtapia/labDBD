@@ -32,17 +32,6 @@
 
     <!-- END nav -->
 
-    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Vuelos</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <section class="ftco-section">
       <div class="container">
         <div class="row justify-content-center">
@@ -54,23 +43,23 @@
                 @csrf
                 <div class="fields">
                   <div class="form-group">
-                    <input type="text" name="precio" class="form-control" placeholder="Precio" value={{$flight->precio}}>
+                    <input type="text" name="precio" class="form-control" placeholder="Precio" required value={{$flight->precio}}>
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="fecha_ida" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de Inicio" value={{$flight->fecha_ida}}>
+                    <input type="text" name="fecha_ida" id="checkin_date" class="form-control checkin_date" required placeholder="Fecha de Inicio" value={{$flight->fecha_ida}}>
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="fecha_vuelta" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de Termino" value={{$flight->fecha_vuelta}}>
+                    <input type="text" name="fecha_vuelta" id="checkin_date" class="form-control checkin_date" required placeholder="Fecha de Termino" value={{$flight->fecha_vuelta}}>
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="origin_id" class="form-control" placeholder="Id origen" value={{$flight->origin_id}}>
+                    <input type="text" name="origin_id" class="form-control" placeholder="Id Origen" required value={{$flight->origin_id}}>
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="destiny_id" class="form-control" placeholder="Id destino" value={{$flight->destiny_id}}>
+                    <input type="text" name="destiny_id" class="form-control" placeholder="Id Destino" required value={{$flight->destiny_id}}>
                   </div>
 
                   <div class="form-group">

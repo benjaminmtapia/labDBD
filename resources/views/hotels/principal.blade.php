@@ -37,7 +37,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-3 sidebar order-md-last ftco-animate">
-            
+            @if(Auth::user()->is_admin == 0)
             <div class="sidebar-wrap ftco-animate">
               <h3 class="heading mb-4">Buscar Alojo</h3>
               <form action="/hoteles/buscar" method="post">
@@ -58,6 +58,7 @@
                 </div>
               </form>
             </div>
+            @endif
           
           </div><!-- END-->
           

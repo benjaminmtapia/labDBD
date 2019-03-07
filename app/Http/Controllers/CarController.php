@@ -79,7 +79,7 @@ class CarController extends Controller
           $car->fecha_vuelta = $request->get('fecha_vuelta');
           $car->disponibilidad = $request->get('disponibilidad');
           $car->destiny_id = $request->get('destiny_id');
-          $car->reservation_id = 1;
+          //$car->reservation_id = 1;
           $car->package_id = $request->get('package_id');
           $car->save();
           $cars = car::all();
@@ -169,11 +169,11 @@ class CarController extends Controller
         $user = Auth::user();
         //dd($user->name);
         $carrito = $user->carrito;
-        if ($carrito == null){
+        if ($carrito == null OR $carrito->disponibilidad == false){
             $carrito = new \app\Carrito;
             $carrito->fecha = Carbon::now();
             $carrito->user_id = $user->id;
-            $carrito->save;
+            $carrito->save();
         }
         $reserva_aux = $user->reservation->last();
         if ($reserva_aux==null) {

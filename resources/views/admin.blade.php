@@ -50,7 +50,7 @@
 
 
       <h1 class="font-weight-bold text-center">Administrar</h1>
-      <a type="button" class="btn btn-primary btn-lg btn-block" href="/autos/crear">Crear auto</a>
+      <a type="button" class="btn btn-primary btn-lg btn-block" href="/autos/crear">Crear Auto</a>
       <a type="button" class="btn btn-primary btn-lg btn-block" href="/vuelos/crear">Crear Vuelo</a>
       <a type="button" class="btn btn-primary btn-lg btn-block" href="/hoteles/crear">Crear Hotel</a>
       

@@ -47,7 +47,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-3 sidebar order-md-last ftco-animate">
-
+            @if(Auth::user()->is_admin == 0)
             <div class="sidebar-wrap ftco-animate">
               <h3 class="heading mb-4">Buscar Vuelo</h3>
               <form action="/vuelos/busqueda" method="post">
@@ -67,12 +67,15 @@
                 </div>
               </form>
             </div>
+            @endif
             <div class="col-lg-15 sidebar order-md-last ftco-animate">
             <div class="sidebar-wrap ftco-animate" style="text-align: left;">
+            @if(Auth::user()->is_admin == 0)  
               <h3 class="heading mb-4">Seguros</h3>
               Contamos con seguros de viaje para casos de emergencia, tenemos tanto para una como para más personas. Puedes revisarlos <a href="/secures">aquí</a><br><br>
              <center> <a class="btn btn-warning" role ="button" href="/secures">Ver Seguros</a> </center>
              <hr>
+             @endif
              @if(Auth::user()->is_admin)
              <center> <a class="btn btn-warning" role ="button" href="/vuelos/crear">Crear vuelo</a> </center>
              @endif
@@ -105,7 +108,8 @@
 
                       </div> -->
                     </div>
-
+                    
+                    @if(Auth::user()->is_admin == 0)
                     <hr>
                     <form method="post" action="/vuelos/asientos">
                     <p class="bottom-area d-flex">
@@ -114,6 +118,7 @@
                       <button type="submit" class="btn btn-danger">Ver asientos</button>
                     </p>
                     </form>
+                    @endif
 
                     <hr>
 

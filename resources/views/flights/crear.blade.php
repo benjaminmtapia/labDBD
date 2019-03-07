@@ -30,38 +30,7 @@
   </head>
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">DIINF++</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="oi oi-menu"></span> Menu
-        </button>
-
-        <div class="collapse navbar-collapse" id="ftco-nav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="/flights" class="nav-link">Vuelos</a></li>
-            <li class="nav-item"><a href="/destinies" class="nav-link">Habitaciones</a></li>
-            <li class="nav-item active"><a href="/cars" class="nav-link">Autos</a></li>
-            <li class="nav-item"><a href="/packages" class="nav-link">Paquetes</a></li>
-            <li class="nav-item"><a href="/login" class="nav-link">Ingresar</a></li>
-            <li class="nav-item"><a href="/register" class="nav-link">Registrarse</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
     <!-- END nav -->
-
-    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Autos</h1>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <section class="ftco-section">
       <div class="container">
@@ -73,23 +42,23 @@
                 <div class="fields">
                                                                                       
                   <div class="form-group">
-                    <input type="text" name="precio" class="form-control" placeholder="Precio">
+                    <input type="text" name="precio" class="form-control" required placeholder="Precio">
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="fecha_ida" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de Inicio">
+                    <input type="text" name="fecha_ida" id="checkin_date" class="form-control checkin_date" required placeholder="Fecha de Inicio">
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="fecha_vuelta" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de Termino">
+                    <input type="text" name="fecha_vuelta" id="checkin_date" class="form-control checkin_date" required placeholder="Fecha de Término">
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="origin_id" class="form-control" placeholder="Id origen">
+                    <input type="text" name="origin_id" class="form-control" required placeholder="Id Origen">
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="destiny_id" class="form-control" placeholder="Id destino">
+                    <input type="text" name="destiny_id" class="form-control" required placeholder="Id Destino">
                   </div>
 
                   <div class="form-group">

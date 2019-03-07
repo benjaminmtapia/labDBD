@@ -58,12 +58,14 @@ class CarritoController extends Controller
     public function show($id){
         $user = Auth::user();
         $carrito = $user->carrito;
-        if($carrito == null){
-            $carrito = new \App\carrito;
+        if($carrito == null OR $carrito->disponibilidad == false){
+            $carrito = new \app\Carrito;
+            $carrito->fecha = Carbon::now();
             $carrito->user_id = $user->id;
+            $carrito->save();            
         }
         $reservation = $user->reservation->last();
-        if($reservation == null){
+        if($reservation == null OR $reservation->disponibilidad == false){
             $reservation = new \App\reservation;
         }
         $reservation->precio = 0;

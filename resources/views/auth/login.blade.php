@@ -67,21 +67,15 @@
 						<button class="login100-form-btn">
 							Sign in
 						</button>
-            @if (Route::has('password.request'))
-                <a class="btn btn-link" href="{{ route('password.request') }}">
-                    {{ __('Forgot Your Password?') }}
-                </a>
-            @endif
 					</div>
-
-					<div class="text-center p-t-45 p-b-4">
-						<span class="txt1">
-							Forgot
-						</span>
-
-						<a href="#" class="txt2 hov1">
-							Username / Password?
-						</a>
+					
+					<div class="text-center">
+						
+							@if (Route::has('password.request'))
+		           				<a class="txt2 hov1 text-center" href="{{ route('password.request') }}">
+		                 			{{ __('Forgot Your Password?') }}
+		                		</a>
+		            		@endif
 					</div>
 
 					<div class="text-center">
@@ -89,7 +83,7 @@
 							Create an account?
 						</span>
 
-						<a href="#" class="txt2 hov1">
+						<a href="{{ route('register') }}" class="txt2 hov1">
 							Sign up
 						</a>
 					</div>

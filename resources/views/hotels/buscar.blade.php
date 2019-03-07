@@ -58,9 +58,8 @@
                         <span class="price"></span>
                       </div>
                     </div>
-
-
                     <hr>
+                  @if(Auth::user()->is_admin == 0)                    
                    <form method="post" action="/hoteles/habitaciones">
                     <input type="hidden" name="id_hotel" value="{{$hotel->id}}">
 
@@ -71,6 +70,7 @@
                 </form>
 
                 <hr>
+                @endif
 
                 @if(Auth::user()->is_admin)
                 <form method="get" action="hotels/{{$hotel->id}}/edit">

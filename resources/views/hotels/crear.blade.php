@@ -32,17 +32,6 @@
 
     <!-- END nav -->
 
-    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Hotel</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <section class="ftco-section">
       <div class="container">
         <div class="row justify-content-center">
@@ -52,24 +41,24 @@
               <form action="/hotels" method="post">
                 <div class="fields">
                   <div class="form-group">
-                    <input type="text" name="ciudad" class="form-control" placeholder="Ciudad">
+                    <input type="text" name="ciudad" class="form-control" required placeholder="Ciudad">
                   </div>
                   <div class="form-group">
                     <div class="select-wrap one-third">
 
-                     <input type="text" name="nombre" class="form-control" placeholder="Nombre">
+                     <input type="text" name="nombre" class="form-control" required placeholder="Nombre">
                     </div>
                   </div>
                   <div class="form-group">
-                    <input type="text" name="clase" class="form-control" placeholder="Clase">
+                    <input type="text" name="clase" class="form-control" required placeholder="Clase">
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="destiny_id" class="form-control" placeholder="Id destino">
+                    <input type="text" name="destiny_id" class="form-control" required placeholder="Id Destino">
                   </div>
 
                   <div class="form-group">
-                    <input type="checkbox" name="disponible" class="form-check-input" id="checkDispo">
+                    <input type="checkbox" name="disponible" required class="form-check-input" id="checkDispo">
                     <label class="form-check-label" for="checkDispo">Disponibilidad</label>
                   </div>
 
