@@ -59,7 +59,8 @@
                       </div>
                     </div>
                     <hr>
-                  @if(Auth::user()->is_admin == 0)                    
+                  @if(Auth::user())
+                  @if(Auth::user()->is_admin == 0)
                    <form method="post" action="/hoteles/habitaciones">
                     <input type="hidden" name="id_hotel" value="{{$hotel->id}}">
 
@@ -71,7 +72,9 @@
 
                 <hr>
                 @endif
+                @endif
 
+                @if(Auth::user())
                 @if(Auth::user()->is_admin)
                 <form method="get" action="hotels/{{$hotel->id}}/edit">
                 <p class="bottom-area d-flex">
@@ -80,6 +83,7 @@
                   <button type="submit" class="btn btn-info">Editar</button>
                 </p>
                 </form>
+                @endif
                 @endif
 
                     </p>
@@ -92,8 +96,10 @@
               <div class="col-lg-5 sidebar order-md-last ftco-animate">
                 <div class="row">
                   <div class="sidebar-wrap ftco-animate" style="text-align: left;">
+                  @if(Auth::user())
                    @if(Auth::user()->is_admin)
                    <center> <a class="btn btn-primary btn-lg" role ="button" href="/hoteles/crear">Crear Hotel</a> </center>
+                   @endif
                    @endif
                   </div>
                 </div>
