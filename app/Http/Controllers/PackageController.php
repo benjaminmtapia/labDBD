@@ -27,7 +27,7 @@ class PackageController extends Controller
      */
     public function index()
     {
-        $paquetes= package::all();
+        $paquetes= package::all()->where('disponible', true);
         foreach ($paquetes as $paquete){
             $car = $paquete->car()->first();
             $flight = $paquete->flight()->first();
@@ -164,7 +164,6 @@ class PackageController extends Controller
             $paquete->disponible = false;
             $paquete->save();
             $reserva->save();
-
         }
         else{
             $booleano = \App\reservation::all()->last()->disponibilidad;
@@ -173,13 +172,6 @@ class PackageController extends Controller
                 $reserva->cod_reserva = Str::random(16);
                 $reserva->precio = $reserva->precio + $paquete->precio;
                 $paquete->disponible = false;
-                
-/*                $car = $paquete->car()->first();
-                $room = $paquete->room()->first();      */
-
-     /*           $car->disponibilidad = false; 
-                $room->disponible = false;*/
-
                 $reserva->user_id = $user->id;
                 $reserva->fecha_reserva= Carbon::now();
                 $reserva->disponibilidad = true;
@@ -205,7 +197,7 @@ class PackageController extends Controller
             ->withProperties([
                  'causante'    => $user->name,
               ])
-            ->log('Reserva de Auto');        
+            ->log('Reserva de Paquete');        
         //return view('cart',compact('reserva'));
         return redirect()->action('CarritoController@show',['id' => $user->id]);
     }
