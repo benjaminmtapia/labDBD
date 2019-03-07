@@ -60,6 +60,7 @@ class PassengerController extends Controller
         $pasajero->nombre = $request->get('nombre');
         $pasajero->apellido = $request->get('apellido');
         $pasajero->edad = $request->get('edad');
+        $pasajero->doc_identidad = $request->get('doc_identidad');
         $pasajero->save();
         return $pasajero;
     }

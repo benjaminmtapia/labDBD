@@ -101,6 +101,12 @@
                     </div>
                   </div>
                   <div class="form-group">
+                    <div class="select-wrap one-third">
+
+                     <input type="text" name="doc_identidad" class="form-control" placeholder="Documento de Identidad">
+                    </div>
+                  </div>
+                  <div class="form-group">
                     <input type="number" name="edad" class="form-control" placeholder="Edad">
                   </div>
 
