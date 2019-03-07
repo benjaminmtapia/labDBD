@@ -20,10 +20,12 @@ class CreateFlightsTable extends Migration
             $table->integer('precio');
             $table->unsignedInteger('origin_id');
             $table->unsignedInteger('destiny_id');
-            $table->unsignedInteger('package_id')->nullable();
+            $table->unsignedInteger('packagecar_id')->nullable();
+            $table->unsignedInteger('packagehotel_id')->nullable();
             $table->foreign('origin_id')->references('id')->on('origins');
             $table->foreign('destiny_id')->references('id')->on('destinies');
-            $table->foreign('package_id')->references('id')->on('packages');
+            $table->foreign('packagecar_id')->references('id')->on('packagecars');
+            $table->foreign('packagehotel_id')->references('id')->on('packagehotels');
             $table->timestamps();
             $table->softDeletes();
         });

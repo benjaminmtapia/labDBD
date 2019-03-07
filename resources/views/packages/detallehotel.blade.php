@@ -83,12 +83,7 @@
                             <th class="cell">Hotel</th>
                             <th class="cell"></th>
                             <th class="font-weight-normal">
-                              {{$room->hotel->nombre}}, {{$room->hotel->destiny->ciudad}}
-                          </tr>
-                          <tr>
-                          	<th class="cell">Auto</th>
-                          	<th class="cell"></th>
-                          	<th class="font-weight-normal">{{$car->marca}} {{$car->modelo}}
+                              {{$room->first()->hotel->nombre}}
                           </tr>
                     </table>                          
                     <hr>

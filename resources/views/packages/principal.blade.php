@@ -76,25 +76,18 @@
           <div class="col-lg-9">
 
             <div class="row">
-                @foreach($paquetes as $p)
+                @foreach($paqueteAuto as $p)
 
               <div class="col-sm col-md-6 col-lg-4 ftco-animate">
                 <div class="destination">
-                  <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(https://akimg0.ask.fm/wallpapers2/080/990/485/760/original/file.jpg);">
+                  <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url('https://previews.123rf.com/images/milo827/milo8271311/milo827131100050/24025817-plane-delivering-large-package-through-the-sky.jpg');">
                   </a>
                   <div class="text p-3">
                     <div class="d-flex">
                       <div class="one">
                         <h3>Paquete n°: {{$p->id}}</h3>
                       
-                      <!--  <p class="rate">
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star-o"></i>
-                          <span>8 Rating</span>
-                        </p> -->
+                     
                       </div>
                       <div class="two">
                         <span class="price">${{$p->precio}}</span>
@@ -105,19 +98,59 @@
                     @if(optional($p->flight()->first())->origin_id != '')
                       Vuelo desde {{optional($p->flight()->first())->origin->ciudad}} 
                       a {{optional($p->flight()->first())->destiny->ciudad}} 
-                    @endif                      
+                    @endif 
+                    <br>
+                    Incluye auto: {{$p->car->marca}} {{$p->car->modelo}}                 
                     </span></p>
 
 
                     <p class="auto"><span>
-                      @if(optional($p->car()->first())->marca != '')
-                        Auto: {{optional($p->car()->first())->marca}}, 
-                        {{optional($p->car()->first())->modelo}}
-                      @endif
+                     
                     </span></p>
 
 
                     <p class="habitacion"><span>
+                     
+                      </span></p>
+                    <hr>
+                    <p class="bottom-area d-flex">
+                      
+                      <form method="post" action="/paquetes/asientos">
+                        <input type="hidden"  value="{{$p}}" name="paquete">
+                        <input type="hidden"  value="{{$p->id}}" name="id_paquete">
+                        <button type="submit" class="btn btn-danger">Reservar</button>
+                      </form>
+                    </p>
+                    <form method="post" action="/paqueteauto/verdetalle">
+                    <p class="bottom-area d-flex">                      
+                      <input type="hidden"  value="{{$p}}" name="paquete">
+                      <input type="hidden"  value="{{$p->id}}" name="id_paquete">
+                      <button type="submit" class="btn btn-info">Ver detalles</button>
+                    </p>
+                    </form> 
+                  </div>
+                </div>
+              </div>
+          @endforeach
+          @foreach($paqueteHotel as $p)
+
+              <div class="col-sm col-md-6 col-lg-4 ftco-animate">
+                <div class="destination">
+                  <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url('https://previews.123rf.com/images/milo827/milo8271311/milo827131100050/24025817-plane-delivering-large-package-through-the-sky.jpg');">
+                  </a>
+                  <div class="text p-3">
+                    <div class="d-flex">
+                      <div class="one">
+                        <h3>Paquete n°: {{$p->id}}</h3>
+                      
+                     
+                      </div>
+                      <div class="two">
+                        <span class="price">${{$p->precio}}</span>
+                      </div>
+                    </div>
+                    
+                     <p class="habitacion"><span>
                       @if(optional($p->room()->first())->capacidad != '')
                         Habitación para {{optional($p->room()->first())->capacidad}} 
                         personas en el hotel {{optional($p->room()->first())->hotel->nombre}}
@@ -132,7 +165,7 @@
                         <button type="submit" class="btn btn-danger">Reservar</button>
                       </form>
                     </p>
-                    <form method="post" action="/paquetes/verdetalle">
+                    <form method="post" action="/paquetehotel/verdetalle">
                     <p class="bottom-area d-flex">                      
                       <input type="hidden"  value="{{$p}}" name="paquete">
                       <input type="hidden"  value="{{$p->id}}" name="id_paquete">

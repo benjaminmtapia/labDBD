@@ -54,16 +54,30 @@ Route::get('vuelos/crear', 'FlightController@create');
 Route::get('/flights/{id}/edit', 'FlightController@edit');
 Route::put('/flights/{flight}', 'FlightController@update');
 
-Route::post('/seguros/reserva', 'SecureController@reservarSeguro');
+Route::post('/seguro/reserva', 'SecureController@reservarSeguro');
+Route::post('/seguros/pasajero', 'SecureController@gotoForm');
 Route::post('/vuelos/busquedaporfecha','FlightController@buscarporfecha');
 Route::post('/vuelos/verdetalle','FlightController@verDetalle');
 
-Route::post('/paquetes/reserva','PackageController@reservarPaquete');
-Route::post('/paquetes/asientos','PackageController@verAsientos');
-Route::post('/paquetes/verdetalle','PackageController@verDetalle');
-Route::post('/paquetes/pasajero','PackageController@gotoForm');
+Route::post('/paqueteauto/reserva','PackageController@reservarPaqueteAuto');
+Route::post('/paquetehotel/reserva','PackageController@reservarPaqueteHotel');
+Route::post('/paquetes/asientos','PackageController@verAsientoAuto');
+Route::post('/paqueteauto/verdetalle','PackageController@verDetalleAuto');
+Route::post('/paquete/pasajero','PackageController@gotoFormAuto');
+Route::post('/paquetehotel/pasajero','PackageController@gotoFormHotel');
 Route::post('/paquetes/agregarasiento','PackageController@agregarAsiento');
 Route::post('/paquetes/habitaciones','PackageController@verHoteles');
+Route::post('/paquetes/rooms','PackageController@verHabitaciones');
+Route::post('/paquetes/reservahabitacion','PackageController@reservarHabitacion');
+
+Route::post('/paquetes/reserva','PackageController@reservarPaquete');
+Route::post('/paquetehotel/asientos','PackageController@verAsientoHotel');
+Route::post('/paquetehotel/verdetalle','PackageController@verDetalleHotel');
+//Route::post('/paquetes/pasajero','PackageController@gotoForm');
+Route::post('/paqueteauto/agregarasiento','PackageController@agregarAsientoAuto');
+Route::post('/paquetes/habitaciones','PackageController@verHoteles');
+Route::post('/paquetes/rooms','PackageController@verHabitaciones');
+Route::post('/paquetes/reservahabitacion','PackageController@reservarHabitacion');
 
 
 

@@ -29,86 +29,67 @@
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/style.css')}}">
   </head>
   <body>
-  
+    
     <!-- END nav -->
     
-     <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
+    <div class="hero-wrap js-fullheight" style="background-image: url('https://www.adventuretoafrica.com/wp-content/uploads/edd/2015/12/BANNER_DREAMS-TAKE-FLIGHT.jpg');">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Hoteles</h1>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Detalle de vuelo</h1>
           </div>
         </div>
       </div>
     </div>
 
+    
+
+
     <section class="ftco-section">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-3 sidebar order-md-last ftco-animate">
-            
-            <div class="sidebar-wrap ftco-animate">
-              <h3 class="heading mb-4">Buscar Alojo</h3>
-              <form action="/hoteles/buscar" method="post">
-                <div class="fields">
-                  <div class="form-group">
-                    <input type="text" name="lugar_destino" class="form-control" placeholder="Ingrese Destino"> 
-                    <br>
-
-                    <input type="text" name="fecha_ida" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de Ida"><br>
-                    <input type="text" name="fecha_vuelta" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de Vuelta">
-
-                  </div>
-                  <input type="number" name="num_personas" value="2" class ="form-control" placeholder="Cantidad de Personas" style="text-align: left;">
-                  <br>
-                  <div class="form-group">
-                    <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
-                  </div>
-                </div>
-              </form>
-            </div>
-          
-          </div><!-- END-->
-          
+        <div class="row justify-content-center">
           <div class="col-lg-9">
-
-            <div class="row">
-                @foreach($destino as $destiny)
-
-              <div class="col-sm col-md-6 col-lg-4 ftco-animate">
+            <h1 class="font-weight-bold text-center">Detalles del paquete n°: {{$package->id}}</h1>
                 <div class="destination">
-                  <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url({{URL::asset('images/destination-3.jpg')}});">
+                
                   </a>
                   <div class="text p-3">
-                    <div class="d-flex">
-                      <div class="one">
-                        <h6>Ciudad: {{$destiny->ciudad}}</h3>
-                       
-                      </div>
-                      <div class="two">
-                        <span class="price"></span>
-                      </div>
-                    </div>
-                    
-                  
+                    <table class="table">
+                          <tr>
+                            <th class="cell">Origen</th>
+                            <th class="cell"></th>
+                            <th class="font-weight-normal cell">{{$flight->origin->ciudad}}</th>
+                          </tr>
+                          <tr>
+                            <th class="cell">Destino</th>
+                            <th class="cell"></th>
+                            <th class="font-weight-normal cell">{{$flight->destiny->ciudad}}</th>
+                          </tr>
+                          <tr>
+                            <th class="cell">Fecha de ida<th/>
+                            <th class="font-weight-normal cell">{{$flight->fecha_ida}}</th>
+                          </tr>
+                          <tr>
+                            <th class="cell">Fecha de vuelta<th/> 
+                            <th class="font-weight-normal cell">{{$flight->fecha_vuelta}}</th>
+                          </tr>
+                          <tr>
+                            <th class="cell">Precio</th>
+                            <th class="cell"></th>
+                            <th class="font-weight-normal cell">${{$package->precio}}</th>
+                          </tr>
+                          <tr>
+                          	<th class="cell">Auto</th>
+                          	<th class="cell"></th>
+                          	<th class="font-weight-normal">{{$car->marca}} {{$car->modelo}}
+                          </tr>
+                    </table>                          
                     <hr>
-                   <form method="post" action="/hoteles/ciudad">
-                    <input type="hidden"  value="{{$destiny}}" name="destino">
-                    <input type="hidden"  value="{{$destiny->id}}" name="id_destino">
-                    <p class="bottom-area d-flex">
-                     
-                      <button type="submit" class="btn btn-info">Ver más</button>
-                    </p>
-                </form>
-                     
-                    </p>
+                      <a href="/packages" class="btn btn-warning">Volver</a>
                   </div>
                 </div>
-              </div>
-          @endforeach
           </div> <!-- .col-md-8 -->
-        </div>
       </div>
     </section> <!-- .section -->
 
@@ -205,24 +186,24 @@
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
- <script src="{{URL::asset('js/jquery.min.js')}}"></script>
-  <script src="{{URL::asset('js/jquery-migrate-3.0.1.min.js')}}"></script>
-  <script src="{{URL::asset('js/popper.min.js')}}"></script>
-  <script src="{{URL::asset('js/bootstrap.min.js')}}"></script>
-  <script src="{{URL::asset('js/jquery.easing.1.3.js')}}"></script>
-  <script src="{{URL::asset('js/jquery.waypoints.min.js')}}"></script>
-  <script src="{{URL::asset('js/jquery.stellar.min.js')}}"></script>
-  <script src="{{URL::asset('js/owl.carousel.min.js')}}"></script>
-  <script src="{{URL::asset('js/jquery.magnific-popup.min.js')}}"></script>
-  <script src="{{URL::asset('js/aos.js')}}"></script>
-  <script src="{{URL::asset('js/jquery.animateNumber.min.js')}}"></script>
-  <script src="{{URL::asset('js/bootstrap-datepicker.js')}}"></script>
-  <script src="{{URL::asset('js/jquery.timepicker.min.js')}}"></script>
-  <script src="{{URL::asset('js/scrollax.min.js')}}"></script>
-  <script src="{{URL::asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false')}}"></script>
-  <script src="{{URL::asset('js/google-map.js')}}"></script>
-  <script src="{{URL::asset('js/main.js')}}"></script>
-    
-    
+
+  <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.stellar.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/owl.carousel.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/aos.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.animateNumber.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.timepicker.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/scrollax.min.js') }}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script type="text/javascript" src="{{ asset('js/google-map.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+
   </body>
 </html>

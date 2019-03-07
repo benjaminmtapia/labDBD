@@ -22,13 +22,15 @@ class CreateSeatsTable extends Migration
             $table->string('tipo');
             $table->boolean('check_in');
             $table->unsignedInteger('reservation_id')->nullable();
-            $table->unsignedInteger('package_id');
+            $table->unsignedInteger('packagehotel_id');
+            $table->unsignedInteger('packagecar_id');
             $table->unsignedInteger('flight_id');
             $table->unsignedInteger('passenger_id')->nullable();
             $table->foreign('reservation_id')->references('id')->on('reservations'); 
              $table->foreign('passenger_id')->references('id')->on('passengers'); 
             $table->foreign('flight_id')->references('id')->on('flights');
-            $table->foreign('package_id')->references('id')->on('packages');          
+            $table->foreign('packagehotel_id')->references('id')->on('packagehotels');   
+            $table->foreign('packagecar_id')->references('id')->on('packagecars');          
             $table->timestamps();
             $table->softDeletes();        
         });

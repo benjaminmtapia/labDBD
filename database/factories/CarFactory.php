@@ -3,7 +3,7 @@
 use Faker\Generator as Faker;
 
 $factory->define(App\car::class, function (Faker $faker) {
-	$paquete = DB::table('packages')->select('id')->get();
+	$paquete = DB::table('packagecars')->select('id')->get();
 	$reserva = DB::table('reservations')->select('id')->get();
     $destino = DB::table('destinies')->select('id')->get();
     $faker->addProvider(new \Faker\Provider\Fakecar($faker));
@@ -19,7 +19,7 @@ $factory->define(App\car::class, function (Faker $faker) {
         'precio'=>$faker->numberBetween($min = 200, $max =600),
         'dias'=>0,
         'disponibilidad'=>$faker->boolean($chanceOfGettingTrue = 100),
-        'package_id'=>$paquete->random()->id,
+        'packagecar_id'=>$paquete->random()->id,
 //        'reservation_id'=>$reserva->random()->id,
         'destiny_id'=>$destino->random()->id
     ];

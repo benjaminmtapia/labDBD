@@ -164,4 +164,9 @@ class SecureController extends Controller
         $seguro->save();
         return redirect()->action('CarritoController@show',['id' => $user->id]);
     }
+
+    public function gotoForm(Request $request){
+        $seguro = \App\Secure::find($request->id_seguro);
+        return view('secures.pasajero',compact('seguro'));
+    }
 }

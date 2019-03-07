@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class secureSeeder extends Seeder
+class packagehotelSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class secureSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\Secure', 3)->create();
+        factory('App\packagehotel', 10)->create();
     }
 }

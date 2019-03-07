@@ -25,10 +25,10 @@ class CreateCarsTable extends Migration
             $table->date('fecha_vuelta')->nullable();
             $table->boolean('disponibilidad');
             $table->unsignedInteger('destiny_id');
-            $table->unsignedInteger('package_id')->nullable();
+            $table->unsignedInteger('packagecar_id');
             $table->unsignedInteger('reservation_id')->nullable();
             $table->foreign('destiny_id')->references('id')->on('destinies');
-            $table->foreign('package_id')->references('id')->on('packages');
+            $table->foreign('packagecar_id')->references('id')->on('packagecars');
             $table->foreign('reservation_id')->references('id')->on('reservations');
             $table->timestamps();
             $table->softDeletes();

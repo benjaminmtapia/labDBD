@@ -45,28 +45,7 @@
 
     <section class="ftco-section">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-3 sidebar order-md-last ftco-animate">
-
-            <div class="sidebar-wrap ftco-animate">
-              <h3 class="heading mb-4">Buscar Alojamiento</h3>
-              <form action="/vuelos/busqueda" method="post">
-                <div class="fields">
-                  <div class="form-group">
-
-                    <input type="text" name="fecha" id="checkin_date" class="form-control checkin_date" placeholder="Fecha">
-
-                  </div>
-                  <input type="number" name="num_pasajeros" class ="form-control" placeholder="Cantidad de Pasajeros" style="text-align: left;">
-                  <br>
-                  <div class="form-group">
-                    <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
-                  </div>
-                </div>
-              </form>
-            </div>
-
-          </div><!-- END-->
+        
 
           <div class="col-lg-9">
 
@@ -102,7 +81,7 @@
                     </div>
 
                     <hr>
-                    <form method="post" action="seguros/reserva">
+                    <form method="post" action="/seguros/pasajero">
                     <p class="bottom-area d-flex">
                       <input type="hidden"  value="{{$secure}}" name="seguro">
                       <input type="hidden"  value="{{$secure->id}}" name="id_seguro">

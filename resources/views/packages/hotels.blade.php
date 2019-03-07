@@ -74,7 +74,7 @@
           <div class="col-lg-9">
 
             <div class="row">
-                @foreach($destino as $destiny)
+                @foreach($hoteles as $hotel)
 
               <div class="col-sm col-md-6 col-lg-4 ftco-animate">
                 <div class="destination">
@@ -83,7 +83,7 @@
                   <div class="text p-3">
                     <div class="d-flex">
                       <div class="one">
-                        <h6>Ciudad: {{$destiny->ciudad}}</h3>
+                        <h6>Hotel: {{$hotel->name}}</h3>
                        
                       </div>
                       <div class="two">
@@ -93,12 +93,12 @@
                     
                   
                     <hr>
-                   <form method="post" action="/hoteles/ciudad">
-                    <input type="hidden"  value="{{$destiny}}" name="destino">
-                    <input type="hidden"  value="{{$destiny->id}}" name="id_destino">
+                   <form method="post" action="/paquetes/rooms">
+                    <input type="hidden"  value="{{$hotel->id}}" name="id_hotel">
+                    <input type="hidden"  value="{{$package->id}}" name="id_paquete">
                     <p class="bottom-area d-flex">
                      
-                      <button type="submit" class="btn btn-info">Ver más</button>
+                      <button type="submit" class="btn btn-info">Ver Habitaciones</button>
                     </p>
                 </form>
                      
