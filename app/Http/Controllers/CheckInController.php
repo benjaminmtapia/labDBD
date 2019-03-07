@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
 use Redirect;
+use Auth;
 use Illuminate\Support\Str;
 class CheckInController extends Controller
 {

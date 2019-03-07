@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
 use Carbon\Carbon;
+use Auth;
 class PurchaseController extends Controller
 {
 
