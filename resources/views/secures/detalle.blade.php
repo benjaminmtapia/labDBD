@@ -6,152 +6,80 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" type="text/css" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/open-iconic-bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/animate.css')}}">
 
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/owl.theme.default.min.css')}}">
+    <link rel="stylesheet"  type="text/css" href="{{URL::asset('css/magnific-popup.css')}}">
 
-    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" type="text/css"  href="{{URL::asset('css/aos.css')}}">
 
-    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/css/ionicons.min.css')}}">
 
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/bootstrap-datepicker.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/jquery.timepicker.css')}}">
 
 
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/flaticon.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/icomoon.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/style.css')}}">
   </head>
   <body>
 
     <!-- END nav -->
 
-    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
+    <div class="hero-wrap js-fullheight" style="background-image: url('https://midatlantic.aaa.com/-/media/Images/Global/Travel/flights/aaa-flights-1470x600.ashx?h=600&la=en&w=1470&hash=40B21A21E8F13B7C22C1D21C26C1F71E19A0710D');">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Seguros</h1>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Detalle de seguro</h1>
           </div>
         </div>
       </div>
     </div>
 
+
+
+
     <section class="ftco-section">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-3 sidebar order-md-last ftco-animate">
-
-            <div class="sidebar-wrap ftco-animate">
-              <h3 class="heading mb-4">Buscar seguro</h3>
-              <form action="/seguros/busqueda" method="post">
-                <div class="fields">
-                  <div class="form-group">
-
-                    <input type="text" name="fecha" id="checkin_date" class="form-control checkin_date" placeholder="Fecha de ida">
-
-                  </div>
-                  <div class="form-group">
-                    <select
-                    id="tipo"
-                    name="tipo"
-                    class="form-control selectpicker custom-select"
-                    required>
-                    <option selected disabled>
-                        Seleccione el tipo de seguro
-                    </option>
-                    <option value="Individual">
-                        Individual
-                    </option>
-                    <option value="Grupal">
-                        Grupal
-                    </option>
-                  </select>
-                  </div>
-                  <div class="form-group">
-                      <input
-                      class="form-control"
-                      id="edad"
-                      name="edad"
-                      type="number"
-                      min="4"
-                      max="80"
-                      placeholder="Edad promedio"
-                      style="text-align: left;">
-                    </div>
-                  <br>
-                  <div class="form-group">
-                    <input type="submit" value="Buscar" class="btn btn-primary py-3 px-5">
-                  </div>
-                </div>
-              </form>
-            </div>
-
-          </div><!-- END-->
-
+        <div class="row justify-content-center">
           <div class="col-lg-9">
-
-            <div class="row">
-                @foreach($secures as $secure)
-
-              <div class="col-sm col-md-6 col-lg-4 ftco-animate">
-                <div class="destination">
-                  <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(https://www.viajesycosasasi.com/wp-content/uploads/2014/08/plan-seguro-viajes.jpg);">
-                  </a>
                   <div class="text p-3">
-                    <div class="d-flex">
-                      <div class="one">
-                        <h3><a href="#">{{$secure->tipo}}</a></h3>
-             <!--           <p>from {{$secure->tipo}}</p> -->
-
-                      <!--   <p class="rate">
-                         <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star"></i>
-                          <i class="icon-star-o"></i>
-                          <span>8 Rating</span>
-                        </p> -->
-
-
-                      </div>
-
-                      <div class="two">
-                        <span class="price">${{$secure->precio}}</span>
-
-                      </div>
-                    </div>
-
+                    <table class="table">
+                          <tr>
+                            <th class="cell">Tipo</th>
+                            <th class="cell"></th>
+                            <th class="font-weight-normal cell">{{$secures->tipo}}</th>
+                          </tr>
+                          <tr>
+                            <th class="cell">Servicio Medico</th>
+                            <th class="cell"></th>
+                            <th class="font-weight-normal cell">{{$secures->servicioMedico}}</th>
+                          </tr>
+                          <tr>
+                            <th class="cell">Cubre<th/>
+                            <th class="font-weight-normal cell">{{$secures->servicio2}}</th>
+                          </tr>
+                          <tr>
+                            <th class="cell">Cubre<th/>
+                            <th class="font-weight-normal cell">{{$secures->servicio3}}</th>
+                          </tr>
+                          <tr>
+                            <th class="cell">Precio</th>
+                            <th class="cell"></th>
+                            <th class="font-weight-normal cell">${{$secures->precio}}</th>
+                          </tr>
+                    </table>
                     <hr>
-                    <form method="post" action="seguros/reserva">
-                    <p class="bottom-area d-flex">
-                      <input type="hidden"  value="{{$secure}}" name="seguro">
-                      <input type="hidden"  value="{{$secure->id}}" name="id_seguro">
-
-                      <button type="submit" class="btn btn-danger">Reservar</button>
-                    </p>
-                </form>
-                <hr>
-
-                <form method="post" action="seguros/verdetalle">
-                <p class="bottom-area d-flex">
-                  <input type="hidden"  value="{{$secure}}" name="seguro">
-                  <input type="hidden"  value="{{$secure->id}}" name="id_seguro">
-                  <button type="submit" class="btn btn-info">Ver detalles</button>
-                </p>
-                </form>
+                      <a href="/secures" class="btn btn-warning">Volver</a>
                   </div>
-                </div>
-              </div>
-          @endforeach
           </div> <!-- .col-md-8 -->
-        </div>
       </div>
     </section> <!-- .section -->
 
@@ -249,23 +177,23 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/jquery.timepicker.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.stellar.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/owl.carousel.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/aos.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.animateNumber.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery.timepicker.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/scrollax.min.js') }}"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
+  <script type="text/javascript" src="{{ asset('js/google-map.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 
   </body>
 </html>

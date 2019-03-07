@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Secure;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 use Auth;
 use Carbon\Carbon;
 
@@ -177,5 +178,16 @@ class SecureController extends Controller
               ])
             ->log("Quita seguro del carrito");
         return redirect()->action('CarritoController@show',['id' => $user->id]);
+    }
+
+    public function verDetalle(Request $request){
+        $secures = \App\Secure::find($request->id_seguro);
+        return view('secures.detalle', compact('secures'));
+    }
+
+    public function buscarSeguro(Request $request)
+    {
+      $secures = \App\Secure::where('tipo', $request->tipo)->get();
+      return view('secures.busqueda', compact('secures'));
     }
 }

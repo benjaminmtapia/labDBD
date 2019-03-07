@@ -56,6 +56,8 @@ Route::get('/flights/{id}/edit', 'FlightController@edit');
 Route::put('/flights/{flight}', 'FlightController@update');
 
 Route::post('/seguros/reserva', 'SecureController@reservarSeguro');
+Route::post('/seguros/verdetalle', 'SecureController@verDetalle');
+Route::post('/seguros/busqueda', 'SecureController@buscarSeguro');
 Route::post('/vuelos/busquedaporfecha','FlightController@buscarporfecha');
 Route::post('/vuelos/verdetalle','FlightController@verDetalle');
 

@@ -17,6 +17,10 @@ class CreateSecuresTable extends Migration
             $table->increments('id');
             $table->string('tipo');
             $table->integer('precio');
+            $table->string('servicioMedico');
+            $table->string('servicio2');
+            $table->string('servicio3');
+            $table->integer('edad');
             $table->unsignedInteger('passenger_id');
             $table->unsignedInteger('reservation_id')->nullable();
             $table->foreign('passenger_id')->references('id')->on('passengers');
