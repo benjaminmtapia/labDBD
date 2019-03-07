@@ -187,6 +187,13 @@ class PassengerController extends Controller
         $asiento->disponibilidad = true;
         $asiento->passenger_id = null;
         $asiento->save();
+        activity('Asiento')
+            ->performedOn($user)
+            ->causedBy($user)
+            ->withProperties([
+                 'causante'    => $user->name,
+              ])
+            ->log("Se quita asiento del carrito");
         return redirect()->action('CarritoController@show',['id' => $user->id]);
     }
 }

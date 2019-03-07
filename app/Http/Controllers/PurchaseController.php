@@ -12,14 +12,14 @@ class PurchaseController extends Controller
 
    public function rules(){
         return[
-            'precio' => 'required|integer', 
+            'precio' => 'required|integer',
             'tipo_tarjeta' => 'required|string',
             'numero_tarjeta' => 'required|integer',
             'nombre_titular' => 'required|string',
             'apellido_titular' => 'required|string',
             'reservation_id' => 'required|integer'
         ];
-    }   
+    }
 
     /**
      * Display a listing of the resource.
@@ -52,16 +52,24 @@ class PurchaseController extends Controller
        $validator = Validator::make($request->all(), $this->rules());
         if($validator->fails()){
             return $validator->messages();
-        }   
-        $purchase = new \App\purchase; 
+        }
+        $user = Auth::user();
+        $purchase = new \App\purchase;
         $purchase->fecha = Carbon::now();
-        $purchase->precio = $request->get('precio'); 
-        $purchase->tipo_tarjeta = $request->get('tipo_tarjeta'); 
-        $purchase->numero_tarjeta = $request->get('numero_tarjeta'); 
-        $purchase->nombre_titular = $request->get('nombre_titular'); 
-        $purchase->apellido_titular = $request->get('apellido_titular'); 
-        $purchase->reservation_id = $request->get('reservation_id'); 
+        $purchase->precio = $request->get('precio');
+        $purchase->tipo_tarjeta = $request->get('tipo_tarjeta');
+        $purchase->numero_tarjeta = $request->get('numero_tarjeta');
+        $purchase->nombre_titular = $request->get('nombre_titular');
+        $purchase->apellido_titular = $request->get('apellido_titular');
+        $purchase->reservation_id = $request->get('reservation_id');
         $purchase->save();
+        activity('Compra')
+            ->performedOn($user)
+            ->causedBy($user)
+            ->withProperties([
+                 'causante'    => $user->name,
+              ])
+            ->log("Realiza compra");
         $reservation = \App\reservation::find($request->reservation_id);
         $user_id = $reservation->user_id;
         return redirect()->action('MailController@sendMail',['user_id' => $user_id]);
@@ -77,7 +85,7 @@ class PurchaseController extends Controller
     public function show($id)
     {
         $purchase = Purchase::find($id);
-        return $purchase; 
+        return $purchase;
     }
 
     /**
@@ -103,10 +111,10 @@ class PurchaseController extends Controller
         $validator = Validator::make($request->all(), $this->rules());
         if($validator->fails()){
             return $validator->messages();
-        }   
+        }
         $purchase->fecha = $request->get('fecha');
         $purchase->save();
-        return $purchase; 
+        return $purchase;
     }
 
     /**

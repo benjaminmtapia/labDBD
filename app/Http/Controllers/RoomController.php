@@ -65,7 +65,7 @@ class RoomController extends Controller
         $room->fecha_vuelta = $request->get('fecha_vuelta');
         $room->hotel_id = $request->get('hotel_id');
         $room->save();
-        return $room; 
+        return $room;
     }
 
     /**
@@ -77,7 +77,7 @@ class RoomController extends Controller
     public function show($id)
     {
         $room = room::find($id);
-        return $room; 
+        return $room;
     }
 
     /**
@@ -110,7 +110,7 @@ class RoomController extends Controller
         $room->fecha_vuelta = $request->get('fecha_vuelta');
         $room->hotel_id = $request->get('hotel_id');
         $room->save();
-        return $room; 
+        return $room;
     }
 
     /**
@@ -126,17 +126,17 @@ class RoomController extends Controller
             'success'
         ]);
     }
-    
+
     public function reservarHabitacion(Request $request){
         $habitacion = \App\room::find($request->id_habitacion);
         $user = Auth::user();
-        $carrito = $user->carrito; 
+        $carrito = $user->carrito;
         if ($carrito == null){
             $carrito = new \app\Carrito;
             $carrito->fecha = Carbon::now();
             $carrito->user_id = $user->id;
             $carrito->save;
-        }        
+        }
         $reserva_aux = $user->reservation->last();
         if($reserva_aux == null){
             $reserva = new \App\reservation;
@@ -177,6 +177,13 @@ class RoomController extends Controller
         $habitacion->reservation_id = $reserva->id;
         $habitacion->disponible = false;
         $habitacion->save();
+        activity('habitacion')
+            ->performedOn($user)
+            ->causedBy($user)
+            ->withProperties([
+                 'causante'    => $user->name,
+              ])
+            ->log("Reserva de habitacion");
         //return view('cart',compact('reserva'));
         return redirect()->action('CarritoController@show',['id' => $user->id]);
     }
@@ -184,11 +191,18 @@ class RoomController extends Controller
     public function quitarDelCarrito(Request $request){
         $user = Auth::user();
         $id = $user->id;
-        $habitacion = \App\room::find($request->id_habitacion); 
+        $habitacion = \App\room::find($request->id_habitacion);
         $habitacion->reservation_id = null;
         $habitacion->disponible = true;
         $habitacion->dias = 0;
         $habitacion->save();
+        activity('Habitacion')
+            ->performedOn($user)
+            ->causedBy($user)
+            ->withProperties([
+                 'causante'    => $user->name,
+              ])
+            ->log("Se quita habitacion del carrito");
         return redirect()->action('CarritoController@show',['id' => $user->id]);
     }
 

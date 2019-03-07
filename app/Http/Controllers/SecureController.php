@@ -117,7 +117,7 @@ class SecureController extends Controller
     {
       $seguro = \App\Secure::find($request->id_seguro);
       $user = Auth::user();
-      $carrito = $user->carrito; 
+      $carrito = $user->carrito;
         if ($carrito == null){
             $carrito = new \app\Carrito;
             $carrito->fecha = Carbon::now();
@@ -152,6 +152,13 @@ class SecureController extends Controller
       }
       $seguro->reservation_id = $reserva->id;
       $seguro->save();
+      activity('Seguro')
+          ->performedOn($user)
+          ->causedBy($user)
+          ->withProperties([
+               'causante'    => $user->name,
+            ])
+          ->log("Reserva seguro");
      //return view('carrito',compact('reserva','request'));
       return redirect()->action('CarritoController@show',['id' => $user->id]);
     }
@@ -159,9 +166,16 @@ class SecureController extends Controller
     public function quitarDelCarrito(Request $request){
         $user = Auth::user();
         $id = $user->id;
-        $seguro = \App\Secure::find($request->id_seguro); 
+        $seguro = \App\Secure::find($request->id_seguro);
         $seguro->reservation_id = null;
         $seguro->save();
+        activity('Seguro')
+            ->performedOn($user)
+            ->causedBy($user)
+            ->withProperties([
+                 'causante'    => $user->name,
+              ])
+            ->log("Quita seguro del carrito");
         return redirect()->action('CarritoController@show',['id' => $user->id]);
     }
 }

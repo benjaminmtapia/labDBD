@@ -74,6 +74,13 @@ class FlightController extends Controller
           $vuelo->destiny_id = $request->get('destiny_id');
           $vuelo->package_id = $request->get('package_id');
           $vuelo->save();
+          activity('Vuelo')
+              ->performedOn($user)
+              ->causedBy($user)
+              ->withProperties([
+                   'causante'    => $user->name,
+                ])
+              ->log("Creacion de vuelo con id $vuelo->id");
           $flights = flight::all();
           return view('flights.principal', compact('flights'));
         }
@@ -124,6 +131,7 @@ class FlightController extends Controller
         if ($validator->fails()) {
           return $validator->messages();
         }
+        $user = Auth::user();
         $flight->fecha_ida = $request->get('fecha_ida');
         $flight->fecha_vuelta = $request->get('fecha_vuelta');
         $flight->precio = $request->get('precio');
@@ -131,6 +139,13 @@ class FlightController extends Controller
         $flight->destiny_id = $request->get('destiny_id');
         $flight->package_id = $request->get('package_id');
         $flight->save();
+        activity('Vuelo')
+            ->performedOn($flight)
+            ->causedBy($user)
+            ->withProperties([
+                 'causante'    => $user->name,
+              ])
+            ->log("Edita vuelo con id $vuelo->id");
         $flights = flight::all();
         Session::flash('flash_message', 'Vuelo editado');
         return view('flights.principal', compact('flights'));
@@ -149,6 +164,7 @@ class FlightController extends Controller
     }
 
     public function buscar(Request $request){
+        $user = Auth::user();
         $lugar_origen = $request->lugar_origen;
         $lugar_destino = $request->lugar_destino;
         $fecha_ida = $request->fecha_ida;
@@ -174,16 +190,31 @@ class FlightController extends Controller
                 }
             }
         }
+        activity('Vuelo')
+            ->performedOn($user)
+            ->causedBy($user)
+            ->withProperties([
+                 'causante'    => $user->name,
+              ])
+            ->log("Busqueda de vuelo con fecha de ida $fecha_ida");
         return view('flights.busqueda')->with(compact('vuelos','num_pasajeros'));
 
     }
     public function buscarporfecha(Request $request){
         $vuelo = $request;
+        $user = Auth::user();
         $fecha = $request->fecha;
         $date = \App\Flight::where('fecha_ida',$fecha)->first();
         if(empty($fecha)){
             return view('flights.null');
         }
+        activity('Vuelo')
+            ->performedOn($user)
+            ->causedBy($user)
+            ->withProperties([
+                 'causante'    => $user->name,
+              ])
+            ->log("Busqueda de auto con fecha de ida $fecha_ida");
         return view('flights.busquedaporfecha',compact('date','origen','destino'));
     }
 

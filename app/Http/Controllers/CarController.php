@@ -82,6 +82,13 @@ class CarController extends Controller
           //$car->reservation_id = 1;
           $car->package_id = $request->get('package_id');
           $car->save();
+          activity('Auto')
+              ->performedOn($user)
+              ->causedBy($user)
+              ->withProperties([
+                   'causante'    => $user->name,
+                ])
+              ->log("Creacion de auto $auto->marca $auto->modelo");
           $cars = car::all();
           return view('cars.principal', compact('cars'));
         }
@@ -133,6 +140,7 @@ class CarController extends Controller
         if($validator->fails()){
             return $validator->messages();
         }
+        $user = Auth::user();
         $car->patente = $request->get('patente');
         $car->marca = $request->get('marca');
         $car->modelo = $request->get('modelo');
@@ -144,6 +152,13 @@ class CarController extends Controller
         $car->destiny_id = $request->get('destiny_id');
         $car->package_id = $request->get('package_id');
         $car->save();
+        activity('Auto')
+            ->performedOn($user)
+            ->causedBy($user)
+            ->withProperties([
+                 'causante'    => $user->name,
+              ])
+            ->log("Edita auto con id $auto->id");
         $cars = car::all();
         Session::flash('flash_message', 'Auto editado');
         return view('cars.principal', compact('cars'));
@@ -210,7 +225,7 @@ class CarController extends Controller
             ->withProperties([
                  'causante'    => $user->name,
               ])
-            ->log('Reserva de Auto');
+            ->log("Reserva de auto $auto->marca $auto->modelo");
         //return view('cart',compact('reserva','request'));
         return redirect()->action('CarritoController@show',['id' => $user->id]);
     }
@@ -245,6 +260,13 @@ class CarController extends Controller
         $auto->disponibilidad = true;
         $auto->dias = 0;
         $auto->save();
+        activity('Auto')
+            ->performedOn($user)
+            ->causedBy($user)
+            ->withProperties([
+                 'causante'    => $user->name,
+              ])
+            ->log("Se quita auto $auto->marca $auto->modelo del carrito");
         return redirect()->action('CarritoController@show',['id' => $user->id]);
     }
 }

@@ -58,6 +58,7 @@
                                     <a class="dropdown-item" href="/admin">Menú Admin</a>
                                     @endif
 <!--                                    <a class="dropdown-item" href="{{ route('carrito', [Auth::user()->id])}}">Carrito de compras</a> -->
+                                    <a class="dropdown-item" href="/log">Historial de usuario</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

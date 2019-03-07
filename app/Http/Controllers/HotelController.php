@@ -63,7 +63,15 @@ class HotelController extends Controller
         $hotel->clase = $request->get('clase');
         $hotel->disponible = $request->get('disponible');
         $hotel->destiny_id = $request->get('destiny_id');
+        $user = Auth::user();
         $hotel->save();
+        activity('Auto')
+            ->performedOn($user)
+            ->causedBy($user)
+            ->withProperties([
+                 'causante'    => $user->name,
+              ])
+            ->log("Creacion de hotel $hotel->nombre");
         $destino = hotel::all();
         return view('hotels.principal', compact('destino'));
     }
@@ -117,8 +125,15 @@ class HotelController extends Controller
         $hotel->disponible = $request->get('disponible');
         $hotel->destiny_id = $request->get('destiny_id');
         $hotel->save();
+        activity('Auto')
+            ->performedOn($user)
+            ->causedBy($user)
+            ->withProperties([
+                 'causante'    => $user->name,
+              ])
+            ->log("Edita hotel con id $hotel->id");
         $destino = hotel::all();
-        return view('hotels.principal', compact('destino'));        
+        return view('hotels.principal', compact('destino'));
     }
 
     /**
@@ -149,10 +164,18 @@ class HotelController extends Controller
     public function buscarHotel(Request $request){
 
         $fecha_ida = $request->fecha_ida;
+        $user = Auth::user();
         $fecha_vuelta = $request->fecha_vuelta;
         $personas = $request->num_personas;
         $habitaciones = \App\room::where('fecha_vuelta','<=',$request->fecha_vuelta)->where('fecha_ida','>=',$request->fecha_ida)->where('capacidad','>=',$request->num_personas)->get();
 
+        activity('Hotel')
+            ->performedOn($user)
+            ->causedBy($user)
+            ->withProperties([
+                 'causante'    => $user->name,
+              ])
+            ->log("Busqueda de hotel con fecha de ida $fecha_ida");
         return view('hotels.buscar',compact('habitaciones'));
 
     }
