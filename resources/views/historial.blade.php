@@ -47,8 +47,7 @@
     <div class="container" style ="margin-top:20px;">
 
 
-    <h1 class="font-weight-bold text-center">Historial</h1>
-    <h2 class="text-center">lalal</h2>
+    <h1 class="font-weight-bold text-center">Historial de acciones</h1>
     <table class="table">
           <tr>
             <th class="cell">Fecha</th>

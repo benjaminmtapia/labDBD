@@ -40,7 +40,7 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{Auth::user()->name}}</h1>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Administrador: {{Auth::user()->name}}</h1>
           </div>
         </div>
       </div>
@@ -53,6 +53,7 @@
       <a type="button" class="btn btn-primary btn-lg btn-block" href="/autos/crear">Crear Auto</a>
       <a type="button" class="btn btn-primary btn-lg btn-block" href="/vuelos/crear">Crear Vuelo</a>
       <a type="button" class="btn btn-primary btn-lg btn-block" href="/hoteles/crear">Crear Hotel</a>
+      <a type="button" class="btn btn-primary btn-lg btn-block" href="/log">Ver historial de acciones</a>
       
 
     <hr>
